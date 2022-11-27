@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+   <layout title="Sexy Polls">
+      <message>
+         <![CDATA[Shows the list of Sexy Polls]]>
+      </message>
+   </layout>
+   <state>
+      <name>Sexy Polls</name>
+      <description>Shows the list of Sexy Polls</description>
+      <url addpath="/administrator/components/com_sexypolling/elements">
+         <param name="category" type="polls" section="com_sexypolling" default="0" label="Category" description="Shows the list of Sexy Polls" required="true" />
+      </url>
+      <params>
+      </params>
+   </state>
+   
+   <fields name="request">
+		<fieldset name="request" label="Category Options" addfieldpath="/administrator/components/com_sexypolling/fields">
+			 <field name="category" type="polls" section="com_sexypolling" default="0" label="Category" description="Shows the list of Sexy Polls" required="true"/>
+		</fieldset>
+	</fields>
+</metadata>

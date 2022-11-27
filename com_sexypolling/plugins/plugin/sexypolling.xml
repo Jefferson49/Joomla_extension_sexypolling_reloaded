@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="system" version="2.5" method="upgrade">
+    <name>PLG_SEXYPOLLING_NAME</name>
+    <creationDate>June 2012</creationDate>
+    <author>2GLux</author>
+    <copyright>Copyright (c) 2010 - 2015 2GLux. All rights reserved.</copyright>
+    <authorEmail>info@2glux.com</authorEmail>
+    <authorUrl>http://2glux.com</authorUrl>
+    <version>2.1.1</version>
+    <license>GNU/GPL</license>
+    <description>PLG_SEXYPOLLING_DESCRIPTION</description>
+
+    <files>
+        <filename>index.html</filename>
+        <filename plugin="sexypolling">sexypolling.php</filename>
+    </files>
+
+    <languages folder="language">
+        <language tag="en-GB">en-GB/en-GB.plg_system_sexypolling.ini</language>
+        <language tag="sl-SL">sl-SL/sl-SL.plg_system_sexypolling.ini</language>
+    </languages>
+
+    <config>
+        <fields name="params">
+        </fields>
+    </config>
+</extension>

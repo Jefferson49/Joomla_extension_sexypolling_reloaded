@@ -1,0 +1,225 @@
+.polling_container_wrapper {
+	width: 98%;
+	margin: 8px auto 8px;
+}
+.polling_container
+{
+	padding: 10px 4px 0 4px;
+	text-align: left;
+}
+.polling_ul {
+	margin: 12px 17px 2px 4px;
+	padding: 0;
+	list-style: none;
+	position: relative;
+}
+.polling_ul li {
+	margin: 0 0 0 0;
+	padding: 2px 5px;
+	list-style: none;
+	display: block;
+	text-align: left;
+	width: 100%;
+	overflow: hidden;
+}
+.polling_name {
+	padding: 2px 8px 2px 8px;
+	line-height: 21px;
+}
+.polling_container label {
+	cursor: pointer;
+	display: block;
+}
+input.poll_answer {
+	margin: 0;
+	padding: 0;
+}
+.answer_input {
+	padding: 0;
+	margin: 0;
+	width: 23px;
+	display: block;
+	float: left;
+	margin-left: -100%;
+}
+.answer_name {
+	padding: 0;
+	margin: 0;
+	display: block;
+	cursor: pointer;
+	text-align: left;
+	float: left;
+	width: 100%;
+}
+.answer_name label{
+	margin-left: 23px;
+	display: block;
+}
+.answer_result {
+	clear: both;
+	margin-right: -4px;
+	position: relative;
+}
+.polling_loading {
+	margin: 0 auto 10px;
+	clear: both;
+	display: none;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+
+}
+
+.polling_submit {
+	display: block;
+	margin: 0 6px 3px 0;
+	cursor: pointer;
+	float: right;
+}
+.polling_result {
+	display: block;
+	margin: 0 6px 3px 0;
+	cursor: pointer;
+	float: right;
+}
+
+.answer_navigation {
+	width: 1px;
+	margin: 5px 0 5px 0; 
+	position: relative;
+	z-index: 2;
+}
+.answer_votes_data {
+	height:0;
+	float: right;
+	margin: 0 5px 0 0;
+	padding: 0 2px;
+	overflow: hidden;
+}
+.answer_votes_data span {
+}
+
+.polling_bottom_wrapper1 {
+	overflow: hidden;
+	display: block;
+	padding-top: 3px;
+}
+.polling_info
+{
+	overflow: hidden;
+	height: 0;
+}
+.polling_info table
+{
+	margin: 5px 0 3px 7px;
+}
+.polling_info td
+{
+}
+td.total_votes,td.last_vote,td.first_vote
+{
+}
+.left_col {
+	padding-right: 10px;
+}
+
+.timeline_wrapper
+{
+	margin: 3px 2px;
+}
+.timeline_icon
+{
+	height: 0;
+	width: 32px;
+	float: right;
+	margin: 0 2px 2px 0;
+	cursor: pointer;
+	overflow: hidden;
+	background: transparent url("../images/timeline.png") no-repeat left top;
+}
+.timeline_icon.opened {
+	background-position: left -32px;
+}
+.add_answer_icon
+{
+	height: 0;
+	width: 28px;
+	float: right;
+	margin: 1px 4px 2px 0;
+	cursor: pointer;
+	overflow: hidden;
+	background: transparent url("../images/plus.png") no-repeat left top;
+}
+.add_answer_icon.opened {
+	background-position: left -28px;
+}
+
+/* timeline */
+.timeline_select_wrapper
+{
+	clear: both;
+	margin: 2px;
+	padding-bottom: 0;
+	font-size: 9px;
+	position: relative;
+	height: 0;
+	overflow: hidden;
+}
+select.polling_select1
+{
+	float: left;
+	width: 45%;
+	margin-left: 3px;
+	max-width: 190px;
+	outline: none;
+	font-weight: bold;
+	cursor: pointer;
+}
+select.polling_select2 {
+	float: right;
+	width: 45%;
+	margin-right: 3px;
+	max-width: 190px;
+	outline: none;
+	font-weight: bold;
+	cursor: pointer;
+}
+.timeline_select_wrapper .ui-slider 
+{
+	clear: both; top: 10px;
+}
+
+.ie-shadow {
+    display: block;
+    position: absolute;
+	height: 15px;
+    top: 5px;
+    left: 0px;
+    z-index: 1;
+	width: 0px;
+    filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='2', MakeShadow='true', ShadowOpacity='0.60');
+}
+.grad {
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 1;
+}
+.sexy_clear {
+	background: none;
+	border: 0;
+	clear: both;
+	display: block;
+	float: none;
+	font-size: 0;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}

@@ -1,0 +1,156 @@
+/**
+ * @version $Id: icons.css 2012-04-05 14:30:25 svn $
+ * @author Simon Poghosyan
+ * @package Joomla
+ * @subpackage sexy_polling
+ * @license GNU/GPL
+**/
+.icon-48-sexypolling { background-image: url("../images/icon-48-sexy_polls.png"); }
+.icon-48-sexypolls { background-image: url("../images/icon-48-sexy_polls.png"); }
+.icon-48-sexytemplates { background-image: url("../images/template.png"); }
+.icon-48-sexyanswers { background-image: url("../images/answer.png"); }
+.icon-48-sexycategories { background-image: url("../images/category.png"); }
+.icon-48-sexystatistics { background-image: url("../images/statistics1.png"); }
+.icon-48-manage { background-image: url("../images/icon-wheel.png");text-align: left; }
+
+
+#sexy_polls_link { 
+	background-image: url("../images/icon-48-sexy_polls.png");
+	width: 48px;
+	height: 48px;
+	display: block;
+}
+
+.home_link_item {
+	width: 80px;
+	height: 80px;
+	float: left;
+	margin: 0 10px 10px 0;
+background-color: #ededed;
+border: 1px inset #ccc;
+border-radius: 0px;
+}
+.home_link_item:hover {
+	border-radius: 12px;
+	background-color: #fbfbfb;
+	border: 1px groove #bbb;
+}
+.home_link_item:hover a {
+	color: #658da9 !important;
+}
+.icon{
+	margin: 0 15px 15px 0;
+}
+.icon a{
+	color: #888 !important;
+	text-shadow: 0 -1px 0 #F0F0F0;
+	font-size: 12px;
+	font-weight: bold;
+	height: 97px;
+	width: 108px;
+	background-color: #fff;
+}
+#m_wrapper {
+	background-color: #F4F4F4;
+}
+.admintable td {
+	text-align: right;
+}
+.admintable label {
+	clear: right;
+	width: 50px;
+}
+.admintable input {
+	clear: left;
+}
+.admintable .text_area {
+	width: 150px;
+}
+.radiobtn {
+	text-align: left;
+}
+
+
+.icon:hover{
+	box-shadow: 0 0 15px -2px rgba(211, 162, 7, 0.27);
+	border-radius: 10px;
+}
+
+
+label {
+	text-align: left;
+}
+.pagination {
+	height: 10px !important;
+}
+.filter-search input {
+	width: 140px;    
+}
+
+.twoglux_ext_bottom_icon {
+	width: 32px;
+	height: 33px;
+	display: block;
+	float: left;
+	margin: 0 6px 0 6px;
+	text-decoration: none !important;
+	outline: none !important;
+}
+#twoglux_ext_rate {
+	background:transparent url("../images/star.png") left 1px no-repeat;
+}
+#twoglux_ext_rate:HOVER {
+	background-position: left top;
+}
+
+#twoglux_ext_buy {
+	background:transparent url("../images/shopping_cart_32.png") left 1px no-repeat;
+}
+#twoglux_ext_buy:HOVER {
+	background-position: left top;
+}
+
+#twoglux_ext_support {
+	background:transparent url("../images/support.png") left 1px no-repeat;
+}
+#twoglux_ext_support:HOVER {
+	background-position: left -32px;
+}
+
+#twoglux_ext_homepage {
+	background:transparent url("../images/project_32.png") left 1px no-repeat;
+}
+#twoglux_ext_homepage:HOVER {
+	background-position: left top;
+}
+
+#twoglux_ext_td {
+	display: block;
+	box-shadow: inset 0 0 12px 0 rgba(201, 201, 201, 0.5);border: 1px solid #D6D6D6;border-radius: 6px;height: 44px;position: relative;
+}
+#twoglux_ext_td:hover {
+	box-shadow: inset 0 0 16px 0 rgba(201, 201, 201, 0.79);
+}
+#twoglux_bottom_link {
+	padding-top: 15px;
+}
+input.creative_shortcode[readonly="readonly"] {
+outline: none;
+text-align: center;
+font-weight: normal;
+background-color: rgb(255, 250, 223);
+color: rgb(35, 60, 114);
+border: 1px solid rgb(190, 187, 216);
+cursor: text;
+padding: 3px 0px;
+border-radius: 4px;
+display: inline-block;
+width: 200px;
+}
+input.creative_shortcode[readonly="readonly"]:hover {
+font-weight: normal;
+background-color: rgb(248, 240, 193);
+color: rgb(7, 31, 82);
+border: 1px solid rgb(214, 197, 152);
+border-radius: 9px;
+}

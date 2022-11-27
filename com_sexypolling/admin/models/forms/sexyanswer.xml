@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset>
+		<field name="id" type="hidden"/>
+		<field name="name" type="textarea" label="COM_SEXYPOLLING_NAME_LABEL" description="COM_SEXYPOLLING_NAME_DESCRIPTION" size="40" class="inputbox" default=""  rows="5" cols="10" required="required"/>
+		<field id="" name="show_name" type="radio" label="COM_SEXYPOLLING_SHOW_NAME_LABEL" description="COM_SEXYPOLLING_SHOW_NAME_DESCRIPTION" class="inputbox btn-group" size="1" default="1">
+			<option value="0">JNo</option>
+			<option value="1">JYes</option>
+		</field>
+		
+		<field name="img_name" type="media" label="COM_SEXYPOLLING_IMG_PATH_LABEL" description="COM_SEXYPOLLING_IMG_PATH_DESCRIPTION" class="input_url" preview="tooltip" />
+		<field name="img_url" type="text" label="COM_SEXYPOLLING_IMG_URL_LABEL" description="COM_SEXYPOLLING_IMG_URL_DESCRIPTION" size="40" class="inputbox" default="" />
+		<field name="img_width" type="text" label="COM_SEXYPOLLING_IMG_WIDTH_LABEL" description="COM_SEXYPOLLING_IMG_WIDTH_DESCRIPTION" size="40" class="inputbox" default="100" />
+		<field name="embed" type="textarea" label="COM_SEXYPOLLING_EMBED_LABEL" description="COM_SEXYPOLLING_EMBED_DESCRIPTION" size="40" class="inputbox" default=""/>
+		
+		<field name="id_poll" type="sql" default="1" label="COM_SEXYPOLLING_SEXY_POLL_LABEL" description="COM_SEXYPOLLING_SEXY_POLL_DESCRIPTION" query="SELECT sp.name, sp.id FROM #__sexy_polls sp WHERE sp.published != -2" key_field="id" value_field="name" />
+		<field id="" name="reset_votes" type="radio" label="COM_SEXYPOLLING_RESET_VOTES_LABEL" description="COM_SEXYPOLLING_RESET_VOTES_DESCRIPTION" class="inputbox btn-group" size="1" default="0">
+			<option value="0">JNo</option>
+			<option value="1">JYes</option>
+		</field>
+		<field name="insert_votes" type="text" label="COM_SEXYPOLLING_INSERT_VOTES_LABEL" description="COM_SEXYPOLLING_INSERT_VOTES_DESCRIPTION" size="40" class="inputbox" default="0" />
+		<field id="published" name="published" type="list" label="JSTATUS" description="JFIELD_PUBLISHED_DESC" class="inputbox" size="1" default="1">
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+			<option value="2">JARCHIVED</option>
+			<option value="-2">JTRASHED</option>
+		</field>
+		<field name="created" type="calendar" label="COM_SEXYPOLLING_CREATED_LABEL" default="NOW"  description="COM_SEXYPOLLING_CREATED_DESCRIPTION" class="inputbox" size="22" format="%Y-%m-%d %H:%M:%S" filter="user_utc" />
+	</fieldset>
+</form>

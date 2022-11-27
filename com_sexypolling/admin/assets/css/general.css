@@ -1,0 +1,104 @@
+/**
+ * @package Component jVoteSystem for Joomla! 1.5 - 2.5
+ * @projectsite www.joomess.de/projects/jvotesystem
+ * @author Johannes Me�mer
+ * @copyright (C) 2010- Johannes Me�mer
+ * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
+**/
+#jvs .submenu-box {
+	float: right;
+	padding: 5px;
+}
+#jvs div#submenu-box div.t div.t {
+    background: url("../images/j_crn_tr_dark.png") no-repeat scroll 100% 0 transparent !important;
+}
+#jvs div#submenu-box div.t div.t div.t {
+    background: url("../images/j_crn_tl_dark.png") no-repeat scroll 0 0 transparent !important;
+}
+#jvs div#submenu-box div.b div.b {
+    background: url("../images/j_crn_br_dark.png") no-repeat scroll 100% 0 transparent !important;
+}
+#jvs div#submenu-box div.b div.b div.b {
+    background: url("../images/j_crn_bl_dark.png") no-repeat scroll 0 0 transparent !important;
+}
+#jvs div#submenu-box div.m {
+    padding: 0 !important;
+}
+form label {
+	min-width: 40px !important;
+	clear: none !important;
+}
+form td.key label {
+	font-weight: bold;
+	float: right;
+	min-width: 190px !important;
+}	
+
+/*Access Table*/
+table.accesstable {
+	border-collapse: collapse;
+    font-size: 1.091em;
+    width: 100%;
+	-moz-box-sizing: border-box;
+    border-spacing: 2px;
+    display: table;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-indent: 0;
+}
+
+table.accesstable tr.row1 {
+    background-color: #F0F0EE;
+}
+
+table.accesstable th.col1 {
+	
+}
+table.accesstable .hidelabeltxt {
+    text-indent: -9999em;
+}
+table.accesstable th.col2 , table.accesstable td.col2{
+    border-left: 1px solid #CBCBCB;
+	text-align: center;
+}
+table.accesstable td.col2 {
+	cursor: pointer;
+}
+table.accesstable td.col1 {
+    font-size: 1.091em;
+    padding: 4px;
+    text-align: left;
+}
+select.accesstable {
+	display: none;
+}
+
+ul.accesstable-legend {
+	font-size: 1.091em;
+    list-style: none outside none;
+    padding-bottom: 10px;
+}
+ul.accesstable-legend li.acl-allowed {
+    background: url("../images/icon-16-allow.png") no-repeat scroll left center transparent;
+    padding-left: 20px;
+    padding-right: 10px;
+}
+ul.accesstable-legend li.acl-denied {
+    background: url("../images/icon-16-deny.png") no-repeat scroll left center transparent;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+ul.accesstable-legend li {
+    display: block;
+    float: left;
+    margin: 15px 0 15px 10px;
+}
+#sb-body {
+	background: none repeat scroll 0 0 transparent !important;
+}
+#sb-wrapper-inner {
+	border: 0 none !important;
+}
+#sb-wrapper {
+	min-width: 820px;
+}

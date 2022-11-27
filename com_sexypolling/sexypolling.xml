@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="2.5" method="upgrade">
+    <name>COM_SEXYPOLLING</name>
+    <creationDate>June 2012</creationDate>
+    <author>2GLux</author>
+    <copyright>Copyright (c) 2010 - 2020 2GLux. All rights reserved.</copyright>
+    <authorEmail>info@2glux.com</authorEmail>
+    <authorUrl>http://2glux.com</authorUrl>
+    <version>2.1.7</version>
+    <license>GNU/GPL</license>
+    <description>COM_SEXYPOLLING_DESCRIPTION</description>
+
+    <scriptfile>scriptfile.php</scriptfile>
+
+    <install>
+        <sql>
+            <file charset="utf8" driver="mysql">install/sql/install.sql</file>
+        </sql>
+    </install>
+    <uninstall>
+        <sql>
+            <file charset="utf8" driver="mysql">install/sql/uninstall.sql</file>
+        </sql>
+    </uninstall>
+
+    <updateservers>
+        <server type="extension" name="2GLux" priority="1">http://2glux.com/downloads/files/free/sexy_polling.xml</server>
+    </updateservers>
+
+    <!-- user part -->
+    <files folder="site">
+        <filename>controller.php</filename>
+        <filename>index.html</filename>
+        <filename>router.php</filename>
+        <filename>sexypolling.php</filename>
+        <filename>vote.php</filename>
+        <filename>addanswer.php</filename>
+        <filename>geoip.php</filename>
+        <filename>generate.css.php</filename>
+        <folder>models</folder>
+        <folder>views</folder>
+        <folder>assets</folder>
+        <folder>helpers</folder>
+    </files>
+
+    <languages folder="site">
+            <language tag="en-GB">language/en-GB/en-GB.com_sexypolling.ini</language>
+            <language tag="fr-FR">language/fr-FR/fr-FR.com_sexypolling.ini</language>
+            <language tag="es-ES">language/es-ES/es-ES.com_sexypolling.ini</language>
+            <language tag="de-DE">language/de-DE/de-DE.com_sexypolling.ini</language>
+            <language tag="it-IT">language/it-IT/it-IT.com_sexypolling.ini</language>
+            <language tag="ru-RU">language/ru-RU/ru-RU.com_sexypolling.ini</language>
+            <language tag="fa-IR">language/fa-IR/fa-IR.com_sexypolling.ini</language>
+            <language tag="sl-SL">language/sl-SL/sl-SL.com_sexypolling.ini</language>
+    </languages>
+
+    <!-- administration part -->
+    <administration>
+        <menu img="components/com_sexypolling/assets/images/project_16.png">COM_SEXYPOLLING_MENU</menu>
+        <submenu>
+            <menu img="components/com_sexypolling/assets/images/poll_16.png" link="option=com_sexypolling&amp;view=sexypolls">COM_SEXYPOLLING_SUBMENU_POLLS</menu>
+            <menu img="components/com_sexypolling/assets/images/answer_16.png" link="option=com_sexypolling&amp;view=sexyanswers">COM_SEXYPOLLING_SUBMENU_ANSWERS</menu>
+            <menu img="components/com_sexypolling/assets/images/vote_16.png" link="option=com_sexypolling&amp;view=sexyvotes">COM_SEXYPOLLING_SUBMENU_VOTES</menu>
+            <menu img="components/com_sexypolling/assets/images/category_16.png" link="option=com_sexypolling&amp;view=sexycategories">COM_SEXYPOLLING_SUBMENU_CATEGORIES</menu>
+            <menu img="components/com_sexypolling/assets/images/template_16.png" link="option=com_sexypolling&amp;view=sexytemplates">COM_SEXYPOLLING_SUBMENU_TEMPLATES</menu>
+            <menu img="components/com_sexypolling/assets/images/statistics_16.png" link="option=com_sexypolling&amp;view=sexystatistics">COM_SEXYPOLLING_SUBMENU_STATISTICS</menu>
+        </submenu>
+        <files folder="admin">
+            <filename>controller.php</filename>
+            <filename>sexypolling.php</filename>
+            <filename>index.html</filename>
+
+            <folder>install</folder>
+            <folder>assets</folder>
+            <folder>helpers</folder>
+            <folder>models</folder>
+            <folder>tables</folder>
+            <folder>views</folder>
+            <folder>controllers</folder>
+            <folder>elements</folder>
+            <folder>fields</folder>
+        </files>
+
+        <languages folder="admin">
+            <language tag="en-GB">language/en-GB/en-GB.com_sexypolling.ini</language>
+            <language tag="en-GB">language/en-GB/en-GB.com_sexypolling.sys.ini</language>
+            <language tag="fr-FR">language/fr-FR/fr-FR.com_sexypolling.ini</language>
+            <language tag="fr-FR">language/fr-FR/fr-FR.com_sexypolling.sys.ini</language>
+            <language tag="es-ES">language/es-ES/es-ES.com_sexypolling.ini</language>
+            <language tag="es-ES">language/es-ES/es-ES.com_sexypolling.sys.ini</language>
+            <language tag="de-DE">language/de-DE/de-DE.com_sexypolling.ini</language>
+            <language tag="de-DE">language/de-DE/de-DE.com_sexypolling.sys.ini</language>
+            <language tag="it-IT">language/it-IT/it-IT.com_sexypolling.ini</language>
+            <language tag="it-IT">language/it-IT/it-IT.com_sexypolling.sys.ini</language>
+            <language tag="ru-RU">language/ru-RU/ru-RU.com_sexypolling.ini</language>
+            <language tag="ru-RU">language/ru-RU/ru-RU.com_sexypolling.sys.ini</language>
+            <language tag="fa-IR">language/fa-IR/fa-IR.com_sexypolling.ini</language>
+            <language tag="fa-IR">language/fa-IR/fa-IR.com_sexypolling.sys.ini</language>
+            <language tag="sl-SL">language/sl-SL/sl-SL.com_sexypolling.ini</language>
+            <language tag="sl-SL">language/sl-SL/sl-SL.com_sexypolling.sys.ini</language>
+        </languages>
+    </administration>
+</extension>

@@ -101,48 +101,6 @@ defined('_JEXEC') or die('Restircted access');
 
 <div id="cpanel">
     <div class="icon" style="float: right;">
-        <a href="<?php echo JText::_( 'COM_SEXYPOLLING_SUBMENU_BUY_PRO_VERSION_LINK' ); ?>" target="_blank" title="<?php echo JText::_( 'COM_SEXYPOLLING_SUBMENU_BUY_PRO_VERSION_DESCRIPTION' ); ?>">
-            <table style="width: 100%;height: 100%;text-decoration: none;">
-                <tr>
-                    <td align="center" valign="middle">
-                        <img src="components/com_sexypolling/assets/images/shopping_cart.png" /><br />
-                        <?php echo JText::_( 'COM_SEXYPOLLING_SUBMENU_BUY_PRO_VERSION' ); ?>
-                    </td>
-                </tr>
-            </table>
-        </a>
-    </div>
-</div>
-<div id="cpanel">
-    <div class="icon" style="float: right;">
-        <a href="<?php echo JText::_( 'COM_SEXYPOLLING_SUBMENU_RATE_US_LINK' ); ?>" target="_blank" title="<?php echo JText::_( 'COM_SEXYPOLLING_SUBMENU_RATE_US_DESCRIPTION' ); ?>">
-            <table style="width: 100%;height: 100%;text-decoration: none;">
-                <tr>
-                    <td align="center" valign="middle">
-                        <img src="components/com_sexypolling/assets/images/icon-star-48.png" /><br />
-                        <?php echo JText::_( 'COM_SEXYPOLLING_SUBMENU_RATE_US' ); ?>
-                    </td>
-                </tr>
-            </table>
-        </a>
-    </div>
-</div>
-<div id="cpanel">
-    <div class="icon" style="float: right;">
-        <a href="<?php echo JText::_( 'COM_SEXYPOLLING_SUBMENU_SUPPORT_FORUM_LINK' ); ?>" target="_blank" title="<?php echo JText::_( 'COM_SEXYPOLLING_SUBMENU_SUPPORT_FORUM_DESCRIPTION' ); ?>">
-            <table style="width: 100%;height: 100%;text-decoration: none;">
-                <tr>
-                    <td align="center" valign="middle">
-                        <img src="components/com_sexypolling/assets/images/forum.png" /><br />
-                        <?php echo JText::_( 'COM_SEXYPOLLING_SUBMENU_SUPPORT_FORUM' ); ?>
-                    </td>
-                </tr>
-            </table>
-        </a>
-    </div>
-</div>
-<div id="cpanel">
-    <div class="icon" style="float: right;">
         <a href="<?php echo JText::_( 'COM_SEXYPOLLING_SUBMENU_PROJECT_HOMEPAGE_LINK' ); ?>" target="_blank" title="<?php echo JText::_( 'COM_SEXYPOLLING_SUBMENU_PROJECT_HOMEPAGE_DESCRIPTION' ); ?>">
             <table style="width: 100%;height: 100%;text-decoration: none;">
                 <tr>

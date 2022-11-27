@@ -59,6 +59,10 @@ function show_buy_pro_link() {
 }
 
 $db = JFactory::getDBO();
+
+$items = $this->items;
+$item = $this->item;
+
 $poll_id = 1;
 $query = "
             SELECT

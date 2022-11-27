@@ -32,7 +32,7 @@ class SexypollingViewSexyanswer extends JViewLegacy
 		$this->item		= $this->get('Item');
 		$this->state	= $this->get('State');
 		$max_id	= $this->get('max_id');
-		$this->assignRef( 'max_id', $max_id );
+		$this->max_id = $max_id;
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) {
@@ -51,9 +51,9 @@ class SexypollingViewSexyanswer extends JViewLegacy
 	 */
 	protected function addToolbar()
 	{
-		JRequest::setVar('hidemainmenu', true);
+		JFactory::getApplication()->getInput()->set('hidemainmenu', true);
 
-		$user		= JFactory::getUser();
+		$user		= JFactory::getApplication()->getIdentity();
 		$userId		= $user->get('id');
 		$isNew		= ($this->item->id == 0);
 		// Since we don't track these assets at the item level, use the category id.

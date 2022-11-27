@@ -13,14 +13,14 @@
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
-JHtml::_('behavior.tooltip');
-JHtml::_('behavior.formvalidation');
+JHtml::_('bootstrap.tooltip');
+JHtml::_('behavior.formvalidator');
 ?>
 <script type="text/javascript">
 Joomla.submitbutton = function(task) {
 	var form = document.adminForm;
 	if (task == 'sexytemplate.cancel') {
-		submitform( task );
+		Joomla.submitform(task);   
 	}
 	else {
 		if (form.name.value != ""){
@@ -32,7 +32,7 @@ Joomla.submitbutton = function(task) {
 			form.name.focus();
 		} 
 		else {
-			submitform( task );
+			Joomla.submitform(task);   
 		}
 	}
 	
@@ -57,8 +57,8 @@ Joomla.submitbutton = function(task) {
 <?php include (JPATH_BASE.'/components/com_sexypolling/helpers/footer.php'); ?>
 <?php }elseif(JV == 'j3') {//////////////////////////////////////////////////////////////////////////////////////Joomla3.x/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////?>
 <?php 
-JHtml::_('behavior.tooltip');
-JHtml::_('behavior.formvalidation');
+JHtml::_('bootstrap.tooltip');
+JHtml::_('behavior.formvalidator');
 JHtml::_('formbehavior.chosen', 'select');
 ?>
 <form action="<?php echo JRoute::_('index.php?option=com_sexypolling&layout=add&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="adminForm" class="form-validate form-horizontal">

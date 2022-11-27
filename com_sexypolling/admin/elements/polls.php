@@ -18,7 +18,7 @@ class JElementPolls extends JElement
 
 	function fetchElement($name, $value, &$node, $control_name)
 	{
-		$doc 		=& JFactory::getDocument();
+		$doc 		=& JFactory::getApplication()->getDocument();
 		$fieldName	= $control_name.'['.$name.']';
 		$db 		=& JFactory::getDBO();
 

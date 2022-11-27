@@ -41,7 +41,7 @@ class SexypollingViewSexypolls extends JViewLegacy {
     		$options[]      = JHtml::_('select.option', $category->id, $category->name);
     	}
        	if(JV == 'j2') {
-	    	$this->assignRef( 'category_options', $options );
+	    	$this->category_options = $options;
        	}
        	else {
        		JHtmlSidebar::addFilter(

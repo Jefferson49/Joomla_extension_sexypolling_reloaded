@@ -24,7 +24,7 @@ class SexypollingHelper {
 	 */
 	public static function addSubmenu($title, $v, $controller = null, $image = null) {
 		$enabled = false;
-		$view = JRequest::getWord("view", 'sexypolling');
+		$view = JFactory::getApplication()->getInput()->getWord("view", 'sexypolling');
 		if($view == $v) {
 			$img = $v;
 			if($image != null) $img = $image;

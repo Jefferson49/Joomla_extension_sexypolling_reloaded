@@ -13,7 +13,7 @@
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
-$document = JFactory::getDocument();
+$document = JFactory::getApplication()->getDocument();
 $cssFile = JURI::base(true).'/components/com_sexypolling/assets/css/colorpicker.css';
 $document->addStyleSheet($cssFile, 'text/css', null, array());
 
@@ -92,12 +92,12 @@ Joomla.submitbutton = function(task) {
 <?php } ?>
 	var form = document.adminForm;
 	if (task == 'cancel') {
-		submitform( task );
+		Joomla.submitform(task);   
 	} else if (form.name.value == ""){
 		form.name.style.border = "1px solid red";
 		form.name.focus();
 	} else {
-		submitform( task );
+		Joomla.submitform(task);   
 	}
 }
 

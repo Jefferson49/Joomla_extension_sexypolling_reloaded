@@ -25,7 +25,7 @@ class SexyPollingControllerSexyAnswer extends JControllerForm
 	}
 	
 	function saveAnswer() {
-		$id = JRequest::getInt('id',0);
+		$id = JFactory::getApplication()->getInput()->getInt('id',0);
 		$model = $this->getModel('sexyanswer');
 	
 		if ($model->saveAnswer()) {

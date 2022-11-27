@@ -16,7 +16,7 @@ class SexypollingHelper
     //function to add scripts/styles
     private function add_scripts() {
         //add scripts, styles
-        $document = JFactory::getDocument();
+        $document = JFactory::getApplication()->getDocument();
 
         $cssFile = JURI::base(true).'/components/com_sexypolling/assets/css/main.css';
         $document->addStyleSheet($cssFile, 'text/css', null, array());
@@ -151,7 +151,7 @@ class SexypollingHelper
         $levels = array();
         $groups = array();
 
-        $user = JFactory::getUser();
+        $user = JFactory::getApplication()->getIdentity();
         $user_id = $user->get('id');
         jimport( 'joomla.access.access' );
         $groups = JAccess::getGroupsByUser($user_id);
@@ -191,7 +191,7 @@ class SexypollingHelper
         if(sizeof($pollings) > 0) {
 
             //load language
-            $lang = JFactory::getLanguage();
+            $lang = JFactory::getApplication()->getLanguage();
             $lang->load('com_sexypolling');
 
             $polling_words = array(JText::_("COM_SEXYPOLLING_WORD_1"),JText::_("COM_SEXYPOLLING_WORD_2"),JText::_("COM_SEXYPOLLING_WORD_3"),JText::_("COM_SEXYPOLLING_WORD_4"),JText::_("COM_SEXYPOLLING_WORD_5"),JText::_("COM_SEXYPOLLING_WORD_6"),JText::_("COM_SEXYPOLLING_WORD_7"),JText::_("COM_SEXYPOLLING_WORD_8"),JText::_("COM_SEXYPOLLING_WORD_9"),JText::_("COM_SEXYPOLLING_WORD_10"),JText::_("COM_SEXYPOLLING_WORD_11"),JText::_("COM_SEXYPOLLING_WORD_12"),JText::_("COM_SEXYPOLLING_WORD_13"),JText::_("COM_SEXYPOLLING_WORD_14"),JText::_("COM_SEXYPOLLING_WORD_15"),JText::_("COM_SEXYPOLLING_WORD_16"),JText::_("COM_SEXYPOLLING_WORD_17"),JText::_("COM_SEXYPOLLING_WORD_18"),JText::_("COM_SEXYPOLLING_WORD_19"),JText::_("COM_SEXYPOLLING_WORD_20"),JText::_("COM_SEXYPOLLING_WORD_21"),JText::_("COM_SEXYPOLLING_WORD_22"),JText::_("COM_SEXYPOLLING_WORD_23"),JText::_("COM_SEXYPOLLING_WORD_24"),JText::_("COM_SEXYPOLLING_WORD_25"),JText::_("COM_SEXYPOLLING_WORD_26"));
@@ -238,7 +238,7 @@ class SexypollingHelper
                 $add_answer_permissions_id = $polling_array[0]->answerpermission;
                 $query = "SELECT `rules` FROM #__viewlevels WHERE id = '$add_answer_permissions_id'";
                 $db->setQuery($query);
-                $db->query();
+                $db->execute();
                 $levels = explode(',',str_replace(array('[',']'),'',$db->loadResult()));
                 $permission_to_show_add_answer_block = $this->if_contain($levels,$groups);
                 if(sizeof($levels) == 0 || sizeof($groups) == 0) {
@@ -251,7 +251,7 @@ class SexypollingHelper
                 $voting_permission_id = $polling_array[0]->voting_permission;
                 $query = "SELECT `rules` FROM #__viewlevels WHERE id = '$voting_permission_id'";
                 $db->setQuery($query);
-                $db->query();
+                $db->execute();
                 $levels = explode(',',str_replace(array('[',']'),'',$db->loadResult()));
                 $voting_permissions[$poll_index] = $this->if_contain($levels,$groups);
                 if(sizeof($levels) == 0 || sizeof($groups) == 0) {
@@ -283,7 +283,7 @@ class SexypollingHelper
                 if($registration_to_vote_required) {
                     $query = "SELECT sv.`ip`,sv.`date` FROM #__sexy_votes sv JOIN #__sexy_answers sa ON sa.id_poll = '$poll_index' WHERE sv.id_answer = sa.id AND sv.id_user = '$user_id' ORDER BY sv.`date` DESC LIMIT 1";
                     $db->setQuery($query);
-                    $db->query();
+                    $db->execute();
                     $num_rows = $db->getNumRows();
                     $row = $db->loadAssoc();
                     if($num_rows > 0) {
@@ -300,7 +300,7 @@ class SexypollingHelper
                     //check ip
                     $query = "SELECT sv.`ip`,sv.`date` FROM #__sexy_votes sv JOIN #__sexy_answers sa ON sa.id_poll = '$poll_index' WHERE sv.id_answer = sa.id AND sv.ip = '$sexyip' ORDER BY sv.`date` DESC LIMIT 1";
                     $db->setQuery($query);
-                    $db->query();
+                    $db->execute();
                     $num_rows = $db->getNumRows();
                     $row = $db->loadAssoc();
                     if($num_rows > 0) {
@@ -684,7 +684,7 @@ class SexypollingHelper
             }
 
             if($this->type != 'plugin') {
-                $document = JFactory::getDocument();
+                $document = JFactory::getApplication()->getDocument();
                 $document->addScriptDeclaration ( $jsInclude );
             }
             else {

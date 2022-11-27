@@ -69,7 +69,7 @@ class SexypollingModelSexyAnswers extends JModelList {
         $app = JFactory::getApplication();
 
         // Adjust the context to support modal layouts.
-        if ($layout = JRequest::getVar('layout')) {
+        if ($layout = JFactory::getApplication()->getInput()->get('layout')) {
             $this->context .= '.'.$layout;
         }
 
@@ -125,7 +125,7 @@ class SexypollingModelSexyAnswers extends JModelList {
         // Create a new query object.
         $db     = $this->getDbo();
         $query  = $db->getQuery(true);
-        $user   = JFactory::getUser();
+        $user   = JFactory::getApplication()->getIdentity();
 
         // Select the required fields from the table.
         $query->select(

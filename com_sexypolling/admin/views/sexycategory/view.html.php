@@ -46,9 +46,9 @@ class SexypollingViewSexycategory extends JViewLegacy
 	 */
 	protected function addToolbar()
 	{
-		JRequest::setVar('hidemainmenu', true);
+		JFactory::getApplication()->getInput()->set('hidemainmenu', true);
 
-		$user		= JFactory::getUser();
+		$user		= JFactory::getApplication()->getIdentity();
 		$userId		= $user->get('id');
 		$isNew		= ($this->item->id == 0);
 		// Since we don't track these assets at the item level, use the category id.

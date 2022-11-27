@@ -41,7 +41,7 @@ class SexypollingViewSexytemplate extends JViewLegacy
 		
 		if(isset($_GET['id'])) {
 			$styles	= $this->get('Styles');
-			$this->assignRef( 'styles', $styles );
+			$this->styles = $styles;
 		}
 		$this->addToolbar();
 		parent::display($tpl);
@@ -54,9 +54,9 @@ class SexypollingViewSexytemplate extends JViewLegacy
 	 */
 	protected function addToolbar()
 	{
-		JRequest::setVar('hidemainmenu', true);
+		JFactory::getApplication()->getInput()->set('hidemainmenu', true);
 
-		$user		= JFactory::getUser();
+		$user		= JFactory::getApplication()->getIdentity();
 		$userId		= $user->get('id');
 		$isNew		= ($this->item->id == 0);
 		// Since we don't track these assets at the item level, use the category id.

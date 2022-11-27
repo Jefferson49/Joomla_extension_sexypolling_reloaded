@@ -61,8 +61,8 @@ class plgSystemSexypolling extends JPlugin {
 
     //function onBeforeCompileHead() {
     function render_styles_scripts() {
-        $document = JFactory::getDocument();
-        $content = JResponse::getBody();
+        $document = JFactory::getApplication()->getDocument();
+        $content = JFactory::getApplication()->getBody();
 
         //check if the scripts did not included
         if (strpos($content,'components/com_sexypolling/assets/css/main.css') !== false) {
@@ -102,13 +102,13 @@ class plgSystemSexypolling extends JPlugin {
 
     function onAfterRender() {
       $mainframe = JFactory::getApplication();
-      if($mainframe->isAdmin())
+      if($mainframe->isClient('administrator'))
         return;
 
       $plugin = JPluginHelper::getPlugin('system', 'sexypolling');
       $pluginParams = json_decode( $plugin->params );
 
-      $content = JResponse::getBody();
+      $content = JFactory::getApplication()->getBody();
 
       //add scripts
       if(preg_match('/(\[(?:sexy|fancy)polling id|category="([0-9]+)"\])/s',$content))
@@ -153,7 +153,7 @@ class plgSystemSexypolling extends JPlugin {
         }
       }
 
-      JResponse::setBody($c);
+      JFactory::getApplication()->setBody($c);
     }
 
 }

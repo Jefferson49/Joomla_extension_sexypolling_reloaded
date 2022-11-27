@@ -22,15 +22,23 @@ error_reporting(0);
 define( 'DS', DIRECTORY_SEPARATOR );
 define('JPATH_BASE', dirname(dirname(dirname(__FILE__))));
 
-session_start();
+//session_start();
 
 header('Content-type: application/json');
 
 require_once ( JPATH_BASE .DS.'includes'.DS.'defines.php' );
 require_once ( JPATH_BASE .DS.'includes'.DS.'framework.php' );
 
-$app = JFactory::getApplication('site');
-$app->initialise();
+// Boot the DI container.
+$container = \Joomla\CMS\Factory::getContainer();
+
+// Alias the session service key to the web session service.
+$container->alias(\Joomla\Session\SessionInterface::class, 'session.web.site');
+
+// Get the application.
+$app = $container->get(\Joomla\CMS\Application\SiteApplication::class);
+
+$app->execute();
 
 $db = JFactory::getDBO();
 
@@ -38,7 +46,7 @@ $db = JFactory::getDBO();
 $levels = array();
 $groups = array();
 
-$user = JFactory::getUser();
+$user = JFactory::getApplication()->getIdentity();
 $user_id = $user->get('id');
 jimport( 'joomla.access.access' );
 $groups = JAccess::getGroupsByUser($user_id);
@@ -70,15 +78,15 @@ $ipcount = $poll_options["ipcount"];
 $voting_period = $poll_options["voting_period"];
 
 //check token
-if (!JRequest::checkToken() && $poll_options["checktoken"] == 1) {
+if (!JFactory::getApplication()->getInput()->checkToken() && $poll_options["checktoken"] == 1) {
     echo '[{"invalid":"invalid_token"}]';
     exit();
 }
 
-$countryname = (!isset($_POST['country_name']) || $_POST['country_name'] == '' || $_POST['country_name'] == '-' ) ? 'Unknown' : JRequest::getVar('country_name', 'Unknown', 'POST');
-$cityname = (!isset($_POST['city_name']) || $_POST['city_name'] == '' || $_POST['city_name'] == '-' ) ? 'Unknown' : JRequest::getVar('city_name', 'Unknown', 'POST');
-$regionname = (!isset($_POST['region_name']) || $_POST['region_name'] == '' || $_POST['region_name'] == '-' ) ? 'Unknown' : JRequest::getVar('region_name', 'Unknown', 'POST');
-$countrycode = (!isset($_POST['country_code']) || $_POST['country_code'] == '' || $_POST['country_code'] == '-' ) ? 'Unknown' : JRequest::getVar('country_code', 'Unknown', 'POST');
+$countryname = (!isset($_POST['country_name']) || $_POST['country_name'] == '' || $_POST['country_name'] == '-' ) ? 'Unknown' : JFactory::getApplication()->getInput()->get('country_name', 'Unknown', 'POST');
+$cityname = (!isset($_POST['city_name']) || $_POST['city_name'] == '' || $_POST['city_name'] == '-' ) ? 'Unknown' : JFactory::getApplication()->getInput()->get('city_name', 'Unknown', 'POST');
+$regionname = (!isset($_POST['region_name']) || $_POST['region_name'] == '' || $_POST['region_name'] == '-' ) ? 'Unknown' : JFactory::getApplication()->getInput()->get('region_name', 'Unknown', 'POST');
+$countrycode = (!isset($_POST['country_code']) || $_POST['country_code'] == '' || $_POST['country_code'] == '-' ) ? 'Unknown' : JFactory::getApplication()->getInput()->get('country_code', 'Unknown', 'POST');
 
 //check ipcount security
 $query = "SELECT COUNT( sv.ip )
@@ -111,7 +119,7 @@ if($poll_options["votechecks"] == 1) {
     $add_answer_permissions_id =$poll_options["answerpermission"];
     $query = "SELECT `rules` FROM #__viewlevels WHERE id = '$add_answer_permissions_id'";
     $db->setQuery($query);
-    $db->query();
+    $db->execute();
     $levels = explode(',',str_replace(array('[',']'),'',$db->loadResult()));
     if(!if_contain($levels,$groups) && $poll_options["checkacl"] == 1)
         $voting_enabled = false;
@@ -119,7 +127,7 @@ if($poll_options["votechecks"] == 1) {
     $voting_permission_id = $poll_options["voting_permission"];
     $query = "SELECT `rules` FROM #__viewlevels WHERE id = '$voting_permission_id'";
     $db->setQuery($query);
-    $db->query();
+    $db->execute();
     $levels = explode(',',str_replace(array('[',']'),'',$db->loadResult()));
     if(!if_contain($levels,$groups) && $poll_options["checkacl"] == 1)
         $voting_enabled = false;
@@ -136,7 +144,7 @@ if($poll_options["votechecks"] == 1) {
     if($registration_to_vote_required) {
         $query = "SELECT sv.`ip`,sv.`date` FROM #__sexy_votes sv JOIN #__sexy_answers sa ON sa.id_poll = '$polling_id' WHERE sv.id_answer = sa.id AND sv.id_user = '$user_id' ORDER BY sv.`date` DESC LIMIT 1";
         $db->setQuery($query);
-        $db->query();
+        $db->execute();
         $num_rows = $db->getNumRows();
         $row = $db->loadAssoc();
         if($num_rows > 0) {
@@ -151,7 +159,7 @@ if($poll_options["votechecks"] == 1) {
         //check ip
         $query = "SELECT sv.`ip`,sv.`date` FROM #__sexy_votes sv JOIN #__sexy_answers sa ON sa.id_poll = '$polling_id' WHERE sv.id_answer = sa.id AND sv.ip = '$ip' ORDER BY sv.`date` DESC LIMIT 1";
         $db->setQuery($query);
-        $db->query();
+        $db->execute();
         $num_rows = $db->getNumRows();
         $row = $db->loadAssoc();
         if($num_rows > 0) {
@@ -173,13 +181,13 @@ if(($writeinto == 1 || $autopublish == 0) && $voting_enabled) {
     $published = $autopublish == 1 ? 1 : 0;
     $query = "INSERT INTO `#__sexy_answers` (`id_poll`,`name`,`published`,`created`) VALUES ('$polling_id','$answer','$published','$datenow')";
     $db->setQuery($query);
-    $db->query();
+    $db->execute();
     $insert_id = $db->insertid();
 
     if($ipcountchecked) {
         $query = "INSERT INTO `#__sexy_votes` (`id_answer`,`id_user`,`ip`,`date`,`country`,`city`,`region`,`countrycode`) VALUES ('$insert_id','$user_id','$ip','$datenow','$countryname','$cityname','$regionname','$countrycode')";
         $db->setQuery($query);
-        $db->query();
+        $db->execute();
         //set the cookie
         if($voting_period == 0) {
             $expire = time()+(60*60*24*365*2);//2 years

@@ -30,7 +30,7 @@ require_once JPATH_COMPONENT . '/helpers/helper.php';
 $controller	= JControllerLegacy::getInstance('SexyPolling');
 // Perform the Request task
 if(JV == 'j2')
-	$controller->execute( JRequest::getCmd('task'));
+	$controller->execute( JFactory::getApplication()->getInput()->get('task'));
 else
-	$controller->execute(JFactory::getApplication()->input->get('task'));
+	$controller->execute(JFactory::getApplication()->getInput()->get('task'));
 $controller->redirect();

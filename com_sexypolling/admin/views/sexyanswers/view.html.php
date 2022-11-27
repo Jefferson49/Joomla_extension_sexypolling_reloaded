@@ -40,7 +40,7 @@ class SexypollingViewSexyanswers extends JViewLegacy {
     		$options[]      = JHtml::_('select.option', $poll->id, $poll->name);
     	}
     	if(JV == 'j2') {
-    		$this->assignRef( 'poll_options', $options );
+    		$this->poll_options = $options;
     	}
     	else {
     		JHtmlSidebar::addFilter(

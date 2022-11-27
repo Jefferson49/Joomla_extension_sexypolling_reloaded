@@ -38,7 +38,7 @@ class com_sexypollingInstallerScript {
         // enabling plugin
         $db = JFactory::getDBO();
         $db->setQuery('UPDATE #__extensions SET enabled = 1 WHERE element = "sexypolling" AND folder = "system"');
-        $db->query();
+        $db->execute();
     }
 
     /**
@@ -89,7 +89,7 @@ class com_sexypollingInstallerScript {
         // enabling plugin
         $db = JFactory::getDBO();
         $db->setQuery('UPDATE #__extensions SET enabled = 1 WHERE element = "sexypolling" AND folder = "system"');
-        $db->query();
+        $db->execute();
     }
 
     /**
@@ -144,12 +144,12 @@ function postflight($type, $parent) {
                                         ADD `votechecks` TINYINT UNSIGNED NOT NULL DEFAULT  '0'
                                 ";
                 $db->setQuery($query_update);
-                $db->query();
+                $db->execute();
 
                 //update columns
                 $query_update = "UPDATE `#__sexy_polls` SET `stringdateformat` = 'F j, Y'";
                 $db->setQuery($query_update);
-                $db->query();
+                $db->execute();
 
                 $query_update = "
                                     ALTER TABLE  `#__sexy_answers`
@@ -160,17 +160,17 @@ function postflight($type, $parent) {
                                         ADD `embed` TEXT NOT NULL
                                 ";
                 $db->setQuery($query_update);
-                $db->query();
+                $db->execute();
 
                 $query_update = "ALTER TABLE  `#__sexy_votes` ADD  `id_user` INT UNSIGNED NOT NULL DEFAULT  '0' AFTER  `id_answer`";
                 $db->setQuery($query_update);
-                $db->query();
+                $db->execute();
             }
 
             if(!in_array('showresultsduringpoll',$columns_titles)) {
                 $query_update = "ALTER TABLE `#__sexy_polls` ADD `showresultsduringpoll` tinyint(3) unsigned NOT NULL DEFAULT '1' AFTER `date_end`";
                 $db->setQuery($query_update);
-                $db->query();
+                $db->execute();
             }
         }
 
@@ -184,7 +184,7 @@ function postflight($type, $parent) {
                 //add required columns
                 $query_update = "alter table #__sexy_votes add column id_vote int(10) unsigned primary key NOT NULL AUTO_INCREMENT FIRST";
                 $db->setQuery($query_update);
-                $db->query();
+                $db->execute();
             }
         }
 

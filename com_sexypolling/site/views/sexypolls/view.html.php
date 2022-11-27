@@ -19,7 +19,7 @@ jimport( 'joomla.application.component.view');
 class SexypollingViewsexypolls extends JViewLegacy {
     function display($tpl = null) {
         $items = $this->get( 'Data');
-        $this->assignRef( 'items', $items );
+        $this->items = $items;
         parent::display($tpl);
     }
 }

@@ -22,9 +22,9 @@ class SexyPollingControllerSexyTemplate extends JControllerForm
 	{
 		$id = $_POST['cid'][0];
 		$id = $id == 0 ? (int)$_GET['id'] : $id;
-		JRequest::setVar( 'view', 'sexytemplate' );
-		JRequest::setVar( 'layout', 'form'  );
-		JRequest::setVar('hidemainmenu', 1);
+		JFactory::getApplication()->getInput()->set( 'view', 'sexytemplate' );
+		JFactory::getApplication()->getInput()->set( 'layout', 'form'  );
+		JFactory::getApplication()->getInput()->set('hidemainmenu', 1);
 		
 		$link = 'index.php?option=com_sexypolling&view=sexytemplate&layout=form&id='.$id;
 		$this->setRedirect($link, $msg);
@@ -34,9 +34,9 @@ class SexyPollingControllerSexyTemplate extends JControllerForm
 	
 	public function add()
 	{
-		JRequest::setVar( 'view', 'sexytemplate' );
-		JRequest::setVar( 'layout', 'add'  );
-		JRequest::setVar('hidemainmenu', 1);
+		JFactory::getApplication()->getInput()->set( 'view', 'sexytemplate' );
+		JFactory::getApplication()->getInput()->set( 'layout', 'add'  );
+		JFactory::getApplication()->getInput()->set('hidemainmenu', 1);
 	
 		parent::display();
 	}

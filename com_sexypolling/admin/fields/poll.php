@@ -20,7 +20,7 @@ class JFormFieldPoll extends JFormField
 
 	function getInput()
 	{
-		$doc 		= JFactory::getDocument();
+		$doc 		= JFactory::getApplication()->getDocument();
 		$fieldName	= $this->name;
 
 		$db = JFactory::getDBO();

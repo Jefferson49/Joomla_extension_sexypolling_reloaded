@@ -32,7 +32,10 @@ class SexypollingViewSexypoll extends JViewLegacy
 		$this->item		= $this->get('Item');
 		$this->state	= $this->get('State');
 		$max_id	= $this->get('max_id');
-		$this->assignRef( 'max_id', $max_id );
+		
+		//Patched: set max_id = 0 to allow unlimited polls
+		$this->max_id = 0;
+		
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) {
 			JError::raiseError(500, implode("\n", $errors));
@@ -50,9 +53,9 @@ class SexypollingViewSexypoll extends JViewLegacy
 	 */
 	protected function addToolbar($max_id)
 	{
-		JRequest::setVar('hidemainmenu', true);
+		JFactory::getApplication()->getInput()->set('hidemainmenu', true);
 
-		$user		= JFactory::getUser();
+		$user		= JFactory::getApplication()->getIdentity();
 		$userId		= $user->get('id');
 		$isNew		= ($this->item->id == 0);
 		$checkedOut	= !($this->item->checked_out == 0 || $this->item->checked_out == $userId);

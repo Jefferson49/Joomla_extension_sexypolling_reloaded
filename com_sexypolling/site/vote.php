@@ -2,18 +2,12 @@
 /**
  * Joomla! component sexypolling
  *
- * based on:
- * @version 2.1.7 ($Id: vote.php 2012-04-05 14:30:25 svn $)
+ * @version $Id: vote.php 2012-04-05 14:30:25 svn $
  * @author 2GLux.com
  * @package Sexy Polling
  * @subpackage com_sexypolling
  * @license GNU/GPL
  *
- * modified:
- * @version v2.1.9
- * @author Jefferson49
- * @Github https://github.com/Jefferson49/joomla4_plugin_sexy_polling
- * @license GNU General Public License v3.0
  */
 
 // no direct access
@@ -23,20 +17,24 @@ defined('_JEXEC') or die('Restircted access');
  * This is external PHP file and used on AJAX calls, so it has not "defined('_JEXEC') or die;" part.
  */
 error_reporting(0);
+header('Content-type: application/json');
 
 define( 'DS', DIRECTORY_SEPARATOR );
 define('JPATH_BASE', dirname(dirname(dirname(__FILE__))));
-
-session_start();
-header('Content-type: application/json');
 
 require_once ( JPATH_BASE .DS.'includes'.DS.'defines.php' );
 require_once ( JPATH_BASE .DS.'includes'.DS.'framework.php' );
 
 error_reporting(0);
 
-$app = JFactory::getApplication('site');
-$app->initialise();
+// Boot the DI container.
+$container = \Joomla\CMS\Factory::getContainer();
+
+// Alias the session service key to the web session service.
+$container->alias(\Joomla\Session\SessionInterface::class, 'session.web.site');
+
+// Get the application.
+$app = $container->get(\Joomla\CMS\Application\SiteApplication::class);
 
 $db = JFactory::getDBO();
 
@@ -61,10 +59,10 @@ elseif(isset($_SERVER['REMOTE_ADDR'])) { $REMOTE_ADDR = $_SERVER['REMOTE_ADDR'];
 else { $REMOTE_ADDR = 'Unknown'; }
 $ip = $REMOTE_ADDR;
 
-$countryname = (!isset($_POST['country_name']) || $_POST['country_name'] == '' || $_POST['country_name'] == '-' ) ? 'Unknown' : JRequest::getVar('country_name', 'Unknown', 'POST');
-$cityname = (!isset($_POST['city_name']) || $_POST['city_name'] == '' || $_POST['city_name'] == '-' ) ? 'Unknown' : JRequest::getVar('city_name', 'Unknown', 'POST');
-$regionname = (!isset($_POST['region_name']) || $_POST['region_name'] == '' || $_POST['region_name'] == '-' ) ? 'Unknown' : JRequest::getVar('region_name', 'Unknown', 'POST');
-$countrycode = (!isset($_POST['country_code']) || $_POST['country_code'] == '' || $_POST['country_code'] == '-' ) ? 'Unknown' : JRequest::getVar('country_code', 'Unknown', 'POST');
+$countryname = (!isset($_POST['country_name']) || $_POST['country_name'] == '' || $_POST['country_name'] == '-' ) ? 'Unknown' : JFactory::getApplication()->getInput()->get('country_name', 'Unknown', 'POST');
+$cityname = (!isset($_POST['city_name']) || $_POST['city_name'] == '' || $_POST['city_name'] == '-' ) ? 'Unknown' : JFactory::getApplication()->getInput()->get('city_name', 'Unknown', 'POST');
+$regionname = (!isset($_POST['region_name']) || $_POST['region_name'] == '' || $_POST['region_name'] == '-' ) ? 'Unknown' : JFactory::getApplication()->getInput()->get('region_name', 'Unknown', 'POST');
+$countrycode = (!isset($_POST['country_code']) || $_POST['country_code'] == '' || $_POST['country_code'] == '-' ) ? 'Unknown' : JFactory::getApplication()->getInput()->get('country_code', 'Unknown', 'POST');
 
 $ip = $db->escape($ip);
 $countryname = $db->escape($countryname);
@@ -93,7 +91,7 @@ $ipcount = $poll_options["ipcount"];
 $voting_period = $poll_options["voting_period"];
 
 //check token
-if ($poll_options["checktoken"] == 1 and !JRequest::checkToken()) {
+if ($poll_options["checktoken"] == 1 and !JFactory::getApplication()->getInput()) {
     echo '[{"invalid":"invalid_token"}]';
     exit();
 }
@@ -127,7 +125,7 @@ if($poll_options["votechecks"] == 1) {
     $voting_permission_id = $poll_options["voting_permission"];
     $query = "SELECT `rules` FROM #__viewlevels WHERE id = '$voting_permission_id'";
     $db->setQuery($query);
-    $db->query();
+    $db->execute();
     $levels = explode(',',str_replace(array('[',']'),'',$db->loadResult()));
     if($poll_options["checkacl"] == 1 and !if_contain($levels,$groups))
         $voting_enabled = false;
@@ -144,7 +142,7 @@ if($poll_options["votechecks"] == 1) {
     if($registration_to_vote_required) {
         $query = "SELECT sv.`ip`,sv.`date` FROM #__sexy_votes sv JOIN #__sexy_answers sa ON sa.id_poll = '$polling_id' WHERE sv.id_answer = sa.id AND sv.id_user = '$user_id' ORDER BY sv.`date` DESC LIMIT 1";
         $db->setQuery($query);
-        $db->query();
+        $db->execute();
         $num_rows = $db->getNumRows();
         $row = $db->loadAssoc();
         if($num_rows > 0) {
@@ -159,7 +157,7 @@ if($poll_options["votechecks"] == 1) {
         //check ip
         $query = "SELECT sv.`ip`,sv.`date` FROM #__sexy_votes sv JOIN #__sexy_answers sa ON sa.id_poll = '$polling_id' WHERE sv.id_answer = sa.id AND sv.ip = '$ip' ORDER BY sv.`date` DESC LIMIT 1";
         $db->setQuery($query);
-        $db->query();
+        $db->execute();
         $num_rows = $db->getNumRows();
         $row = $db->loadAssoc();
         if($ipcount != 0 && $num_rows >= $ipcount) {
@@ -191,14 +189,14 @@ if(is_array($adittional_answers) && $voting_enabled) {
         $published = 1;
         $query = "INSERT INTO `#__sexy_answers` (`id_poll`,`name`,`published`,`created`) VALUES ('$polling_id','$answer','$published',NOW())";
         $db->setQuery($query);
-        $db->query();
+        $db->execute();
         $insert_id = $db->insertid();
 
         $add_answers[] = $insert_id;
 
         $query = "INSERT INTO `#__sexy_votes` (`id_answer`,`id_user`,`ip`,`date`,`country`,`city`,`region`,`countrycode`) VALUES ('$insert_id','$user_id',$ip','$datenow','$countryname','$cityname','$regionname','$countrycode')";
         $db->setQuery($query);
-        $db->query();
+        $db->execute();
 
         //set the cookie
         if($voting_period == 0) {
@@ -221,7 +219,7 @@ if ($mode != 'view' && $mode != 'view_by_date' && is_array($answer_id_array) && 
             $answer_id = (int)$answer_id;
             $query = "INSERT INTO `#__sexy_votes` (`id_answer`,`id_user`,`ip`,`date`,`country`,`city`,`region`,`countrycode`) VALUES ('$answer_id','$user_id','$ip','$datenow','$countryname','$cityname','$regionname','$countrycode')";
             $db->setQuery($query);
-            $db->query();
+            $db->execute();
         }
 
         //set the cookie
@@ -255,7 +253,7 @@ if ($min_date_sended != '' && $max_date_sended != '')
     $query_toal .= " AND sv.`date` >= '$min_date_sended' AND sv.`date` <= '$max_date_sended' ";
 
 $db->setQuery($query_toal);
-$db->query();
+$db->execute();
 $row_total = $db->loadAssoc();
 
 $count_total_votes = $row_total['total_count'];
@@ -391,6 +389,7 @@ function cmp1($a, $b)
     return ($a["votes"] < $b["votes"]) ? 1 : -1;
 }
 
+
 //generates json output
 usort($poll_array, "cmp1");
 //print_r($poll_array);
@@ -429,5 +428,6 @@ foreach ($poll_array as $data)
     $a++;
 }
 echo ']';
+
 jexit();
 ?>

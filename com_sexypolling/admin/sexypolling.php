@@ -30,13 +30,13 @@ require_once JPATH_COMPONENT.DS.'helpers'.DS.'helper.php';
 // Initialize the controller
 $controller	= JControllerLegacy::getInstance('SexyPolling');
 
-$document = JFactory::getDocument();
+$document = JFactory::getApplication()->getDocument();
 $cssFile = JURI::base(true).'/components/com_sexypolling/assets/css/icons_'.JV.'.css';
 $document->addStyleSheet($cssFile, 'text/css', null, array());
 
 // Perform the Request task
 if(JV == 'j2')
-	$controller->execute( JRequest::getCmd('task'));
+	$controller->execute( JFactory::getApplication()->getInput()->get('task'));
 else
-	$controller->execute(JFactory::getApplication()->input->get('task'));
+	$controller->execute(JFactory::getApplication()->getInput()->get('task'));
 $controller->redirect();

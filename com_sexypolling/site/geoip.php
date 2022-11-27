@@ -20,7 +20,8 @@ defined('_JEXEC') or die('Restircted access');
 error_reporting(0);
 header('Content-type: application/json');
 
-$ip = $_GET[ip];
+//TODO $ip set to ''
+$ip = '';
 $url = 'http://api.ipinfodb.com/v3/ip-city/?key=4f01028c9fcae27423d5d0cc4489b5679f26febf98d28b90a29c2f3f7531aafd&format=json&ip=' . $ip;
 $ch = curl_init ($url) ;
 curl_setopt($ch, CURLOPT_URL, $url);

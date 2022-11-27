@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="2.5" method="upgrade">
     <name>COM_SEXYPOLLING</name>
-    <creationDate>June 2012</creationDate>
-    <author>2GLux</author>
-    <copyright>Copyright (c) 2010 - 2020 2GLux. All rights reserved.</copyright>
-    <authorEmail>info@2glux.com</authorEmail>
-    <authorUrl>http://2glux.com</authorUrl>
-    <version>2.1.7</version>
-    <license>GNU/GPL</license>
+    <creationDate>November 27th, 2022</creationDate>
+    <author>Jefferson49</author>
+    <copyright>Copyright (c) 2010 - 2020 2GLux. All rights reserved. Copyright (c) 2022 Jefferson49</copyright>
+    <authorUrl>https://github.com/Jefferson49/joomla4_plugin_sexy_polling</authorUrl>
+    <version>2.1.9</version>
+    <license>GNU/GPL v3.0</license>
     <description>COM_SEXYPOLLING_DESCRIPTION</description>
 
     <scriptfile>scriptfile.php</scriptfile>

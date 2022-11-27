@@ -2,12 +2,18 @@
 /**
  * Joomla! component sexypolling
  *
- * @version $Id: vote.php 2012-04-05 14:30:25 svn $
+ * based on:
+ * @version 2.1.7 ($Id: vote.php 2012-04-05 14:30:25 svn $)
  * @author 2GLux.com
  * @package Sexy Polling
  * @subpackage com_sexypolling
  * @license GNU/GPL
  *
+ * modified:
+ * @version v2.1.9
+ * @author Jefferson49
+ * @Github https://github.com/Jefferson49/joomla4_plugin_sexy_polling
+ * @license GNU General Public License v3.0
  */
 
 // no direct access
@@ -73,6 +79,10 @@ $module_id = isset($_POST['module_id']) ? (int)$_POST['module_id'] : 0;
 $mode = isset($_POST['mode']) ? $_POST['mode'] : '';
 $min_date_sended = isset($_POST['min_date']) ? $_POST['min_date'].' 00:00:00' : '';
 $max_date_sended = isset($_POST['max_date']) ? $_POST['max_date'].' 23:59:59' : '';
+
+//escape dates sended to avoid sql injections
+$min_date_sended = $db->escape($min_date_sended);
+$max_date_sended = $db->escape($max_date_sended);
 
 //get poll options
 $query = "SELECT * FROM `#__sexy_polls` WHERE `id` = '$polling_id'";

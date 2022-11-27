@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset>
+        <field type="note" label="COM_SEXYPOLLING_BASIC_OPTIONS" description="" />
+        <field name="id" type="hidden"/>
+        <field name="name" type="text" label="COM_SEXYPOLLING_NAME_LABEL" description="COM_SEXYPOLLING_NAME_DESCRIPTION" size="40" class="inputbox" default="" required="required"/>
+        <field name="question" type="text" label="COM_SEXYPOLLING_QUESTION_LABEL" description="COM_SEXYPOLLING_QUESTION_DESCRIPTION" size="40" class="inputbox" default="" required="required"/>
+        <field name="id_category" type="sql" default="1" label="COM_SEXYPOLLING_CATEGORY_LABEL" description="COM_SEXYPOLLING_CATEGORY_DESCRIPTION" query="SELECT name, id FROM #__sexy_categories" key_field="id" value_field="name" />
+        <field name="id_template" type="sql" default="1" label="COM_SEXYPOLLING_TEMPLATE_LABEL" description="COM_SEXYPOLLING_TEMPLATE_DESCRIPTION" query="SELECT name, id FROM #__sexy_templates" key_field="id" value_field="name" />
+
+        <field type="note" label="COM_SEXYPOLLING_ADVANCED_OPTIONS" description="" />
+        <field id="multiple_answers" name="multiple_answers" type="radio" label="COM_SEXYPOLLING_MULTIPLE_ANSWERS_LABEL" description="COM_SEXYPOLLING_MULTIPLE_ANSWERS_DESCRIPTION" class="inputbox btn-group" size="1" default="0">
+            <option value="0">JNo</option>
+            <option value="1">JYes</option>
+        </field>
+        <field id="number_answers" name="number_answers" type="text" label="COM_SEXYPOLLING_NUMBER_ANSWERS_LABEL" description="COM_SEXYPOLLING_NUMBER_ANSWERS_DESCRIPTION" class="inputbox" size="1" default="0" />
+        <field id="voting_period" name="voting_period" type="text" label="COM_SEXYPOLLING_VOTING_PERIOD_LABEL" description="COM_SEXYPOLLING_VOTING_PERIOD_DESCRIPTION" class="inputbox" size="1" default="24" />
+        <field name="voting_permission" type="accesslevel" label="COM_SEXYPOLLING_VOTING_PERMISSION_LABEL" description="COM_SEXYPOLLING_VOTING_PERMISSION_DESCRIPTION" class="inputbox" size="1"/>
+
+        <field name="answerpermission" type="accesslevel" label="COM_SEXYPOLLING_WHO_CAN_ADD_AN_ANSWER_LABEL" description="COM_SEXYPOLLING_WHO_CAN_ADD_AN_ANSWER_DESCRIPTION" class="inputbox" size="1"/>
+        <field name="autopublish" type="radio" default="1" label="COM_SEXYPOLLING_AUTOPUBLISHMENT_LABEL" description="COM_SEXYPOLLING_AUTOPUBLISHMENT_DESCRIPTION" class="btn-group">
+          <option value="1">JYes</option>
+          <option value="0">JNo</option>
+        </field>
+         <field name="autoopentimeline" type="radio" default="1" label="COM_SEXYPOLLING_OPEN_TIMELINE_AUTOMATICALLY_LABEL" description="COM_SEXYPOLLING_OPEN_TIMELINE_AUTOMATICALLY_DESCRIPTION" class="btn-group">
+          <option value="1">JYes</option>
+          <option value="0">JNo</option>
+        </field>
+        <field name="autoanimate" type="radio" default="0" label="COM_SEXYPOLLING_AUTOANIMATE_FOR_VOTED_POLLS_LABEL" description="COM_SEXYPOLLING_AUTOANIMATE_FOR_VOTED_POLLS_DESCRIPTION" class="btn-group">
+          <option value="1">JYes</option>
+          <option value="0">JNo</option>
+        </field>
+        <field name="showvotesperiod" type="list" default="2" label="COM_SEXYPOLLING_SHOW_VOTES_PERIOD_LABEL" description="COM_SEXYPOLLING_SHOW_VOTES_PERIOD_DESCRIPTION" class="btn-group">
+          <option value="0">COM_SEXYPOLLING_SHOW_VOTES_PERIOD_DAY</option>
+          <option value="1">COM_SEXYPOLLING_SHOW_VOTES_PERIOD_WEEK</option>
+          <option value="2">COM_SEXYPOLLING_SHOW_VOTES_PERIOD_MONTH</option>
+          <option value="3">COM_SEXYPOLLING_SHOW_VOTES_PERIOD_YEAR</option>
+          <option value="4">COM_SEXYPOLLING_SHOW_VOTES_PERIOD_ALL</option>
+        </field>
+
+        <field type="spacer" />
+        <field name="stringdateformat" type="text" label="COM_SEXYPOLLING_STRING_DATE_FORMAT_LABEL" description="COM_SEXYPOLLING_STRING_DATE_FORMAT_DESCRIPTION" size="40" class="inputbox" default="F j, Y" />
+        <field name="votescountformat" type="list" default="2" label="COM_SEXYPOLLING_VOTES_COUNT_FORMAT_LABEL" description="COM_SEXYPOLLING_VOTES_COUNT_FORMAT_DESCRIPTION" class="btn-group">
+          <option value="0">COM_SEXYPOLLING_VOTES_COUNT_FORMAT_ONLY_VOTE</option>
+          <option value="1">COM_SEXYPOLLING_VOTES_COUNT_FORMAT_ONLY_PERCENT</option>
+          <option value="2">COM_SEXYPOLLING_VOTES_COUNT_FORMAT_BOTH</option>
+        </field>
+
+        <field type="spacer" />
+        <field name="scaledefault" type="list" default="1" label="COM_SEXYPOLLING_SCALE_DEFAULT_LABEL" description="COM_SEXYPOLLING_SCALE_DEFAULT_DESCRIPTION" class="btn-group">
+          <option value="1">COM_SEXYPOLLING_SCALE_DEFAULT_ABSOLUTE</option>
+          <option value="0">COM_SEXYPOLLING_SCALE_DEFAULT_RELATIVE</option>
+        </field>
+        <field name="showresultbutton" type="radio" default="1" label="COM_SEXYPOLLING_SHOW_RESULT_BUTTON_LABEL" description="COM_SEXYPOLLING_SHOW_RESULT_BUTTON_DESCRIPTION" class="btn-group">
+          <option value="1">JYes</option>
+          <option value="0">JNo</option>
+        </field>
+        <field name="showaddanswericon" type="radio" default="1" label="COM_SEXYPOLLING_SHOW_ADD_ANSWER_ICON_LABEL" description="COM_SEXYPOLLING_SHOW_ADD_ANSWER_ICON_DESCRIPTION" class="btn-group">
+          <option value="1">JYes</option>
+          <option value="0">JNo</option>
+        </field>
+        <field name="showscaleicon" type="radio" default="1" label="COM_SEXYPOLLING_SHOW_SCALE_ICON_LABEL" description="COM_SEXYPOLLING_SHOW_SCALE_ICON_DESCRIPTION" class="btn-group">
+          <option value="1">JYes</option>
+          <option value="0">JNo</option>
+        </field>
+        <field name="showbackicon" type="radio" default="1" label="COM_SEXYPOLLING_SHOW_BACK_ICON_LABEL" description="COM_SEXYPOLLING_SHOW_BACK_ICON_DESCRIPTION" class="btn-group">
+          <option value="1">JYes</option>
+          <option value="0">JNo</option>
+        </field>
+        <field name="showtimelineicon" type="radio" default="1" label="COM_SEXYPOLLING_SHOW_TIMELINE_ICON_LABEL" description="COM_SEXYPOLLING_SHOW_TIMELINE_ICON_DESCRIPTION" class="btn-group">
+          <option value="1">JYes</option>
+          <option value="0">JNo</option>
+        </field>
+        <field name="showtimeline" type="radio" default="1" label="COM_SEXYPOLLING_SHOW_TIMELINE_LABEL" description="COM_SEXYPOLLING_SHOW_TIMELINE_DESCRIPTION" class="btn-group">
+          <option value="1">JYes</option>
+          <option value="0">JNo</option>
+        </field>
+        <field name="showvotescountinfo" type="radio" default="1" label="COM_SEXYPOLLING_SHOW_VOTES_COUNT_INFO_LABEL" description="COM_SEXYPOLLING_SHOW_VOTES_COUNT_INFO_DESCRIPTION" class="btn-group">
+          <option value="1">JYes</option>
+          <option value="0">JNo</option>
+        </field>
+
+        <field type="spacer" />
+        <field name="date_start" type="calendar" default="" label="COM_SEXYPOLLING_DATE_START_LABEL" description="COM_SEXYPOLLING_DATE_START_DESCRIPTION" format="%Y-%m-%d" size="22" filter="user_utc" />
+        <field name="date_end" type="calendar" default="" label="COM_SEXYPOLLING_DATE_END_LABEL" description="COM_SEXYPOLLING_DATE_END_DESCRIPTION" format="%Y-%m-%d" size="22" filter="user_utc" />
+        <field name="showresultsduringpoll" type="radio" default="1" label="COM_SEXYPOLLING_SHOW_RESULTS_DURING_POLL_LABEL" description="COM_SEXYPOLLING_SHOW_RESULTS_DURING_POLL_DESCRIPTION" class="btn-group">
+          <option value="1">JYes</option>
+          <option value="0">JNo</option>
+        </field>
+
+        <field type="note" label="COM_SEXYPOLLING_STYLE_OPTIONS" description="" />
+        <field name="poll_width" type="text" label="COM_SEXYPOLLING_POLL_WIDTH_LABEL" description="COM_SEXYPOLLING_POLL_WIDTH_DESCRIPTION" size="40" class="inputbox" default="100%"/>
+        <field name="pollalign" type="list" default="2" label="COM_SEXYPOLLING_POLL_ALIGN_LABEL" description="COM_SEXYPOLLING_POLL_ALIGN_DESCRIPTION" class="btn-group">
+          <option value="0">COM_SEXYPOLLING_LEFT</option>
+          <option value="1">COM_SEXYPOLLING_RIGHT</option>
+          <option value="2">COM_SEXYPOLLING_CENTER</option>
+        </field>
+        <field name="addclearboth" type="radio" default="1" label="COM_SEXYPOLLING_ADD_CLEAR_BOTH_LABEL" description="COM_SEXYPOLLING_ADD_CLEAR_BOTH_DESCRIPTION" class="btn-group">
+          <option value="1">JYes</option>
+          <option value="0">JNo</option>
+        </field>
+        <field name="poll_margintop" type="text" label="COM_SEXYPOLLING_POLL_MARGINTOP_LABEL" description="COM_SEXYPOLLING_POLL_MARGINTOP_DESCRIPTION" size="40" class="inputbox" default="5"/>
+        <field name="poll_marginbottom" type="text" label="COM_SEXYPOLLING_POLL_MARGINBOTTOM_LABEL" description="COM_SEXYPOLLING_POLL_MARGINBOTTOM_DESCRIPTION" size="40" class="inputbox" default="5"/>
+        <field name="poll_marginleft" type="text" label="COM_SEXYPOLLING_POLL_MARGINLEFT_LABEL" description="COM_SEXYPOLLING_POLL_MARGINLEFT_DESCRIPTION" size="40" class="inputbox" default="5"/>
+        <field name="poll_marginright" type="text" label="COM_SEXYPOLLING_POLL_MARGINRIGHT_LABEL" description="COM_SEXYPOLLING_POLL_MARGINRIGHT_DESCRIPTION" size="40" class="inputbox" default="5"/>
+        <field name="classsuffix" type="text" label="COM_SEXYPOLLING_CLASS_SUFFIX_LABEL" description="COM_SEXYPOLLING_CLASS_SUFFIX_DESCRIPTION" size="40" class="inputbox" default="" />
+
+
+        <field type="note" label="COM_SEXYPOLLING_ANIMATION_OPTIONS" description="" />
+         <field name="baranimationtype" type="list" default="linear" label="COM_SEXYPOLLING_BAR_ANIMATION_TYPE_LABEL" description="COM_SEXYPOLLING_BAR_ANIMATION_TYPE_DESCRIPTION">
+          <option value="linear">linear</option>
+          <option value="swing">swing</option>
+          <option value="easeInQuad">easeInQuad</option>
+          <option value="easeOutQuad">easeOutQuad</option>
+          <option value="easeInOutQuad">easeInOutQuad</option>
+          <option value="easeInCubic">easeInCubic</option>
+          <option value="easeOutCubic">easeOutCubic</option>
+          <option value="easeInOutCubic">easeInOutCubic</option>
+          <option value="easeInQuart">easeInQuart</option>
+          <option value="easeOutQuart">easeOutQuart</option>
+          <option value="easeInOutQuart">easeInOutQuart</option>
+          <option value="easeInQuint">easeInQuint</option>
+          <option value="easeOutQuint">easeOutQuint</option>
+          <option value="easeInOutQuint">easeInOutQuint</option>
+          <option value="easeInSine">easeInSine</option>
+          <option value="easeOutSine">easeOutSine</option>
+          <option value="easeInOutSine">easeInOutSine</option>
+          <option value="easeInExpo">easeInExpo</option>
+          <option value="easeOutExpo">easeOutExpo</option>
+          <option value="easeInOutExpo">easeInOutExpo</option>
+          <option value="easeInCirc">easeInCirc</option>
+          <option value="easeOutCirc">easeOutCirc</option>
+          <option value="easeInOutCirc">easeInOutCirc</option>
+          <option value="easeInElastic">easeInElastic</option>
+          <option value="easeOutElastic">easeOutElastic</option>
+          <option value="easeInOutElastic">easeInOutElastic</option>
+          <option value="easeInBack">easeInBack</option>
+          <option value="easeOutBack">easeOutBack</option>
+          <option value="easeInOutBack">easeInOutBack</option>
+          <option value="easeInBounce">easeInBounce</option>
+          <option value="easeOutBounce">easeOutBounce</option>
+          <option value="easeInOutBounce">easeInOutBounce</option>
+        </field>
+         <field name="coloranimationtype" type="list" default="linear" label="COM_SEXYPOLLING_COLOR_ANIMATION_TYPE_LABEL" description="COM_SEXYPOLLING_COLOR_ANIMATION_TYPE_DESCRIPTION">
+          <option value="linear">linear</option>
+          <option value="swing">swing</option>
+          <option value="easeInQuad">easeInQuad</option>
+          <option value="easeOutQuad">easeOutQuad</option>
+          <option value="easeInOutQuad">easeInOutQuad</option>
+          <option value="easeInCubic">easeInCubic</option>
+          <option value="easeOutCubic">easeOutCubic</option>
+          <option value="easeInOutCubic">easeInOutCubic</option>
+          <option value="easeInQuart">easeInQuart</option>
+          <option value="easeOutQuart">easeOutQuart</option>
+          <option value="easeInOutQuart">easeInOutQuart</option>
+          <option value="easeInQuint">easeInQuint</option>
+          <option value="easeOutQuint">easeOutQuint</option>
+          <option value="easeInOutQuint">easeInOutQuint</option>
+          <option value="easeInSine">easeInSine</option>
+          <option value="easeOutSine">easeOutSine</option>
+          <option value="easeInOutSine">easeInOutSine</option>
+          <option value="easeInExpo">easeInExpo</option>
+          <option value="easeOutExpo">easeOutExpo</option>
+          <option value="easeInOutExpo">easeInOutExpo</option>
+          <option value="easeInCirc">easeInCirc</option>
+          <option value="easeOutCirc">easeOutCirc</option>
+          <option value="easeInOutCirc">easeInOutCirc</option>
+          <option value="easeInElastic">easeInElastic</option>
+          <option value="easeOutElastic">easeOutElastic</option>
+          <option value="easeInOutElastic">easeInOutElastic</option>
+          <option value="easeInBack">easeInBack</option>
+          <option value="easeOutBack">easeOutBack</option>
+          <option value="easeInOutBack">easeInOutBack</option>
+          <option value="easeInBounce">easeInBounce</option>
+          <option value="easeOutBounce">easeOutBounce</option>
+          <option value="easeInOutBounce">easeInOutBounce</option>
+        </field>
+         <field name="reorderinganimationtype" type="list" default="linear" label="COM_SEXYPOLLING_REORDERING_ANIMATION_TYPE_LABEL" description="COM_SEXYPOLLING_REORDERING_ANIMATION_TYPE_DESCRIPTION">
+          <option value="linear">linear</option>
+          <option value="swing">swing</option>
+          <option value="easeInQuad">easeInQuad</option>
+          <option value="easeOutQuad">easeOutQuad</option>
+          <option value="easeInOutQuad">easeInOutQuad</option>
+          <option value="easeInCubic">easeInCubic</option>
+          <option value="easeOutCubic">easeOutCubic</option>
+          <option value="easeInOutCubic">easeInOutCubic</option>
+          <option value="easeInQuart">easeInQuart</option>
+          <option value="easeOutQuart">easeOutQuart</option>
+          <option value="easeInOutQuart">easeInOutQuart</option>
+          <option value="easeInQuint">easeInQuint</option>
+          <option value="easeOutQuint">easeOutQuint</option>
+          <option value="easeInOutQuint">easeInOutQuint</option>
+          <option value="easeInSine">easeInSine</option>
+          <option value="easeOutSine">easeOutSine</option>
+          <option value="easeInOutSine">easeInOutSine</option>
+          <option value="easeInExpo">easeInExpo</option>
+          <option value="easeOutExpo">easeOutExpo</option>
+          <option value="easeInOutExpo">easeInOutExpo</option>
+          <option value="easeInCirc">easeInCirc</option>
+          <option value="easeOutCirc">easeOutCirc</option>
+          <option value="easeInOutCirc">easeInOutCirc</option>
+          <option value="easeInElastic">easeInElastic</option>
+          <option value="easeOutElastic">easeOutElastic</option>
+          <option value="easeInOutElastic">easeInOutElastic</option>
+          <option value="easeInBack">easeInBack</option>
+          <option value="easeOutBack">easeOutBack</option>
+          <option value="easeInOutBack">easeInOutBack</option>
+          <option value="easeInBounce">easeInBounce</option>
+          <option value="easeOutBounce">easeOutBounce</option>
+          <option value="easeInOutBounce">easeInOutBounce</option>
+        </field>
+
+        <field type="note" label="COM_SEXYPOLLING_SECURITY_OPTIONS" description="" />
+        <field name="checktoken" type="radio" default="1" label="COM_SEXYPOLLING_CHECK_TOKEN_LABEL" description="COM_SEXYPOLLING_CHECK_TOKEN_DESCRIPTION" class="btn-group">
+          <option value="1">JYes</option>
+          <option value="0">JNo</option>
+        </field>
+        <field name="checkacl" type="radio" default="1" label="COM_SEXYPOLLING_CHECK_ACL_LABEL" description="COM_SEXYPOLLING_CHECK_ACL_DESCRIPTION" class="btn-group">
+          <option value="1">JYes</option>
+          <option value="0">JNo</option>
+        </field>
+        <field name="votechecks" type="radio" default="0" label="COM_SEXYPOLLING_VOTE_CHECKS_LABEL" description="COM_SEXYPOLLING_VOTE_CHECKS_DESCRIPTION" class="btn-group">
+          <option value="1">JYes</option>
+          <option value="0">JNo</option>
+        </field>
+        <field name="ipcount" type="text" label="COM_SEXYPOLLING_IP_COUNT_LABEL" description="COM_SEXYPOLLING_IP_COUNT_DESCRIPTION" size="40" class="inputbox" default="" />
+
+        <field type="note" label="COM_SEXYPOLLING_STATUS_OPTIONS" description="" />
+        <field id="published" name="published" type="list" label="JSTATUS" description="JFIELD_PUBLISHED_DESC" class="inputbox" size="1" default="1">
+            <option value="1">JPUBLISHED</option>
+            <option value="0">JUNPUBLISHED</option>
+            <option value="2">JARCHIVED</option>
+            <option value="-2">JTRASHED</option>
+        </field>
+        <field name="featured" type="radio" label="JFEATURED" description="JFEATURED" default="0" class="btn-group">
+            <option value="0">JNo</option>
+            <option value="1">JYES</option>
+        </field>
+        <field name="created" type="calendar" label="COM_SEXYPOLLING_CREATED_LABEL" default="NOW"  description="COM_SEXYPOLLING_CREATED_DESCRIPTION" class="inputbox" size="22" format="%Y-%m-%d %H:%M:%S" filter="user_utc" />
+    </fieldset>
+</form>

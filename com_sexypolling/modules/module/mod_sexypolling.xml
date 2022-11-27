@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="2.5" method="upgrade" client="site">
+    <name>MOD_SEXYPOLLING_NAME</name>
+    <creationDate>June 2012</creationDate>
+    <author>2GLux</author>
+    <copyright>Copyright (c) 2010 - 2015 2GLux. All rights reserved.</copyright>
+    <authorEmail>info@2glux.com</authorEmail>
+    <authorUrl>http://2glux.com</authorUrl>
+    <version>2.1.1</version>
+    <license>GNU/GPL</license>
+    <description>MOD_SEXYPOLLING_DESCRIPTION</description>
+    <files>
+        <filename>index.html</filename>
+        <filename module="mod_sexypolling">mod_sexypolling.php</filename>
+    </files>
+    <languages>
+            <language tag="en-GB">language/en-GB/en-GB.mod_sexypolling.ini</language>
+            <language tag="en-GB">language/en-GB/en-GB.mod_sexypolling.sys.ini</language>
+            <language tag="fr-FR">language/fr-FR/fr-FR.mod_sexypolling.ini</language>
+            <language tag="es-ES">language/es-ES/es-ES.mod_sexypolling.ini</language>
+            <language tag="de-DE">language/de-DE/de-DE.mod_sexypolling.ini</language>
+            <language tag="it-IT">language/it-IT/it-IT.mod_sexypolling.ini</language>
+            <language tag="ru-RU">language/ru-RU/ru-RU.mod_sexypolling.ini</language>
+            <language tag="fa-IR">language/fa-IR/fa-IR.mod_sexypolling.ini</language>
+            <language tag="sl-SL">language/sl-SL/sl-SL.mod_sexypolling.ini</language>
+    </languages>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="poll_type" type="radio" default="0" label="MOD_SEXYPOLLING_POLL_TYPE_LABEL" description="MOD_SEXYPOLLING_POLL_TYPE_DESCRIPTION" class="btn-group">
+                  <option value="0">MOD_SEXYPOLLING_SINGLE_POLL</option>
+                  <option value="1">MOD_SEXYPOLLING_POLLS</option>
+                </field>
+                <field type="sql" name="poll_id" label="MOD_SEXYPOLLING_SELECT_SEXY_POLL_LABEL" default="" description="MOD_SEXYPOLLING_SELECT_SEXY_POLL_DESCRIPTION" query="SELECT id AS value, name AS poll_id FROM #__sexy_polls WHERE `published` = '1'" />
+                <field type="sql" name="category_id" label="MOD_SEXYPOLLING_SELECT_CATEGORY_LABEL" default="" description="MOD_SEXYPOLLING_SELECT_CATEGORY_DESCRIPTION" query="SELECT id AS value, name AS category_id FROM #__sexy_categories WHERE `published` = '1'" />
+            </fieldset>
+        </fields>
+    </config>
+</extension>

@@ -74,6 +74,10 @@ $mode = isset($_POST['mode']) ? $_POST['mode'] : '';
 $min_date_sended = isset($_POST['min_date']) ? $_POST['min_date'].' 00:00:00' : '';
 $max_date_sended = isset($_POST['max_date']) ? $_POST['max_date'].' 23:59:59' : '';
 
+//escape dates sended to avoid sql injections
+$min_date_sended = $db->escape($min_date_sended);
+$max_date_sended = $db->escape($max_date_sended);
+
 //get poll options
 $query = "SELECT * FROM `#__sexy_polls` WHERE `id` = '$polling_id'";
 $db->setQuery( $query );

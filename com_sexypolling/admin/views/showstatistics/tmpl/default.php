@@ -40,8 +40,8 @@ function get_dates_array($date1,$date2) {
 
 $db = JFactory::getDBO();
 
-//ToDo (patched $poll_id = 2)
-$poll_id = 2;
+$poll_id = JFactory::getApplication()->input->get('id');
+
 $query = "
             SELECT
                 sp.name,

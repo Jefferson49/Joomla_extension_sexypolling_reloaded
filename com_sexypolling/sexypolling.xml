@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="component" version="2.5" method="upgrade">
+<extension type="component" version="3" method="upgrade">
     <name>COM_SEXYPOLLING</name>
     <creationDate>November 2022</creationDate>
     <author>Jefferson49</author>
-    <copyright>Copyright (c) 2010 - 2020 2GLux. All rights reserved. Copyright (c) 2022 Jefferson49</copyright>
-    <authorUrl>https://github.com/Jefferson49/joomla4_plugin_sexy_polling</authorUrl>
-    <version>3.0.0</version>
+    <copyright>Copyright (c) 2010 - 2021 2GLux. All rights reserved. Copyright (c) 2022 Jefferson49</copyright>
+    <authorUrl>https://github.com/Jefferson49</authorUrl>
+    <version>2.1.7</version>
     <license>GNU/GPL v3.0</license>
     <description>COM_SEXYPOLLING_DESCRIPTION</description>
 
@@ -23,7 +23,7 @@
     </uninstall>
 
     <updateservers>
-        <server type="extension" name="2GLux" priority="1">http://2glux.com/downloads/files/free/sexy_polling.xml</server>
+        <server type="extension" name="Github Jefferson49/joomla_plugin_sexypolling" priority="1">https://raw.githubusercontent.com/Jefferson49/joomla_plugin_sexypolling/updates/updates.xml</server>
     </updateservers>
 
     <!-- user part -->

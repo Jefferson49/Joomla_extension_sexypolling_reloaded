@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="module" version="2.5" method="upgrade" client="site">
+<extension type="module" version="3" method="upgrade" client="site">
     <name>MOD_SEXYPOLLING_NAME</name>
     <creationDate>November 2022</creationDate>
     <author>Jefferson49</author>

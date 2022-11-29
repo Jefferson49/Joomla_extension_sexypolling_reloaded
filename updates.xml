@@ -1,0 +1,57 @@
+<updates>
+	<update>
+		<name>Sexy Polling</name>
+		<description>A Joomla plugin to provide polls</description>
+		<element>joomla</element>
+		<type>file</type>
+		<version>4.0.0</version>
+		<infourl title="Sexy Polling">https://github.com/Jefferson49/joomla_plugin_sexypolling/releases/tag/v.4.0.0</infourl>
+		<downloads>
+			<downloadurl type="full" format="zip">https://github.com/Jefferson49/joomla_plugin_sexypolling/releases/download/v.4.0.0/joomla_plugin_sexypolling_v4.0.0.zip</downloadurl>
+		</downloads>
+		<tags>
+			<tag>stable</tag>
+		</tags>
+		<maintainer>Jefferson49</maintainer>
+		<maintainerurl>https://github.com/Jefferson49</maintainerurl>
+		<section>STS</section>
+		<targetplatform name="joomla" version="4" />
+		<php_minimum>8</php_minimum>
+    </update>
+    	<update>
+		<name>Sexy Polling</name>
+		<description>A Joomla plugin to provide polls</description>
+		<element>joomla</element>
+		<type>file</type>
+		<version>2.1.9</version>
+		<infourl title="Sexy Polling">https://github.com/Jefferson49/joomla_plugin_sexypolling/releases/tag/v.2.1.9</infourl>
+		<downloads>
+			<downloadurl type="full" format="zip">https://github.com/Jefferson49/joomla_plugin_sexypolling/releases/download/v.2.1.9/joomla_3.x_com_sexypolling_v2.1.9.zip</downloadurl>
+		</downloads>
+		<tags>
+			<tag>stable</tag>
+		</tags>
+		<maintainer>Jefferson49</maintainer>
+		<maintainerurl>https://github.com/Jefferson49</maintainerurl>
+		<section>STS</section>
+		<targetplatform name="joomla" version="3" />
+    </update>  
+	<update>
+		<name>Sexy Polling</name>
+		<description>A Joomla plugin to provide polls</description>
+		<element>joomla</element>
+		<type>file</type>
+		<version>2.1.9</version>
+		<infourl title="Sexy Polling">https://github.com/Jefferson49/joomla_plugin_sexypolling/releases/tag/v.2.1.9</infourl>
+		<downloads>
+			<downloadurl type="full" format="zip">https://github.com/Jefferson49/joomla_plugin_sexypolling/releases/download/v.2.1.9/joomla_3.x_com_sexypolling_v2.1.9.zip</downloadurl>
+		</downloads>
+		<tags>
+			<tag>stable</tag>
+		</tags>
+		<maintainer>Jefferson49</maintainer>
+		<maintainerurl>https://github.com/Jefferson49</maintainerurl>
+		<section>STS</section>
+		<targetplatform name="joomla" version="2.5" />
+    </update>    
+</updates>

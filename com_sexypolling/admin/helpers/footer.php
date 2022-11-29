@@ -18,8 +18,7 @@ defined('_JEXEC') or die('Restircted access');
 	<tr><td align="center" valign="middle" id="twoglux_ext_td" style="position: relative;height: 70px;">
 	<div id="twoglux_bottom_link">
 		<?php echo JText::_( 'COM_SEXYPOLLING_DEVELOPED_BY' ); ?> 
-		<a href="http://2glux.com" target="_blank">2GLux.com</a>
-		<?php echo JText::_( ', extended by' ); ?> 
+		<a href="http://2glux.com" target="_blank">2GLux.com</a>. <?php echo JText::_( 'COM_SEXYPOLLING_EXTENDED_BY' ); ?> 
 		<a href="https://github.com/Jefferson49/" target="_blank">Jefferson49</a>
 	</div>
 	</td></tr>

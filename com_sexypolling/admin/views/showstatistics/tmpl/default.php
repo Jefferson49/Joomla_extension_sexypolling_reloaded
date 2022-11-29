@@ -37,29 +37,11 @@ function get_dates_array($date1,$date2) {
     return $dates;
 }
 
-function show_buy_pro_link() {
-    echo
-    '
-    <div style="color: rgb(235, 9, 9);font-size: 16px;font-weight: bold;">'.JText::_("COM_SEXYPOLLING_PLEASE_UPGRADE_TO_SEE_STATISTICS").'</div>
-    <div id="cpanel" style="float: left;">
-    <div class="icon" style="float: right;">
-    <a href="'.JText::_("COM_SEXYPOLLING_SUBMENU_BUY_PRO_VERSION_LINK").'" target="_blank" title="'.JText::_("COM_SEXYPOLLING_SUBMENU_BUY_PRO_VERSION_DESCRIPTION").'">
-    <table style="width: 100%;height: 100%;text-decoration: none;">
-    <tr>
-    <td align="center" valign="middle">
-    <img src="components/com_sexypolling/assets/images/shopping_cart.png" /><br />
-    '.JText::_("COM_SEXYPOLLING_SUBMENU_BUY_PRO_VERSION").'
-    </td>
-    </tr>
-    </table>
-    </a>
-    </div>
-    </div>
-    ';
-}
 
 $db = JFactory::getDBO();
-$poll_id = 1;
+
+$poll_id = JFactory::getApplication()->input->get('id');
+
 $query = "
             SELECT
                 sp.name,
@@ -174,7 +156,7 @@ $totalvotes = $db->loadResult();
 JToolBarHelper::title(   JText::_( 'COM_SEXYPOLLING_STATISTICS' ).' - ('.$poll_name.')' ,'manage.png' );
 
 
-if($totalvotes > 0 && $poll_question == 'Which is your favorite phone?') {
+if($totalvotes > 0) {
 ?>
 <div>
 <script type="text/javascript">
@@ -389,7 +371,6 @@ if($totalvotes > 0 && $poll_question == 'Which is your favorite phone?') {
 })
 })(jQuery);
 </script>
-<?php show_buy_pro_link();?>
 <div style="color: rgb(21, 90, 177);font-size: 20px;font-weight: bold;clear: both;text-align: center;margin: 5px 0 5px 0;"><?php echo JText::_('COM_SEXYPOLLING_STATISTICS_DEMO')?></div>
 
 <div style="position: relative;float: left; width: 48%;padding: 8px;border: 1px solid #ccc;border-radius: 6px;box-shadow: inset 0 0 28px -3px #bbb;margin: 15px 0;">
@@ -409,11 +390,7 @@ if($totalvotes > 0 && $poll_question == 'Which is your favorite phone?') {
 <?php }
 elseif($totalvotes == 0) {
     echo 'No Data';
-}
-else {
-    show_buy_pro_link();
 }?>
-
 
 
 <form action="index.php" method="post" name="adminForm" id="adminForm">

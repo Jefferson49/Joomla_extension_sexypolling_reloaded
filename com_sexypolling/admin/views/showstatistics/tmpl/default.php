@@ -37,30 +37,11 @@ function get_dates_array($date1,$date2) {
     return $dates;
 }
 
-function show_buy_pro_link() {
-    echo
-    '
-    <div style="color: rgb(235, 9, 9);font-size: 16px;font-weight: bold;">'.JText::_("COM_SEXYPOLLING_PLEASE_UPGRADE_TO_SEE_STATISTICS").'</div>
-    <div id="cpanel" style="float: left;">
-    <div class="icon" style="float: right;">
-    <a href="'.JText::_("COM_SEXYPOLLING_SUBMENU_BUY_PRO_VERSION_LINK").'" target="_blank" title="'.JText::_("COM_SEXYPOLLING_SUBMENU_BUY_PRO_VERSION_DESCRIPTION").'">
-    <table style="width: 100%;height: 100%;text-decoration: none;">
-    <tr>
-    <td align="center" valign="middle">
-    <img src="components/com_sexypolling/assets/images/shopping_cart.png" /><br />
-    '.JText::_("COM_SEXYPOLLING_SUBMENU_BUY_PRO_VERSION").'
-    </td>
-    </tr>
-    </table>
-    </a>
-    </div>
-    </div>
-    ';
-}
 
 $db = JFactory::getDBO();
-//ToDo Set $poll_id = 2; (was 1 originally)
-$poll_id = 2;
+
+$poll_id = JFactory::getApplication()->input->get('id');
+
 $query = "
             SELECT
                 sp.name,
@@ -174,7 +155,8 @@ $totalvotes = $db->loadResult();
 
 JToolBarHelper::title(   JText::_( 'COM_SEXYPOLLING_STATISTICS' ).' - ('.$poll_name.')' ,'manage.png' );
 
-if($totalvotes > 0 ) {
+
+if($totalvotes > 0) {
 ?>
 <div>
 <script type="text/javascript">
@@ -408,11 +390,7 @@ if($totalvotes > 0 ) {
 <?php }
 elseif($totalvotes == 0) {
     echo 'No Data';
-}
-else {
-    show_buy_pro_link();
 }?>
-
 
 
 <form action="index.php" method="post" name="adminForm" id="adminForm">

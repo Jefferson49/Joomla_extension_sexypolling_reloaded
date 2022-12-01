@@ -8,6 +8,13 @@
  * @subpackage com_sexypolling
  * @license GNU/GPL
  *
+ * Extended by:
+ * @version v3.0.0
+ * @author Jefferson49
+ * @link https://github.com/Jefferson49/joomla4_plugin_sexy_polling
+ * @copyright Copyright (c) 2022 Jefferson49
+ * @license GNU/GPL v3.0
+ * 
  */
 
 defined('_JEXEC') or die('Restricted access');

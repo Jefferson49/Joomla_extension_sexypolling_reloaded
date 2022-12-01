@@ -2,18 +2,19 @@
 /**
  * Joomla! component sexypolling
  *
- * based on:
  * @version 2.1.7 ($Id: vote.php 2012-04-05 14:30:25 svn $)
  * @author 2GLux.com
  * @package Sexy Polling
  * @subpackage com_sexypolling
  * @license GNU/GPL
  *
- * modified:
- * @version v2.1.9
+ * Extended by:
+ * @version v3.0.0
  * @author Jefferson49
- * @Github https://github.com/Jefferson49/joomla4_plugin_sexy_polling
- * @license GNU General Public License v3.0
+ * @link https://github.com/Jefferson49/joomla4_plugin_sexy_polling
+ * @copyright Copyright (c) 2022 Jefferson49
+ * @license GNU/GPL v3.0
+ * 
  */
 
 // no direct access

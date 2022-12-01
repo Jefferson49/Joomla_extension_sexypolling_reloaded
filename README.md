@@ -4,9 +4,9 @@
 ## Joomla 3.x update and Joomla 4.x migration for the [Joomla](https://www.joomla.org/) plugin "Sexy Polling" 
 + Based on version 2.1.7 from the original plugin creator 2GLux.com, former website [2GLux.com](https://web.archive.org/web/20211215150923/https://2glux.com/projects/sexypolling)
 + Added a patch to fix a reported [security issue](https://www.exploit-db.com/exploits/50927)
-+ Removed some limitations in the functionality (if using the former FREE version)
++ Removed some limitations of the former FREE version
 + Added Joomla update system to check and install new releases of the plugin
-+ Migrated the code to the joomla 4.x CMS and module API
++ Migrated the code to the Joomla 4.x CMS and module API
 
 ##  Installation
 + Manual installation

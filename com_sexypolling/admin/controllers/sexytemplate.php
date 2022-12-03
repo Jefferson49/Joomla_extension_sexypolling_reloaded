@@ -43,7 +43,7 @@ class SexyPollingControllerSexyTemplate extends JControllerForm
 	
 	public function save($key = null, $urlVar = null)
 	{
-		$id = $_POST[cid][0];
+		$id = $_POST['cid'][0];
 		$id = $id == 0 ? (int)$_GET['id'] : $id;
 		
 		$task = $_REQUEST['task'];

@@ -26,7 +26,7 @@ require_once ( JPATH_BASE .DS.'includes'.DS.'framework.php' );
 $db = JFactory::getDBO();
 
 $id = (int)$_POST['id'];
-$query = "SELECT COUNT(id) as count_answers FROM `".$config->dbprefix."sexy_answers` WHERE id_poll = '$id' GROUP By id_poll";
+$query = "SELECT COUNT(id) as count_answers FROM #__sexy_answers WHERE id_poll = '$id' GROUP By id_poll";
 $db->setQuery($query);
 $db->query();
 $row = $db->loadAssoc();

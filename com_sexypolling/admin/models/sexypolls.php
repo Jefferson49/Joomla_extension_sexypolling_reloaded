@@ -196,7 +196,7 @@ class SexypollingModelSexyPolls extends JModelList {
 			$query->where('sp.id_category = '.(int) $categoryId);
 		}
 		elseif (is_array($categoryId)) {
-			JArrayHelper::toInteger($categoryId);
+			\Joomla\Utilities\ArrayHelper::toInteger($categoryId);
 			$categoryId = implode(',', $categoryId);
 			$query->where('sp.id_category IN ('.$categoryId.')');
 		}

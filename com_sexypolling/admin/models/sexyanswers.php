@@ -171,7 +171,7 @@ class SexypollingModelSexyAnswers extends JModelList {
             $query->where('sa.id_poll = '.(int) $pollId);
         }
         elseif (is_array($pollId)) {
-            JArrayHelper::toInteger($pollId);
+            \Joomla\Utilities\ArrayHelper::toInteger($pollId);
             $pollId = implode(',', $pollId);
             $query->where('sa.id_poll IN ('.$pollId.')');
         }

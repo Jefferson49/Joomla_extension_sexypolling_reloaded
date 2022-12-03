@@ -10,7 +10,7 @@
 
 ##  Installation
 + Manual installation
-    + Go to the [release page](https://github.com/Jefferson49/joomla_plugin_sexypolling/releases) and download a suitable release for joomla 3.x or Joomla 4.x
+    + Go to the [release page](https://github.com/Jefferson49/joomla_plugin_sexypolling/releases) and download a suitable release for Joomla 3.x or Joomla 4.x
     + Install the ZIP package in the Joomla administration backend
 + Joomla update system
     + Prerequesite: first installation has to be installed manually, see above
@@ -19,11 +19,11 @@
 
 ##  Versions 
 + The Joomla 3.x versions were developed and tested with: 
-    + [joomla 3.10.11](https://downloads.joomla.org/cms/joomla3); but should also run with other joomla 3.x versions
+    + [Joomla 3.10.11](https://downloads.joomla.org/cms/joomla3); but should also run with other Joomla 3.x versions
     + PHP 8.0.23; but should also run with previous PHP versions
 
 + The Joomla 4.x version was developed and tested with: 
-    + [joomla 4.2.5](https://downloads.joomla.org/cms/joomla4); but should also run with other joomla 4.x versions
+    + [Joomla 4.2.5](https://downloads.joomla.org/cms/joomla4); but should also run with other Joomla 4.x versions
     + PHP 8.0.23; but should also run with other PHP 8 versions
 
 ## Issue reporting

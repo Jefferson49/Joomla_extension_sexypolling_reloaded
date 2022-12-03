@@ -15,17 +15,21 @@ define('_JEXEC',true);
 defined('_JEXEC') or die('Restircted access');
 
 error_reporting(0);
-include '../../../../configuration.php';
 
-$config = new JConfig;
+define( 'DS', DIRECTORY_SEPARATOR );
+define('JPATH_BASE', dirname(dirname(dirname(__FILE__))));
+
+require_once ( JPATH_BASE .DS.'includes'.DS.'defines.php' );
+require_once ( JPATH_BASE .DS.'includes'.DS.'framework.php' );
 
 //conects to datababse
-mysql_connect($config->host, $config->user, $config->password);
-mysql_select_db($config->db);
-mysql_query("SET NAMES utf8");
+$db = JFactory::getDBO();
 
 $id = (int)$_POST['id'];
-$res = mysql_query("SELECT COUNT(id) as count_answers FROM `".$config->dbprefix."sexy_answers` WHERE id_poll = '$id' GROUP By id_poll");
-$row = mysql_fetch_assoc($res);
+$query = "SELECT COUNT(id) as count_answers FROM `".$config->dbprefix."sexy_answers` WHERE id_poll = '$id' GROUP By id_poll";
+$db->setQuery($query);
+$db->query();
+$row = $db->loadAssoc();
+
 echo $count = $row["count_answers"];
 ?>

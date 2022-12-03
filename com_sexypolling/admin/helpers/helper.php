@@ -41,9 +41,6 @@ class SexypollingHelper {
 		$link = 'index.php?option=com_sexypolling&view='.$v;
 		if($controller != null) $link .= '&controller='.$controller;
 		
-		if(JV == 'j2')
-			JSubMenuHelper::addEntry( JText::_($title), $link, $enabled);
-		else
-			JHtmlSidebar::addEntry( JText::_($title), $link, $enabled);
+		JHtmlSidebar::addEntry( JText::_($title), $link, $enabled);
 	}
 }

@@ -23,10 +23,10 @@ defined('_JEXEC') or die('Restircted access');
 /*
  * This is external PHP file and used on AJAX calls, so it has not "defined('_JEXEC') or die;" part.
  */
-define('JPATH_BASE', dirname(dirname(dirname(__FILE__))));
-
-session_start();
+error_reporting(0);
 header('Content-type: application/json');
+
+define('JPATH_BASE', dirname(dirname(dirname(__FILE__))));
 
 require_once ( JPATH_BASE .DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'defines.php' );
 require_once ( JPATH_BASE .DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'framework.php' );

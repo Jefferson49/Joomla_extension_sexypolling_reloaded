@@ -26,15 +26,14 @@ defined('_JEXEC') or die('Restircted access');
 */
 error_reporting(0);
 
-define( 'DS', DIRECTORY_SEPARATOR );
 define('JPATH_BASE', dirname(dirname(dirname(__FILE__))));
 
 //session_start();
 
 header('Content-type: application/json');
 
-require_once ( JPATH_BASE .DS.'includes'.DS.'defines.php' );
-require_once ( JPATH_BASE .DS.'includes'.DS.'framework.php' );
+require_once ( JPATH_BASE .DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'defines.php' );
+require_once ( JPATH_BASE .DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'framework.php' );
 
 // Boot the DI container.
 $container = \Joomla\CMS\Factory::getContainer();

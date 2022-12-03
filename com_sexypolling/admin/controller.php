@@ -14,7 +14,7 @@
 defined('_JEXEC') or die('Restircted access');
 
 jimport( 'joomla.application.component.controller' );
-require_once( JPATH_COMPONENT.DS.'helpers'.DS.'helper.php' );
+require_once( JPATH_COMPONENT.DIRECTORY_SEPARATOR.'helpers'.DIRECTORY_SEPARATOR.'helper.php' );
 
 class SexypollingController extends JControllerLegacy
 {

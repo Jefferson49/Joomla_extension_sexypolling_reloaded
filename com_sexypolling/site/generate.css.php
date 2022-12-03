@@ -16,16 +16,17 @@ defined('_JEXEC') or die('Restircted access');
 /*
  * This is external PHP file and used on AJAX calls, so it has not "defined('_JEXEC') or die;" part.
  */
+define( 'DS', DIRECTORY_SEPARATOR );
+define('JPATH_BASE', dirname(dirname(dirname(__FILE__))));
 
 error_reporting(0);
 header('Content-Type: text/css');
-include '../../configuration.php';
 
-$config = new JConfig;
+require_once ( JPATH_BASE .DS.'includes'.DS.'defines.php' );
+require_once ( JPATH_BASE .DS.'includes'.DS.'framework.php' );
 
 //conects to datababse
-$link = mysqli_connect($config->host, $config->user, $config->password, $config->db);
-mysqli_query($link, "SET NAMES utf8");
+$db = JFactory::getDBO();
 
 $category_id = isset($_GET['id_category']) ? (int)$_GET['id_category'] : 0;
 $poll_id = isset($_GET['id_poll']) ? (int)$_GET['id_poll'] : 0;
@@ -36,9 +37,9 @@ $query =
 						'sp.id polling_id, '.
 						'st.styles styles '.
 					'FROM '.
-						'`'.$config->dbprefix.'sexy_polls` sp '.
+						'`#__sexy_polls` sp '.
 					'LEFT JOIN '.
-						'`'.$config->dbprefix.'sexy_templates` st ON st.id = sp.id_template ';
+						'`#__sexy_templates` st ON st.id = sp.id_template ';
 $query .=
 					'WHERE sp.published = \'1\' ';
 if($poll_id != 0)
@@ -47,8 +48,12 @@ else
 	$query .= 'AND sp.id_category = '.$category_id;
 
 $custom_styles = array();
-$result = mysqli_query($link, $query);
-while($row = mysqli_fetch_assoc($result)) {
+$db->setQuery($query);
+$db->query();
+$num_rows = $db->getNumRows();
+$row = $db->loadAssoc();
+
+if($num_rows > 0) {
 	$custom_styles[$row['polling_id']] = $row['styles'];
 }
 

@@ -23,8 +23,6 @@ defined('_JEXEC') or die('Restircted access');
 /*
  * This is external PHP file and used on AJAX calls, so it has not "defined('_JEXEC') or die;" part.
  */
-error_reporting(0);
-
 define( 'DS', DIRECTORY_SEPARATOR );
 define('JPATH_BASE', dirname(dirname(dirname(__FILE__))));
 

@@ -67,11 +67,11 @@ class SexyPollingControllerSexyPolls extends JControllerAdmin
 		*/
 
 		if (empty($ids)) {
-			JError::raiseWarning(500, JText::_('COM_CONTACT_NO_ITEM_SELECTED'));
+			JFactory::getApplication()->enqueueMessage(500, JText::_('COM_CONTACT_NO_ITEM_SELECTED'));
 		} else {
 			// Publish the items.
 			if (!$model->featured($ids, $value)) {
-				JError::raiseWarning(500, $model->getError());
+				JFactory::getApplication()->enqueueMessage(500, $model->getError());
 			}
 		}
 

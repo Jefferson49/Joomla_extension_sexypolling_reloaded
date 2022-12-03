@@ -67,11 +67,11 @@ class SexyPollingControllerSexyAnswers extends JControllerAdmin
 		*/
 
 		if (empty($ids)) {
-			JError::raiseWarning(500, JText::_('No Items'));
+			JFactory::getApplication()->enqueueMessage(500, JText::_('No Items'));
 		} else {
 			// Publish the items.
 			if (!$model->featured($ids, $value)) {
-				JError::raiseWarning(500, $model->getError());
+				JFactory::getApplication()->enqueueMessage(500, $model->getError());
 			}
 		}
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" version="3" method="upgrade" client="site">
     <name>MOD_SEXYPOLLING_NAME</name>
-    <creationDate>November 2022</creationDate>
+    <creationDate>2022-12-03</creationDate>
     <author>Jefferson49</author>
     <copyright>Copyright (c) 2010 - 2020 2GLux. All rights reserved. Copyright (c) 2022 Jefferson49</copyright>
     <authorUrl>https://github.com/Jefferson49/joomla4_plugin_sexy_polling</authorUrl>
-    <version>3.0.0</version>
+    <version>3.0.1</version>
     <license>GNU/GPL v3.0</license>
     <description>MOD_SEXYPOLLING_DESCRIPTION</description>
     <files>

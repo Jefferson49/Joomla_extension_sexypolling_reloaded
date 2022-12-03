@@ -16,14 +16,13 @@ defined('_JEXEC') or die('Restircted access');
 /*
  * This is external PHP file and used on AJAX calls, so it has not "defined('_JEXEC') or die;" part.
  */
-define( 'DS', DIRECTORY_SEPARATOR );
 define('JPATH_BASE', dirname(dirname(dirname(__FILE__))));
 
 error_reporting(0);
 header('Content-Type: text/css');
 
-require_once ( JPATH_BASE .DS.'includes'.DS.'defines.php' );
-require_once ( JPATH_BASE .DS.'includes'.DS.'framework.php' );
+require_once ( JPATH_BASE .DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'defines.php' );
+require_once ( JPATH_BASE .DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'framework.php' );
 
 //conects to datababse
 $db = JFactory::getDBO();

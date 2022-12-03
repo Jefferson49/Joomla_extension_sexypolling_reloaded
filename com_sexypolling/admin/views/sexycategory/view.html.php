@@ -38,7 +38,7 @@ class SexypollingViewSexycategory extends JViewLegacy
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) {
-			JError::raiseError(500, implode("\n", $errors));
+			JFactory::getApplication()->enqueueMessage(500, implode("\n", $errors));
 			return false;
 		}
 

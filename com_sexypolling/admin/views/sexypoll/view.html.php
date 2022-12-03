@@ -35,7 +35,7 @@ class SexypollingViewSexypoll extends JViewLegacy
 		$this->assignRef( 'max_id', $max_id );
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) {
-			JError::raiseError(500, implode("\n", $errors));
+			JFactory::getApplication()->enqueueMessage(500, implode("\n", $errors));
 			return false;
 		}
 

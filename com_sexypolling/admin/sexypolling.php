@@ -22,7 +22,7 @@ define( 'COM_SEXY_POLLING_BASE', JPATH_ROOT.DIRECTORY_SEPARATOR.COM_SEXY_POLLING
 define( 'COM_SEXY_POLLING_BASEURL', JURI::root().str_replace( DIRECTORY_SEPARATOR, '/', COM_SEXY_POLLING_DIR ));
 
 // Require the base controller
-require_once JPATH_COMPONENT.DS.'helpers'.DS.'helper.php';
+require_once JPATH_COMPONENT.DIRECTORY_SEPARATOR.'helpers'.DIRECTORY_SEPARATOR.'helper.php';
 
 // Initialize the controller
 $controller	= JControllerLegacy::getInstance('SexyPolling');

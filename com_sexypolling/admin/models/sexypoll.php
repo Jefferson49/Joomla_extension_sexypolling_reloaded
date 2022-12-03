@@ -114,7 +114,7 @@ class SexypollingModelSexypoll extends JModelAdmin
 					' SET featured = '.(int) $value.
 					' WHERE id IN ('.implode(',', $pks).')'
 			);
-			if (!$db->query()) {
+			if (!$db->execute()) {
 				throw new Exception($db->getErrorMsg());
 			}
 	

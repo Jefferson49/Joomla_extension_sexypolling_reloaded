@@ -122,7 +122,7 @@ class SexypollingModelSexyAnswer extends JModelAdmin
 					' SET featured = '.(int) $value.
 					' WHERE id IN ('.implode(',', $pks).')'
 			);
-			if (!$db->query()) {
+			if (!$db->execute()) {
 				throw new Exception($db->getErrorMsg());
 			}
 	
@@ -193,7 +193,7 @@ class SexypollingModelSexyAnswer extends JModelAdmin
 				$sql = 'DELETE FROM `#__sexy_votes` '
 				. ' WHERE `id_answer` = '.$id;
 				$this->_db->setQuery($sql);
-				$this->_db->query();
+				$this->_db->execute();
 			}
 			//add votes
 			$res = (int)$_REQUEST['jform']['insert_votes'];
@@ -205,7 +205,7 @@ class SexypollingModelSexyAnswer extends JModelAdmin
 						$query .= ',';
 				}
 				$this->_db->setQuery($query);
-				$this->_db->query();
+				$this->_db->execute();
 			}
 	
 			if (!$this->_db->updateObject( '#__sexy_answers', $req, 'id' )) {

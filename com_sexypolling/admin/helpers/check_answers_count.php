@@ -27,7 +27,7 @@ $db = JFactory::getDBO();
 $id = (int)$_POST['id'];
 $query = "SELECT COUNT(id) as count_answers FROM #__sexy_answers WHERE id_poll = '$id' GROUP By id_poll";
 $db->setQuery($query);
-$db->query();
+$db->execute();
 $row = $db->loadAssoc();
 
 echo $count = $row["count_answers"];

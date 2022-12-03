@@ -48,7 +48,7 @@ else
 
 $custom_styles = array();
 $db->setQuery($query);
-$db->query();
+$db->execute();
 $num_rows = $db->getNumRows();
 $row = $db->loadAssoc();
 

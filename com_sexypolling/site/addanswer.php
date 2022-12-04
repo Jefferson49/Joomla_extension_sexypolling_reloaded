@@ -30,6 +30,7 @@ require_once ( JPATH_BASE .DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'f
 
 $app = JFactory::getApplication('site');
 $app->initialise();
+$post = JFactory::getApplication()->input->post;
 
 $db = JFactory::getDBO();
 
@@ -55,10 +56,10 @@ else { $REMOTE_ADDR = 'Unknown'; }
 $ip = $REMOTE_ADDR;
 
 //get post data
-$polling_id = (int)$_POST['polling_id'];
-$autopublish = (int)$_POST['autopublish'];
-$writeinto = (int)$_POST['writeinto'];
-$answer = $db->escape(strip_tags($_POST['answer']));
+$polling_id = $post->getInt('polling_id', 0,);
+$autopublish = $post->getInt('autopublish', 0);
+$writeinto = $post->getInt('writeinto', 0);
+$answer = $db->escape(strip_tags($post->get('answer')));
 $answer = preg_replace('/sexydoublequestionmark/','??',$answer);
 
 //get poll options
@@ -74,10 +75,10 @@ if (!JRequest::checkToken() && $poll_options["checktoken"] == 1) {
     exit();
 }
 
-$countryname = (!isset($_POST['country_name']) || $_POST['country_name'] == '' || $_POST['country_name'] == '-' ) ? 'Unknown' : JRequest::getVar('country_name', 'Unknown', 'POST');
-$cityname = (!isset($_POST['city_name']) || $_POST['city_name'] == '' || $_POST['city_name'] == '-' ) ? 'Unknown' : JRequest::getVar('city_name', 'Unknown', 'POST');
-$regionname = (!isset($_POST['region_name']) || $_POST['region_name'] == '' || $_POST['region_name'] == '-' ) ? 'Unknown' : JRequest::getVar('region_name', 'Unknown', 'POST');
-$countrycode = (!isset($_POST['country_code']) || $_POST['country_code'] == '' || $_POST['country_code'] == '-' ) ? 'Unknown' : JRequest::getVar('country_code', 'Unknown', 'POST');
+$countryname = $post->get('country_name', 'Unknown');
+$cityname = $post->get('city_name', 'Unknown');
+$regionname = $post->get('region_name', 'Unknown');
+$countrycode = $post->get('country_code', 'Unknown');
 
 //check ipcount security
 $query = "SELECT COUNT( sv.ip )

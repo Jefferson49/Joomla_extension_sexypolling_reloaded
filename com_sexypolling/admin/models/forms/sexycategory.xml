@@ -9,8 +9,8 @@
 			<option value="2">JARCHIVED</option>
 			<option value="-2">JTRASHED</option>
 		</field>
-		<field name="publish_up" type="hidden"/>
-		<field name="publish_down" type="hidden"/>
-		<field name="ordering" type="hidden"/>
+		<field name="publish_up" type="hidden" default="0000-00-00 00:00:00"/>
+		<field name="publish_down" type="hidden" default="0000-00-00 00:00:00"/>
+		<field name="ordering" type="hidden" default="0"/>
 	</fieldset>
 </form>

@@ -90,9 +90,11 @@ class SexypollingModelSexyTemplate extends JModelAdmin
 		$input = JFactory::getApplication()->input;
 
 		$id = $input->getInt('id', 0);
+		$template_name = htmlspecialchars($input->get('name'), ENT_QUOTES);
 		$id_template = $input->getInt('id_template', 0);
 		$published = $input->getInt('published', 0);
-		$template_name = htmlspecialchars($input->get('name'), ENT_QUOTES);
+		$publish_up = $input->getInt('publish_up', '0000-00-00 00:00:00');
+		$publish_down = $input->getInt('publish_up', '0000-00-00 00:00:00');
 			
 		//if id ==0, we add the record
 		if($id == 0) {
@@ -102,13 +104,13 @@ class SexypollingModelSexyTemplate extends JModelAdmin
 			$this->_db->setQuery( $query );
 			$tmp = $this->_db->loadObject();
 	
-	
-	
 			$new_template = new JObject();
 			$new_template->id = NULL;
 			$new_template->name = $template_name;
-			$new_template->published = $published;
 			$new_template->styles = $tmp->styles;
+			$new_template->published = $published;
+			$new_template->publish_up = $publish_up;
+			$new_template->publish_down = $publish_down;
 	
 			if (!$this->_db->insertObject( '#__sexy_templates', $new_template, 'id' ))
 				return false;

@@ -80,6 +80,15 @@ JHtml::_('formbehavior.chosen', 'select');
 								<div class="controls"><?php echo $field->input;?></div>
 								<div style="clear: both;height: 8px;">&nbsp;</div>
 							<?php endforeach; ?>
+							<div class="controls">  
+								<input type="hidden" name="jform[publish_up]" id="jform_publish_up" value="0000-00-00 00:00:00" class="form-control inputbox required" size="40" aria-describedby="jform_publish_up-desc" required="">
+							</div>
+							<div class="controls">  
+								<input type="hidden" name="jform[publish_down]" id="jform_publish_down" value="0000-00-00 00:00:00" class="form-control inputbox required" size="40" aria-describedby="jform_publish_down-desc" required="">
+							</div>
+							<div class="controls">  
+								<input type="hidden" name="jform[ordering]" id="jform_ordering" value="0" class="form-control inputbox required" size="40" aria-describedby="jform_ordering-desc" required="">
+							</div>								
 						</div>
 					</div>
 				</div>

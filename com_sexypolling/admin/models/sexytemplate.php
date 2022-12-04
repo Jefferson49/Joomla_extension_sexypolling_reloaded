@@ -93,8 +93,8 @@ class SexypollingModelSexyTemplate extends JModelAdmin
 		$template_name = htmlspecialchars($input->get('name'), ENT_QUOTES);
 		$id_template = $input->getInt('id_template', 0);
 		$published = $input->getInt('published', 0);
-		$publish_up = $input->getInt('publish_up', '0000-00-00 00:00:00');
-		$publish_down = $input->getInt('publish_up', '0000-00-00 00:00:00');
+		$publish_up = $input->get('publish_up', '0000-00-00 00:00:00');
+		$publish_down = $input->get('publish_up', '0000-00-00 00:00:00');
 			
 		//if id ==0, we add the record
 		if($id == 0) {

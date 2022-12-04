@@ -87,11 +87,11 @@ class SexypollingModelSexyTemplate extends JModelAdmin
 	 */
 	public function store()
 	{
-		$input = JFactory::getApplication()->input
+		$input = JFactory::getApplication()->input;
 
 		$id = $input->getInt('id', 0);
 		$id_template = $input->getInt('id_template', 0);
-		$published = $input->getInt('published', 0;
+		$published = $input->getInt('published', 0);
 		$template_name = htmlspecialchars($input->get('name'), ENT_QUOTES);
 			
 		//if id ==0, we add the record

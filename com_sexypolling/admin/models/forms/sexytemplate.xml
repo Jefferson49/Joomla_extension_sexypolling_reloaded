@@ -10,5 +10,7 @@
 			<option value="2">JARCHIVED</option>
 			<option value="-2">JTRASHED</option>
 		</field>
+		<field name="publish_up" type="hidden"/>
+		<field name="publish_down" type="hidden"/>
 	</fieldset>
 </form>

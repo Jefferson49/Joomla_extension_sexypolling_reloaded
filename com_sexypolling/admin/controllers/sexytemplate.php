@@ -27,13 +27,22 @@ class SexyPollingControllerSexyTemplate extends JControllerForm
 	protected $view_item = 'aaa';
 	public function edit($key = null, $urlVar = null)
 	{
-		$id = $_POST['cid'][0];
-		$id = $id == 0 ? (int)$_GET['id'] : $id;
+		$cid  = (array) JFactory::getApplication()->input->post->get('cid', array(), 'int');
+
+		if (!empty($cid)) {
+			$id = $cid[0];
+		}
+		else {
+			$id = 0;			
+		}
+		
+		$id = $id == 0 ? JFactory::getApplication()->input->get->getInt('id',0) : $id;
 		JFactory::getApplication()->getInput()->set( 'view', 'sexytemplate' );
 		JFactory::getApplication()->getInput()->set( 'layout', 'form'  );
 		JFactory::getApplication()->getInput()->set('hidemainmenu', 1);
 		
 		$link = 'index.php?option=com_sexypolling&view=sexytemplate&layout=form&id='.$id;
+		$msg = '';
 		$this->setRedirect($link, $msg);
 		//parent::display();
 	}
@@ -50,13 +59,21 @@ class SexyPollingControllerSexyTemplate extends JControllerForm
 	
 	public function save($key = null, $urlVar = null)
 	{
-		$id = $_POST['cid'][0];
-		$id = $id == 0 ? (int)$_GET['id'] : $id;
+		$cid  = (array) JFactory::getApplication()->input->post->get('cid', array(), 'int');
+
+		if (!empty($cid)) {
+			$id = $cid[0];
+		}
+		else {
+			$id = 0;			
+		}
+
+		$id = $id == 0 ? JFactory::getApplication()->input->get->getInt('id',0) : $id;
 		
-		$task = $_REQUEST['task'];
+		$task = JFactory::getApplication()->input->getCmd('task');
 		$model = $this->getModel('sexytemplate');
 	
-		if ($model->store($post)) {
+		if ($model->store()) {
 			$msg = JText::_( 'COM_SEXYPOLLING_TEMPLATE_SAVED' );
 		} else {
 			$msg = JText::_( 'COM_SEXYPOLLING_ERROR_SAVING_TEMPLATE' );

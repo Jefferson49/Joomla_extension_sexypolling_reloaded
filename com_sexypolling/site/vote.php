@@ -41,6 +41,7 @@ $container->alias(\Joomla\Session\SessionInterface::class, 'session.web.site');
 
 // Get the application.
 $app = $container->get(\Joomla\CMS\Application\SiteApplication::class);
+$post = JFactory::getApplication()->input->post;
 
 $db = JFactory::getDBO();
 
@@ -65,10 +66,10 @@ elseif(isset($_SERVER['REMOTE_ADDR'])) { $REMOTE_ADDR = $_SERVER['REMOTE_ADDR'];
 else { $REMOTE_ADDR = 'Unknown'; }
 $ip = $REMOTE_ADDR;
 
-$countryname = (!isset($_POST['country_name']) || $_POST['country_name'] == '' || $_POST['country_name'] == '-' ) ? 'Unknown' : JFactory::getApplication()->getInput()->get('country_name', 'Unknown', 'POST');
-$cityname = (!isset($_POST['city_name']) || $_POST['city_name'] == '' || $_POST['city_name'] == '-' ) ? 'Unknown' : JFactory::getApplication()->getInput()->get('city_name', 'Unknown', 'POST');
-$regionname = (!isset($_POST['region_name']) || $_POST['region_name'] == '' || $_POST['region_name'] == '-' ) ? 'Unknown' : JFactory::getApplication()->getInput()->get('region_name', 'Unknown', 'POST');
-$countrycode = (!isset($_POST['country_code']) || $_POST['country_code'] == '' || $_POST['country_code'] == '-' ) ? 'Unknown' : JFactory::getApplication()->getInput()->get('country_code', 'Unknown', 'POST');
+$countryname = $post->get('country_name', 'Unknown');
+$cityname = $post->get('city_name', 'Unknown');
+$regionname = $post->get('region_name', 'Unknown');
+$countrycode = $post->get('country_code', 'Unknown');
 
 $ip = $db->escape($ip);
 $countryname = $db->escape($countryname);
@@ -76,13 +77,13 @@ $cityname = $db->escape($cityname);
 $regionname = $db->escape($regionname);
 $countrycode = $db->escape($countrycode);
 
-$answer_id_array = isset($_POST['answer_id']) ? $_POST['answer_id'] : 0;
-$adittional_answers = isset($_POST['answers']) ? $_POST['answers'] : 0;
-$polling_id = isset($_POST['polling_id']) ? (int)$_POST['polling_id'] : 0;
-$module_id = isset($_POST['module_id']) ? (int)$_POST['module_id'] : 0;
-$mode = isset($_POST['mode']) ? $_POST['mode'] : '';
-$min_date_sended = isset($_POST['min_date']) ? $_POST['min_date'].' 00:00:00' : '';
-$max_date_sended = isset($_POST['max_date']) ? $_POST['max_date'].' 23:59:59' : '';
+$answer_id_array = $post->get('answer_id', 0);
+$adittional_answers = $post->get('answers', 0);
+$polling_id = $post->getInt('polling_id', 0,);
+$module_id = $post->getInt('module_id', 0);
+$mode = $post->get('mode', '');
+$min_date_sended = $post->get('min_date', '') != '' ? $post->get('min_date', '').' 00:00:00' : '';
+$max_date_sended = $post->get('max_date', '', 'POST') != '' ? $post->get('max_date', '').' 23:59:59' : '';
 
 //escape dates sended to avoid sql injections
 $min_date_sended = $db->escape($min_date_sended);
@@ -181,7 +182,7 @@ if($poll_options["votechecks"] == 1) {
     }
 }
 
-$use_current = isset($_POST['curr_date']) ? $_POST['curr_date'] : '';
+$use_current = $post->get('curr_date', '');
 if($use_current == 'yes') {
     $max_date_sended = date('Y-m-d',strtotime("now")).' 23:59:59';
 }

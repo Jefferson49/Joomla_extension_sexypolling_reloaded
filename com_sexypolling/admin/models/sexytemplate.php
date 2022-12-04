@@ -45,9 +45,8 @@ class SexypollingModelSexyTemplate extends JModelAdmin
 	 *
 	 */
 	public function getStyles() {
-		if(isset($_GET['id']))
-			$id = (int)$_GET['id'];
-		$db		= $this->getDbo();
+		$id = JFactory::getApplication()->input->get->getInt('id', 0);
+		$db = $this->getDbo();
 		$sql = "SELECT `styles` FROM `#__sexy_templates` WHERE `id` = ".$id;
 		$db->setQuery($sql);
 		return $styles = $db->loadResult();
@@ -88,10 +87,12 @@ class SexypollingModelSexyTemplate extends JModelAdmin
 	 */
 	public function store()
 	{
-		$id = (int)$_REQUEST['id'];
-		$id_template = (int)$_REQUEST['id_template'];
-		$published = (int)$_REQUEST['published'];
-		$template_name = htmlspecialchars($_REQUEST['name'], ENT_QUOTES);
+		$input = JFactory::getApplication()->input
+
+		$id = $input->getInt('id', 0);
+		$id_template = $input->getInt('id_template', 0);
+		$published = $input->getInt('published', 0;
+		$template_name = htmlspecialchars($input->get('name'), ENT_QUOTES);
 			
 		//if id ==0, we add the record
 		if($id == 0) {
@@ -116,7 +117,7 @@ class SexypollingModelSexyTemplate extends JModelAdmin
 			$new_template = new JObject();
 			$new_template->id = $id;
 			$new_template->name = $template_name;
-			$styles = $_REQUEST['styles'];
+			$styles = $input->get('styles');
 			$styles_formated = '';
 			$ind = 0;
 			foreach($styles as $k => $val) {

@@ -24,9 +24,20 @@ header('Content-Type: text/css');
 require_once ( JPATH_BASE .DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'defines.php' );
 require_once ( JPATH_BASE .DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'framework.php' );
 
+error_reporting(0);
+
+// Boot the DI container.
+$container = \Joomla\CMS\Factory::getContainer();
+
+// Alias the session service key to the web session service.
+$container->alias(\Joomla\Session\SessionInterface::class, 'session.web.site');
+
+// Get the application.
+$app = $container->get(\Joomla\CMS\Application\SiteApplication::class);
+
 //conects to datababse
 $db = JFactory::getDBO();
-$get = JFactory::getApplication()->input->get;
+$get = $app->input->get;
 
 $category_id = $get->getInt('id_category', 0);
 $poll_id = $get->getInt('id_poll', 0);

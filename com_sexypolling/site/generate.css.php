@@ -26,11 +26,10 @@ require_once ( JPATH_BASE .DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'f
 
 //conects to datababse
 $db = JFactory::getDBO();
-$get = JFactory::getApplication()->input->get;
 
-$category_id = $get->getInt('id_category', 0);
-$poll_id = $get->getInt('id_poll', 0);
-$module_id = $get->getInt('module_id', 0);
+$category_id = isset($_GET['id_category']) ? (int)$_GET['id_category'] : 0;
+$poll_id = isset($_GET['id_poll']) ? (int)$_GET['id_poll'] : 0;
+$module_id = isset($_GET['module_id']) ? (int)$_GET['module_id'] : 0;
 
 $query = 
 						'SELECT '.

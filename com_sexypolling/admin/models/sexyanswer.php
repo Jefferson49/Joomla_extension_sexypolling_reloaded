@@ -141,27 +141,27 @@ class SexypollingModelSexyAnswer extends JModelAdmin
 	{
 		$date = new JDate();
 		$id = JRequest::getInt('id',0);
-	
+		$jform = JFactory::getApplication()->input->request->get('jform');
 	
 		$req = new JObject();
-		$req->name =  $_REQUEST['jform']['name'];
-		$req->show_name =  (int) $_REQUEST['jform']['show_name'];
-		$req->embed =  $_REQUEST['jform']['embed'];
-		$req->img_name =  $_REQUEST['jform']['img_name'];
-		$req->img_url =  $_REQUEST['jform']['img_url'];
+		$req->name =  $jform['name'];
+		$req->show_name =  (int) $jform['show_name'];
+		$req->embed =  $jform['embed'];
+		$req->img_name =  $jform['img_name'];
+		$req->img_url =  $jform['img_url'];
 	
-		$req->img_width = (int)$_REQUEST['jform']['img_width'];
+		$req->img_width = (int) $jform['img_width'];
 		$req->img_width = $req->img_width == 0 ? 10 : $req->img_width;
-		$req->id_poll = (int)$_REQUEST['jform']['id_poll'];
-		$req->published = (int)$_REQUEST['jform']['published'];
+		$req->id_poll = (int) $jform['id_poll'];
+		$req->published = (int) $jform['published'];
 	
-		if($_REQUEST['jform']['img_name'] != '') {
+		if($jform['img_name'] != '') {
 				
 			$img_width = $req->img_width;
 			$img_height = 0;
 			$img_crop = false;
 			//resize image
-			$this->resize_image($_REQUEST['jform']['img_name'],$img_width,$img_height,$img_crop);
+			$this->resize_image($jform['img_name'],$img_width,$img_height,$img_crop);
 		}
 		
 		if($req->id_poll == 0 || $req->name == "") {
@@ -181,7 +181,7 @@ class SexypollingModelSexyAnswer extends JModelAdmin
 		else { //else update the record
 			$req->id = $id;
 			//reset votes
-			$res = (int)$_REQUEST['jform']['reset_votes'];
+			$res = (int) $jform['jform']['reset_votes'];
 			if($res == 1) {
 				$sql = 'DELETE FROM `#__sexy_votes` '
 				. ' WHERE `id_answer` = '.$id;
@@ -189,7 +189,7 @@ class SexypollingModelSexyAnswer extends JModelAdmin
 				$this->_db->query();
 			}
 			//add votes
-			$res = (int)$_REQUEST['jform']['insert_votes'];
+			$res = (int) $jform['jform']['insert_votes'];
 			if($res > 0) {
 				$query = 'INSERT INTO `#__sexy_votes` (`id_answer`, `ip`, `date`) VALUES ';
 				for($i = 0; $i < $res; $i ++) {
@@ -256,7 +256,7 @@ class SexypollingModelSexyAnswer extends JModelAdmin
 		}
 	
 		// Strip the possible trailing slash off the document root
-		//$docRoot	= preg_replace('/\/$/', '', $_SERVER['DOCUMENT_ROOT']);
+		//$docRoot	= preg_replace('/\/$/', '', JFactory::getApplication()->input->server->get('DOCUMENT_ROOT'));
 		$docRoot = '';
 	
 		$size	= GetImageSize($image);

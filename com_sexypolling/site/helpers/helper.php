@@ -140,10 +140,12 @@ class SexypollingHelper
             $this->add_scripts();
 
         //get ip address
+		$server = JFactory::getApplication()->input->server;
+		
         $REMOTE_ADDR = null;
-        if(isset($_SERVER['HTTP_X_FORWARDED_FOR'])) { list($REMOTE_ADDR) = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']); }
-        elseif(isset($_SERVER['HTTP_X_REAL_IP'])) { $REMOTE_ADDR = $_SERVER['HTTP_X_REAL_IP']; }
-        elseif(isset($_SERVER['REMOTE_ADDR'])) { $REMOTE_ADDR = $_SERVER['REMOTE_ADDR']; }
+        if($server->get('HTTP_X_FORWARDED_FOR') !== null) { list($REMOTE_ADDR) = explode(',', $server->get('HTTP_X_FORWARDED_FOR')); }
+        elseif($server->get('HTTP_X_REAL_IP') !== null) { $REMOTE_ADDR = $server->get('HTTP_X_REAL_IP'); }
+        elseif($server->get('REMOTE_ADDR') !== null) { $REMOTE_ADDR = $server->get('REMOTE_ADDR'); }
         else { $REMOTE_ADDR = 'Unknown'; }
         $sexyip = $REMOTE_ADDR;
 
@@ -313,9 +315,9 @@ class SexypollingHelper
                             $voted_ids[$poll_index] = $voting_period - $hours_diff;
                     }
 
-                    //check cookie
-                    if (isset($_COOKIE["sexy_poll_$poll_index"])) {
-                        $datevoted = $_COOKIE["sexy_poll_$poll_index"];
+					//check cookie		
+					if (JFactory::getApplication()->input->cookie->get('sexy_poll_$poll_index') !== null) {
+                        $datevoted = JFactory::getApplication()->input->cookie->get('sexy_poll_$poll_index');
                         $hours_diff = ($date_now - $datevoted) / 3600;
                         if(!in_array($poll_index,array_keys($voted_ids)))
                             $voted_ids[$poll_index] = $voting_period - $hours_diff;

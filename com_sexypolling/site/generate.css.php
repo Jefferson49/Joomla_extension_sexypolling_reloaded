@@ -34,10 +34,10 @@ $container->alias(\Joomla\Session\SessionInterface::class, 'session.web.site');
 
 // Get the application.
 $app = $container->get(\Joomla\CMS\Application\SiteApplication::class);
+$get = $app->input->get;
 
 //conects to datababse
 $db = JFactory::getDBO();
-$get = $app->input->get;
 
 $category_id = $get->getInt('id_category', 0);
 $poll_id = $get->getInt('id_poll', 0);

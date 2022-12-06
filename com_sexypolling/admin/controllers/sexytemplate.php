@@ -27,9 +27,9 @@ class SexyPollingControllerSexyTemplate extends JControllerForm
 	protected $view_item = 'aaa';
 	public function edit($key = null, $urlVar = null)
 	{
-		$cid  = (array) JFactory::getApplication()->input->post->get('cid', array(), 'int');
+		$cid  = JFactory::getApplication()->input->post->get('cid');
 
-		if (!empty($cid)) {
+		if ($cid !== null) {
 			$id = $cid[0];
 		}
 		else {
@@ -59,9 +59,9 @@ class SexyPollingControllerSexyTemplate extends JControllerForm
 	
 	public function save($key = null, $urlVar = null)
 	{
-		$cid  = (array) JFactory::getApplication()->input->post->get('cid', array(), 'int');
+		$cid  = JFactory::getApplication()->input->post->get('cid');
 
-		if (!empty($cid)) {
+		if ($cid !== null) {
 			$id = $cid[0];
 		}
 		else {

@@ -44,6 +44,7 @@ $container->alias(\Joomla\Session\SessionInterface::class, 'session.web.site');
 // Get the application.
 $app = $container->get(\Joomla\CMS\Application\SiteApplication::class);
 $post = JFactory::getApplication()->input->post;
+$server = JFactory::getApplication()->input->server;
 
 $db = JFactory::getDBO();
 
@@ -62,9 +63,9 @@ $datenow_sql = date("Y-m-d", $date_now);
 
 //get ip address
 $REMOTE_ADDR = null;
-if(isset($_SERVER['HTTP_X_FORWARDED_FOR'])) { list($REMOTE_ADDR) = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']); }
-elseif(isset($_SERVER['HTTP_X_REAL_IP'])) { $REMOTE_ADDR = $_SERVER['HTTP_X_REAL_IP']; }
-elseif(isset($_SERVER['REMOTE_ADDR'])) { $REMOTE_ADDR = $_SERVER['REMOTE_ADDR']; }
+if($server->get('HTTP_X_FORWARDED_FOR') !== null) { list($REMOTE_ADDR) = explode(',', $server->get('HTTP_X_FORWARDED_FOR')); }
+elseif($server->get('HTTP_X_REAL_IP') !== null) { $REMOTE_ADDR = $server->get('HTTP_X_REAL_IP'); }
+elseif($server->get('REMOTE_ADDR') !== null) { $REMOTE_ADDR = $server->get('REMOTE_ADDR'); }
 else { $REMOTE_ADDR = 'Unknown'; }
 $ip = $REMOTE_ADDR;
 
@@ -174,9 +175,9 @@ if($poll_options["votechecks"] == 1) {
                 $voting_enabled = false;
             }
         }
-
-        //check cookie
-        if (isset($_COOKIE["sexy_poll_$polling_id"])) {
+		
+        //check cookie		
+		if (JFactory::getApplication()->input->cookie->get('sexy_poll_$polling_id') !== null) {
             $voting_enabled = false;
         }
     }

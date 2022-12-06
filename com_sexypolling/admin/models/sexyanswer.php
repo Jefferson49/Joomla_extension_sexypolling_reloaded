@@ -161,7 +161,11 @@ class SexypollingModelSexyAnswer extends JModelAdmin
 		$req->img_width = $req->img_width == 0 ? 10 : $req->img_width;
 		$req->id_poll = (int) $jform['id_poll'];
 		$req->published = (int) $jform['published'];
-	
+		$req->id_user =  $jform['id_user'];
+		$req->publish_up =  $jform['publish_up'];
+		$req->publish_down =  $jform['publish_down'];
+		$req->ordering =  $jform['ordering'];
+
 		if($jform['img_name'] != '') {
 				
 			$img_width = $req->img_width;

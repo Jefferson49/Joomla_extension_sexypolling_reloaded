@@ -84,7 +84,7 @@ $ipcount = $poll_options["ipcount"];
 $voting_period = $poll_options["voting_period"];
 
 //check token
-if (!JFactory::getApplication()->getInput()->checkToken() && $poll_options["checktoken"] == 1) {
+if (!JFactory::getApplication()->input->checkToken() && $poll_options["checktoken"] == 1) {
     echo '[{"invalid":"invalid_token"}]';
     exit();
 }

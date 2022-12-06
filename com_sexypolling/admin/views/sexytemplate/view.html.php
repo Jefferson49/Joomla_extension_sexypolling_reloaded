@@ -61,7 +61,7 @@ class SexypollingViewSexytemplate extends JViewLegacy
 	 */
 	protected function addToolbar()
 	{
-		JFactory::getApplication()->getInput()->set('hidemainmenu', true);
+		JFactory::getApplication()->input->set('hidemainmenu', true);
 
 		$user		= JFactory::getApplication()->getIdentity();
 		$userId		= $user->get('id');

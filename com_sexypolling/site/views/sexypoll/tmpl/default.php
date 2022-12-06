@@ -20,7 +20,7 @@
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
-$id_15 = JFactory::getApplication()->getInput()->get('poll',  0, '', 'int');
+$id_15 = JFactory::getApplication()->input->get('poll',  0, '', 'int');
 $sp_class = new SexypollingHelper;
 $sp_class->id_poll = $id_15;
 $sp_class->id_category = 0;

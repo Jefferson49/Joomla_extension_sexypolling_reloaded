@@ -61,7 +61,7 @@ class SexypollingModelSexyTemplates extends JModelList {
 		$app = JFactory::getApplication();
 
 		// Adjust the context to support modal layouts.
-		if ($layout = JFactory::getApplication()->getInput()->get('layout')) {
+		if ($layout = JFactory::getApplication()->input->get('layout')) {
 			$this->context .= '.'.$layout;
 		}
 

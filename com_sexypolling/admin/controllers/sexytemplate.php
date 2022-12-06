@@ -37,9 +37,9 @@ class SexyPollingControllerSexyTemplate extends JControllerForm
 		}
 		
 		$id = $id == 0 ? JFactory::getApplication()->input->get->getInt('id',0) : $id;
-		JFactory::getApplication()->getInput()->set( 'view', 'sexytemplate' );
-		JFactory::getApplication()->getInput()->set( 'layout', 'form'  );
-		JFactory::getApplication()->getInput()->set('hidemainmenu', 1);
+		JFactory::getApplication()->input->set( 'view', 'sexytemplate' );
+		JFactory::getApplication()->input->set( 'layout', 'form'  );
+		JFactory::getApplication()->input->set('hidemainmenu', 1);
 		
 		$link = 'index.php?option=com_sexypolling&view=sexytemplate&layout=form&id='.$id;
 		$msg = '';
@@ -50,9 +50,9 @@ class SexyPollingControllerSexyTemplate extends JControllerForm
 	
 	public function add()
 	{
-		JFactory::getApplication()->getInput()->set( 'view', 'sexytemplate' );
-		JFactory::getApplication()->getInput()->set( 'layout', 'add'  );
-		JFactory::getApplication()->getInput()->set('hidemainmenu', 1);
+		JFactory::getApplication()->input->set( 'view', 'sexytemplate' );
+		JFactory::getApplication()->input->set( 'layout', 'add'  );
+		JFactory::getApplication()->input->set('hidemainmenu', 1);
 	
 		parent::display();
 	}

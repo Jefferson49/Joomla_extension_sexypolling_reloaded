@@ -57,9 +57,9 @@ else { $REMOTE_ADDR = 'Unknown'; }
 $ip = $REMOTE_ADDR;
 
 //get post data
-$polling_id = $post->getInt('polling_id', 0,);
-$autopublish = $post->getInt('autopublish', 0);
-$writeinto = $post->getInt('writeinto', 0);
+$polling_id = $post->getInt('polling_id');
+$autopublish = $post->getInt('autopublish');
+$writeinto = $post->getInt('writeinto');
 $answer = $db->escape(strip_tags($post->get('answer')));
 $answer = preg_replace('/sexydoublequestionmark/','??',$answer);
 

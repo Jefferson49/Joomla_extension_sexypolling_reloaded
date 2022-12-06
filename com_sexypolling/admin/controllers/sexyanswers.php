@@ -46,7 +46,7 @@ class SexyPollingControllerSexyAnswers extends JControllerAdmin
 
 		// Initialise variables.
 		$user	= JFactory::getUser();
-		$ids	= JRequest::getVar('cid');
+		$ids	= JRequest::getVar('cid', array(), '', 'array');
 		$values	= array('featured' => 1, 'unfeatured' => 0);
 		$task	= $this->getTask();
 		$value	= JArrayHelper::getValue($values, $task, 0, 'int');
@@ -104,8 +104,8 @@ class SexyPollingControllerSexyAnswers extends JControllerAdmin
 	public function saveOrderAjax()
 	{
 		// Get the input
-		$pks   = $this->input->post->get('cid');
-		$order = $this->input->post->get('order');
+		$pks   = $this->input->post->get('cid', array(), 'array');
+		$order = $this->input->post->get('order', array(), 'array');
 		
 		// Sanitize the input
 		JArrayHelper::toInteger($pks);

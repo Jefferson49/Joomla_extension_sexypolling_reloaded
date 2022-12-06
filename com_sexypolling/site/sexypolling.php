@@ -29,5 +29,5 @@ $controller	= JControllerLegacy::getInstance('SexyPolling');
 if(JV == 'j2')
 	$controller->execute( JRequest::getCmd('task'));
 else
-	$controller->execute(JFactory::getApplication()->input->get('task'));
+	$controller->execute(JFactory::getApplication()->input->getCmd('task'));
 $controller->redirect();

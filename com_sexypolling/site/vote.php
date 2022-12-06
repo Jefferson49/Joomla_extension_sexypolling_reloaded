@@ -39,7 +39,6 @@ $post = JFactory::getApplication()->input->post;
 $server = JFactory::getApplication()->input->server;
 $request = JFactory::getApplication()->input->request;
 
-
 $db = JFactory::getDBO();
 
 //get user groups
@@ -79,8 +78,8 @@ $adittional_answers = $post->get('answers', 0);
 $polling_id = $post->getInt('polling_id', 0,);
 $module_id = $post->getInt('module_id', 0);
 $mode = $post->get('mode', '');
-$min_date_sended = $post->get('min_date', '') != '' ? $post->get('min_date', '').' 00:00:00' : '';
-$max_date_sended = $post->get('max_date', '', 'POST') != '' ? $post->get('max_date', '').' 23:59:59' : '';
+$min_date_sended = $post->get('min_date') !== null ? $post->get('min_date', '').' 00:00:00' : '';
+$max_date_sended = $post->get('max_date') !== null ? $post->get('max_date', '').' 23:59:59' : '';
 
 //escape dates sended to avoid sql injections
 $min_date_sended = $db->escape($min_date_sended);

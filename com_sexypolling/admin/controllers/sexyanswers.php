@@ -111,8 +111,8 @@ class SexyPollingControllerSexyAnswers extends JControllerAdmin
 	public function saveOrderAjax()
 	{
 		// Get the input
-		$pks   = $this->input->post->get('cid');
-		$order = $this->input->post->get('order');
+		$pks   = $this->input->post->get('cid', array(), 'array');
+		$order = $this->input->post->get('order', array(), 'array');
 		
 		// Sanitize the input
 		\Joomla\Utilities\ArrayHelper::toInteger($pks);

@@ -41,7 +41,7 @@ class SexyPollingControllerSexyAnswer extends JControllerForm
 			$msg = JText::_( 'COM_SEXYPOLLING_ERROR_SAVING_ANSWER' );
 		}
 	
-		if(JFactory::getApplication()->input->get('task') == 'apply' && $id != 0)
+		if(JFactory::getApplication()->input->getCmd('task') == 'apply' && $id != 0)
 			$link = 'index.php?option=com_sexypolling&view=sexyanswer&layout=edit&id='.$id;
 		else
 			$link = 'index.php?option=com_sexypolling&view=sexyanswers';

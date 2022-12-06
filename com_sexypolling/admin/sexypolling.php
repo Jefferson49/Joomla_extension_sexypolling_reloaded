@@ -42,5 +42,5 @@ $document->addStyleSheet($cssFile, 'text/css', null, array());
 if(JV == 'j2')
 	$controller->execute( JFactory::getApplication()->getInput()->get('task'));
 else
-	$controller->execute(JFactory::getApplication()->getInput()->get('task'));
+	$controller->execute(JFactory::getApplication()->input->getCmd('task'));
 $controller->redirect();

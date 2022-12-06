@@ -18,7 +18,7 @@
  */
 defined('_JEXEC') or die('Restircted access');
 
-class JElementPoll extends JFormFieldList
+class JElementPoll extends JElement
 {
 	var	$_name = 'Title';
 

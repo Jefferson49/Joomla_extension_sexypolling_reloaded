@@ -32,9 +32,7 @@ define( 'COM_SEXY_POLLING_BASEURL', JURI::root().str_replace( DIRECTORY_SEPARATO
 require_once JPATH_COMPONENT . '/helpers/helper.php';
 
 $controller	= JControllerLegacy::getInstance('SexyPolling');
+
 // Perform the Request task
-if(JV == 'j2')
-	$controller->execute( JFactory::getApplication()->getInput()->get('task'));
-else
-	$controller->execute(JFactory::getApplication()->getInput()->get('task'));
+$controller->execute(JFactory::getApplication()->input->getCmd('task'));
 $controller->redirect();

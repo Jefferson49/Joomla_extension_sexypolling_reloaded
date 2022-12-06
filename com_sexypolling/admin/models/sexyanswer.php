@@ -191,8 +191,8 @@ class SexypollingModelSexyAnswer extends JModelAdmin
 		}
 		else { //else update the record
 			$req->id = $id;
-			//reset votes
-			$res = (int) $jform['jform']['reset_votes'];
+			//reset votes 
+			$res = (int) $jform['reset_votes'];
 			if($res == 1) {
 				$sql = 'DELETE FROM `#__sexy_votes` '
 				. ' WHERE `id_answer` = '.$id;
@@ -200,7 +200,7 @@ class SexypollingModelSexyAnswer extends JModelAdmin
 				$this->_db->execute();
 			}
 			//add votes
-			$res = (int) $jform['jform']['insert_votes'];
+			$res = (int) $jform['insert_votes'];
 			if($res > 0) {
 				$query = 'INSERT INTO `#__sexy_votes` (`id_answer`, `ip`, `date`) VALUES ';
 				for($i = 0; $i < $res; $i ++) {

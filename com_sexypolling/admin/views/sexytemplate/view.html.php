@@ -46,7 +46,7 @@ class SexypollingViewSexytemplate extends JViewLegacy
 			return false;
 		}
 		
-		if(JFactory::getApplication()->input->get->getInt('id', 0) != 0) {
+		if(JFactory::getApplication()->input->get->get('id') !== null) {
 			$styles	= $this->get('Styles');
 			$this->styles = $styles;
 		}

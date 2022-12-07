@@ -52,7 +52,7 @@ class SexyPollingControllerSexyAnswers extends JControllerAdmin
 		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 
 		// Initialise variables.
-		$user	= JFactory::getApplication()->getIdentity();
+		$user	= JFactory::getUser();
 		$ids	= JFactory::getApplication()->input->get('cid');
 		$values	= array('featured' => 1, 'unfeatured' => 0);
 		$task	= $this->getTask();

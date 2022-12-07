@@ -26,7 +26,7 @@ defined('_JEXEC') or die('Restircted access');
     JHtml::_('bootstrap.tooltip');
     JHtml::_('behavior.multiselect');
 
-    $user       = JFactory::getApplication()->getIdentity();
+    $user       = JFactory::getUser();
     $userId     = $user->get('id');
     $listOrder  = $this->escape($this->state->get('list.ordering'));
     $listDirn   = $this->escape($this->state->get('list.direction'));
@@ -147,7 +147,7 @@ JHtml::_('behavior.multiselect');
 JHtml::_('dropdown.init');
 JHtml::_('formbehavior.chosen', 'select');
 
-$user       = JFactory::getApplication()->getIdentity();
+$user       = JFactory::getUser();
 $userId     = $user->get('id');
 $listOrder  = $this->escape($this->state->get('list.ordering'));
 $listDirn   = $this->escape($this->state->get('list.direction'));

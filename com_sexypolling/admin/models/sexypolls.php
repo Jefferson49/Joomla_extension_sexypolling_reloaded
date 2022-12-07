@@ -139,7 +139,7 @@ class SexypollingModelSexyPolls extends JModelList {
 		// Create a new query object.
 		$db		= $this->getDbo();
 		$query	= $db->getQuery(true);
-		$user	= JFactory::getApplication()->getIdentity();
+		$user	= JFactory::getUser();
 	
 		// Select the required fields from the table.
 		$query->select(

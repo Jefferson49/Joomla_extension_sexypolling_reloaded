@@ -52,7 +52,7 @@ $db = JFactory::getDBO();
 $levels = array();
 $groups = array();
 
-$user = JFactory::getApplication()->getIdentity();
+$user = JFactory::getUser();
 $user_id = $user->get('id');
 jimport( 'joomla.access.access' );
 $groups = JAccess::getGroupsByUser($user_id);

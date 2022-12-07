@@ -63,7 +63,7 @@ class SexypollingViewSexytemplate extends JViewLegacy
 	{
 		JFactory::getApplication()->input->set('hidemainmenu', true);
 
-		$user		= JFactory::getApplication()->getIdentity();
+		$user		= JFactory::getUser();
 		$userId		= $user->get('id');
 		$isNew		= ($this->item->id == 0);
 		// Since we don't track these assets at the item level, use the category id.

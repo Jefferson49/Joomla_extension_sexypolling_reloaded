@@ -24,16 +24,22 @@ header('Content-Type: text/css');
 require_once ( JPATH_BASE .DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'defines.php' );
 require_once ( JPATH_BASE .DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'framework.php' );
 
-error_reporting(0);
+if(version_compare(JVERSION, '4', 'ge')) {
+	// Boot the DI container.
+	$container = \Joomla\CMS\Factory::getContainer();
 
-// Boot the DI container.
-$container = \Joomla\CMS\Factory::getContainer();
+	// Alias the session service key to the web session service.
+	$container->alias(\Joomla\Session\SessionInterface::class, 'session.web.site');
 
-// Alias the session service key to the web session service.
-$container->alias(\Joomla\Session\SessionInterface::class, 'session.web.site');
+	// Get the application.
+	$app = $container->get(\Joomla\CMS\Application\SiteApplication::class);
+}
+else {
+	// Get the application.
+	$app = JFactory::getApplication('site');
+	$app->initialise();
+}
 
-// Get the application.
-$app = $container->get(\Joomla\CMS\Application\SiteApplication::class);
 $get = $app->input->get;
 
 //conects to datababse

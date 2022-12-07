@@ -24,25 +24,30 @@ defined('_JEXEC') or die('Restircted access');
 /*
  * This is external PHP file and used on AJAX calls, so it has not "defined('_JEXEC') or die;" part.
 */
-error_reporting(0);
-
 define('JPATH_BASE', dirname(dirname(dirname(__FILE__))));
 
-//session_start();
-
+error_reporting(0);
 header('Content-type: application/json');
 
 require_once ( JPATH_BASE .DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'defines.php' );
 require_once ( JPATH_BASE .DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'framework.php' );
 
-// Boot the DI container.
-$container = \Joomla\CMS\Factory::getContainer();
+if(version_compare(JVERSION, '4', 'ge')) {
+	// Boot the DI container.
+	$container = \Joomla\CMS\Factory::getContainer();
 
-// Alias the session service key to the web session service.
-$container->alias(\Joomla\Session\SessionInterface::class, 'session.web.site');
+	// Alias the session service key to the web session service.
+	$container->alias(\Joomla\Session\SessionInterface::class, 'session.web.site');
 
-// Get the application.
-$app = $container->get(\Joomla\CMS\Application\SiteApplication::class);
+	// Get the application.
+	$app = $container->get(\Joomla\CMS\Application\SiteApplication::class);
+}
+else {
+	// Get the application.
+	$app = JFactory::getApplication('site');
+	$app->initialise();
+}
+
 $post = JFactory::getApplication()->input->post;
 $server = JFactory::getApplication()->input->server;
 

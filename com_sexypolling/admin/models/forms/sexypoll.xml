@@ -237,5 +237,16 @@
             <option value="1">JYES</option>
         </field>
         <field name="created" type="calendar" label="COM_SEXYPOLLING_CREATED_LABEL" default="NOW"  description="COM_SEXYPOLLING_CREATED_DESCRIPTION" class="inputbox" size="22" format="%Y-%m-%d %H:%M:%S" filter="user_utc" />
+
+        <field name="id_user" type="hidden" default="0"/>
+        <field name="alias" type="hidden" default=""/>
+		<field name="publish_up" type="hidden" default="0000-00-00 00:00:00"/>
+		<field name="publish_down" type="hidden" default="0000-00-00 00:00:00"/>
+        <field name="checked_out" type="hidden" default="0"/>
+        <field name="checked_out_time" type="hidden" default="0000-00-00 00:00:00"/>
+        <field name="ordering" type="hidden" default="0"/>
+        <field name="language" type="hidden" default=""/>
+        <field name="dateformat" type="hidden" default=""/>
+
     </fieldset>
 </form>

@@ -107,7 +107,7 @@ $db->setQuery( $query );
 $poll_options = $db->loadAssoc();
 $stringdateformat = $poll_options["stringdateformat"];
 $ipcount = $poll_options["ipcount"];
-$voting_period = $poll_options["voting_period"];
+$voting_period = (float) $poll_options["voting_period"];
 
 //check token
 if ($poll_options["checktoken"] == 1 and !JFactory::getApplication()->input) {

@@ -86,7 +86,7 @@ $query = "SELECT * FROM `#__sexy_polls` WHERE `id` = '$polling_id'";
 $db->setQuery( $query );
 $poll_options = $db->loadAssoc();
 $ipcount = $poll_options["ipcount"];
-$voting_period = $poll_options["voting_period"];
+$voting_period = (float) $poll_options["voting_period"];
 
 //check token
 if (!JFactory::getApplication()->input->checkToken() && $poll_options["checktoken"] == 1) {

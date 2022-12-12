@@ -95,9 +95,19 @@ if (!JFactory::getApplication()->input->checkToken() && $poll_options["checktoke
 }
 
 $countryname = $post->get('country_name', 'Unknown');
+$countryname = $countryname === "" ? 'Unknown' : $countryname;
 $cityname = $post->get('city_name', 'Unknown');
+$cityname = $cityname === "" ? 'Unknown' : $cityname;
 $regionname = $post->get('region_name', 'Unknown');
+$regionname = $regionname === "" ? 'Unknown' : $regionname;
 $countrycode = $post->get('country_code', 'Unknown');
+$countrycode = $countrycode === "" ? 'Unknown' : $countrycode;
+
+$ip = $db->escape($ip);
+$countryname = $db->escape($countryname);
+$cityname = $db->escape($cityname);
+$regionname = $db->escape($regionname);
+$countrycode = $db->escape($countrycode);
 
 //check ipcount security
 $query = "SELECT COUNT( sv.ip )

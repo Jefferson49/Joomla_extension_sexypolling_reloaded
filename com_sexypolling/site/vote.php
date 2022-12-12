@@ -75,9 +75,13 @@ else { $REMOTE_ADDR = 'Unknown'; }
 $ip = $REMOTE_ADDR;
 
 $countryname = $post->get('country_name', 'Unknown');
+$countryname = $countryname === "" ? 'Unknown' : $countryname;
 $cityname = $post->get('city_name', 'Unknown');
+$cityname = $cityname === "" ? 'Unknown' : $cityname;
 $regionname = $post->get('region_name', 'Unknown');
+$regionname = $regionname === "" ? 'Unknown' : $regionname;
 $countrycode = $post->get('country_code', 'Unknown');
+$countrycode = $countrycode === "" ? 'Unknown' : $countrycode;
 
 $ip = $db->escape($ip);
 $countryname = $db->escape($countryname);

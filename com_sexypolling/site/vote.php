@@ -241,6 +241,9 @@ if ($mode != 'view' && $mode != 'view_by_date' && is_array($answer_id_array) && 
             $db->execute();
         }
 
+		//update max date sended
+		$max_date_sended = $datenow_sql.' 23:59:59';
+
         //set the cookie
         if($voting_period == 0) {
             $expire = time()+(60*60*24*365*2);//2 years
@@ -248,6 +251,7 @@ if ($mode != 'view' && $mode != 'view_by_date' && is_array($answer_id_array) && 
         }
         else {
             $expire_time = (float)$voting_period*60*60;
+			$time = time();
             $expire = (int)(time()+$expire_time);
             setcookie("sexy_poll_$polling_id", $date_now, $expire, '/');
         }

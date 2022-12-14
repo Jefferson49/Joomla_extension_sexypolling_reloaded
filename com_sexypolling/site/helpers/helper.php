@@ -551,7 +551,6 @@ class SexypollingHelper
                 echo '</select></div>';
                 echo '</div>';
                 echo '</div>';
-                //echo '<div class="sexy_clear">&nbsp;</div><div class="powered_by powered_by_'.$polling_array[0] -> id_template.'">'.JText::_("COM_SEXYPOLLING_POWERED_BY").' <a href="http://2glux.com/projects/sexypolling" target="_blank" rel="nofollow">Sexy Polling</a></div><div class="sexy_clear">&nbsp;</div>';
                 echo '</div></div>';
                 echo '<!-- powered by 2glux.com Sexy Polling -->';
             }

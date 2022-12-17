@@ -36,7 +36,7 @@ $controller	= JControllerLegacy::getInstance('SexyPolling');
 
 $document = JFactory::getApplication()->getDocument();
 $cssFile = JURI::base(true).'/components/com_sexypolling/assets/css/icons_'.JV.'.css';
-$document->addStyleSheet($cssFile, 'text/css', null, array());
+$document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
 
 // Perform the Request task
 if(JV == 'j2')

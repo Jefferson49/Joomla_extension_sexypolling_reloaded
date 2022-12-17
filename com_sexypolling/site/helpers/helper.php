@@ -26,13 +26,13 @@ class SexypollingHelper
         $document = JFactory::getApplication()->getDocument();
 
         $cssFile = JURI::base(true).'/components/com_sexypolling/assets/css/main.css';
-        $document->addStyleSheet($cssFile, 'text/css', null, array());
+        $document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
 
         $cssFile = JURI::base(true).'/components/com_sexypolling/assets/css/sexycss-ui.css';
-        $document->addStyleSheet($cssFile, 'text/css', null, array());
+        $document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
 
         $cssFile = JURI::base(true).'/components/com_sexypolling/assets/css/countdown.css';
-        $document->addStyleSheet($cssFile, 'text/css', null, array());
+        $document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
 
         $jsFile = JURI::base(true).'/components/com_sexypolling/assets/js/sexylib.js';
         $document->addScript($jsFile);
@@ -56,7 +56,7 @@ class SexypollingHelper
             $cssFile = JURI::base(true).'/components/com_sexypolling/generate.css.php?id_poll='.$this->id_poll.'&module_id='.$this->module_id;
         else
             $cssFile = JURI::base(true).'/components/com_sexypolling/generate.css.php?id_category='.$this->id_category.'&module_id='.$this->module_id;
-        $document->addStyleSheet($cssFile, 'text/css', null, array());
+		$document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
     }
 
     private function if_contain($array1,$array2) {

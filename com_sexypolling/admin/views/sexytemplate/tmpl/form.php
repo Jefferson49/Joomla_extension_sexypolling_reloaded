@@ -22,22 +22,22 @@ defined('_JEXEC') or die('Restircted access');
 
 $document = JFactory::getApplication()->getDocument();
 $cssFile = JURI::base(true).'/components/com_sexypolling/assets/css/colorpicker.css';
-$document->addStyleSheet($cssFile, 'text/css', null, array());
+$document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
 
 $cssFile = JURI::base(true).'/components/com_sexypolling/assets/css/layout.css';
-$document->addStyleSheet($cssFile, 'text/css', null, array());
+$document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
 
 $cssFile = JURI::base(true).'/components/com_sexypolling/assets/css/temp_'.JV.'.css';
-$document->addStyleSheet($cssFile, 'text/css', null, array());
+$document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
 
 $cssFile = JURI::base(true).'/components/com_sexypolling/assets/css/jquery-ui-1.7.1.custom.css';
-$document->addStyleSheet($cssFile, 'text/css', null, array());
+$document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
 
 $cssFile = JURI::base(true).'/components/com_sexypolling/assets/css/ui.slider.extras.css';
-$document->addStyleSheet($cssFile, 'text/css', null, array());
+$document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
 
 $cssFile = JURI::base(true).'/components/com_sexypolling/assets/css/main.css';
-$document->addStyleSheet($cssFile, 'text/css', null, array());
+$document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
 
 $jsFile = JURI::base(true).'/components/com_sexypolling/assets/js/sexylib.js';
 $document->addScript($jsFile);

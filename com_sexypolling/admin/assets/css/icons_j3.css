@@ -29,6 +29,9 @@ border-radius: 6px;
 	width: 108px;
 	background-color: #fff;
 }
+.icon a[target=_blank]::before{
+	content: none;
+}
 .icon img {
 	margin-bottom: 4px;
 	border-radius: 3px;

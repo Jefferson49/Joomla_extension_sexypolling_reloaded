@@ -125,7 +125,7 @@ defined('_JEXEC') or die('Restircted access');
             <table style="width: 100%;height: 100%;text-decoration: none;">
                 <tr>
                     <td align="center" valign="middle">
-                        <img src="components/com_sexypolling/assets/images/project.png" /><br />
+                        <img src="components/com_sexypolling/assets/images/icon_homepage.png" /><br />
                         <?php echo JText::_( 'COM_SEXYPOLLING_SUBMENU_PROJECT_HOMEPAGE' ); ?>
                     </td>
                 </tr>

@@ -20,7 +20,7 @@
     + If an update is available, change to the Extensions / Update menu and install the update 
 + **Migrate from existing plugin "Sexy Polling"**
     + During installation, the plugin re-uses existing data from the former Sexy Polling plugin. 
-    + If you want to re-use data, **do not uninstall the former "Sexy Polling" plugin** (because this will delete your existing poll data base). Just install Sexy Polling Reloaded. It will re-use the existing database tables.
+    + If you want to reuse data from the former Sexy Polling plugin, do not uninstall the former Sexy Polling plugin. Instead, just install the Sexy Polling Reloaded plugin. It will re-use the existing database tables.
 
 + Joomla update is supported.
 

@@ -17,15 +17,14 @@
 + **JavaScript Animation Effects**
 
 ## Development and Contributions
-+ The plugin was developed by [2GLux.com](2GLux.com) for Joomla 2.5 and 3 with the original plugin name "Sexy Polling".
-+ After the "Sexy Polling" was removed from the web and the support was canceled, a fork of the plugin was migrated to Joomla 4 with the new plugin name "Sexy Polling Reloaded" by [Jefferson49](https://github.com/Jefferson49)
-+ Further contributions on [Github](https://github.com/Jefferson49/Joomla_sexypolling_reloaded) are welcome!
++ The plugin was originally developed by 2GLux.com for Joomla 2.5 and 3 with the original plugin name "Sexy Polling".
++ After the "Sexy Polling" plugin was removed from the web and the support was canceled, a fork of the plugin was migrated to Joomla 4 with the new plugin name "Sexy Polling Reloaded". The migrated plugin still supports Joomla 3.10.
++ Further contributions (to the project Github repository) are welcome!
 
 ## Languages
 + English, German, Spanish, Italian, French, Russian, Slovenian, Farsi
 
 ## Installation
-+ For new intallation of the polling plugin, simply install the latest released version.
-+ During installation, the plugin re-uses existing data from the former Sexy Polling plugin. 
-+ Do not uninstall the former Sexy Polling plugin (because this might delight your existing poll data base). Just install Sexy Polling Reloaded. It will re-use the existing database tables.
++ For new installation of the plugin, simply install the latest released version.
++ If you want to reuse data from the former Sexy Polling plugin, do not uninstall the former Sexy Polling plugin. Instead, just install the Sexy Polling Reloaded plugin. It will re-use the existing database tables.
 + Joomla update is supported.

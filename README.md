@@ -6,7 +6,7 @@
 + The fork intends to make the functionality of the former "Sexy Polling" plugin available for Joomla 4, because the original plugin is not provided and supported any more
 + A patch was added to fix a reported [security issue](https://www.exploit-db.com/exploits/50927)
 + Some limitations of the former FREE version were removed
-+ The Joomla update system to check and install new releases of the plugin was added
++ Support for the Joomla update system was added to check and install new releases of the plugin
 + **The code was migrated to the Joomla 4.x CMS and module API, while still keeping it usable for Joomla 3.10**
 + The latest release can be used for both Joomla 4.x and Joomla 3.10
 
@@ -18,7 +18,7 @@
     + Prerequesite: first installation has to be installed manually, see above
     + Joomla will automatically check for updates in the administration backend
     + If an update is available, change to the Extensions / Update menu and install the update 
-+ **Migrate from existing plugin "Sexy Polling"**
++ **Migration from the former "Sexy Polling" plugin**
     + During installation, the plugin re-uses existing data from the former Sexy Polling plugin. 
     + If you want to reuse data from the former Sexy Polling plugin, do not uninstall the former Sexy Polling plugin. Instead, just install the Sexy Polling Reloaded plugin. It will re-use the existing database tables.
 

@@ -25,6 +25,6 @@
 + English, German, Spanish, Italian, French, Russian, Slovenian, Farsi
 
 ## Installation
-+ For new installation of the plugin, simply install the latest released version.
-+ If you want to reuse data from the former Sexy Polling plugin, do not uninstall the former Sexy Polling plugin. Instead, just install the Sexy Polling Reloaded plugin. It will re-use the existing database tables.
++ For a new installation of the plugin, simply install the latest released version.
++ If you want to reuse data from the former "Sexy Polling" plugin, do not uninstall the former "Sexy Polling" plugin. Instead, just install the "Sexy Polling Reloaded" plugin. It will re-use the existing database tables.
 + Joomla update is supported.

@@ -1,4 +1,6 @@
-## Functionality
+A plugin for polling with single/multiple voting, adding answers by users, start/end dates, voting periods, and extensive template customizing.
+
+#### Functionality
 + **Plugin for Polling**: Provides polls with pre-defined answers.
 + **Single/Multiple Voting**: Supports single and multiple voting.
 + **Add Answers**: Users can add their own answers. New answers can be shown immediately, or after moderation.
@@ -16,15 +18,15 @@
 + **Hide Results**: Possibility to hide results if user not voted.
 + **JavaScript Animation Effects**
 
-## Development and Contributions
-+ The plugin was originally developed by 2GLux.com for Joomla 2.5 and 3 with the original plugin name "Sexy Polling".
-+ After the "Sexy Polling" plugin was removed from the web and the support was canceled, a fork of the plugin was migrated to Joomla 4 with the new plugin name "Sexy Polling Reloaded". The migrated plugin still supports Joomla 3.10.
+#### Development and Contributions
++ The plugin was originally developed by 2GLux.com for Joomla 2.5 and 3 with the original plugin name *Sexy Polling*.
++ After the *Sexy Polling* plugin was removed from the web and the support was canceled, a fork of the plugin was migrated to Joomla 4 with the new plugin name *Sexy Polling Reloaded*. The migrated plugin still supports Joomla 3.10.
 + Further contributions (to the project Github repository) are welcome!
 
-## Languages
+#### Languages
 + English, German, Spanish, Italian, French, Russian, Slovenian, Farsi
 
-## Installation
+#### Installation
 + For a new installation of the plugin, simply install the latest released version.
-+ If you want to reuse data from the former "Sexy Polling" plugin, do not uninstall the former "Sexy Polling" plugin. Instead, just install the "Sexy Polling Reloaded" plugin. It will re-use the existing database tables.
-+ Joomla update is supported.
++ If you want to reuse data from the former *Sexy Polling* plugin, do not uninstall the former *Sexy Polling* plugin. Instead, just install the *Sexy Polling Reloaded* plugin. It will re-use the existing database tables.
++ Joomla Update System is supported.

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="plugin" group="system" version="3.10" method="upgrade">
     <name>PLG_SEXYPOLLING_NAME</name>
-    <creationDate>2022-12-18</creationDate>
+    <creationDate>2022-12-20</creationDate>
     <author>Jefferson49</author>
     <copyright>Copyright (c) 2010 - 2020 2GLux. All rights reserved. Copyright (c) 2022 Jefferson49</copyright>
  	<authorEmail>sexypolling.reloaded@gmail.com</authorEmail>

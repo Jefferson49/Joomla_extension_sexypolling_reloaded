@@ -11,7 +11,7 @@
  * Extended by:
  * @version v3.0.0
  * @author Jefferson49
- * @link https://github.com/Jefferson49/joomla4_plugin_sexy_polling
+ * @link https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded
  * @copyright Copyright (c) 2022 Jefferson49
  * @license GNU/GPL v3.0
  * 

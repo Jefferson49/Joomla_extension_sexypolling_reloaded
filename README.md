@@ -1,4 +1,4 @@
-[![Latest Release](https://img.shields.io/github/v/release/Jefferson49/joomla_plugin_sexypolling?display_name=tag)](https://github.com/Jefferson49/joomla_plugin_sexypolling/releases/latest)
+[![Latest Release](https://img.shields.io/github/v/release/Jefferson49/Joomla_plugin_sexypolling_reloaded?display_name=tag)](https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/latest)
 [![Joomla major version](https://img.shields.io/badge/joomla-v3.x-green)](https://downloads.joomla.org/cms/joomla3)
 [![Joomla major version](https://img.shields.io/badge/joomla-v4.x-green)](https://downloads.joomla.org/cms/joomla4)
 ## Sexy Polling Reloaded: A Joomla 4.x migration (and Joomla 3.x update) for the [Joomla](https://www.joomla.org/) plugin "Sexy Polling" 
@@ -12,7 +12,7 @@
 
 ##  Installation
 + Manual installation
-    + Go to the [release page](https://github.com/Jefferson49/joomla_plugin_sexypolling/releases) and download the latest release
+    + Go to the [release page](https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases) and download the latest release
     + Install the ZIP package in the Joomla administration backend
 + Joomla update system
     + Prerequesite: first installation has to be installed manually, see above
@@ -27,7 +27,7 @@
 ## Development and Contributions
 + The plugin was developed by [2GLux.com](2GLux.com) for Joomla 2.5 and 3 with the original plugin name "Sexy Polling".
 + After the "Sexy Polling" was removed from the web and the support was canceled, a fork of the plugin was migrated to Joomla 4 with the new plugin name "Sexy Polling Reloaded" by [Jefferson49](https://github.com/Jefferson49)
-+ Further contributions on [Github](https://github.com/Jefferson49/joomla_plugin_sexypolling) are welcome!
++ Further contributions on [Github](https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded) are welcome!
 
 ##  Versions 
 + The latest plugin version was developed and tested with: 
@@ -35,6 +35,6 @@
     + PHP 8.0.23; but should also run with other PHP 8 versions. 7.x versions have not been testetd, but might also be feasible.
 
 ## Issue reporting
-If you experience any bugs [create a new issue](https://github.com/Jefferson49/joomla_plugin_sexypolling/issues) in the Github repository
+If you experience any bugs [create a new issue](https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/issues) in the Github repository
 ##  Github repository  
-https://github.com/Jefferson49/joomla_plugin_sexypolling
+https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded

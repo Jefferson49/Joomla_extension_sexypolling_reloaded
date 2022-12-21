@@ -19,6 +19,8 @@
 	-moz-border-radius: 4px !important;
 	outline: none;
 	border: 1px solid #bbb !important;
+	-webkit-box-sizing: unset;
+    box-sizing: unset;
 }
 .size_input:hover {
 	border: 1px solid #999;

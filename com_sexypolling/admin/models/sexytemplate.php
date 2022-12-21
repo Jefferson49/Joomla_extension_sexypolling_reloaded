@@ -92,7 +92,7 @@ class SexypollingModelSexyTemplate extends JModelAdmin
 		$input = JFactory::getApplication()->input;
 
 		$id = $input->getInt('id');
-		$template_name = htmlspecialchars($input->get('name'), ENT_QUOTES);
+		$template_name = htmlspecialchars($input->getString('name'), ENT_QUOTES);
 		$id_template = $input->getInt('id_template');
 		$published = $input->getInt('published');
 		$publish_up = $input->get('publish_up');
@@ -121,7 +121,7 @@ class SexypollingModelSexyTemplate extends JModelAdmin
 			$new_template = new JObject();
 			$new_template->id = $id;
 			$new_template->name = $template_name;
-			$styles = $input->get('styles');
+			$styles = $input->getString('styles');
 			$styles_formated = '';
 			$ind = 0;
 			foreach($styles as $k => $val) {

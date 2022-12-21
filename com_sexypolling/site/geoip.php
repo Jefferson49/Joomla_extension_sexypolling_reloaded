@@ -24,7 +24,24 @@ header('Content-type: application/json');
 require_once ( JPATH_BASE .DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'defines.php' );
 require_once ( JPATH_BASE .DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'framework.php' );
 
-$ip = JFactory::getApplication()->input->server->get('REMOTE_ADDR');
+if(version_compare(JVERSION, '4', 'ge')) {
+	// Boot the DI container.
+	$container = \Joomla\CMS\Factory::getContainer();
+
+	// Alias the session service key to the web session service.
+	$container->alias(\Joomla\Session\SessionInterface::class, 'session.web.site');
+
+	// Get the application.
+	$app = $container->get(\Joomla\CMS\Application\SiteApplication::class);
+}
+else {
+	// Get the application.
+	$app = JFactory::getApplication('site');
+	$app->initialise();
+}
+
+$ip = $app->input->server->get('REMOTE_ADDR');
+
 $url = 'http://api.ipinfodb.com/v3/ip-city/?key=4f01028c9fcae27423d5d0cc4489b5679f26febf98d28b90a29c2f3f7531aafd&format=json&ip=' . $ip;
 $ch = curl_init ($url) ;
 curl_setopt($ch, CURLOPT_URL, $url);

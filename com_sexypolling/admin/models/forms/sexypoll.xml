@@ -223,7 +223,7 @@
           <option value="1">JYes</option>
           <option value="0">JNo</option>
         </field>
-        <field name="ipcount" type="text" label="COM_SEXYPOLLING_IP_COUNT_LABEL" description="COM_SEXYPOLLING_IP_COUNT_DESCRIPTION" size="40" class="inputbox" default="" />
+        <field name="ipcount" type="text" label="COM_SEXYPOLLING_IP_COUNT_LABEL" description="COM_SEXYPOLLING_IP_COUNT_DESCRIPTION" size="40" class="inputbox" default="0" />
 
         <field type="note" label="COM_SEXYPOLLING_STATUS_OPTIONS" description="" />
         <field id="published" name="published" type="list" label="JSTATUS" description="JFIELD_PUBLISHED_DESC" class="inputbox" size="1" default="1">

@@ -77,7 +77,7 @@ JHtml::_('formbehavior.chosen', 'select');
 					<div class="tab-pane active" id="details">
 						<div class="control-group">
 							<?php foreach($this->form->getFieldset() as $field): ?>
-								<div class="control-label"><?php echo $field->label;?></div>
+								<div class="control-label" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php echo JText::_($field->description); ?>"><?php echo $field->label;?></div>
 								<div class="controls"><?php echo $field->input;?></div>
 								<div style="clear: both;height: 8px;">&nbsp;</div>
 							<?php endforeach; ?>

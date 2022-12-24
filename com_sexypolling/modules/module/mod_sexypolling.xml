@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" version="3.10" method="upgrade" client="site">
     <name>MOD_SEXYPOLLING_NAME</name>
-    <creationDate>2022-12-23</creationDate>
+    <creationDate>2022-12-24</creationDate>
     <author>Jefferson49</author>
     <copyright>Copyright (c) 2010 - 2020 2GLux. All rights reserved. Copyright (c) 2022 Jefferson49</copyright>
  	<authorEmail>sexypolling.reloaded@gmail.com</authorEmail>
     <authorUrl>https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded</authorUrl>
-    <version>4.1.2</version>
+    <version>4.1.3</version>
     <license>GNU/GPL v3.0</license>
     <description>MOD_SEXYPOLLING_DESCRIPTION</description>
     <files>

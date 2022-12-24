@@ -147,8 +147,8 @@ class SexypollingModelSexyAnswer extends JModelAdmin
 	function saveAnswer()
 	{
 		$date = new JDate();
-		$id = JFactory::getApplication()->input->getInt('id',0);
-		$jform = JFactory::getApplication()->input->request->get('jform');
+		$id = JFactory::getApplication()->input->request->getInt('id',0);
+		$jform = JFactory::getApplication()->input->request->get('jform', null, null);
 	
 		$req = new JObject();
 		$req->name =  $jform['name'];

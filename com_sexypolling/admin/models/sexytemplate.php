@@ -89,14 +89,14 @@ class SexypollingModelSexyTemplate extends JModelAdmin
 	 */
 	public function store()
 	{
-		$input = JFactory::getApplication()->input;
+		$request = JFactory::getApplication()->input->request;
 
-		$id = $input->getInt('id');
-		$template_name = htmlspecialchars($input->getString('name'), ENT_QUOTES);
-		$id_template = $input->getInt('id_template');
-		$published = $input->getInt('published');
-		$publish_up = $input->get('publish_up');
-		$publish_down = $input->get('publish_up');
+		$id = $request->getInt('id');
+		$template_name = htmlspecialchars($request->getString('name'), ENT_QUOTES);
+		$id_template = $request->getInt('id_template');
+		$published = $request->getInt('published');
+		$publish_up = $request->getString('publish_up');
+		$publish_down = $request->getString('publish_up');
 			
 		//if id ==0, we add the record
 		if($id == 0) {
@@ -121,7 +121,7 @@ class SexypollingModelSexyTemplate extends JModelAdmin
 			$new_template = new JObject();
 			$new_template->id = $id;
 			$new_template->name = $template_name;
-			$styles = $input->getString('styles');
+			$styles = $request->getString('styles');
 			$styles_formated = '';
 			$ind = 0;
 			foreach($styles as $k => $val) {

@@ -74,6 +74,8 @@ if($num_rows > 0) {
 	$custom_styles[$row['polling_id']] = $row['styles'];
 }
 
+$styles_ = [];
+
 if(sizeof($custom_styles) > 0)
 	foreach ($custom_styles as $poll_id => $styles_list) {
 	$styles_array = explode('|',$styles_list);

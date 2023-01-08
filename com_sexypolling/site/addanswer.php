@@ -17,6 +17,10 @@
  * 
  */
 
+use Joomla\CMS\Date\Date;
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Language\Text;
+
 // no direct access
 define('_JEXEC',true);
 defined('_JEXEC') or die('Restircted access');
@@ -51,6 +55,20 @@ else {
 $post = JFactory::getApplication()->input->post;
 $server = JFactory::getApplication()->input->server;
 
+//load language and timezone
+$lang = JFactory::getLanguage();
+$lang->load('com_sexypolling');
+$lang_tag = $lang->getTag();
+$iterator = new ArrayIterator(iterator_to_array(IntlTimeZone::createEnumeration(substr($lang_tag, -2))));
+$iterator->rewind();
+$time_zone = $iterator->current();
+
+//Create date format
+$date = new Date();
+$date_time_zone = new DateTimeZone($time_zone);
+$date->setTimezone($date_time_zone);
+$debug_date = HtmlHelper::date('now', Text::_('Y-F-d H:i:s'), false);
+
 $db = JFactory::getDBO();
 
 //get user groups
@@ -63,8 +81,8 @@ jimport( 'joomla.access.access' );
 $groups = JAccess::getGroupsByUser($user_id);
 
 $date_now = strtotime("now");
-$datenow = date("Y-m-d H:i:s", $date_now);
-$datenow_sql = date("Y-m-d", $date_now);
+$datenow = HtmlHelper::date($date_now,"Y-m-d H:i:s", false);
+$datenow_sql = HtmlHelper::date($date_now,"Y-m-d", false);
 
 //get ip address
 $REMOTE_ADDR = null;

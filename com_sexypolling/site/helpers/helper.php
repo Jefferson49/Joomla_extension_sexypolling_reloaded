@@ -15,6 +15,10 @@
  * 
  */
 
+use Joomla\CMS\Date\Date;
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Language\Text;
+
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
@@ -160,6 +164,20 @@ class SexypollingHelper
         $levels = array();
         $groups = array();
 
+		//load language and timezone
+		$lang = JFactory::getLanguage();
+		$lang->load('com_sexypolling');
+		$lang_tag = $lang->getTag();
+		$iterator = new ArrayIterator(iterator_to_array(IntlTimeZone::createEnumeration(substr($lang_tag, -2))));
+		$iterator->rewind();
+		$time_zone = $iterator->current();
+
+		//Create date format
+		$date = new Date();
+		$date_time_zone = new DateTimeZone($time_zone);
+		$date->setTimezone($date_time_zone);
+		$debug_date = HtmlHelper::date('now', Text::_('Y-F-d H:i:s'), false);
+
         $user = JFactory::getUser();
         $user_id = $user->get('id');
         jimport( 'joomla.access.access' );
@@ -198,10 +216,6 @@ class SexypollingHelper
         ob_start();
 
         if(sizeof($pollings) > 0) {
-
-            //load language
-            $lang = JFactory::getApplication()->getLanguage();
-            $lang->load('com_sexypolling');
 
             $polling_words = array(JText::_("COM_SEXYPOLLING_WORD_1"),JText::_("COM_SEXYPOLLING_WORD_2"),JText::_("COM_SEXYPOLLING_WORD_3"),JText::_("COM_SEXYPOLLING_WORD_4"),JText::_("COM_SEXYPOLLING_WORD_5"),JText::_("COM_SEXYPOLLING_WORD_6"),JText::_("COM_SEXYPOLLING_WORD_7"),JText::_("COM_SEXYPOLLING_WORD_8"),JText::_("COM_SEXYPOLLING_WORD_9"),JText::_("COM_SEXYPOLLING_WORD_10"),JText::_("COM_SEXYPOLLING_WORD_11"),JText::_("COM_SEXYPOLLING_WORD_12"),JText::_("COM_SEXYPOLLING_WORD_13"),JText::_("COM_SEXYPOLLING_WORD_14"),JText::_("COM_SEXYPOLLING_WORD_15"),JText::_("COM_SEXYPOLLING_WORD_16"),JText::_("COM_SEXYPOLLING_WORD_17"),JText::_("COM_SEXYPOLLING_WORD_18"),JText::_("COM_SEXYPOLLING_WORD_19"),JText::_("COM_SEXYPOLLING_WORD_20"),JText::_("COM_SEXYPOLLING_WORD_21"),JText::_("COM_SEXYPOLLING_WORD_22"),JText::_("COM_SEXYPOLLING_WORD_23"),JText::_("COM_SEXYPOLLING_WORD_24"),JText::_("COM_SEXYPOLLING_WORD_25"),JText::_("COM_SEXYPOLLING_WORD_26"));
 
@@ -278,15 +292,15 @@ class SexypollingHelper
                 if($polling_array[0]->date_start != '0000-00-00' &&  $date_now < strtotime($polling_array[0]->date_start)) {
                     $datevoted = strtotime($polling_array[0]->date_start);
                     $hours_diff = ($datevoted - $date_now) / 3600;
-                    $start_disabled_ids[] = array($poll_index,$polling_words[17] . date($stringdateformat,strtotime($polling_array[0]->date_start)),$hours_diff);
+                    $start_disabled_ids[] = array($poll_index,$polling_words[17] . HtmlHelper::date(strtotime($polling_array[0]->date_start),$stringdateformat,false),$hours_diff);
                 }
                 if($polling_array[0]->date_end != '0000-00-00' &&  $date_now > strtotime($polling_array[0]->date_end)) {
-                    $end_disabled_ids[] = array($poll_index,$polling_words[18] . date($stringdateformat,strtotime($polling_array[0]->date_end)));
+                    $end_disabled_ids[] = array($poll_index,$polling_words[18] . HtmlHelper::date(strtotime($polling_array[0]->date_end),$stringdateformat,false));
                 }
 
                 // disable results till poll is ended
                 if($polling_array[0]->showresultsduringpoll == '0' and $polling_array[0]->date_end != '0000-00-00')
-                    $hide_results_ids[$poll_index] = $polling_words[25] . date($stringdateformat,strtotime($polling_array[0]->date_end));
+                    $hide_results_ids[$poll_index] = $polling_words[25] . HtmlHelper::date(strtotime($polling_array[0]->date_end),$stringdateformat,false);
 
                 //check user_id
                 if($registration_to_vote_required) {
@@ -466,7 +480,7 @@ class SexypollingHelper
                 }
 
                 //check, if max date is not included in timeline array, then add it.
-                if(date($stringdateformat, $max_date) !== date($stringdateformat, $timeline_array[sizeof($timeline_array) - 1]))
+                if(HtmlHelper::date($max_date,$stringdateformat, false) !== HtmlHelper::date($timeline_array[sizeof($timeline_array) - 1],$stringdateformat, false))
                     $timeline_array[] = $max_date;
 
                 echo '<div class="timeline_wrapper">';
@@ -495,10 +509,10 @@ class SexypollingHelper
                     $checked_label = sizeof($timeline_array) - 8;
                 elseif($showvotesperiod == 2) {//last month
                     //get last month label
-                    $d =  (int) date("d", $max_date);
-                    $m =  (int) date("m", $max_date);
+                    $d =  (int) HtmlHelper::date($max_date,"d", false);
+                    $m =  (int) HtmlHelper::date($max_date,"m", false);
                     $m --;
-                    $y =  (int) date("Y", $max_date);
+                    $y =  (int) HtmlHelper::date($max_date,"Y", false);
                     if($m == 1)
                         $days_ = 31;
                     else
@@ -514,39 +528,39 @@ class SexypollingHelper
 
                 $optionGroups = array();
                 foreach ($timeline_array as $k => $curr_time) {
-                    if(!in_array(date('F Y', $curr_time),$optionGroups)) {
+                    if(!in_array(HtmlHelper::date($curr_time,'F Y', false),$optionGroups)) {
 
                         if (sizeof($optionGroups) != 0)
                             echo '</optgroup>';
 
-                        $optionGroups[] = date('F Y', $curr_time);
-                        echo '<optgroup label="'.date('F Y', $curr_time).'">';
+                        $optionGroups[] = HtmlHelper::date($curr_time,'F Y',false);
+                        echo '<optgroup label="'.HtmlHelper::date($curr_time,'F Y', false).'">';
                     }
 
                     $selected = $k == $checked_label ? 'selected="selected"' : '';
 
-                    $date_item = date($stringdateformat, $curr_time);
+                    $date_item = HtmlHelper::date($curr_time,$stringdateformat, false);
 
-                    echo '<option '.$selected.' value="'.date('Y-m-d', $curr_time).'">'.$date_item.'</option>';
+                    echo '<option '.$selected.' value="'.HtmlHelper::date($curr_time,'Y-m-d', false).'">'.$date_item.'</option>';
                 }
                 echo '</select>';
                 echo '<select class="polling_select2" id="polling_select_'.$module_id.'_'.$poll_index.'_2" name="polling_select_'.$module_id.'_'.$poll_index.'_2">';
                 $optionGroups = array();
                 foreach ($timeline_array as $k => $curr_time) {
 
-                    if(!in_array(date('F Y', $curr_time),$optionGroups)) {
+                    if(!in_array(HtmlHelper::date($curr_time,'F Y',false),$optionGroups)) {
 
                         if (sizeof($optionGroups) != 0)
                             echo '</optgroup>';
 
-                        $optionGroups[] = date('F Y', $curr_time);
-                        echo '<optgroup label="'.date('F Y', $curr_time).'">';
+                        $optionGroups[] = HtmlHelper::date($curr_time,'F Y', false);
+                        echo '<optgroup label="'.HtmlHelper::date($curr_time,'F Y', false).'">';
                     }
                     $selected = $k == sizeof($timeline_array) - 1 ? 'selected="selected"' : '';
 
-                    $date_item = date($stringdateformat, $curr_time);
+                    $date_item = HtmlHelper::date($curr_time,$stringdateformat, false);
 
-                    echo '<option '.$selected.' value="'.date('Y-m-d', $curr_time).'">'.$date_item.'</option>';
+                    echo '<option '.$selected.' value="'.HtmlHelper::date($curr_time,'Y-m-d', false).'">'.$date_item.'</option>';
                 }
                 echo '</select></div>';
                 echo '</div>';

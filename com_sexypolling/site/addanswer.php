@@ -78,7 +78,7 @@ $ip = $REMOTE_ADDR;
 $polling_id = $post->getInt('polling_id');
 $autopublish = $post->getInt('autopublish');
 $writeinto = $post->getInt('writeinto');
-$answer = $db->escape(strip_tags($post->get('answer')));
+$answer = $db->escape(htmlspecialchars($post->getString('answer', '')));
 $answer = preg_replace('/sexydoublequestionmark/','??',$answer);
 
 //get poll options

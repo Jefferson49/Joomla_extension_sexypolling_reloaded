@@ -200,7 +200,7 @@ if($poll_options["votechecks"] == 1) {
 
 if(($writeinto == 1 || $autopublish == 0) && $voting_enabled) {
     $published = $autopublish == 1 ? 1 : 0;
-    $query = "INSERT INTO `#__sexy_answers` (`id_poll`,`name`,`published`,`created`) VALUES ('$polling_id','$answer','$published','$datenow')";
+    $query = "INSERT IGNORE INTO `#__sexy_answers` (`id_poll`,`name`,`published`,`created`) VALUES ('$polling_id','$answer','$published','$datenow')";
     $db->setQuery($query);
     $db->execute();
     $insert_id = $db->insertid();

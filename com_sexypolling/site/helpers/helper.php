@@ -176,7 +176,7 @@ class SexypollingHelper
 		$date = new Date();
 		$date_time_zone = new DateTimeZone($time_zone);
 		$date->setTimezone($date_time_zone);
-		$debug_date = HtmlHelper::date('now', Text::_('Y-F-d H:i:s'), false);
+		$debug_date = HtmlHelper::date('2023-02-15', Text::_('t'), false);
 
         $user = JFactory::getUser();
         $user_id = $user->get('id');
@@ -516,7 +516,7 @@ class SexypollingHelper
                     if($m == 1)
                         $days_ = 31;
                     else
-                        echo $days_ = date('t',strtotime($d.'-'.$m.'-'.$y));
+                        echo $days_ = HtmlHelper::date(strtotime($d.'-'.$m.'-'.$y),'t',false);
                     $checked_label = sizeof($timeline_array) - 1 - $days_;
                 }
                 elseif($showvotesperiod == 3)//last year

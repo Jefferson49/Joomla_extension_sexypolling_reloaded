@@ -171,12 +171,14 @@ class SexypollingHelper
 		$iterator = new ArrayIterator(iterator_to_array(IntlTimeZone::createEnumeration(substr($lang_tag, -2))));
 		$iterator->rewind();
 		$time_zone = $iterator->current();
-
+		setcookie("sexy_poll_lang_tag", $lang_tag, time()+3*60*60, '/');
+		setcookie("sexy_poll_time_zone", $time_zone, time()+3*60*60, '/');
+		
 		//Create date format
 		$date = new Date();
 		$date_time_zone = new DateTimeZone($time_zone);
 		$date->setTimezone($date_time_zone);
-		$debug_date = HtmlHelper::date('2023-02-15', Text::_('t'), false);
+		$debug_date = HtmlHelper::date('2022-03-15', Text::_('F d, Y'), false);
 
         $user = JFactory::getUser();
         $user_id = $user->get('id');

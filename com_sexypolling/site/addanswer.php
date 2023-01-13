@@ -20,6 +20,7 @@
 use Joomla\CMS\Date\Date;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\Language\Language;
 
 // no direct access
 define('_JEXEC',true);
@@ -56,13 +57,9 @@ $post = JFactory::getApplication()->input->post;
 $server = JFactory::getApplication()->input->server;
 
 //load language and timezone
-$lang = JFactory::getLanguage();
-$lang->load('com_sexypolling');
-$lang_tag = $lang->getTag();
-$iterator = new ArrayIterator(iterator_to_array(IntlTimeZone::createEnumeration(substr($lang_tag, -2))));
-$iterator->rewind();
-$time_zone = $iterator->current();
-
+$lang_tag = $app->input->cookie->getString('sexy_poll_lang_tag', 'en-GB');
+$time_zone = $app->input->cookie->getString('sexy_poll_time_zone', '');
+JFactory::$language = new Language($lang_tag);
 //Create date format
 $date = new Date();
 $date_time_zone = new DateTimeZone($time_zone);

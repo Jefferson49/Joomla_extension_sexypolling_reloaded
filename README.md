@@ -35,7 +35,7 @@ For more details about the format options, [see PHP documentation about date tim
 
 ## Development and Contributions
 + The plugin was developed by [2GLux.com](2GLux.com) for Joomla 2.5 and 3 with the original plugin name "Sexy Polling".
-+ After the "Sexy Polling" was removed from the web and the support was canceled, a fork of the plugin was migrated to Joomla 4 with the new plugin name "Sexy Polling Reloaded" by [Jefferson49](https://github.com/Jefferson49)
++ After the "Sexy Polling" plugin was removed from the web and the support was not continued, a fork of the plugin was migrated to Joomla 4 with the new plugin name "Sexy Polling Reloaded" by [Jefferson49](https://github.com/Jefferson49)
 + Further contributions on [Github](https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded) are welcome!
 
 ##  Versions 

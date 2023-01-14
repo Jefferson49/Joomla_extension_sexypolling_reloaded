@@ -52,6 +52,7 @@
             <language tag="ru-RU">language/ru-RU/ru-RU.com_sexypolling.ini</language>
             <language tag="fa-IR">language/fa-IR/fa-IR.com_sexypolling.ini</language>
             <language tag="sl-SL">language/sl-SL/sl-SL.com_sexypolling.ini</language>
+            <language tag="tr-TR">language/tr-TR/tr-TR.com_sexypolling.ini</language>
     </languages>
 
     <!-- administration part -->

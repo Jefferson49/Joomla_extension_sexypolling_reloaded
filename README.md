@@ -22,8 +22,6 @@
     + During installation, the plugin re-uses existing data from the former Sexy Polling plugin. 
     + If you want to reuse data from the former Sexy Polling plugin, do not uninstall the former Sexy Polling plugin. Instead, just install the Sexy Polling Reloaded plugin. It will re-use the existing database tables.
 
-+ Joomla update is supported.
-
 ##  Date formats
 The date format, which is shown in poll modules, can be specified in the Joomla administration at: Components -> Sexy Polling Reloaded -> Polls -> Edit -> Date Format.
 
@@ -44,6 +42,26 @@ For more details about the format options, [see PHP documentation about date tim
 + The latest plugin version was developed and tested with: 
     + [Joomla 3.10.11](https://downloads.joomla.org/cms/joomla3) and [Joomla 4.2.6](https://downloads.joomla.org/cms/joomla4); but should also run with other Joomla 3.10 or 4.x versions. Other 3.x versions have not been tested, but might also be feasible.
     + PHP 8.0.23; but should also run with other PHP 8 versions. 7.x versions have not been testetd, but might also be feasible.
+
+## Translation
+You can help to translate this module:
++ User frontend translations: [/com_sexypolling/site/language](https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/tree/joomla_4.x/com_sexypolling/site/language)
++ Administrator backtend translations: [/com_sexypolling/admin/language](https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/tree/joomla_4.x/com_sexypolling/admin/language)  
+
+You can use a text editor like notepad++ to work on translations.
+
+You can contribute translations via a pull request (if you know how to do), or by opening a new Github issue and attaching the file. Updated translations will be included in the next release of this module.
+
+Currently, the following languages are already available:
++ English
++ Farsi
++ French
++ German
++ Italian
++ Russian
++ Slovenian
++ Spanish
++ Turkish
 
 ## Issue reporting
 If you experience any bugs [create a new issue](https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/issues) in the Github repository

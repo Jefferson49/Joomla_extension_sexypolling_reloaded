@@ -24,6 +24,17 @@
 
 + Joomla update is supported.
 
+##  Date formats
+The date format, which is shown in poll modules, can be specified in the Joomla administration at: Components -> Sexy Polling Reloaded -> Polls -> Edit -> Date Format.
+
+Examples for the date format: 
++ d/m/Y (22-11-2022)
++ m/d/Y (11-22-2012)
++ M d, Y (Nov 22, 2022)
++ F d, Y (November 22, 2022)
+
+For more details about the format options, [see PHP documentation about date time format](https://www.php.net/manual/en/datetime.format.php).
+
 ## Development and Contributions
 + The plugin was developed by [2GLux.com](2GLux.com) for Joomla 2.5 and 3 with the original plugin name "Sexy Polling".
 + After the "Sexy Polling" was removed from the web and the support was canceled, a fork of the plugin was migrated to Joomla 4 with the new plugin name "Sexy Polling Reloaded" by [Jefferson49](https://github.com/Jefferson49)

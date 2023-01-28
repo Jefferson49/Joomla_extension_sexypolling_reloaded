@@ -41,7 +41,7 @@ For more details about the format options, [see PHP documentation about date tim
 ##  Versions 
 + The latest plugin version was developed and tested with: 
     + [Joomla 3.10.11](https://downloads.joomla.org/cms/joomla3) and [Joomla 4.2.6](https://downloads.joomla.org/cms/joomla4); but should also run with other Joomla 3.10 or 4.x versions. Other 3.x versions have not been tested, but might also be feasible.
-    + PHP 8.0.23; but should also run with other PHP 8 versions. 7.x versions have not been testetd, but might also be feasible.
+    + PHP 8.0.23 as well as PHP 8.1.13; but should also run with other PHP 8 versions. 7.x versions have not been testetd, but might also be feasible.
 
 ## Translation
 You can help to translate this module:

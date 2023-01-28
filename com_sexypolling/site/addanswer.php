@@ -76,6 +76,7 @@ $user = JFactory::getUser();
 $user_id = $user->get('id');
 jimport( 'joomla.access.access' );
 $groups = JAccess::getGroupsByUser($user_id);
+$is_logged_in_user = ( in_array(2,$groups) || in_array(3,$groups) || in_array(6,$groups) || in_array(8,$groups) ) ? true : false;
 
 $date_now = strtotime("now");
 $datenow = HtmlHelper::date($date_now,"Y-m-d H:i:s", false);
@@ -177,7 +178,7 @@ if($poll_options["votechecks"] == 1) {
         $voting_enabled = false;
 
     //check user_id
-    if($registration_to_vote_required) {
+    if($registration_to_vote_required OR $is_logged_in_user) {
         $query = "SELECT sv.`ip`,sv.`date` FROM #__sexy_votes sv JOIN #__sexy_answers sa ON sa.id_poll = '$polling_id' WHERE sv.id_answer = sa.id AND sv.id_user = '$user_id' ORDER BY sv.`date` DESC LIMIT 1";
         $db->setQuery($query);
         $db->execute();

@@ -92,7 +92,7 @@ else {
 
 
 <script type="text/javascript">
-<?php if(version_compare( JVERSION, '1.6.0', 'lt' )) { ?>
+<?php if(version_compare( JVERSION, '1.6.0', '<' )) { ?>
 function submitbutton(task) {
 <?php } else { ?>
 Joomla.submitbutton = function(task) {

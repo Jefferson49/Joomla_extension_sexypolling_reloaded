@@ -36,7 +36,7 @@ define('JPATH_BASE', dirname(dirname(dirname(__FILE__))));
 require_once ( JPATH_BASE .DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'defines.php' );
 require_once ( JPATH_BASE .DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'framework.php' );
 
-if(version_compare(JVERSION, '4', 'ge')) {
+if(version_compare(JVERSION, '4', '>=')) {
 	// Boot the DI container.
 	$container = \Joomla\CMS\Factory::getContainer();
 

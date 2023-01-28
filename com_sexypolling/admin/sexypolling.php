@@ -23,7 +23,7 @@ defined('_JEXEC') or die('Restircted access');
 /*
  * Define constants for all pages
  */
-define('JV', (version_compare(JVERSION, '3', 'l')) ? 'j2' : 'j3');
+define('JV', (version_compare(JVERSION, '3', '<')) ? 'j2' : 'j3');
 define( 'COM_SEXY_POLLING_DIR', 'images'.DIRECTORY_SEPARATOR.'sexy_polling'.DIRECTORY_SEPARATOR );
 define( 'COM_SEXY_POLLING_BASE', JPATH_ROOT.DIRECTORY_SEPARATOR.COM_SEXY_POLLING_DIR );
 define( 'COM_SEXY_POLLING_BASEURL', JURI::root().str_replace( DIRECTORY_SEPARATOR, '/', COM_SEXY_POLLING_DIR ));

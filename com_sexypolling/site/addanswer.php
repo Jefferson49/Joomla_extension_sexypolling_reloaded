@@ -178,7 +178,7 @@ if($poll_options["votechecks"] == 1) {
         $voting_enabled = false;
 
     //check user_id
-    if($registration_to_vote_required OR $is_logged_in_user) {
+    if($registration_to_vote_required) {
         $query = "SELECT sv.`ip`,sv.`date` FROM #__sexy_votes sv JOIN #__sexy_answers sa ON sa.id_poll = '$polling_id' WHERE sv.id_answer = sa.id AND sv.id_user = '$user_id' ORDER BY sv.`date` DESC LIMIT 1";
         $db->setQuery($query);
         $db->execute();

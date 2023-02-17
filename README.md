@@ -53,6 +53,7 @@ You can use a text editor like notepad++ to work on translations.
 You can contribute translations via a pull request (if you know how to do), or by opening a new Github issue and attaching the file. Updated translations will be included in the next release of this module.
 
 Currently, the following languages are already available:
++ Dutch
 + English
 + Farsi
 + French

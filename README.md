@@ -19,7 +19,7 @@
     + Joomla will automatically check for updates in the administration backend
     + If an update is available, change to the Extensions / Update menu and install the update 
 + **PHP extension intl required**
-   + The plugin requires the PHP exension "intl" (Internationalization). Usually, the "intl" extensions is included in the PHP installation. However, it might be necessary to activate it, i.e. the php.ini file must contain the following line: extension=intl
+   + The plugin requires the PHP exension "intl" (Internationalization). Usually, the "intl" extension is included in the PHP installation. However, it might be necessary to activate it, i.e. the php.ini file must contain the following line: extension=intl
    + If the "intl" extension is not installed, PHP errors like "Class IntlTimeZone not found", or "Attempted to load class IntlTimeZone from the global namespace" might occur.
 + **Migration from the former "Sexy Polling" plugin**
     + During installation, the plugin re-uses existing data from the former Sexy Polling plugin. 

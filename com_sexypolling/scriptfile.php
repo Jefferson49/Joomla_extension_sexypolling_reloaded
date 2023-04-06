@@ -115,7 +115,7 @@ class com_sexypollingInstallerScript {
      *
      * @return void
      */
-function postflight($type, $parent) {
+    function postflight($type, $parent) {
         $db = JFactory::getDBO();
         $query = "SELECT * FROM `#__sexy_polls` LIMIT 1";
         $db->setQuery($query);
@@ -126,30 +126,30 @@ function postflight($type, $parent) {
             if(!in_array('showvotesperiod',$columns_titles)) {
                 //add required columns
                 $query_update = "
-                                    ALTER TABLE  `#__sexy_polls`
-                                        ADD `showvotesperiod` TINYINT UNSIGNED NOT NULL DEFAULT  '1',
-                                        ADD `stringdateformat` TEXT NOT NULL,
-                                        ADD `votescountformat` TINYINT UNSIGNED NOT NULL DEFAULT  '2',
-                                        ADD `scaledefault` TINYINT UNSIGNED NOT NULL DEFAULT  '1',
-                                        ADD `showaddanswericon` TINYINT UNSIGNED NOT NULL DEFAULT  '1',
-                                        ADD `showscaleicon` TINYINT UNSIGNED NOT NULL DEFAULT  '1',
-                                        ADD `showbackicon` TINYINT UNSIGNED NOT NULL DEFAULT  '1',
-                                        ADD `showtimelineicon` TINYINT UNSIGNED NOT NULL DEFAULT  '1',
-                                        ADD `showtimeline` TINYINT UNSIGNED NOT NULL DEFAULT  '1',
-                                        ADD `showvotescountinfo` TINYINT UNSIGNED NOT NULL DEFAULT  '1',
-                                        ADD `poll_width` TEXT NOT NULL,
-                                        ADD `pollalign` TINYINT UNSIGNED NOT NULL DEFAULT  '2',
-                                        ADD `addclearboth` TINYINT UNSIGNED NOT NULL DEFAULT  '1',
-                                        ADD `poll_margintop` SMALLINT UNSIGNED NOT NULL DEFAULT  '5',
-                                        ADD `poll_marginbottom` SMALLINT UNSIGNED NOT NULL DEFAULT  '5',
-                                        ADD `poll_marginleft` SMALLINT UNSIGNED NOT NULL DEFAULT  '5',
-                                        ADD `poll_marginright` SMALLINT UNSIGNED NOT NULL DEFAULT  '5',
-                                        ADD `classsuffix` TEXT NOT NULL,
-                                        ADD `checktoken` TINYINT UNSIGNED NOT NULL DEFAULT  '1',
-                                        ADD `ipcount` INT UNSIGNED NOT NULL DEFAULT  '0',
-                                        ADD `checkacl` TINYINT UNSIGNED NOT NULL DEFAULT  '1',
-                                        ADD `votechecks` TINYINT UNSIGNED NOT NULL DEFAULT  '0'
-                                ";
+                    ALTER TABLE  `#__sexy_polls`
+                        ADD `showvotesperiod` TINYINT UNSIGNED NOT NULL DEFAULT  '1',
+                        ADD `stringdateformat` TEXT NOT NULL,
+                        ADD `votescountformat` TINYINT UNSIGNED NOT NULL DEFAULT  '2',
+                        ADD `scaledefault` TINYINT UNSIGNED NOT NULL DEFAULT  '1',
+                        ADD `showaddanswericon` TINYINT UNSIGNED NOT NULL DEFAULT  '1',
+                        ADD `showscaleicon` TINYINT UNSIGNED NOT NULL DEFAULT  '1',
+                        ADD `showbackicon` TINYINT UNSIGNED NOT NULL DEFAULT  '1',
+                        ADD `showtimelineicon` TINYINT UNSIGNED NOT NULL DEFAULT  '1',
+                        ADD `showtimeline` TINYINT UNSIGNED NOT NULL DEFAULT  '1',
+                        ADD `showvotescountinfo` TINYINT UNSIGNED NOT NULL DEFAULT  '1',
+                        ADD `poll_width` TEXT NOT NULL,
+                        ADD `pollalign` TINYINT UNSIGNED NOT NULL DEFAULT  '2',
+                        ADD `addclearboth` TINYINT UNSIGNED NOT NULL DEFAULT  '1',
+                        ADD `poll_margintop` SMALLINT UNSIGNED NOT NULL DEFAULT  '5',
+                        ADD `poll_marginbottom` SMALLINT UNSIGNED NOT NULL DEFAULT  '5',
+                        ADD `poll_marginleft` SMALLINT UNSIGNED NOT NULL DEFAULT  '5',
+                        ADD `poll_marginright` SMALLINT UNSIGNED NOT NULL DEFAULT  '5',
+                        ADD `classsuffix` TEXT NOT NULL,
+                        ADD `checktoken` TINYINT UNSIGNED NOT NULL DEFAULT  '1',
+                        ADD `ipcount` INT UNSIGNED NOT NULL DEFAULT  '0',
+                        ADD `checkacl` TINYINT UNSIGNED NOT NULL DEFAULT  '1',
+                        ADD `votechecks` TINYINT UNSIGNED NOT NULL DEFAULT  '0'
+                ";
                 $db->setQuery($query_update);
                 $db->execute();
 
@@ -159,13 +159,13 @@ function postflight($type, $parent) {
                 $db->execute();
 
                 $query_update = "
-                                    ALTER TABLE  `#__sexy_answers`
-                                        ADD `show_name` TINYINT UNSIGNED NOT NULL DEFAULT  '1',
-                                        ADD `img_width` INT UNSIGNED NOT NULL DEFAULT  '100',
-                                        ADD `img_name` TEXT NOT NULL,
-                                        ADD `img_url` TEXT NOT NULL,
-                                        ADD `embed` TEXT NOT NULL
-                                ";
+                    ALTER TABLE  `#__sexy_answers`
+                        ADD `show_name` TINYINT UNSIGNED NOT NULL DEFAULT  '1',
+                        ADD `img_width` INT UNSIGNED NOT NULL DEFAULT  '100',
+                        ADD `img_name` TEXT NOT NULL,
+                        ADD `img_url` TEXT NOT NULL,
+                        ADD `embed` TEXT NOT NULL
+                ";
                 $db->setQuery($query_update);
                 $db->execute();
 
@@ -192,6 +192,72 @@ function postflight($type, $parent) {
                 $query_update = "alter table #__sexy_votes add column id_vote int(10) unsigned primary key NOT NULL AUTO_INCREMENT FIRST";
                 $db->setQuery($query_update);
                 $db->execute();
+            }
+        }
+
+        //Add certain default values to the database in order to avoid errors of type: Field '...' doesn't have a default value
+
+        $query = "SHOW COLUMNS FROM #__sexy_polls LIKE 'checked_out'";
+        $db->setQuery($query);
+        $columns_data = $db->LoadAssoc();
+        $columns_titles = array_keys($columns_data);
+
+        if(is_array($columns_titles)) {
+            if($columns_data['Null'] === "NO") {
+                $query_update = "
+                    ALTER TABLE `#__sexy_polls` CHANGE `checked_out` `checked_out` INT(10) UNSIGNED NULL DEFAULT NULL
+                ";
+                $db->setQuery($query_update);
+                $db->execute();
+            }
+        }
+
+        $query = "SHOW COLUMNS FROM #__sexy_answers LIKE 'id_user'";
+        $db->setQuery($query);
+        $columns_data = $db->LoadAssoc();
+        $columns_titles = array_keys($columns_data);
+
+        if(is_array($columns_titles)) {
+            if($columns_data['Default'] != "0") {
+                $query_update = "
+                    ALTER TABLE  `#__sexy_answers` ALTER `id_user` SET DEFAULT '0'
+                ";
+                $db->setQuery($query_update);
+                $db->execute();
+            }
+        }
+
+        $query = "SHOW COLUMNS FROM #__sexy_votes LIKE 'country'";
+        $db->setQuery($query);
+        $columns_data = $db->LoadAssoc();
+        $columns_titles = array_keys($columns_data);
+
+        if(is_array($columns_titles)) {
+            if($columns_data['Default'] != "Unknown") {
+
+                $query_update = "
+                    ALTER TABLE `#__sexy_votes` ALTER `country` SET DEFAULT 'Unknown'
+                ";
+                $db->setQuery($query_update);
+                $db->execute();                
+
+                $query_update = "
+                    ALTER TABLE `#__sexy_votes` ALTER `countrycode` SET DEFAULT 'Unknown'
+                ";
+                $db->setQuery($query_update);
+                $db->execute();                
+
+                $query_update = "
+                ALTER TABLE `#__sexy_votes` ALTER `city` SET DEFAULT 'Unknown'
+                ";
+                $db->setQuery($query_update);
+                $db->execute();                
+
+                $query_update = "
+                ALTER TABLE `#__sexy_votes` ALTER `region` SET DEFAULT 'Unknown'
+                ";
+                $db->setQuery($query_update);
+                $db->execute();                
             }
         }
 

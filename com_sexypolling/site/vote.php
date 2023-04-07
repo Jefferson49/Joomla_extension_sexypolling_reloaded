@@ -252,10 +252,14 @@ if(is_array($adittional_answers) && $voting_enabled) {
 
 if ($mode != 'view' && $mode != 'view_by_date' && is_array($answer_id_array) && $voting_enabled) {
         foreach ($answer_id_array as $answer_id) {
-            $answer_id = (int)$answer_id;
-            $query = "INSERT INTO `#__sexy_votes` (`id_answer`,`id_user`,`ip`,`date`,`country`,`city`,`region`,`countrycode`) VALUES ('$answer_id','$user_id','$ip','$datenow','$countryname','$cityname','$regionname','$countrycode')";
-            $db->setQuery($query);
-            $db->execute();
+            $answer_id = (int) $answer_id;
+
+            //Only insert vote into datebase if is not related to a newly added answer; in this case vote was already inserted above
+            if ($answer_id != 0) {
+                $query = "INSERT INTO `#__sexy_votes` (`id_answer`,`id_user`,`ip`,`date`,`country`,`city`,`region`,`countrycode`) VALUES ('$answer_id','$user_id','$ip','$datenow','$countryname','$cityname','$regionname','$countrycode')";
+                $db->setQuery($query);
+                $db->execute();    
+            }
         }
 
 		//update max date sended

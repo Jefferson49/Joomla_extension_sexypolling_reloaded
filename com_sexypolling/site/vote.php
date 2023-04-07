@@ -223,14 +223,14 @@ if(is_array($adittional_answers) && $voting_enabled) {
         $answer = preg_replace('/sexydoublequestionmark/','??',$answer);
 
         $published = 1;
-        $query = "INSERT INTO `#__sexy_answers` (`id_poll`,`name`,`published`,`created`) VALUES ('$polling_id','$answer','$published',NOW())";
+        $query = "INSERT IGNORE INTO `#__sexy_answers` (`id_poll`,`name`,`published`,`created`) VALUES ('$polling_id','$answer','$published',NOW())";
         $db->setQuery($query);
         $db->execute();
         $insert_id = $db->insertid();
 
         $add_answers[] = $insert_id;
 
-        $query = "INSERT INTO `#__sexy_votes` (`id_answer`,`id_user`,`ip`,`date`,`country`,`city`,`region`,`countrycode`) VALUES ('$insert_id','$user_id',$ip','$datenow','$countryname','$cityname','$regionname','$countrycode')";
+        $query = "INSERT INTO `#__sexy_votes` (`id_answer`,`id_user`,`ip`,`date`,`country`,`city`,`region`,`countrycode`) VALUES ('$insert_id','$user_id','$ip','$datenow','$countryname','$cityname','$regionname','$countrycode')";
         $db->setQuery($query);
         $db->execute();
 

@@ -3,10 +3,10 @@
     <name>COM_SEXYPOLLING</name>
     <creationDate>2022-12-24</creationDate>
     <author>Jefferson49</author>
-    <copyright>Copyright (c) 2010 - 2021 2GLux. All rights reserved. Copyright (c) 2022 Jefferson49</copyright>
+    <copyright>Copyright (c) 2010 - 2021 2GLux. All rights reserved. Copyright (c) 2023 Jefferson49</copyright>
  	<authorEmail>sexypolling.reloaded@gmail.com</authorEmail>
     <authorUrl>https://github.com/Jefferson49</authorUrl>
-    <version>4.1.6</version>
+    <version>4.1.7</version>
     <license>GNU/GPL v3.0</license>
     <description>COM_SEXYPOLLING_DESCRIPTION</description>
 
@@ -44,14 +44,15 @@
     </files>
 
     <languages folder="site">
-            <language tag="en-GB">language/en-GB/en-GB.com_sexypolling.ini</language>
-            <language tag="fr-FR">language/fr-FR/fr-FR.com_sexypolling.ini</language>
-            <language tag="es-ES">language/es-ES/es-ES.com_sexypolling.ini</language>
             <language tag="de-DE">language/de-DE/de-DE.com_sexypolling.ini</language>
+            <language tag="nl-NL">language/el-GR/el-GR.com_sexypolling.ini</language>
+            <language tag="en-GB">language/en-GB/en-GB.com_sexypolling.ini</language>
+            <language tag="es-ES">language/es-ES/es-ES.com_sexypolling.ini</language>
+            <language tag="fa-IR">language/fa-IR/fa-IR.com_sexypolling.ini</language>
+            <language tag="fr-FR">language/fr-FR/fr-FR.com_sexypolling.ini</language>
             <language tag="it-IT">language/it-IT/it-IT.com_sexypolling.ini</language>
             <language tag="nl-NL">language/nl-NL/nl-NL.com_sexypolling.ini</language>
             <language tag="ru-RU">language/ru-RU/ru-RU.com_sexypolling.ini</language>
-            <language tag="fa-IR">language/fa-IR/fa-IR.com_sexypolling.ini</language>
             <language tag="sl-SL">language/sl-SL/sl-SL.com_sexypolling.ini</language>
             <language tag="tr-TR">language/tr-TR/tr-TR.com_sexypolling.ini</language>
     </languages>
@@ -84,20 +85,20 @@
         </files>
 
         <languages folder="admin">
-            <language tag="en-GB">language/en-GB/en-GB.com_sexypolling.ini</language>
-            <language tag="en-GB">language/en-GB/en-GB.com_sexypolling.sys.ini</language>
-            <language tag="fr-FR">language/fr-FR/fr-FR.com_sexypolling.ini</language>
-            <language tag="fr-FR">language/fr-FR/fr-FR.com_sexypolling.sys.ini</language>
-            <language tag="es-ES">language/es-ES/es-ES.com_sexypolling.ini</language>
-            <language tag="es-ES">language/es-ES/es-ES.com_sexypolling.sys.ini</language>
             <language tag="de-DE">language/de-DE/de-DE.com_sexypolling.ini</language>
             <language tag="de-DE">language/de-DE/de-DE.com_sexypolling.sys.ini</language>
+            <language tag="en-GB">language/en-GB/en-GB.com_sexypolling.ini</language>
+            <language tag="en-GB">language/en-GB/en-GB.com_sexypolling.sys.ini</language>
+            <language tag="es-ES">language/es-ES/es-ES.com_sexypolling.ini</language>
+            <language tag="es-ES">language/es-ES/es-ES.com_sexypolling.sys.ini</language>
+            <language tag="fa-IR">language/fa-IR/fa-IR.com_sexypolling.ini</language>
+            <language tag="fa-IR">language/fa-IR/fa-IR.com_sexypolling.sys.ini</language>
+            <language tag="fr-FR">language/fr-FR/fr-FR.com_sexypolling.ini</language>
+            <language tag="fr-FR">language/fr-FR/fr-FR.com_sexypolling.sys.ini</language>
             <language tag="it-IT">language/it-IT/it-IT.com_sexypolling.ini</language>
             <language tag="it-IT">language/it-IT/it-IT.com_sexypolling.sys.ini</language>
             <language tag="ru-RU">language/ru-RU/ru-RU.com_sexypolling.ini</language>
             <language tag="ru-RU">language/ru-RU/ru-RU.com_sexypolling.sys.ini</language>
-            <language tag="fa-IR">language/fa-IR/fa-IR.com_sexypolling.ini</language>
-            <language tag="fa-IR">language/fa-IR/fa-IR.com_sexypolling.sys.ini</language>
             <language tag="sl-SL">language/sl-SL/sl-SL.com_sexypolling.ini</language>
             <language tag="sl-SL">language/sl-SL/sl-SL.com_sexypolling.sys.ini</language>
         </languages>

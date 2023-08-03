@@ -21,6 +21,9 @@
 + **PHP extension intl required**
    + The plugin requires the PHP exension "intl" (Internationalization). Usually, the "intl" extension is included in the PHP installation. However, it might be necessary to activate it, i.e. the php.ini file must contain the following line: extension=intl
    + If the "intl" extension is not installed, PHP errors like "Class IntlTimeZone not found", or "Attempted to load class IntlTimeZone from the global namespace" might occur.
++ **MySQL version**
+   + Plugin releases starting from **v4.1.7** need a MySQL version of 5.7.24 (8.0.13) or later.
+   + For MySQL versions earlier than 5.7.24, the former plugin release v4.1.6 can be used. 
 + **Migration from the former "Sexy Polling" plugin**
     + During installation, the plugin re-uses existing data from the former Sexy Polling plugin. 
     + If you want to reuse data from the former Sexy Polling plugin, do not uninstall the former Sexy Polling plugin. Instead, just install the Sexy Polling Reloaded plugin. It will re-use the existing database tables.

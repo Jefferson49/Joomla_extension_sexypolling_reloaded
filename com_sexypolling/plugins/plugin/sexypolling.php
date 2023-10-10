@@ -24,6 +24,12 @@ jimport('joomla.plugin.plugin');
 jimport('joomla.event.plugin');
 
 class plgSystemSexypolling extends JPlugin {
+
+    public $_plugin;
+    public $_params;
+    public $plg_order;
+    public $plg_order_cat;
+
     function __construct( &$subject ) {
       parent::__construct( $subject );
       // load plugin parameters and language file

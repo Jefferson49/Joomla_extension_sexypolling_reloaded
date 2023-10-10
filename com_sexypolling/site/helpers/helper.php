@@ -24,6 +24,14 @@ defined('_JEXEC') or die('Restircted access');
 
 class SexypollingHelper
 {
+    public $id_poll;
+	public $id_category;
+	public $module_id;
+	public $type;
+	public $class_suffix;
+	public $_data;
+
+    
     //function to add scripts/styles
     private function add_scripts() {
         //add scripts, styles
@@ -291,18 +299,18 @@ class SexypollingHelper
                     $voting_permissions[$poll_index] = false;
 
                 //check start,end dates
-                if($polling_array[0]->date_start != '0000-00-00' &&  $date_now < strtotime($polling_array[0]->date_start)) {
-                    $datevoted = strtotime($polling_array[0]->date_start);
+                if($polling_array[0]->date_start != '0000-00-00' &&  $date_now < strtotime($polling_array[0]->date_start  ?? '')) {
+                    $datevoted = strtotime($polling_array[0]->date_start ?? '');
                     $hours_diff = ($datevoted - $date_now) / 3600;
-                    $start_disabled_ids[] = array($poll_index,$polling_words[17] . HtmlHelper::date(strtotime($polling_array[0]->date_start),$stringdateformat,false),$hours_diff);
+                    $start_disabled_ids[] = array($poll_index,$polling_words[17] . HtmlHelper::date(strtotime($polling_array[0]->date_start ?? ''),$stringdateformat,false),$hours_diff);
                 }
-                if($polling_array[0]->date_end != '0000-00-00' &&  $date_now > strtotime($polling_array[0]->date_end)) {
-                    $end_disabled_ids[] = array($poll_index,$polling_words[18] . HtmlHelper::date(strtotime($polling_array[0]->date_end),$stringdateformat,false));
+                if($polling_array[0]->date_end != '0000-00-00' &&  $date_now > strtotime($polling_array[0]->date_end ?? '')) {
+                    $end_disabled_ids[] = array($poll_index,$polling_words[18] . HtmlHelper::date(strtotime($polling_array[0]->date_end ?? ''),$stringdateformat,false));
                 }
 
                 // disable results till poll is ended
                 if($polling_array[0]->showresultsduringpoll == '0' and $polling_array[0]->date_end != '0000-00-00')
-                    $hide_results_ids[$poll_index] = $polling_words[25] . HtmlHelper::date(strtotime($polling_array[0]->date_end),$stringdateformat,false);
+                    $hide_results_ids[$poll_index] = $polling_words[25] . HtmlHelper::date(strtotime($polling_array[0]->date_end ?? ''),$stringdateformat,false);
 
                 //check user_id
                 if($registration_to_vote_required) {
@@ -312,7 +320,7 @@ class SexypollingHelper
                     $num_rows = $db->getNumRows();
                     $row = $db->loadAssoc();
                     if($num_rows > 0) {
-                        $datevoted = strtotime($row['date']);
+                        $datevoted = strtotime($row['date'] ?? '');
                         $hours_diff = ($date_now - $datevoted) / 3600;
                         if($voting_period == 0 && !in_array($poll_index,array_keys($voted_ids))) {
                             $voted_ids[$poll_index] = '17520';//two years
@@ -329,7 +337,7 @@ class SexypollingHelper
                     $num_rows = $db->getNumRows();
                     $row = $db->loadAssoc();
                     if($num_rows > 0) {
-                        $datevoted = strtotime($row['date']);
+                        $datevoted = strtotime($row['date'] ?? '');
                         $hours_diff = ($date_now - $datevoted) / 3600;
                         if($voting_period == 0 && !in_array($poll_index,array_keys($voted_ids))) {
                             $voted_ids[$poll_index] = '17520';//two years
@@ -468,8 +476,8 @@ class SexypollingHelper
                 $db->setQuery($query);
                 $row_total = $db->loadAssoc();
                 $count_total_votes = $row_total['total_count'];
-                $min_date = strtotime($row_total['min_date']);
-                $max_date = strtotime($row_total['max_date']);
+                $min_date = strtotime($row_total['min_date'] ?? '');
+                $max_date = strtotime($row_total['max_date'] ?? '');
                 //if no votes, set time to current
                 if((int)$min_date == 0) {
                     $min_date = $max_date = strtotime("now");

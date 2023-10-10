@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `#__sexy_polls` (
   `publish_up` datetime NOT NULL,
   `publish_down` datetime NOT NULL,
   `published` tinyint(1) NOT NULL,
-  `checked_out` int(10) unsigned NOT NULL,
+  `checked_out` int(10) unsigned NULL DEFAULT NULL,
   `checked_out_time` datetime NOT NULL,
   `access` int(10) unsigned NOT NULL,
   `featured` tinyint(3) unsigned NOT NULL,
@@ -66,7 +66,7 @@ INSERT IGNORE INTO `#__sexy_polls` (`id`, `id_user`, `id_category`, `id_template
 CREATE TABLE IF NOT EXISTS `#__sexy_answers` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_poll` int(10) unsigned NOT NULL,
-  `id_user` int(10) unsigned NOT NULL,
+  `id_user` int(10) unsigned NOT NULL DEFAULT '0',
   `name` text NOT NULL,
   `published` tinyint(1) NOT NULL,
   `publish_up` datetime NOT NULL,
@@ -97,10 +97,10 @@ CREATE TABLE IF NOT EXISTS `#__sexy_votes` (
   `id_user` int(10) unsigned NOT NULL DEFAULT '0',
   `ip` text NOT NULL,
   `date` datetime NOT NULL,
-  `country` text NOT NULL,
-  `city` text NOT NULL,
-  `region` text NOT NULL,
-  `countrycode` text NOT NULL,
+  `country` text NOT NULL DEFAULT 'Unknown',
+  `city` text NOT NULL DEFAULT 'Unknown',
+  `region` text NOT NULL DEFAULT 'Unknown',
+  `countrycode` text NOT NULL DEFAULT 'Unknown',
   PRIMARY KEY (`id_vote`),
   KEY `id_answer` (`id_answer`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;

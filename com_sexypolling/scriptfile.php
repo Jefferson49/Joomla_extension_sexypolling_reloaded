@@ -220,7 +220,7 @@ class com_sexypollingInstallerScript {
         if(is_array($columns_titles)) {
             if($columns_data['Default'] != "0") {
                 $query_update = "
-                    ALTER TABLE  `#__sexy_answers` ALTER `id_user` SET DEFAULT '0'
+                    ALTER TABLE  `#__sexy_answers` ALTER `id_user` SET DEFAULT ('0')
                 ";
                 $db->setQuery($query_update);
                 $db->execute();
@@ -236,25 +236,25 @@ class com_sexypollingInstallerScript {
             if($columns_data['Default'] != "Unknown") {
 
                 $query_update = "
-                    ALTER TABLE `#__sexy_votes` ALTER `country` SET DEFAULT 'Unknown'
+                    ALTER TABLE `#__sexy_votes` ALTER `country` SET DEFAULT ('Unknown')
                 ";
                 $db->setQuery($query_update);
                 $db->execute();                
 
                 $query_update = "
-                    ALTER TABLE `#__sexy_votes` ALTER `countrycode` SET DEFAULT 'Unknown'
+                    ALTER TABLE `#__sexy_votes` ALTER `countrycode` SET DEFAULT ('Unknown')
                 ";
                 $db->setQuery($query_update);
                 $db->execute();                
 
                 $query_update = "
-                ALTER TABLE `#__sexy_votes` ALTER `city` SET DEFAULT 'Unknown'
+                ALTER TABLE `#__sexy_votes` ALTER `city` SET DEFAULT ('Unknown')
                 ";
                 $db->setQuery($query_update);
                 $db->execute();                
 
                 $query_update = "
-                ALTER TABLE `#__sexy_votes` ALTER `region` SET DEFAULT 'Unknown'
+                ALTER TABLE `#__sexy_votes` ALTER `region` SET DEFAULT ('Unknown')
                 ";
                 $db->setQuery($query_update);
                 $db->execute();                

@@ -116,6 +116,11 @@ class com_sexypollingInstallerScript {
      * @return void
      */
     function postflight($type, $parent) {
+
+        if ($type === 'uninstall') { 
+            return; 
+        }
+
         $db = JFactory::getDBO();
         $query = "SELECT * FROM `#__sexy_polls` LIMIT 1";
         $db->setQuery($query);

@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `#__sexy_polls` (
   `publish_up` datetime NOT NULL,
   `publish_down` datetime NOT NULL,
   `published` tinyint(1) NOT NULL,
-  `checked_out` int(10) unsigned NOT NULL,
+  `checked_out` INT(10) UNSIGNED NULL DEFAULT NULL,
   `checked_out_time` datetime NOT NULL,
   `access` int(10) unsigned NOT NULL,
   `featured` tinyint(3) unsigned NOT NULL,

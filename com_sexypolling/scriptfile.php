@@ -54,25 +54,24 @@ class com_sexypollingInstallerScript {
      * @return void
      */
     function uninstall($parent) {
+
+        //we do not need to uninstall the module and plugin, because it is handled by Joomla already
+        return;
+
         $db = JFactory::getDBO();
 
+        // uninstalling sexy polling module
         $sql = 'SELECT `extension_id` AS id, `name`, `element`, `folder` FROM #__extensions WHERE `type` = "module" AND ( (`element` = "mod_sexypolling") ) ';
         $db->setQuery($sql);
         $sexy_polling_module = $db->loadObject();
         $module_uninstaller = new JInstaller;
-        if($module_uninstaller->uninstall('module', $sexy_polling_module->id))
-             echo '<p>'.JText::_('COM_SEXYPOLLING_MODULE_UNINSTALL_SUCCESS').'</p>';
-        else
-            echo '<p>'.JText::_('COM_SEXYPOLLING_MODULE_UNINSTALL_FAILED').'</p>';
+        $module_uninstaller->uninstall('module', $sexy_polling_module->id);
 
         // uninstalling sexy polling plugin
         $db->setQuery("select extension_id from #__extensions where name = 'PLG_SEXYPOLLING' and type = 'plugin' and element = 'sexypolling'");
         $cis_plugin = $db->loadObject();
         $plugin_uninstaller = new JInstaller;
-        if($plugin_uninstaller->uninstall('plugin', $cis_plugin->extension_id))
-            echo '<p>'.JText::_('COM_SEXYPOLLING_PLUGIN_UNINSTALL_SUCCESS').'</p>';
-        else
-            echo '<p>'.JText::_('COM_SEXYPOLLING_PLUGIN_UNINSTALL_FAILED').'</p>';
+        $plugin_uninstaller->uninstall('plugin', $cis_plugin->extension_id);
     }
 
     /**

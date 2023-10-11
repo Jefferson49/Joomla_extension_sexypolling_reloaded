@@ -716,7 +716,7 @@ class SexypollingHelper
             }
         }
         else {
-            echo 'Sexy Polling: there is nothing to show!';
+            echo JText::_( 'COM_SEXYPOLLING_NOTHING_TO_SHOW' );
         }
 
         return $render_html = ob_get_clean();

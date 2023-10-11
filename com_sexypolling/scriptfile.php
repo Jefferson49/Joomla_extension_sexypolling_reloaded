@@ -66,7 +66,7 @@ class com_sexypollingInstallerScript {
             echo '<p>'.JText::_('COM_SEXYPOLLING_MODULE_UNINSTALL_FAILED').'</p>';
 
         // uninstalling sexy polling plugin
-        $db->setQuery("select extension_id from #__extensions where name = 'PLG_SEXYPOLLING_NAME' and type = 'plugin' and element = 'sexypolling'");
+        $db->setQuery("select extension_id from #__extensions where name = 'PLG_SEXYPOLLING' and type = 'plugin' and element = 'sexypolling'");
         $cis_plugin = $db->loadObject();
         $plugin_uninstaller = new JInstaller;
         if($plugin_uninstaller->uninstall('plugin', $cis_plugin->extension_id))

@@ -61,6 +61,7 @@
     <administration>
         <menu img="components/com_sexypolling/assets/images/project_16.png">COM_SEXYPOLLING_MENU</menu>
         <submenu>
+            <menu img="components/com_sexypolling/assets/images/arrow-right.png" link="option=com_sexypolling&amp;view=sexypolling">COM_SEXYPOLLING_SUBMENU_OVERVIEW</menu>
             <menu img="components/com_sexypolling/assets/images/poll_16.png" link="option=com_sexypolling&amp;view=sexypolls">COM_SEXYPOLLING_SUBMENU_POLLS</menu>
             <menu img="components/com_sexypolling/assets/images/answer_16.png" link="option=com_sexypolling&amp;view=sexyanswers">COM_SEXYPOLLING_SUBMENU_ANSWERS</menu>
             <menu img="components/com_sexypolling/assets/images/vote_16.png" link="option=com_sexypolling&amp;view=sexyvotes">COM_SEXYPOLLING_SUBMENU_VOTES</menu>

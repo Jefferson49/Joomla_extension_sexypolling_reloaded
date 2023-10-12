@@ -142,4 +142,22 @@
 		<targetplatform name="joomla" version="((3.10)|(4.*))" />
 		<sha256>afe4c82420f655f9bd9fec117bfe0094435c0f1dd2de9449ae794aa97bf9c730</sha256>
     </update> 	
+	<update>
+		<name>Sexy Polling Reloaded</name>
+		<description>A Joomla plugin to provide polls</description>
+		<element>COM_SEXYPOLLING</element>
+		<type>component</type>
+		<version>4.2.0</version>
+		<infourl title="Sexy Polling Reloaded">https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/tag/v4.2.0</infourl>
+		<downloads>
+			<downloadurl type="full" format="zip">https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/download/v4.2.0/joomla_plugin_sexypolling_reloaded_v4.2.0.zip</downloadurl>
+		</downloads>
+		<tags>
+			<tag>stable</tag>
+		</tags>
+		<maintainer>Jefferson49</maintainer>
+		<maintainerurl>https://github.com/Jefferson49</maintainerurl>
+		<targetplatform name="joomla" version="((3.10)|(4.*))" />
+		<sha256>a38f6b316e3008221368b3af1da23b4b2870417f8e06e02e81aa97c4b86fe962</sha256>
+    </update> 	
 </updates>

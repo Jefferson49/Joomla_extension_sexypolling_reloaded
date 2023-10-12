@@ -27,6 +27,8 @@
 + **Migration from the former "Sexy Polling" plugin**
     + During installation, the plugin re-uses existing data from the former Sexy Polling plugin. 
     + If you want to reuse data from the former Sexy Polling plugin, do not uninstall the former Sexy Polling plugin. Instead, just install the Sexy Polling Reloaded plugin. It will re-use the existing database tables.
++ **Known issues**
+    + If the plugin installation fails with an error "**... column 'country' can't have a default value**", an incompatibility with the database version (earlier than 5.7.24/8.0.13) or database configuration exists. In this case, it is recommended to use the former plugin release **v4.1.6**. 
 ##  Date formats
 The date format, which is shown in poll modules, can be specified in the Joomla administration at: Components -> Sexy Polling Reloaded -> Polls -> Edit -> Date Format.
 

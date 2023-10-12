@@ -45,7 +45,7 @@
 
     <languages folder="site">
             <language tag="de-DE">language/de-DE/de-DE.com_sexypolling.ini</language>
-            <language tag="nl-NL">language/el-GR/el-GR.com_sexypolling.ini</language>
+            <language tag="el-GR">language/el-GR/el-GR.com_sexypolling.ini</language>
             <language tag="en-GB">language/en-GB/en-GB.com_sexypolling.ini</language>
             <language tag="es-ES">language/es-ES/es-ES.com_sexypolling.ini</language>
             <language tag="fa-IR">language/fa-IR/fa-IR.com_sexypolling.ini</language>

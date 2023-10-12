@@ -215,8 +215,8 @@ setInterval("refreshSession()", <?php echo $timeout = intval(JFactory::getApplic
 				else if(roll == 7) {//poll name color
 					$(".polling_container .polling_name").css('color' , '#' + hex);
 				}
-				else if(roll == 9) {//poll name color
-					$(".polling_container .answer_name").css('color' , '#' + hex);
+				else if(roll == 9) {//poll answer name color
+					$(".polling_container .answer_name label").css('color' , '#' + hex);
 				}
 				else if(roll == 11) {//answer animation shadow
 					var boxShadow = $("#elem-68").val() + ' ' + $("#elem-69").val() + 'px '  + $("#elem-70").val() + 'px '  + $("#elem-71").val() + 'px ' + $("#elem-72").val() + 'px  #' + hex;
@@ -232,7 +232,7 @@ setInterval("refreshSession()", <?php echo $timeout = intval(JFactory::getApplic
 				}
 				else if(roll == 67) { //poll answer name text shadow
 					textShadow = $("#elem-64").val() + 'px '  + $("#elem-65").val() + 'px '  + $("#elem-66").val() + 'px #' + hex;
-					$(".polling_container .answer_name").css('textShadow' , textShadow);
+					$(".polling_container .answer_name label").css('textShadow' , textShadow);
 				}
 				else if(roll == 73) {
 					$(".polling_container .active_li").css('borderColor' , '#' + hex);
@@ -876,7 +876,7 @@ setInterval("refreshSession()", <?php echo $timeout = intval(JFactory::getApplic
 			}
 			else if(roll == 64 || roll == 65 || roll == 66 ) { //poll answer name text shadow
 				textShadow = $("#elem-64").val() + 'px '  + $("#elem-65").val() + 'px '  + $("#elem-66").val() + 'px ' +  $("#elem-67").val() ;
-				$(".polling_container .answer_name").css('textShadow' , textShadow);
+				$(".polling_container .answer_name label").css('textShadow' , textShadow);
 			}
 			else if(roll == 72 || roll == 69 || roll == 70 || roll == 71) { //active animation
 				var boxShadow = $("#elem-68").val() + ' ' + $("#elem-69").val() + 'px '  + $("#elem-70").val() + 'px '  + $("#elem-71").val() + 'px ' + $("#elem-72").val() + 'px ' + $("#elem-11").val();
@@ -1235,7 +1235,7 @@ setInterval("refreshSession()", <?php echo $timeout = intval(JFactory::getApplic
 			}
 			else if(roll == 64 || roll == 65 || roll == 66 ) { //poll answer name text shadow
 				textShadow = $("#elem-64").val() + 'px '  + $("#elem-65").val() + 'px '  + $("#elem-66").val() + 'px ' +  $("#elem-67").val() ;
-				$(".polling_container .answer_name").css('textShadow' , textShadow);
+				$(".polling_container .answer_name label").css('textShadow' , textShadow);
 			}
 			else if(roll == 72 || roll == 69 || roll == 70 || roll == 71) { //active animation
 				var boxShadow = $("#elem-68").val() + ' ' + $("#elem-69").val() + 'px '  + $("#elem-70").val() + 'px '  + $("#elem-71").val() + 'px ' + $("#elem-72").val() + 'px ' + $("#elem-11").val();
@@ -1541,19 +1541,19 @@ setInterval("refreshSession()", <?php echo $timeout = intval(JFactory::getApplic
 		})
 
 		$("#elem-41").change(function() {
-			$(".polling_container .answer_name").css('fontWeight' , $(this).val());
+			$(".polling_container .answer_name label").css('fontWeight' , $(this).val());
 		})
 		$("#elem-42").change(function() {
-			$(".polling_container .answer_name").css('fontStyle' , $(this).val());
+			$(".polling_container .answer_name label").css('fontStyle' , $(this).val());
 		})
 		$("#elem-43").change(function() {
-			$(".polling_container .answer_name").css('textDecoration' , $(this).val());
+			$(".polling_container .answer_name label").css('textDecoration' , $(this).val());
 		})
 		$("#elem-44").change(function() {
-			$(".polling_container .answer_name").css('textAlign' , $(this).val());
+			$(".polling_container .answer_name label").css('textAlign' , $(this).val());
 		})
 		$("#elem-45").blur(function() {
-			$(".polling_container .answer_name").css('fontFamily' , $(this).val());
+			$(".polling_container .answer_name label").css('fontFamily' , $(this).val());
 		})
 		$("#elem-50").change(function() {
 			var boxShadow = $("#elem-55").val() + ' ' + $("#elem-56").val() + 'px '  + $("#elem-57").val() + 'px '  + $("#elem-58").val() + 'px ' + $("#elem-59").val() + 'px ' + $("#elem-5").val();

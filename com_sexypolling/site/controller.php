@@ -15,9 +15,6 @@ use Joomla\CMS\MVC\Controller\BaseController;
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
-jimport( 'joomla.application.component.controller' );
-
-
 /**
  * sexy_polling Controller
  *

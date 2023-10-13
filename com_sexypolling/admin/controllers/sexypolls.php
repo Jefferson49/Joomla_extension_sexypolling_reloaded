@@ -25,8 +25,6 @@ use Joomla\CMS\Session\Session;
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
-jimport('joomla.application.component.controlleradmin');
-
 class SexyPollingControllerSexyPolls extends AdminController
 {
 	/**

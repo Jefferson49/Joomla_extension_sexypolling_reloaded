@@ -19,7 +19,6 @@ use Joomla\CMS\Form\FormHelper;
 defined('_JEXEC') or die('Restircted access');
 
 // import the list field type
-jimport('joomla.form.helper');
 FormHelper::loadFieldClass('list');
 
 class FormFieldSexyPoll extends ListField

@@ -17,9 +17,6 @@ use Joomla\CMS\MVC\View\HtmlView;
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
-// Import Joomla! libraries
-jimport( 'joomla.application.component.view');
-
 class SexypollingViewSexycategories extends HtmlView {
 	
 	protected $items;

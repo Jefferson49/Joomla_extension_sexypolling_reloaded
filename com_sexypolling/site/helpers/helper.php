@@ -194,7 +194,7 @@ class SexypollingHelper
 
         $user = Factory::getUser();
         $user_id = $user->get('id');
-        jimport( 'joomla.access.access' );
+
         $groups = Access::getGroupsByUser($user_id);
 
         //get data

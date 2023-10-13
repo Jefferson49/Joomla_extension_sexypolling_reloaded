@@ -24,10 +24,6 @@ use Joomla\CMS\Plugin\PluginHelper;
 
 defined('_JEXEC') or die('Restricted access');
 
-// Import library dependencies
-jimport('joomla.plugin.plugin');
-jimport('joomla.event.plugin');
-
 class plgSystemSexypolling extends CMSPlugin {
 
     public $_plugin;

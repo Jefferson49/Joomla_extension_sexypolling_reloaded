@@ -17,9 +17,6 @@ use Joomla\CMS\Table\Table;
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
-// import Joomla modelform library
-jimport('joomla.application.component.modeladmin');
-
 class SexypollingModelSexyVote extends AdminModel
 {
     /**

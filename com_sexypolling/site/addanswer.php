@@ -76,7 +76,7 @@ $groups = array();
 
 $user = Factory::getUser();
 $user_id = $user->get('id');
-jimport( 'joomla.access.access' );
+
 $groups = Access::getGroupsByUser($user_id);
 $is_logged_in_user = ( in_array(2,$groups) || in_array(3,$groups) || in_array(6,$groups) || in_array(8,$groups) ) ? true : false;
 

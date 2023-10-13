@@ -23,8 +23,6 @@ use Joomla\CMS\MVC\Model\ListModel;
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
-jimport('joomla.application.component.modellist');
-
 class SexypollingModelSexyPolls extends ListModel{
 	
 	/**

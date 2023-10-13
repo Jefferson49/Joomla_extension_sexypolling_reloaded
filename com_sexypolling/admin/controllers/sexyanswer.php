@@ -25,8 +25,6 @@ use Joomla\CMS\MVC\Model\BaseDatabaseModel;
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
-jimport('joomla.application.component.controllerform');
-
 class SexyPollingControllerSexyAnswer extends FormController
 {
 	function __construct($default = array()) {

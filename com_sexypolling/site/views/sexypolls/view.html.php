@@ -22,9 +22,6 @@ use Joomla\CMS\MVC\View\HtmlView;
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
-// Import Joomla! libraries
-jimport( 'joomla.application.component.view');
-
 class SexypollingViewsexypolls extends HtmlView {
     function display($tpl = null) {
         $items = $this->get( 'Data');

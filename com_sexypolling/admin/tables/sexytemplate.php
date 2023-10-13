@@ -15,9 +15,6 @@ use Joomla\CMS\Table\Table;
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
-// import Joomla table library
-jimport('joomla.database.table');
-
 class SexyPollTableSexyTemplate extends Table
 {
 	/**

@@ -64,7 +64,6 @@ JFactory::$language = new Language($lang_tag);
 $date = new Date();
 $date_time_zone = new DateTimeZone($time_zone);
 $date->setTimezone($date_time_zone);
-$debug_date = HtmlHelper::date('now', Text::_('Y-F-d H:i:s'), false);
 
 $db = JFactory::getDBO();
 

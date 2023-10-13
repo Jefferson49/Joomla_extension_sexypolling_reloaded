@@ -17,10 +17,12 @@
  * 
  */
 
+use Joomla\CMS\Factory;
+
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
-$id_15 = JFactory::getApplication()->input->getInt('poll',  0);
+$id_15 = Factory::getApplication()->input->getInt('poll',  0);
 $sp_class = new SexypollingHelper;
 $sp_class->id_poll = $id_15;
 $sp_class->id_category = 0;

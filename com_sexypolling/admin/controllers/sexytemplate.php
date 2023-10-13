@@ -17,6 +17,9 @@
  * 
  */
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
@@ -27,7 +30,7 @@ class SexyPollingControllerSexyTemplate extends JControllerForm
 	protected $view_item = 'aaa';
 	public function edit($key = null, $urlVar = null)
 	{
-		$cid  = JFactory::getApplication()->input->post->get('cid');
+		$cid  = Factory::getApplication()->input->post->get('cid');
 
 		if ($cid !== null) {
 			$id = $cid[0];
@@ -36,10 +39,10 @@ class SexyPollingControllerSexyTemplate extends JControllerForm
 			$id = 0;			
 		}
 		
-		$id = $id == 0 ? JFactory::getApplication()->input->get->getInt('id',0) : $id;
-		JFactory::getApplication()->input->set( 'view', 'sexytemplate' );
-		JFactory::getApplication()->input->set( 'layout', 'form'  );
-		JFactory::getApplication()->input->set('hidemainmenu', 1);
+		$id = $id == 0 ? Factory::getApplication()->input->get->getInt('id',0) : $id;
+		Factory::getApplication()->input->set( 'view', 'sexytemplate' );
+		Factory::getApplication()->input->set( 'layout', 'form'  );
+		Factory::getApplication()->input->set('hidemainmenu', 1);
 		
 		$link = 'index.php?option=com_sexypolling&view=sexytemplate&layout=form&id='.$id;
 		$msg = '';
@@ -50,16 +53,16 @@ class SexyPollingControllerSexyTemplate extends JControllerForm
 	
 	public function add()
 	{
-		JFactory::getApplication()->input->set( 'view', 'sexytemplate' );
-		JFactory::getApplication()->input->set( 'layout', 'add'  );
-		JFactory::getApplication()->input->set('hidemainmenu', 1);
+		Factory::getApplication()->input->set( 'view', 'sexytemplate' );
+		Factory::getApplication()->input->set( 'layout', 'add'  );
+		Factory::getApplication()->input->set('hidemainmenu', 1);
 	
 		parent::display();
 	}
 	
 	public function save($key = null, $urlVar = null)
 	{
-		$cid  = JFactory::getApplication()->input->post->get('cid');
+		$cid  = Factory::getApplication()->input->post->get('cid');
 
 		if ($cid !== null) {
 			$id = $cid[0];
@@ -68,15 +71,15 @@ class SexyPollingControllerSexyTemplate extends JControllerForm
 			$id = 0;			
 		}
 
-		$id = $id == 0 ? JFactory::getApplication()->input->get->getInt('id',0) : $id;
+		$id = $id == 0 ? Factory::getApplication()->input->get->getInt('id',0) : $id;
 		
-		$task = JFactory::getApplication()->input->getCmd('task');
+		$task = Factory::getApplication()->input->getCmd('task');
 		$model = $this->getModel('sexytemplate');
 	
 		if ($model->store()) {
-			$msg = JText::_( 'COM_SEXYPOLLING_TEMPLATE_SAVED' );
+			$msg = Text::_( 'COM_SEXYPOLLING_TEMPLATE_SAVED' );
 		} else {
-			$msg = JText::_( 'COM_SEXYPOLLING_ERROR_SAVING_TEMPLATE' );
+			$msg = Text::_( 'COM_SEXYPOLLING_ERROR_SAVING_TEMPLATE' );
 		}
 	
 		// Check the table in so it can be edited.... we are done with it anyway
@@ -91,9 +94,9 @@ class SexyPollingControllerSexyTemplate extends JControllerForm
 	
 	public function cancel($key = null, $urlVar = null)
 	{
-		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+		JSession::checkToken() or jexit(Text::_('JINVALID_TOKEN'));
 		
-		$msg = JText::_( 'COM_SEXYPOLLING_OPERATION_CANCELLED' );
+		$msg = Text::_( 'COM_SEXYPOLLING_OPERATION_CANCELLED' );
 		$this->setRedirect( 'index.php?option=com_sexypolling&view=sexytemplates', $msg );
 	}
 }

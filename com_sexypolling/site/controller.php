@@ -10,6 +10,8 @@
  *
  */
 
+use Joomla\CMS\MVC\Controller\BaseController;
+
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
@@ -22,7 +24,7 @@ jimport( 'joomla.application.component.controller' );
  * @package Joomla
  * @subpackage sexy_polling
  */
-class SexypollingController extends JControllerLegacy {
+class SexypollingController extends BaseController {
 	
 	/**
 	 * @var		string	The default view.

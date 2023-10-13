@@ -10,13 +10,14 @@
  *
  */
 
+use Joomla\CMS\MVC\Controller\BaseController;
+
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
-jimport( 'joomla.application.component.controller' );
 require_once( JPATH_COMPONENT.DIRECTORY_SEPARATOR.'helpers'.DIRECTORY_SEPARATOR.'helper.php' );
 
-class SexypollingController extends JControllerLegacy
+class SexypollingController extends BaseController
 {
     /**
      * @var     string  The default view.
@@ -30,7 +31,7 @@ class SexypollingController extends JControllerLegacy
      * @param   boolean         If true, the view output will be cached
      * @param   array           An array of safe url parameters and their variable types, for valid values see {@link JFilterInput::clean()}.
      *
-     * @return  JController     This object to support chaining.
+     * @return  BaseController  This object to support chaining.
      * @since   1.5
      */
     public function display($cachable = false, $urlparams = false)

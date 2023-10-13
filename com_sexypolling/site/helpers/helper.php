@@ -16,8 +16,10 @@
  */
 
 use Joomla\CMS\Date\Date;
+use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\Uri\Uri;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -35,39 +37,39 @@ class SexypollingHelper
     //function to add scripts/styles
     private function add_scripts() {
         //add scripts, styles
-        $document = JFactory::getApplication()->getDocument();
+        $document = Factory::getApplication()->getDocument();
 
-        $cssFile = JURI::base(true).'/components/com_sexypolling/assets/css/main.css';
+        $cssFile = Uri::base(true).'/components/com_sexypolling/assets/css/main.css';
         $document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
 
-        $cssFile = JURI::base(true).'/components/com_sexypolling/assets/css/sexycss-ui.css';
+        $cssFile = Uri::base(true).'/components/com_sexypolling/assets/css/sexycss-ui.css';
         $document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
 
-        $cssFile = JURI::base(true).'/components/com_sexypolling/assets/css/countdown.css';
+        $cssFile = Uri::base(true).'/components/com_sexypolling/assets/css/countdown.css';
         $document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
 
-        $jsFile = JURI::base(true).'/components/com_sexypolling/assets/js/sexylib.js';
+        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexylib.js';
         $document->addScript($jsFile);
 
-        $jsFile = JURI::base(true).'/components/com_sexypolling/assets/js/sexylib-ui.js';
+        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexylib-ui.js';
         $document->addScript($jsFile);
 
-        $jsFile = JURI::base(true).'/components/com_sexypolling/assets/js/selectToUISlider.jQuery.js';
+        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/selectToUISlider.jQuery.js';
         $document->addScript($jsFile);
 
-        $jsFile = JURI::base(true).'/components/com_sexypolling/assets/js/color.js';
+        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/color.js';
         $document->addScript($jsFile);
 
-        $jsFile = JURI::base(true).'/components/com_sexypolling/assets/js/countdown.js';
+        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/countdown.js';
         $document->addScript($jsFile);
 
-        $jsFile = JURI::base(true).'/components/com_sexypolling/assets/js/sexypolling.js';
+        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexypolling.js';
         $document->addScript($jsFile);
 
         if((int) $this->id_category == 0)
-            $cssFile = JURI::base(true).'/components/com_sexypolling/generate.css.php?id_poll='.$this->id_poll.'&module_id='.$this->module_id;
+            $cssFile = Uri::base(true).'/components/com_sexypolling/generate.css.php?id_poll='.$this->id_poll.'&module_id='.$this->module_id;
         else
-            $cssFile = JURI::base(true).'/components/com_sexypolling/generate.css.php?id_category='.$this->id_category.'&module_id='.$this->module_id;
+            $cssFile = Uri::base(true).'/components/com_sexypolling/generate.css.php?id_category='.$this->id_category.'&module_id='.$this->module_id;
 		$document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
     }
 
@@ -81,7 +83,7 @@ class SexypollingHelper
     }
 
     private function get_data() {
-        $db = JFactory::getDBO();
+        $db = Factory::getDBO();
 
                     $query = 'SELECT '.
                         'sp.id polling_id, '.
@@ -159,7 +161,7 @@ class SexypollingHelper
             $this->add_scripts();
 
         //get ip address
-		$server = JFactory::getApplication()->input->server;
+		$server = Factory::getApplication()->input->server;
 		
         $REMOTE_ADDR = null;
         if($server->get('HTTP_X_FORWARDED_FOR') !== null) { list($REMOTE_ADDR) = explode(',', $server->get('HTTP_X_FORWARDED_FOR')); }
@@ -173,7 +175,7 @@ class SexypollingHelper
         $groups = array();
 
 		//load language and timezone
-		$lang = JFactory::getLanguage();
+		$lang = Factory::getLanguage();
 		$lang->load('com_sexypolling');
 		$lang_tag = $lang->getTag();
 		$iterator = new ArrayIterator(iterator_to_array(IntlTimeZone::createEnumeration(substr($lang_tag, -2))));
@@ -188,7 +190,7 @@ class SexypollingHelper
 		$date->setTimezone($date_time_zone);
 		$debug_date = HtmlHelper::date('2022-03-15', Text::_('F d, Y'), false);
 
-        $user = JFactory::getUser();
+        $user = Factory::getUser();
         $user_id = $user->get('id');
         jimport( 'joomla.access.access' );
         $groups = JAccess::getGroupsByUser($user_id);
@@ -227,10 +229,10 @@ class SexypollingHelper
 
         if(sizeof($pollings) > 0) {
 
-            $polling_words = array(JText::_("COM_SEXYPOLLING_WORD_1"),JText::_("COM_SEXYPOLLING_WORD_2"),JText::_("COM_SEXYPOLLING_WORD_3"),JText::_("COM_SEXYPOLLING_WORD_4"),JText::_("COM_SEXYPOLLING_WORD_5"),JText::_("COM_SEXYPOLLING_WORD_6"),JText::_("COM_SEXYPOLLING_WORD_7"),JText::_("COM_SEXYPOLLING_WORD_8"),JText::_("COM_SEXYPOLLING_WORD_9"),JText::_("COM_SEXYPOLLING_WORD_10"),JText::_("COM_SEXYPOLLING_WORD_11"),JText::_("COM_SEXYPOLLING_WORD_12"),JText::_("COM_SEXYPOLLING_WORD_13"),JText::_("COM_SEXYPOLLING_WORD_14"),JText::_("COM_SEXYPOLLING_WORD_15"),JText::_("COM_SEXYPOLLING_WORD_16"),JText::_("COM_SEXYPOLLING_WORD_17"),JText::_("COM_SEXYPOLLING_WORD_18"),JText::_("COM_SEXYPOLLING_WORD_19"),JText::_("COM_SEXYPOLLING_WORD_20"),JText::_("COM_SEXYPOLLING_WORD_21"),JText::_("COM_SEXYPOLLING_WORD_22"),JText::_("COM_SEXYPOLLING_WORD_23"),JText::_("COM_SEXYPOLLING_WORD_24"),JText::_("COM_SEXYPOLLING_WORD_25"),JText::_("COM_SEXYPOLLING_WORD_26"));
+            $polling_words = array(Text::_("COM_SEXYPOLLING_WORD_1"),Text::_("COM_SEXYPOLLING_WORD_2"),Text::_("COM_SEXYPOLLING_WORD_3"),Text::_("COM_SEXYPOLLING_WORD_4"),Text::_("COM_SEXYPOLLING_WORD_5"),Text::_("COM_SEXYPOLLING_WORD_6"),Text::_("COM_SEXYPOLLING_WORD_7"),Text::_("COM_SEXYPOLLING_WORD_8"),Text::_("COM_SEXYPOLLING_WORD_9"),Text::_("COM_SEXYPOLLING_WORD_10"),Text::_("COM_SEXYPOLLING_WORD_11"),Text::_("COM_SEXYPOLLING_WORD_12"),Text::_("COM_SEXYPOLLING_WORD_13"),Text::_("COM_SEXYPOLLING_WORD_14"),Text::_("COM_SEXYPOLLING_WORD_15"),Text::_("COM_SEXYPOLLING_WORD_16"),Text::_("COM_SEXYPOLLING_WORD_17"),Text::_("COM_SEXYPOLLING_WORD_18"),Text::_("COM_SEXYPOLLING_WORD_19"),Text::_("COM_SEXYPOLLING_WORD_20"),Text::_("COM_SEXYPOLLING_WORD_21"),Text::_("COM_SEXYPOLLING_WORD_22"),Text::_("COM_SEXYPOLLING_WORD_23"),Text::_("COM_SEXYPOLLING_WORD_24"),Text::_("COM_SEXYPOLLING_WORD_25"),Text::_("COM_SEXYPOLLING_WORD_26"));
 
             $module_id = $this->module_id;
-            $db = JFactory::getDBO();
+            $db = Factory::getDBO();
 
             foreach ($pollings as $poll_index => $polling_array) {
 
@@ -347,8 +349,8 @@ class SexypollingHelper
                     }
 
 					//check cookie		
-					if (JFactory::getApplication()->input->cookie->get('sexy_poll_$poll_index') !== null) {
-                        $datevoted = JFactory::getApplication()->input->cookie->get('sexy_poll_$poll_index');
+					if (Factory::getApplication()->input->cookie->get('sexy_poll_$poll_index') !== null) {
+                        $datevoted = Factory::getApplication()->input->cookie->get('sexy_poll_$poll_index');
                         $hours_diff = ($date_now - $datevoted) / 3600;
                         if(!in_array($poll_index,array_keys($voted_ids)))
                             $voted_ids[$poll_index] = $voting_period - $hours_diff;
@@ -385,8 +387,8 @@ class SexypollingHelper
                 $colors_array = array("black","blue","red","litegreen","yellow","liteblue","green","crimson","litecrimson");
 
                 $cache_dir = __DIR__ . '/../../../cache/com_sexypolling/';
-                $cached_img_dir = JURI::base(true) . '/cache/com_sexypolling/';
-                $uploaded_img_dir = JURI::base(true) . '/';
+                $cached_img_dir = Uri::base(true) . '/cache/com_sexypolling/';
+                $uploaded_img_dir = Uri::base(true) . '/';
 
                 echo '<ul class="polling_ul">';
                 foreach ($polling_array as $k => $poll_data) {
@@ -453,7 +455,7 @@ class SexypollingHelper
                 if($permission_to_show_add_answer_block) {
                     echo '<div class="answer_wrapper opened" ><div style="padding:6px">';
                     echo '<div class="add_answer"><input name="answer_name" class="add_ans_name" value="'.$polling_words[11].'" />
-                    <input type="button" value="'.$polling_words[12].'" class="add_ans_submit" /><input type="hidden" value="'.$poll_index.'" class="poll_id" /><img class="loading_small" src="'.JURI::base(true).'/components/com_sexypolling/assets/images/loading_small.gif" /></div>';
+                    <input type="button" value="'.$polling_words[12].'" class="add_ans_submit" /><input type="hidden" value="'.$poll_index.'" class="poll_id" /><img class="loading_small" src="'.Uri::base(true).'/components/com_sexypolling/assets/images/loading_small.gif" /></div>';
                     echo '</div></div>';
                 }
 
@@ -627,7 +629,7 @@ class SexypollingHelper
             }
             $jsInclude .= 'var newAnswerBarIndex = "'.$new_answer_bar_index.'";';
             $jsInclude .= 'var sexyIp = "'.$sexyip.'";';
-            $jsInclude .= 'var sexyPath = "'.JURI::base(true).'/";';
+            $jsInclude .= 'var sexyPath = "'.Uri::base(true).'/";';
 
             $jsInclude .= 'if (typeof sexyPollingIds === \'undefined\') { var sexyPollingIds = new Array();};';
             $k = 0;
@@ -716,7 +718,7 @@ class SexypollingHelper
             }
 
             if($this->type != 'plugin') {
-                $document = JFactory::getApplication()->getDocument();
+                $document = Factory::getApplication()->getDocument();
                 $document->addScriptDeclaration ( $jsInclude );
             }
             else {
@@ -724,7 +726,7 @@ class SexypollingHelper
             }
         }
         else {
-            echo JText::_( 'COM_SEXYPOLLING_NOTHING_TO_SHOW' );
+            echo Text::_( 'COM_SEXYPOLLING_NOTHING_TO_SHOW' );
         }
 
         return $render_html = ob_get_clean();

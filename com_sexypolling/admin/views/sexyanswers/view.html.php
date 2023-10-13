@@ -17,6 +17,8 @@
  * 
  */
 
+use Joomla\CMS\Language\Text;
+
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
@@ -51,13 +53,13 @@ class SexypollingViewSexyanswers extends JViewLegacy {
     	}
     	else {
     		JHtmlSidebar::addFilter(
-    				JText::_('JOPTION_SELECT_PUBLISHED'),
+    				Text::_('JOPTION_SELECT_PUBLISHED'),
     				'filter_published',
     				JHtml::_('select.options', JHtml::_('jgrid.publishedOptions'), 'value', 'text', $this->state->get('filter.published'), true)
     		);
     		 
     		JHtmlSidebar::addFilter(
-    				JText::_('COM_SEXYPOLLING_SELECT_POLL'),
+    				Text::_('COM_SEXYPOLLING_SELECT_POLL'),
     				'filter_poll_id',
     				JHtml::_('select.options', $options, 'value', 'text', $this->state->get('filter.poll_id'))
     		);
@@ -95,12 +97,12 @@ class SexypollingViewSexyanswers extends JViewLegacy {
     protected function getSortFields()
     {
     	return array(
-    			'sa.ordering' => JText::_('JGRID_HEADING_ORDERING'),
-    			'sa.name' => JText::_('COM_SEXYPOLLING_NAME'),
-    			'poll_name' => JText::_('COM_SEXYPOLLING_POLL'),
-    			'sa.published' => JText::_('JSTATUS'),
-    			'count_votes' => JText::_('COM_SEXYPOLLING_NUM_VOTES'),
-    			'sa.id' => JText::_('JGRID_HEADING_ID')
+    			'sa.ordering' => Text::_('JGRID_HEADING_ORDERING'),
+    			'sa.name' => Text::_('COM_SEXYPOLLING_NAME'),
+    			'poll_name' => Text::_('COM_SEXYPOLLING_POLL'),
+    			'sa.published' => Text::_('JSTATUS'),
+    			'count_votes' => Text::_('COM_SEXYPOLLING_NUM_VOTES'),
+    			'sa.id' => Text::_('JGRID_HEADING_ID')
     	);
     }
 }

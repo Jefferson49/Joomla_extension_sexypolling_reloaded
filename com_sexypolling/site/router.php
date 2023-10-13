@@ -10,6 +10,8 @@
  *
  */
 
+use Joomla\CMS\Factory;
+
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
@@ -19,7 +21,7 @@ defined('_JEXEC') or die('Restircted access');
 function SexypollingBuildRoute( &$query )
 {
 	static $items;
-	$app	= JFactory::getApplication();
+	$app	= Factory::getApplication();
 
 	$segments	= array();
 	$itemid		= null;

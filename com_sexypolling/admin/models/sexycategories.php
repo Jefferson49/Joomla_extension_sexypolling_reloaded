@@ -17,6 +17,8 @@
  * 
  */
 
+use Joomla\CMS\Factory;
+
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
@@ -60,10 +62,10 @@ class SexypollingModelSexyCategories extends JModelList {
 	protected function populateState($ordering = null, $direction = null)
 	{
 		// Initialise variables.
-		$app = JFactory::getApplication();
+		$app = Factory::getApplication();
 
 		// Adjust the context to support modal layouts.
-		if ($layout = JFactory::getApplication()->input->get('layout')) {
+		if ($layout = Factory::getApplication()->input->get('layout')) {
 			$this->context .= '.'.$layout;
 		}
 
@@ -109,7 +111,7 @@ class SexypollingModelSexyCategories extends JModelList {
 		// Create a new query object.
 		$db		= $this->getDbo();
 		$query	= $db->getQuery(true);
-		$user	= JFactory::getUser();
+		$user	= Factory::getUser();
 
 		// Select the required fields from the table.
 		$query->select(

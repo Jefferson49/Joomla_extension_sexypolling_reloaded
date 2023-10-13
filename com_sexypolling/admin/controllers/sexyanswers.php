@@ -16,6 +16,9 @@
  * @license GNU/GPL v3.0
  * 
  */
+ 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -49,11 +52,11 @@ class SexyPollingControllerSexyAnswers extends JControllerAdmin
 	function featured()
 	{
 		// Check for request forgeries
-		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+		JSession::checkToken() or jexit(Text::_('JINVALID_TOKEN'));
 
 		// Initialise variables.
-		$user	= JFactory::getUser();
-		$ids	= JFactory::getApplication()->input->get('cid');
+		$user	= Factory::getUser();
+		$ids	= Factory::getApplication()->input->get('cid');
 		$values	= array('featured' => 1, 'unfeatured' => 0);
 		$task	= $this->getTask();
 		$value	= \Joomla\Utilities\ArrayHelper::getValue($values, $task, 0, 'int');
@@ -68,17 +71,17 @@ class SexyPollingControllerSexyAnswers extends JControllerAdmin
 			if (!$user->authorise('core.edit.state', 'com_contact.category.'.(int) $item->catid)) {
 				// Prune items that you can't change.
 				unset($ids[$i]);
-				JError::raiseNotice(403, JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'));
+				JError::raiseNotice(403, Text::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'));
 			}
 		}
 		*/
 
 		if (empty($ids)) {
-			JFactory::getApplication()->enqueueMessage(500, JText::_('No Items'));
+			Factory::getApplication()->enqueueMessage(500, Text::_('No Items'));
 		} else {
 			// Publish the items.
 			if (!$model->featured($ids, $value)) {
-				JFactory::getApplication()->enqueueMessage(500, $model->getError());
+				Factory::getApplication()->enqueueMessage(500, $model->getError());
 			}
 		}
 
@@ -130,6 +133,6 @@ class SexyPollingControllerSexyAnswers extends JControllerAdmin
 		}
 	
 		// Close the application
-		JFactory::getApplication()->close();
+		Factory::getApplication()->close();
 	}
 }

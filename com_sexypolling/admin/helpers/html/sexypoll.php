@@ -10,6 +10,8 @@
  *
  */
 
+use Joomla\CMS\Language\Text;
+
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
@@ -31,9 +33,9 @@ abstract class JHtmlSexyPoll
 			1	=> array('featured.png', 'sexypolls.unfeatured', 'COM_SEXYPOLLING_FEATURED', 'COM_SEXYPOLLING_FEATURED'),
 		);
 		$state	= \Joomla\Utilities\ArrayHelper::getValue($states, (int) $value, $states[1]);
-		$html	= JHtml::_('image', 'admin/'.$state[0], JText::_($state[2]), NULL, true);
+		$html	= JHtml::_('image', 'admin/'.$state[0], Text::_($state[2]), NULL, true);
 		if ($canChange) {
-			$html	= '<a href="#" onclick="return listItemTask(\'cb'.$i.'\',\''.$state[1].'\')" title="'.JText::_($state[3]).'">'
+			$html	= '<a href="#" onclick="return listItemTask(\'cb'.$i.'\',\''.$state[1].'\')" title="'.Text::_($state[3]).'">'
 					. $html .'</a>';
 		}
 

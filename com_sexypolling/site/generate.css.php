@@ -10,6 +10,8 @@
  *
  */
 
+use Joomla\CMS\Factory;
+
 // no direct access
 define('_JEXEC',true);
 defined('_JEXEC') or die('Restircted access');
@@ -36,14 +38,14 @@ if(version_compare(JVERSION, '4', '>=')) {
 }
 else {
 	// Get the application.
-	$app = JFactory::getApplication('site');
+	$app = Factory::getApplication('site');
 	$app->initialise();
 }
 
 $get = $app->input->get;
 
 //conects to datababse
-$db = JFactory::getDBO();
+$db = Factory::getDBO();
 
 $category_id = $get->getInt('id_category', 0);
 $poll_id = $get->getInt('id_poll', 0);

@@ -16,6 +16,10 @@
  * @license GNU/GPL v3.0
  * 
  */
+ 
+use Joomla\CMS\Factory;
+use Joomla\CMS\MVC\Controller\BaseController;
+use Joomla\CMS\Uri\Uri;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -27,12 +31,12 @@ defined('_JEXEC') or die('Restircted access');
 define('JV', (version_compare(JVERSION, '3', '<')) ? 'j2' : 'j3');
 define( 'COM_SEXY_POLLING_DIR', 'images'.DIRECTORY_SEPARATOR.'sexy_polling'.DIRECTORY_SEPARATOR );
 define( 'COM_SEXY_POLLING_BASE', JPATH_ROOT.DIRECTORY_SEPARATOR.COM_SEXY_POLLING_DIR );
-define( 'COM_SEXY_POLLING_BASEURL', JURI::root().str_replace( DIRECTORY_SEPARATOR, '/', COM_SEXY_POLLING_DIR ));
+define( 'COM_SEXY_POLLING_BASEURL', Uri::root().str_replace( DIRECTORY_SEPARATOR, '/', COM_SEXY_POLLING_DIR ));
 
 require_once JPATH_COMPONENT . '/helpers/helper.php';
 
-$controller	= JControllerLegacy::getInstance('SexyPolling');
+$controller	= BaseController::getInstance('SexyPolling');
 
 // Perform the Request task
-$controller->execute(JFactory::getApplication()->input->getCmd('task'));
+$controller->execute(Factory::getApplication()->input->getCmd('task'));
 $controller->redirect();

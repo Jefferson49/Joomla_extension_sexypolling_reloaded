@@ -10,6 +10,8 @@
  *
  */
 
+use Joomla\CMS\Language\Text;
+
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
@@ -36,7 +38,7 @@ class SexypollingViewSexytemplates extends JViewLegacy {
  		
        	if(JV == 'j3') {
     		JHtmlSidebar::addFilter(
-    				JText::_('JOPTION_SELECT_PUBLISHED'),
+    				Text::_('JOPTION_SELECT_PUBLISHED'),
     				'filter_published',
     				JHtml::_('select.options', JHtml::_('jgrid.publishedOptions'), 'value', 'text', $this->state->get('filter.published'), true)
     		);
@@ -73,9 +75,9 @@ class SexypollingViewSexytemplates extends JViewLegacy {
     protected function getSortFields()
     {
     	return array(
-    			'st.name' => JText::_('COM_SEXYPOLLING_NAME'),
-    			'st.published' => JText::_('JSTATUS'),
-    			'st.id' => JText::_('JGRID_HEADING_ID')
+    			'st.name' => Text::_('COM_SEXYPOLLING_NAME'),
+    			'st.published' => Text::_('JSTATUS'),
+    			'st.id' => Text::_('JGRID_HEADING_ID')
     	);
     }
 }

@@ -10,6 +10,8 @@
  *
  */
 
+use Joomla\CMS\Factory;
+
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
@@ -33,7 +35,7 @@ class JFormFieldSexyPoll extends JFormFieldList
 	 */
 	protected function getOptions() 
 	{
-		$db = JFactory::getDBO();
+		$db = Factory::getDBO();
 		$query = $db->getQuery(true);
 		$query->select('id,name');
 		$query->from('#__sexy_polls');

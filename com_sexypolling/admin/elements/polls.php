@@ -16,6 +16,10 @@
  * @license GNU/GPL v3.0
  * 
  */
+
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+ 
 defined('_JEXEC') or die('Restircted access');
 
 class JElementPolls extends JFormFieldListement
@@ -24,9 +28,9 @@ class JElementPolls extends JFormFieldListement
 
 	function fetchElement($name, $value, &$node, $control_name)
 	{
-		$doc 		=& JFactory::getApplication()->getDocument();
+		$doc 		=& Factory::getApplication()->getDocument();
 		$fieldName	= $control_name.'['.$name.']';
-		$db 		=& JFactory::getDBO();
+		$db 		=& Factory::getDBO();
 
 		$query = "SELECT name text,id value FROM #__sexy_categories WHERE published = '1'";
 		$db->setQuery($query);
@@ -35,7 +39,7 @@ class JElementPolls extends JFormFieldListement
 		$html = array();
 
 		$html[] = "<select name=\"$fieldName\">";
-		//$html[] = '<option value="0">'.JText::_("All").'</option>';
+		//$html[] = '<option value="0">'.Text::_("All").'</option>';
 		foreach($options AS $o) {
 			$html[] = '<option value="'.$o->value.'"'.(($o->value == $value) ? ' selected="selected"' : '').'>';
 			$html[] = $o->text;

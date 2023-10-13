@@ -10,6 +10,8 @@
  *
  */
 
+use Joomla\CMS\Language\Text;
+
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
@@ -41,7 +43,7 @@ class SexypollingViewSexyvotes extends JViewLegacy {
 
         if(JV == 'j3') {
             JHtmlSidebar::addFilter(
-                    JText::_('COM_SEXYPOLLING_SELECT_POLL'),
+                    Text::_('COM_SEXYPOLLING_SELECT_POLL'),
                     'filter_poll_id',
                     JHtml::_('select.options', $options, 'value', 'text', $this->state->get('filter.poll_id'))
             );
@@ -72,15 +74,15 @@ class SexypollingViewSexyvotes extends JViewLegacy {
     protected function getSortFields()
     {
         return array(
-                'id_vote' => JText::_('JGRID_HEADING_ID'),
-                'date' => JText::_('JDATE'),
-                'country' => JText::_('COM_SEXYPOLLING_COUNTRY'),
-                'city' => JText::_('COM_SEXYPOLLING_CITY'),
-                'region' => JText::_('COM_SEXYPOLLING_REGION'),
-                'ip' => JText::_('COM_SEXYPOLLING_IP'),
-                'id_answer' => JText::_('COM_SEXYPOLLING_ANSWER'),
-                'id_poll' => JText::_('COM_SEXYPOLLING_POLL'),
-                'username' => JText::_('COM_SEXYPOLLING_USER')
+                'id_vote' => Text::_('JGRID_HEADING_ID'),
+                'date' => Text::_('JDATE'),
+                'country' => Text::_('COM_SEXYPOLLING_COUNTRY'),
+                'city' => Text::_('COM_SEXYPOLLING_CITY'),
+                'region' => Text::_('COM_SEXYPOLLING_REGION'),
+                'ip' => Text::_('COM_SEXYPOLLING_IP'),
+                'id_answer' => Text::_('COM_SEXYPOLLING_ANSWER'),
+                'id_poll' => Text::_('COM_SEXYPOLLING_POLL'),
+                'username' => Text::_('COM_SEXYPOLLING_USER')
         );
     }
 }

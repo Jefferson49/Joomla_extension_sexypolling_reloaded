@@ -17,6 +17,9 @@
  * 
  */
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
@@ -31,16 +34,16 @@ class SexypollingHelper {
 	 */
 	public static function addSubmenu($title, $v, $controller = null, $image = null) {
 		$enabled = false;
-		$view = JFactory::getApplication()->input->getWord("view", 'sexypolling');
+		$view = Factory::getApplication()->input->getWord("view", 'sexypolling');
 		if($view == $v) {
 			$img = $v;
 			if($image != null) $img = $image;
-			JToolBarHelper::title(   JText::_( $title).' - '.( 'Sexy Polling' ), $img.'.png' );
+			JToolBarHelper::title(   Text::_( $title).' - '.( 'Sexy Polling' ), $img.'.png' );
 			$enabled = true;
 		}
 		$link = 'index.php?option=com_sexypolling&view='.$v;
 		if($controller != null) $link .= '&controller='.$controller;
 		
-		JHtmlSidebar::addEntry( JText::_($title), $link, $enabled);
+		JHtmlSidebar::addEntry( Text::_($title), $link, $enabled);
 	}
 }

@@ -10,12 +10,15 @@
  *
  */
 
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\Controller\BaseController;
+
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
 jimport( 'joomla.application.component.controller' );
 
-class SexypollingControllerShowStatistics extends JControllerLegacy {
+class SexypollingControllerShowStatistics extends BaseController {
 
 	/**
 	 * cancel editing a record
@@ -23,7 +26,7 @@ class SexypollingControllerShowStatistics extends JControllerLegacy {
 	 */
 	function cancel()
 	{
-		$msg = JText::_( '' );
+		$msg = Text::_( '' );
 		$this->setRedirect( 'index.php?option=com_sexypolling&view=sexystatistics', $msg );
 	}
 	

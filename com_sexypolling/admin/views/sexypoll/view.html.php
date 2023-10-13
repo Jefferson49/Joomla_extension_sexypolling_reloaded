@@ -17,6 +17,9 @@
  * 
  */
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
@@ -45,7 +48,7 @@ class SexypollingViewSexypoll extends JViewLegacy
 		
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) {
-			JFactory::getApplication()->enqueueMessage(500, implode("\n", $errors));
+			Factory::getApplication()->enqueueMessage(500, implode("\n", $errors));
 			return false;
 		}
 
@@ -60,16 +63,16 @@ class SexypollingViewSexypoll extends JViewLegacy
 	 */
 	protected function addToolbar($max_id)
 	{
-		JFactory::getApplication()->input->set('hidemainmenu', true);
+		Factory::getApplication()->input->set('hidemainmenu', true);
 
-		$user		= JFactory::getUser();
+		$user		= Factory::getUser();
 		$userId		= $user->get('id');
 		$isNew		= ($this->item->id == 0);
 		$checkedOut	= !($this->item->checked_out == 0 || $this->item->checked_out == $userId);
 		// Since we don't track these assets at the item level, use the category id.
 
-		$text = $isNew ? JText::_( 'New' ) : JText::_( 'JTOOLBAR_EDIT' );
-		JToolBarHelper::title(   JText::_( 'COM_SEXYPOLLING_POLL' ).': <small><small>[ ' . $text.' ]</small></small>','manage.png' );
+		$text = $isNew ? Text::_( 'New' ) : Text::_( 'JTOOLBAR_EDIT' );
+		JToolBarHelper::title(   Text::_( 'COM_SEXYPOLLING_POLL' ).': <small><small>[ ' . $text.' ]</small></small>','manage.png' );
 	
 		JToolBarHelper::apply('sexypoll.apply');
 		JToolBarHelper::save('sexypoll.save');

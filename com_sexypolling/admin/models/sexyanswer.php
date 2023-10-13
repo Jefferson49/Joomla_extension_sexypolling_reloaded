@@ -17,6 +17,9 @@
  * 
  */
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
@@ -77,7 +80,7 @@ class SexypollingModelSexyAnswer extends JModelAdmin
 	protected function loadFormData() 
 	{
 		// Check the session for previously entered form data.
-		$data = JFactory::getApplication()->getUserState('com_sexypolling.edit.sexyanswer.data', array());
+		$data = Factory::getApplication()->getUserState('com_sexypolling.edit.sexyanswer.data', array());
 		if (empty($data)) 
 		{
 			$data = $this->getItem();
@@ -107,7 +110,7 @@ class SexypollingModelSexyAnswer extends JModelAdmin
 		\Joomla\Utilities\ArrayHelper::toInteger($pks);
 	
 		if (empty($pks)) {
-			$this->setError(JText::_('COM_SEXYPOLLING_NO_ITEM_SELECTED'));
+			$this->setError(Text::_('COM_SEXYPOLLING_NO_ITEM_SELECTED'));
 			return false;
 		}
 	
@@ -147,8 +150,8 @@ class SexypollingModelSexyAnswer extends JModelAdmin
 	function saveAnswer()
 	{
 		$date = new JDate();
-		$id = JFactory::getApplication()->input->request->getInt('id',0);
-		$jform = JFactory::getApplication()->input->request->get('jform', null, null);
+		$id = Factory::getApplication()->input->request->getInt('id',0);
+		$jform = Factory::getApplication()->input->request->get('jform', null, null);
 	
 		$req = new JObject();
 		$req->name =  $jform['name'];
@@ -267,7 +270,7 @@ class SexypollingModelSexyAnswer extends JModelAdmin
 		}
 	
 		// Strip the possible trailing slash off the document root
-		//$docRoot	= preg_replace('/\/$/', '', JFactory::getApplication()->input->server->get('DOCUMENT_ROOT'));
+		//$docRoot	= preg_replace('/\/$/', '', Factory::getApplication()->input->server->get('DOCUMENT_ROOT'));
 		$docRoot = '';
 	
 		$size	= GetImageSize($image);

@@ -16,6 +16,9 @@
  * @license GNU/GPL v3.0
  * 
  */
+ 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -27,10 +30,10 @@ class JFormFieldPoll extends JFormField
 
 	function getInput()
 	{
-		$doc 		= JFactory::getApplication()->getDocument();
+		$doc 		= Factory::getApplication()->getDocument();
 		$fieldName	= $this->name;
 
-		$db = JFactory::getDBO();
+		$db = Factory::getDBO();
 
 		$query = "SELECT name text,id value FROM #__sexy_polls WHERE published = '1'";
 		$db->setQuery($query);
@@ -39,7 +42,7 @@ class JFormFieldPoll extends JFormField
 		$html = array();
 
 		$html[] = "<select name=\"$fieldName\">";
-		//$html[] = '<option value="0">'.JText::_("All").'</option>';
+		//$html[] = '<option value="0">'.Text::_("All").'</option>';
 		foreach($options AS $o) {
 			$html[] = '<option value="'.$o->value.'"'.(($o->value == $this->value) ? ' selected="selected"' : '').'>';
 			$html[] = $o->text;

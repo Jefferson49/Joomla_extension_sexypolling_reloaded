@@ -17,41 +17,45 @@
  * 
  */
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Uri\Uri;
+use Joomla\CMS\Language\Text;
+
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
-$document = JFactory::getApplication()->getDocument();
-$cssFile = JURI::base(true).'/components/com_sexypolling/assets/css/colorpicker.css';
+$document = Factory::getApplication()->getDocument();
+$cssFile = Uri::base(true).'/components/com_sexypolling/assets/css/colorpicker.css';
 $document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
 
-$cssFile = JURI::base(true).'/components/com_sexypolling/assets/css/layout.css';
+$cssFile = Uri::base(true).'/components/com_sexypolling/assets/css/layout.css';
 $document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
 
-$cssFile = JURI::base(true).'/components/com_sexypolling/assets/css/temp_'.JV.'.css';
+$cssFile = Uri::base(true).'/components/com_sexypolling/assets/css/temp_'.JV.'.css';
 $document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
 
-$cssFile = JURI::base(true).'/components/com_sexypolling/assets/css/jquery-ui-1.7.1.custom.css';
+$cssFile = Uri::base(true).'/components/com_sexypolling/assets/css/jquery-ui-1.7.1.custom.css';
 $document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
 
-$cssFile = JURI::base(true).'/components/com_sexypolling/assets/css/ui.slider.extras.css';
+$cssFile = Uri::base(true).'/components/com_sexypolling/assets/css/ui.slider.extras.css';
 $document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
 
-$cssFile = JURI::base(true).'/components/com_sexypolling/assets/css/main.css';
+$cssFile = Uri::base(true).'/components/com_sexypolling/assets/css/main.css';
 $document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
 
-$jsFile = JURI::base(true).'/components/com_sexypolling/assets/js/sexylib.js';
+$jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexylib.js';
 $document->addScript($jsFile);
 
-$jsFile = JURI::base(true).'/components/com_sexypolling/assets/js/colorpicker.js';
+$jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/colorpicker.js';
 $document->addScript($jsFile);
 
-$jsFile = JURI::base(true).'/components/com_sexypolling/assets/js/eye.js';
+$jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/eye.js';
 $document->addScript($jsFile);
 
-$jsFile = JURI::base(true).'/components/com_sexypolling/assets/js/utils.js';
+$jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/utils.js';
 $document->addScript($jsFile);
 
-$jsFile = JURI::base(true).'/components/com_sexypolling/assets/js/layout.js?ver=1.0.2';
+$jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/layout.js?ver=1.0.2';
 //$document->addScript($jsFile);
 ?>
 
@@ -133,7 +137,7 @@ function refreshSession() {
 
     if(req) {
         req.onreadystatechange = processReqChange;
-        req.open("HEAD", "<?php echo JURI::base();?>", true);
+        req.open("HEAD", "<?php echo Uri::base();?>", true);
         req.send();
     }
 }
@@ -150,7 +154,7 @@ function processReqChange() {
         }
     }
 }
-setInterval("refreshSession()", <?php echo $timeout = intval(JFactory::getApplication()->getCfg('lifetime') * 60 / 3 * 1000);?>);
+setInterval("refreshSession()", <?php echo $timeout = intval(Factory::getApplication()->getCfg('lifetime') * 60 / 3 * 1000);?>);
 </script>
 <script>
 (function($) {
@@ -1839,7 +1843,7 @@ function create_accordion($txt,$state,$title='') {
 	echo '<tr>
 			<td colspan="2">
 				<div class="temp_data_container">
-				<div class="temp_block '.$state.'" title="'.$title.'">'.JText::_($txt).'</div><div style="'.$dis.'margin-bottom:6px;">
+				<div class="temp_block '.$state.'" title="'.$title.'">'.Text::_($txt).'</div><div style="'.$dis.'margin-bottom:6px;">
 					<table>';
 }
 function close_accordion() {
@@ -1850,7 +1854,7 @@ function echo_font_tr($txt,$i,$value) {
 			<tr>
             <td width="180" align="right" class="key">
                 <label for="name">';
-                    echo JText::_($txt);
+                    echo Text::_($txt);
                 echo '</label>
             </td>
             <td class="st_td">
@@ -1864,7 +1868,7 @@ function echo_select_tr($txt,$i,$values,$value) {
 			<tr>
             <td width="180" align="right" class="key">
                 <label for="name">';
-                    echo JText::_($txt);
+                    echo Text::_($txt);
                 echo '</label>
             </td>
             <td class="st_td">
@@ -1883,7 +1887,7 @@ function echo_color_tr($txt,$i,$color) {
 			<tr>
             <td width="180" align="right" class="key">
                 <label for="name">';
-                    echo JText::_($txt);
+                    echo Text::_($txt);
                 echo '</label>
             </td>
             <td class="st_td">
@@ -1898,15 +1902,15 @@ function echo_size_tr($txt,$i,$size,$min,$max) {
 			<tr>
             <td width="180" align="right" class="key">
                 <label for="name">';
-                    echo JText::_($txt);
+                    echo Text::_($txt);
                 echo '</label>
             </td>
              <td class="st_td">
             	<div class="size_container">
 	            	<input class="size_input" type="text" value="'. $size .'" name="styles['.$i.']" readonly="readonly" roll="'.$i.'" id="elem-'.$i.'" />
 	            	<div class="size_arrows">
-	            		<div class="size_up" maxval="'.$max.'" title="'; echo JText::_( 'Up' ); echo '"></div>
-	            		<div class="size_down" minval="'.$min.'" title="'; echo JText::_( 'Down' );echo '"></div>
+	            		<div class="size_up" maxval="'.$max.'" title="'; echo Text::_( 'Up' ); echo '"></div>
+	            		<div class="size_down" minval="'.$min.'" title="'; echo Text::_( 'Down' );echo '"></div>
 	            	</div>
 	            	<div class="pix_info">px</div>
 	            </div>
@@ -2219,7 +2223,7 @@ function seperate_tr($txt,$title='') {
 	 </div>
 <form action="<?php echo JRoute::_('index.php?option=com_sexypolling&layout=form&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="adminForm">
     <fieldset class="adminform" style="position: relative;">
-        <legend><?php echo JText::_( 'Custom Styles' ); ?></legend>
+        <legend><?php echo Text::_( 'Custom Styles' ); ?></legend>
         <div id="main_styles_table">
 	        <table class="temp_table">
 	        <?php seperate_tr("Template Name");
@@ -2227,7 +2231,7 @@ function seperate_tr($txt,$title='') {
 	        <tr>
 	            <td width="180" align="right" class="key" style="width: 230px;">
 	                <label for="name">
-	                    <?php echo JText::_( 'Name' ); ?>:
+	                    <?php echo Text::_( 'Name' ); ?>:
 	                </label>
 	            </td>
 	            <td class="st_td">

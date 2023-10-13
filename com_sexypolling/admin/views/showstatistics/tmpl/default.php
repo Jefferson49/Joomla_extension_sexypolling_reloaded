@@ -17,16 +17,20 @@
  * 
  */
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Uri\Uri;
+
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
-$document = JFactory::getApplication()->getDocument();
+$document = Factory::getApplication()->getDocument();
 
-$jsFile = JURI::base(true).'/components/com_sexypolling/assets/js/jquery-1.7.2.min.js';
+$jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/jquery-1.7.2.min.js';
 $document->addScript($jsFile);
-$jsFile = JURI::base(true).'/components/com_sexypolling/assets/js/highstock.js';
+$jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/highstock.js';
 $document->addScript($jsFile);
-$jsFile = JURI::base(true).'/components/com_sexypolling/assets/js/exporting.js';
+$jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/exporting.js';
 $document->addScript($jsFile);
 
 $document->addScriptDeclaration ( 'jQuery.noConflict();' );
@@ -45,9 +49,9 @@ function get_dates_array($date1,$date2) {
 }
 
 
-$db = JFactory::getDBO();
+$db = Factory::getDBO();
 
-$poll_id = JFactory::getApplication()->input->get('id');
+$poll_id = Factory::getApplication()->input->get('id');
 
 $query = "
             SELECT
@@ -160,7 +164,7 @@ $query = "
 $db->setQuery($query);
 $totalvotes = $db->loadResult();
 
-JToolBarHelper::title(   JText::_( 'COM_SEXYPOLLING_STATISTICS' ).' - ('.$poll_name.')' ,'manage.png' );
+JToolBarHelper::title(   Text::_( 'COM_SEXYPOLLING_STATISTICS' ).' - ('.$poll_name.')' ,'manage.png' );
 
 
 if($totalvotes > 0) {
@@ -182,7 +186,7 @@ if($totalvotes > 0) {
             },
 
             title : {
-                text : '<?php echo JText::_("COM_SEXYPOLLING_VOTES_STATISTICS")." - ($poll_name)";?>'
+                text : '<?php echo Text::_("COM_SEXYPOLLING_VOTES_STATISTICS")." - ($poll_name)";?>'
             },
 
             scrollbar: {
@@ -256,7 +260,7 @@ if($totalvotes > 0) {
                         plotShadow: false
                     },
                     title: {
-                        text: '<?php echo JText::_("COM_SEXYPOLLING_COUNTRY_STATISTICS");?>'
+                        text: '<?php echo Text::_("COM_SEXYPOLLING_COUNTRY_STATISTICS");?>'
                     },
                     tooltip: {
                         formatter: function() {
@@ -317,7 +321,7 @@ if($totalvotes > 0) {
                         plotShadow: false
                     },
                     title: {
-                        text: '<?php echo JText::_("COM_SEXYPOLLING_ANSWERS_STATISTICS");?>'
+                        text: '<?php echo Text::_("COM_SEXYPOLLING_ANSWERS_STATISTICS");?>'
                     },
                     tooltip: {
                         formatter: function() {
@@ -378,7 +382,7 @@ if($totalvotes > 0) {
 })
 })(jQuery);
 </script>
-<div style="color: rgb(21, 90, 177);font-size: 20px;font-weight: bold;clear: both;text-align: center;margin: 5px 0 5px 0;"><?php echo JText::_('COM_SEXYPOLLING_STATISTICS_DEMO')?></div>
+<div style="color: rgb(21, 90, 177);font-size: 20px;font-weight: bold;clear: both;text-align: center;margin: 5px 0 5px 0;"><?php echo Text::_('COM_SEXYPOLLING_STATISTICS_DEMO')?></div>
 
 <div style="position: relative;float: left; width: 48%;padding: 8px;border: 1px solid #ccc;border-radius: 6px;box-shadow: inset 0 0 28px -3px #bbb;margin: 15px 0;">
     <div id="container2" style=""></div>

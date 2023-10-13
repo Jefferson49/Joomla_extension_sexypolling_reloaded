@@ -17,6 +17,9 @@
  * 
  */
 
+use Joomla\CMS\Uri\Uri;
+use Joomla\CMS\Factory;
+
 defined('_JEXEC') or die('Restricted access');
 
 // Import library dependencies
@@ -74,39 +77,39 @@ class plgSystemSexypolling extends JPlugin {
 
     //function onBeforeCompileHead() {
     function render_styles_scripts() {
-        $document = JFactory::getApplication()->getDocument();
-        $content = JFactory::getApplication()->getBody();
+        $document = Factory::getApplication()->getDocument();
+        $content = Factory::getApplication()->getBody();
 
         //check if the scripts did not included
         if (strpos($content,'components/com_sexypolling/assets/css/main.css') !== false) {
             return $content;
         }
 
-        $cssFile = JURI::base(true).'/components/com_sexypolling/assets/css/main.css';
+        $cssFile = Uri::base(true).'/components/com_sexypolling/assets/css/main.css';
         $scripts = '<link rel="stylesheet" href="'.$cssFile.'" type="text/css" />'."\n";
 
-        $cssFile = JURI::base(true).'/components/com_sexypolling/assets/css/sexycss-ui.css';
+        $cssFile = Uri::base(true).'/components/com_sexypolling/assets/css/sexycss-ui.css';
         $scripts .= '<link rel="stylesheet" href="'.$cssFile.'" type="text/css" />'."\n";
 
-        $cssFile = JURI::base(true).'/components/com_sexypolling/assets/css/countdown.css';
+        $cssFile = Uri::base(true).'/components/com_sexypolling/assets/css/countdown.css';
         $scripts .= '<link rel="stylesheet" href="'.$cssFile.'" type="text/css" />'."\n";
 
-        $jsFile = JURI::base(true).'/components/com_sexypolling/assets/js/sexylib.js';
+        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexylib.js';
         $scripts .= '<script src="'.$jsFile.'" type="text/javascript"></script>'."\n";
 
-        $jsFile = JURI::base(true).'/components/com_sexypolling/assets/js/sexylib-ui.js';
+        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexylib-ui.js';
         $scripts .= '<script src="'.$jsFile.'" type="text/javascript"></script>'."\n";
 
-        $jsFile = JURI::base(true).'/components/com_sexypolling/assets/js/selectToUISlider.jQuery.js';
+        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/selectToUISlider.jQuery.js';
         $scripts .= '<script src="'.$jsFile.'" type="text/javascript"></script>'."\n";
 
-        $jsFile = JURI::base(true).'/components/com_sexypolling/assets/js/color.js';
+        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/color.js';
         $scripts .= '<script src="'.$jsFile.'" type="text/javascript"></script>'."\n";
 
-        $jsFile = JURI::base(true).'/components/com_sexypolling/assets/js/countdown.js';
+        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/countdown.js';
         $scripts .= '<script src="'.$jsFile.'" type="text/javascript"></script>'."\n";
 
-        $jsFile = JURI::base(true).'/components/com_sexypolling/assets/js/sexypolling.js';
+        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexypolling.js';
         $scripts .= '<script src="'.$jsFile.'" type="text/javascript"></script>'."\n";
 
         $content = str_replace('</head>', $scripts . '</head>', $content);
@@ -114,14 +117,14 @@ class plgSystemSexypolling extends JPlugin {
     }
 
     function onAfterRender() {
-      $mainframe = JFactory::getApplication();
+      $mainframe = Factory::getApplication();
       if($mainframe->isClient('administrator'))
         return;
 
       $plugin = JPluginHelper::getPlugin('system', 'sexypolling');
       $pluginParams = json_decode( $plugin->params );
 
-      $content = JFactory::getApplication()->getBody();
+      $content = Factory::getApplication()->getBody();
 
       //add scripts
       if(preg_match('/(\[(?:sexy|fancy)polling id|category="([0-9]+)"\])/s',$content))
@@ -138,7 +141,7 @@ class plgSystemSexypolling extends JPlugin {
         $module_id = 10000;
         $plg_order_index = 0;
         foreach($m[2] as $poll_id) {
-            $cssFileSrc = JURI::base(true).'/components/com_sexypolling/generate.css.php?id_poll='.$poll_id.'&module_id='.$module_id;
+            $cssFileSrc = Uri::base(true).'/components/com_sexypolling/generate.css.php?id_poll='.$poll_id.'&module_id='.$module_id;
             $cssFile = '<link rel="stylesheet" href="'.$cssFileSrc.'" type="text/css" />'."\n";
             $c = str_replace('</head>', $cssFile . '</head>', $c);
 
@@ -157,7 +160,7 @@ class plgSystemSexypolling extends JPlugin {
         $module_id = 20000;
         $plg_order_index = 0;
         foreach($m[2] as $category_id) {
-            $cssFileSrc = JURI::base(true).'/components/com_sexypolling/generate.css.php?id_category='.$category_id.'&module_id='.$module_id;
+            $cssFileSrc = Uri::base(true).'/components/com_sexypolling/generate.css.php?id_category='.$category_id.'&module_id='.$module_id;
             $cssFile = '<link rel="stylesheet" href="'.$cssFileSrc.'" type="text/css" />'."\n";
             $c = str_replace('</head>', $cssFile . '</head>', $c);
 
@@ -166,7 +169,7 @@ class plgSystemSexypolling extends JPlugin {
         }
       }
 
-      JFactory::getApplication()->setBody($c);
+      Factory::getApplication()->setBody($c);
     }
 
 }

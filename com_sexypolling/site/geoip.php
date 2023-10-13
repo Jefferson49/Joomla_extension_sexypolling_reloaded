@@ -10,6 +10,8 @@
  *
  */
 
+use Joomla\CMS\Factory;
+
 // no direct access
 define('_JEXEC',true);
 defined('_JEXEC') or die('Restircted access');
@@ -36,7 +38,7 @@ if(version_compare(JVERSION, '4', '>=')) {
 }
 else {
 	// Get the application.
-	$app = JFactory::getApplication('site');
+	$app = Factory::getApplication('site');
 	$app->initialise();
 }
 

@@ -10,6 +10,10 @@
  *
  */
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Object\CMSObject;
+use Joomla\CMS\Table\Table;
+
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
@@ -24,12 +28,12 @@ class SexypollingModelSexyTemplate extends JModelAdmin
 	 * @param	type	The table type to instantiate
 	 * @param	string	A prefix for the table class name. Optional.
 	 * @param	array	Configuration array for model. Optional.
-	 * @return	JTable	A database object
+	 * @return	Table	A database object
 	 * @since	1.6
 	 */
 	public function getTable($type = 'SexyTemplate', $prefix = 'SexyPollTable', $config = array()) 
 	{
-		return JTable::getInstance($type, $prefix, $config);
+		return Table::getInstance($type, $prefix, $config);
 	}
 	/**
 	 * Method to get the record form.
@@ -45,8 +49,8 @@ class SexypollingModelSexyTemplate extends JModelAdmin
 	 *
 	 */
 	public function getStyles() {
-		if(JFactory::getApplication()->input->get->get('id') !== null) {
-			$id = JFactory::getApplication()->input->get->getInt('id');
+		if(Factory::getApplication()->input->get->get('id') !== null) {
+			$id = Factory::getApplication()->input->get->getInt('id');
 		};
 		$db = $this->getDbo();
 		$sql = "SELECT `styles` FROM `#__sexy_templates` WHERE `id` = ".$id;
@@ -73,7 +77,7 @@ class SexypollingModelSexyTemplate extends JModelAdmin
 	protected function loadFormData() 
 	{
 		// Check the session for previously entered form data.
-		$data = JFactory::getApplication()->getUserState('com_sexypolling.edit.sexytemplate.data', array());
+		$data = Factory::getApplication()->getUserState('com_sexypolling.edit.sexytemplate.data', array());
 		if (empty($data)) 
 		{
 			$data = $this->getItem();
@@ -89,7 +93,7 @@ class SexypollingModelSexyTemplate extends JModelAdmin
 	 */
 	public function store()
 	{
-		$request = JFactory::getApplication()->input->request;
+		$request = Factory::getApplication()->input->request;
 
 		$id = $request->getInt('id');
 		$template_name = htmlspecialchars($request->getString('name'), ENT_QUOTES);
@@ -106,7 +110,7 @@ class SexypollingModelSexyTemplate extends JModelAdmin
 			$this->_db->setQuery( $query );
 			$tmp = $this->_db->loadObject();
 	
-			$new_template = new JObject();
+			$new_template = new CMSObject();
 			$new_template->id = NULL;
 			$new_template->name = $template_name;
 			$new_template->styles = $tmp->styles;
@@ -118,7 +122,7 @@ class SexypollingModelSexyTemplate extends JModelAdmin
 				return false;
 		}
 		else { //else update the record
-			$new_template = new JObject();
+			$new_template = new CMSObject();
 			$new_template->id = $id;
 			$new_template->name = $template_name;
 			$styles = $request->getString('styles');

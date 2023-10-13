@@ -16,6 +16,9 @@
  * @license GNU/GPL v3.0
  * 
  */
+use Joomla\CMS\Factory;
+use Joomla\CMS\MVC\Controller\BaseController;
+use Joomla\CMS\Uri\Uri;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -26,21 +29,21 @@ defined('_JEXEC') or die('Restircted access');
 define('JV', (version_compare(JVERSION, '3', '<')) ? 'j2' : 'j3');
 define( 'COM_SEXY_POLLING_DIR', 'images'.DIRECTORY_SEPARATOR.'sexy_polling'.DIRECTORY_SEPARATOR );
 define( 'COM_SEXY_POLLING_BASE', JPATH_ROOT.DIRECTORY_SEPARATOR.COM_SEXY_POLLING_DIR );
-define( 'COM_SEXY_POLLING_BASEURL', JURI::root().str_replace( DIRECTORY_SEPARATOR, '/', COM_SEXY_POLLING_DIR ));
+define( 'COM_SEXY_POLLING_BASEURL', Uri::root().str_replace( DIRECTORY_SEPARATOR, '/', COM_SEXY_POLLING_DIR ));
 
 // Require the base controller
 require_once JPATH_COMPONENT.DIRECTORY_SEPARATOR.'helpers'.DIRECTORY_SEPARATOR.'helper.php';
 
 // Initialize the controller
-$controller	= JControllerLegacy::getInstance('SexyPolling');
+$controller	= BaseController::getInstance('SexyPolling');
 
-$document = JFactory::getApplication()->getDocument();
-$cssFile = JURI::base(true).'/components/com_sexypolling/assets/css/icons_'.JV.'.css';
+$document = Factory::getApplication()->getDocument();
+$cssFile = Uri::base(true).'/components/com_sexypolling/assets/css/icons_'.JV.'.css';
 $document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
 
 // Perform the Request task
 if(JV == 'j2')
-	$controller->execute( JFactory::getApplication()->input->get('task'));
+	$controller->execute(Factory::getApplication()->input->get('task'));
 else
-	$controller->execute(JFactory::getApplication()->input->getCmd('task'));
+	$controller->execute(Factory::getApplication()->input->getCmd('task'));
 $controller->redirect();

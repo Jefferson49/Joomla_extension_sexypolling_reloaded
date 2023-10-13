@@ -17,12 +17,17 @@
  * 
  */
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\Controller\FormController;
+use Joomla\CMS\MVC\Model\BaseDatabaseModel;
+
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
 jimport('joomla.application.component.controllerform');
 
-class SexyPollingControllerSexyAnswer extends JControllerForm
+class SexyPollingControllerSexyAnswer extends FormController
 {
 	function __construct($default = array()) {
 		parent::__construct($default);
@@ -32,16 +37,16 @@ class SexyPollingControllerSexyAnswer extends JControllerForm
 	}
 	
 	function saveAnswer() {
-		$id = JFactory::getApplication()->input->getInt('id',0);
+		$id = Factory::getApplication()->input->getInt('id',0);
 		$model = $this->getModel('sexyanswer');
 	
 		if ($model->saveAnswer()) {
-			$msg = JText::_( 'COM_SEXYPOLLING_ANSWER_SAVED' );
+			$msg = Text::_( 'COM_SEXYPOLLING_ANSWER_SAVED' );
 		} else {
-			$msg = JText::_( 'COM_SEXYPOLLING_ERROR_SAVING_ANSWER' );
+			$msg = Text::_( 'COM_SEXYPOLLING_ERROR_SAVING_ANSWER' );
 		}
 	
-		if(JFactory::getApplication()->input->getCmd('task') == 'apply' && $id != 0)
+		if(Factory::getApplication()->input->getCmd('task') == 'apply' && $id != 0)
 			$link = 'index.php?option=com_sexypolling&view=sexyanswer&layout=edit&id='.$id;
 		else
 			$link = 'index.php?option=com_sexypolling&view=sexyanswers';

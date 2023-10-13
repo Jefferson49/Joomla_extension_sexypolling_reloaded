@@ -10,6 +10,8 @@
  *
  */
 
+use Joomla\CMS\Factory; 
+
 // no direct access
 define('_JEXEC',true);
 defined('_JEXEC') or die('Restircted access');
@@ -22,9 +24,9 @@ require_once ( JPATH_BASE .DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'d
 require_once ( JPATH_BASE .DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'framework.php' );
 
 //conects to datababse
-$db = JFactory::getDBO();
+$db = Factory::getDBO();
 
-$id = JFactory::getApplication()->input->post->getInt('id');
+$id = Factory::getApplication()->input->post->getInt('id');
 $query = "SELECT COUNT(id) as count_answers FROM #__sexy_answers WHERE id_poll = '$id' GROUP By id_poll";
 $db->setQuery($query);
 $db->execute();

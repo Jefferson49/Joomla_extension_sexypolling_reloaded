@@ -18,9 +18,10 @@
  */
 
 use Joomla\CMS\Date\Date;
+use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
-use Joomla\CMS\Language\Text;
 use Joomla\CMS\Language\Language;
+use Joomla\CMS\Language\Text;
 
 // no direct access
 define('_JEXEC',true);
@@ -49,30 +50,30 @@ if(version_compare(JVERSION, '4', '>=')) {
 }
 else {
 	// Get the application.
-	$app = JFactory::getApplication('site');
+	$app = Factory::getApplication('site');
 	$app->initialise();
 }
 
-$post = JFactory::getApplication()->input->post;
-$server = JFactory::getApplication()->input->server;
+$post = Factory::getApplication()->input->post;
+$server = Factory::getApplication()->input->server;
 
 //load language and timezone
 $lang_tag = $app->input->cookie->getString('sexy_poll_lang_tag', 'en-GB');
 $time_zone = $app->input->cookie->getString('sexy_poll_time_zone', '');
-JFactory::$language = new Language($lang_tag);
+Factory::$language = new Language($lang_tag);
 //Create date format
 $date = new Date();
 $date_time_zone = new DateTimeZone($time_zone);
 $date->setTimezone($date_time_zone);
 $debug_date = HtmlHelper::date('now', Text::_('Y-F-d H:i:s'), false);
 
-$db = JFactory::getDBO();
+$db = Factory::getDBO();
 
 //get user groups
 $levels = array();
 $groups = array();
 
-$user = JFactory::getUser();
+$user = Factory::getUser();
 $user_id = $user->get('id');
 jimport( 'joomla.access.access' );
 $groups = JAccess::getGroupsByUser($user_id);
@@ -105,7 +106,7 @@ $ipcount = $poll_options["ipcount"];
 $voting_period = (float) $poll_options["voting_period"];
 
 //check token
-if (!JFactory::getApplication()->input && $poll_options["checktoken"] == 1) {
+if (!Factory::getApplication()->input && $poll_options["checktoken"] == 1) {
     echo '[{"invalid":"invalid_token"}]';
     exit();
 }
@@ -208,7 +209,7 @@ if($poll_options["votechecks"] == 1) {
         }
 		
         //check cookie		
-		if (JFactory::getApplication()->input->cookie->get('sexy_poll_$polling_id') !== null) {
+		if (Factory::getApplication()->input->cookie->get('sexy_poll_$polling_id') !== null) {
             $voting_enabled = false;
         }
     }

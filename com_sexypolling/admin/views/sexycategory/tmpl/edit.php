@@ -17,6 +17,8 @@
  * 
  */
 
+use Joomla\CMS\Language\Text;
+
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
@@ -48,7 +50,7 @@ Joomla.submitbutton = function(task) {
 <?php if(JV == 'j2') {//////////////////////////////////////////////////////////////////////////////////////Joomla2.x/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////?>
 <form action="<?php echo JRoute::_('index.php?option=com_sexypolling&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="adminForm">
 	<fieldset class="adminform">
-		<legend><?php echo JText::_( 'COM_SEXYPOLLING_DETAILS' ); ?></legend>
+		<legend><?php echo Text::_( 'COM_SEXYPOLLING_DETAILS' ); ?></legend>
 		<ul class="adminformlist">
 <?php foreach($this->form->getFieldset() as $field): ?>
 			<li><?php echo $field->label;echo $field->input;?></li>
@@ -76,7 +78,7 @@ JHtml::_('formbehavior.chosen', 'select');
 					<div class="tab-pane active" id="details">
 						<div class="control-group">
 							<?php foreach($this->form->getFieldset() as $field): ?>
-								<div class="control-label" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php echo JText::_($field->description); ?>"><?php echo $field->label;?></div>
+								<div class="control-label" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php echo Text::_($field->description); ?>"><?php echo $field->label;?></div>
 								<div class="controls"><?php echo $field->input;?></div>
 								<div style="clear: both;height: 8px;">&nbsp;</div>
 							<?php endforeach; ?>

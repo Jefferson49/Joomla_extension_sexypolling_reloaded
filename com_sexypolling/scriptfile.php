@@ -17,6 +17,11 @@
  * 
  */
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Installer\Installer;
+use Joomla\CMS\Language\Text;
+
+
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
@@ -29,21 +34,21 @@ class com_sexypollingInstallerScript {
      */
     function install($parent) {
         // installing module
-        $module_installer = new JInstaller;
+        $module_installer = new Installer;
         if(@$module_installer->install(dirname(__FILE__).DIRECTORY_SEPARATOR.'modules'.DIRECTORY_SEPARATOR.'module')) {
-            //echo '<p>'.JText::_('COM_SEXYPOLLING_MODULE_INSTALL_SUCCESS').'</p>';
+            //echo '<p>'.Text::_('COM_SEXYPOLLING_MODULE_INSTALL_SUCCESS').'</p>';
         } else
-           echo '<p>'.JText::_('COM_SEXYPOLLING_MODULE_INSTALL_FAILED').'</p>';
+           echo '<p>'.Text::_('COM_SEXYPOLLING_MODULE_INSTALL_FAILED').'</p>';
 
         // installing plugin
-        $plugin_installer = new JInstaller;
+        $plugin_installer = new Installer;
         if($plugin_installer->install(dirname(__FILE__).DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.'plugin')) {
-            //echo '<p>'.JText::_('COM_SEXYPOLLING_PLUGIN_INSTALL_SUCCESS').'</p>';
+            //echo '<p>'.Text::_('COM_SEXYPOLLING_PLUGIN_INSTALL_SUCCESS').'</p>';
         } else
-            echo '<p>'.JText::_('COM_SEXYPOLLING_PLUGIN_INSTALL_FAILED').'</p>';
+            echo '<p>'.Text::_('COM_SEXYPOLLING_PLUGIN_INSTALL_FAILED').'</p>';
 
         // enabling plugin
-        $db = JFactory::getDBO();
+        $db = Factory::getDBO();
         $db->setQuery('UPDATE #__extensions SET enabled = 1 WHERE element = "sexypolling" AND folder = "system"');
         $db->execute();
     }
@@ -57,21 +62,23 @@ class com_sexypollingInstallerScript {
 
         //we do not need to uninstall the module and plugin, because it is handled by Joomla already
         return;
-
-        $db = JFactory::getDBO();
+        
+        /*
+        $db = Factory::getDBO();
 
         // uninstalling sexy polling module
         $sql = 'SELECT `extension_id` AS id, `name`, `element`, `folder` FROM #__extensions WHERE `type` = "module" AND ( (`element` = "mod_sexypolling") ) ';
         $db->setQuery($sql);
         $sexy_polling_module = $db->loadObject();
-        $module_uninstaller = new JInstaller;
+        $module_uninstaller = new Installer;
         $module_uninstaller->uninstall('module', $sexy_polling_module->id);
 
         // uninstalling sexy polling plugin
         $db->setQuery("select extension_id from #__extensions where name = 'PLG_SEXYPOLLING' and type = 'plugin' and element = 'sexypolling'");
         $cis_plugin = $db->loadObject();
-        $plugin_uninstaller = new JInstaller;
+        $plugin_uninstaller = new Installer;
         $plugin_uninstaller->uninstall('plugin', $cis_plugin->extension_id);
+        */
     }
 
     /**
@@ -80,20 +87,20 @@ class com_sexypollingInstallerScript {
      * @return void
      */
     function update($parent) {
-        $module_installer = new JInstaller;
+        $module_installer = new Installer;
         if(@$module_installer->install(dirname(__FILE__).DIRECTORY_SEPARATOR.'modules'.DIRECTORY_SEPARATOR.'module')) {
-            //echo '<p>'.JText::_('COM_SEXYPOLLING_MODULE_INSTALL_SUCCESS').'</p>';
+            //echo '<p>'.Text::_('COM_SEXYPOLLING_MODULE_INSTALL_SUCCESS').'</p>';
         } else
-           echo '<p>'.JText::_('COM_SEXYPOLLING_MODULE_INSTALL_FAILED').'</p>';
+           echo '<p>'.Text::_('COM_SEXYPOLLING_MODULE_INSTALL_FAILED').'</p>';
 
-        $plugin_uninstaller = new JInstaller;
+        $plugin_uninstaller = new Installer;
         if(@$plugin_uninstaller->install(dirname(__FILE__).DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.'plugin')) {
-            //echo '<p>'.JText::_('COM_SEXYPOLLING_PLUGIN_INSTALL_SUCCESS').'</p>';
+            //echo '<p>'.Text::_('COM_SEXYPOLLING_PLUGIN_INSTALL_SUCCESS').'</p>';
         } else
-            echo '<p>'.JText::_('COM_SEXYPOLLING_PLUGIN_INSTALL_FAILED').'</p>';
+            echo '<p>'.Text::_('COM_SEXYPOLLING_PLUGIN_INSTALL_FAILED').'</p>';
 
         // enabling plugin
-        $db = JFactory::getDBO();
+        $db = Factory::getDBO();
         $db->setQuery('UPDATE #__extensions SET enabled = 1 WHERE element = "sexypolling" AND folder = "system"');
         $db->execute();
     }
@@ -106,7 +113,7 @@ class com_sexypollingInstallerScript {
     function preflight($type, $parent) {
         // $parent is the class calling this method
         // $type is the type of change (install, update or discover_install)
-        //echo '<p>' . JText::_('COM_HELLOWORLD_PREFLIGHT_' . $type . '_TEXT') . '</p>';
+        //echo '<p>' . Text::_('COM_HELLOWORLD_PREFLIGHT_' . $type . '_TEXT') . '</p>';
     }
 
     /**
@@ -120,7 +127,7 @@ class com_sexypollingInstallerScript {
             return; 
         }
 
-        $db = JFactory::getDBO();
+        $db = Factory::getDBO();
         $query = "SELECT * FROM `#__sexy_polls` LIMIT 1";
         $db->setQuery($query);
         $columns_data = $db->LoadAssoc();

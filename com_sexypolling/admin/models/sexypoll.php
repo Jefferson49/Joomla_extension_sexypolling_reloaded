@@ -10,6 +10,9 @@
  *
  */
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
@@ -68,7 +71,7 @@ class SexypollingModelSexypoll extends JModelAdmin
 	protected function loadFormData() 
 	{
 		// Check the session for previously entered form data.
-		$data = JFactory::getApplication()->getUserState('com_sexypolling.edit.sexypoll.data', array());
+		$data = Factory::getApplication()->getUserState('com_sexypolling.edit.sexypoll.data', array());
 		if (empty($data)) 
 		{
 			$data = $this->getItem();
@@ -99,7 +102,7 @@ class SexypollingModelSexypoll extends JModelAdmin
 		\Joomla\Utilities\ArrayHelper::toInteger($pks);
 	
 		if (empty($pks)) {
-			$this->setError(JText::_('COM_SEXYPOLLING_NO_ITEM_SELECTED'));
+			$this->setError(Text::_('COM_SEXYPOLLING_NO_ITEM_SELECTED'));
 			return false;
 		}
 	

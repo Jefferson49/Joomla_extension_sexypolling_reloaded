@@ -10,6 +10,8 @@
  *
  */
 
+use Joomla\CMS\Factory;
+
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
@@ -58,7 +60,7 @@ class SexypollingModelSexyCategory extends JModelAdmin
 	protected function loadFormData() 
 	{
 		// Check the session for previously entered form data.
-		$data = JFactory::getApplication()->getUserState('com_sexypolling.edit.sexycategory.data', array());
+		$data = Factory::getApplication()->getUserState('com_sexypolling.edit.sexycategory.data', array());
 		if (empty($data)) 
 		{
 			$data = $this->getItem();

@@ -17,6 +17,8 @@
  * 
  */
 
+use Joomla\CMS\Language\Text;
+
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
@@ -51,19 +53,19 @@ class SexypollingViewSexystatistics extends JViewLegacy {
        	}
        	else {
        		JHtmlSidebar::addFilter(
-       				JText::_('JOPTION_SELECT_PUBLISHED'),
+       				Text::_('JOPTION_SELECT_PUBLISHED'),
        				'filter_published',
        				JHtml::_('select.options', JHtml::_('jgrid.publishedOptions'), 'value', 'text', $this->state->get('filter.published'), true)
        		);
        		
        		JHtmlSidebar::addFilter(
-       				JText::_('JOPTION_SELECT_CATEGORY'),
+       				Text::_('JOPTION_SELECT_CATEGORY'),
        				'filter_category_id',
        				JHtml::_('select.options', $options, 'value', 'text', $this->state->get('filter.category_id'))
        		);
        		
        		JHtmlSidebar::addFilter(
-       				JText::_('JOPTION_SELECT_ACCESS'),
+       				Text::_('JOPTION_SELECT_ACCESS'),
        				'filter_access',
        				JHtml::_('select.options', JHtml::_('access.assetgroups'), 'value', 'text', $this->state->get('filter.access'))
        		);
@@ -94,12 +96,12 @@ class SexypollingViewSexystatistics extends JViewLegacy {
     protected function getSortFields()
     {
     	return array(
-    			'sp.name' => JText::_('COM_SEXYPOLLING_NAME'),
-    			'sp.question' => JText::_('COM_SEXYPOLLING_QUESTION'),
-    			'category_title' => JText::_('JCATEGORY'),
-    			'template_title' => JText::_('COM_SEXYPOLLING_TEMPLATE'),
-    			'num_answers' => JText::_('COM_SEXYPOLLING_NUM_ANSWERS'),
-    			'sp.id' => JText::_('JGRID_HEADING_ID')
+    			'sp.name' => Text::_('COM_SEXYPOLLING_NAME'),
+    			'sp.question' => Text::_('COM_SEXYPOLLING_QUESTION'),
+    			'category_title' => Text::_('JCATEGORY'),
+    			'template_title' => Text::_('COM_SEXYPOLLING_TEMPLATE'),
+    			'num_answers' => Text::_('COM_SEXYPOLLING_NUM_ANSWERS'),
+    			'sp.id' => Text::_('JGRID_HEADING_ID')
     	);
     }
 }

@@ -10,7 +10,6 @@
  *
  */
 
-use Joomla\CMS\HTML\Helpers\Sidebar;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView;
@@ -45,7 +44,7 @@ class SexypollingViewSexyvotes extends HtmlView {
         }
 
         if(JV == 'j3') {
-            Sidebar::addFilter(
+            JHtmlSidebar::addFilter(
                     Text::_('COM_SEXYPOLLING_SELECT_POLL'),
                     'filter_poll_id',
                     HTMLHelper::_('select.options', $options, 'value', 'text', $this->state->get('filter.poll_id'))
@@ -53,7 +52,7 @@ class SexypollingViewSexyvotes extends HtmlView {
         }
         $this->addToolbar();
         if(JV == 'j3')
-            $this->sidebar = Sidebar::render();
+            $this->sidebar = JHtmlSidebar::render();
         parent::display($tpl);
     }
 

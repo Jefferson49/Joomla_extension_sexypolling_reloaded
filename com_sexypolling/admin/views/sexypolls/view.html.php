@@ -17,7 +17,6 @@
  * 
  */
 
-use Joomla\CMS\HTML\Helpers\Sidebar;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView;
@@ -56,19 +55,19 @@ class SexypollingViewSexypolls extends HtmlView {
 	    	$this->category_options = $options;
        	}
        	else {
-       		Sidebar::addFilter(
+       		JHtmlSidebar::addFilter(
        				Text::_('JOPTION_SELECT_PUBLISHED'),
        				'filter_published',
        				HTMLHelper::_('select.options', HTMLHelper::_('jgrid.publishedOptions'), 'value', 'text', $this->state->get('filter.published'), true)
        		);
        		
-       		Sidebar::addFilter(
+       		JHtmlSidebar::addFilter(
        				Text::_('JOPTION_SELECT_CATEGORY'),
        				'filter_category_id',
        				HTMLHelper::_('select.options', $options, 'value', 'text', $this->state->get('filter.category_id'))
        		);
        		
-       		Sidebar::addFilter(
+       		JHtmlSidebar::addFilter(
        				Text::_('JOPTION_SELECT_ACCESS'),
        				'filter_access',
        				HTMLHelper::_('select.options', HTMLHelper::_('access.assetgroups'), 'value', 'text', $this->state->get('filter.access'))
@@ -76,7 +75,7 @@ class SexypollingViewSexypolls extends HtmlView {
        	}
        	$this->addToolbar();
        	if(JV == 'j3')
-       		$this->sidebar = Sidebar::render();
+       		$this->sidebar = JHtmlSidebar::render();
 		parent::display($tpl);
     }
     

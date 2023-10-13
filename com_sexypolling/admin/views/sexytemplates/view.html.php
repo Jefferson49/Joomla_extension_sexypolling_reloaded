@@ -10,7 +10,6 @@
  *
  */
 
-use Joomla\CMS\HTML\Helpers\Sidebar;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView;
@@ -40,7 +39,7 @@ class SexypollingViewSexytemplates extends HtmlView {
  		$styles = $this->get('Styles');
  		
        	if(JV == 'j3') {
-    		Sidebar::addFilter(
+    		JHtmlSidebar::addFilter(
     				Text::_('JOPTION_SELECT_PUBLISHED'),
     				'filter_published',
     				HTMLHelper::_('select.options', HTMLHelper::_('jgrid.publishedOptions'), 'value', 'text', $this->state->get('filter.published'), true)
@@ -48,7 +47,7 @@ class SexypollingViewSexytemplates extends HtmlView {
     	}
     	$this->addToolbar();
     	if(JV == 'j3')
-    		$this->sidebar = Sidebar::render();
+    		$this->sidebar = JHtmlSidebar::render();
 		parent::display($tpl);
     }
     

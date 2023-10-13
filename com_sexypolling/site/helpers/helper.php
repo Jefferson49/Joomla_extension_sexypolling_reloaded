@@ -19,6 +19,7 @@ use Joomla\CMS\Date\Date;
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\Session\Session;
 use Joomla\CMS\Uri\Uri;
 
 // no direct access
@@ -465,7 +466,7 @@ class SexypollingHelper
                 echo '<input type="button" value="'.$polling_words[6].'" class="polling_submit" id="poll_'.$module_id.'_'.$poll_index.'" />';
                 $result_button_class = (($showresultbutton == 0 and $est_time < 0) or isset($hide_results_ids[$poll_index])) ? 'hide_sexy_button' : '';
                 echo '<input type="button" value="'.$polling_words[7].'" class="polling_result '.$result_button_class.'" id="res_'.$module_id.'_'.$poll_index.'" />';
-                echo '<input type="hidden" name="'.JSession::getFormToken().'" class="sexypolling_token" value="1" />';
+                echo '<input type="hidden" name="'.Session::getFormToken().'" class="sexypolling_token" value="1" />';
                 echo '</span>';
                 echo '<div '.$votes_data_visibility.' class="polling_info'.$votes_data_visibility_class.'"><table cellpadding="0" cellspacing="0" border="0"><tr><td class="left_col">'.$polling_words[1].':<span class="total_votes_val" style="display:none"></span> </td><td class="total_votes right_col"></td></tr><tr><td class="left_col">'.$polling_words[2].': </td><td class="first_vote right_col"></td></tr><tr><td class="left_col">'.$polling_words[3].': </td><td class="last_vote right_col"></td></tr></table></div>';
 

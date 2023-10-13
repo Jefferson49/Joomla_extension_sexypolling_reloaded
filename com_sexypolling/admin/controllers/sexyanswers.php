@@ -19,13 +19,15 @@
  
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\Controller\AdminController;
+use Joomla\CMS\Session\Session;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
 jimport('joomla.application.component.controlleradmin');
 
-class SexyPollingControllerSexyAnswers extends JControllerAdmin
+class SexyPollingControllerSexyAnswers extends AdminController
 {
 	/**
 	 * Constructor.
@@ -52,7 +54,7 @@ class SexyPollingControllerSexyAnswers extends JControllerAdmin
 	function featured()
 	{
 		// Check for request forgeries
-		JSession::checkToken() or jexit(Text::_('JINVALID_TOKEN'));
+		Session::checkToken() or jexit(Text::_('JINVALID_TOKEN'));
 
 		// Initialise variables.
 		$user	= Factory::getUser();

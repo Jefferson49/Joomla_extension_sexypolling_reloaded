@@ -10,12 +10,14 @@
  *
  */
 
+use Joomla\CMS\MVC\Controller\AdminController;
+
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
 jimport('joomla.application.component.controlleradmin');
 
-class SexyPollingControllerSexyTemplates extends JControllerAdmin
+class SexyPollingControllerSexyTemplates extends AdminController
 {
 	/**
 	 * Constructor.

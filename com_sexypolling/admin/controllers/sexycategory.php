@@ -9,13 +9,13 @@
  * @license GNU/GPL
  *
  */
+ 
+use Joomla\CMS\MVC\Controller\FormController;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
-jimport('joomla.application.component.controllerform');
-
-class SexyPollingControllerSexyCategory extends JControllerForm
+class SexyPollingControllerSexyCategory extends FormController
 {
 	
 }

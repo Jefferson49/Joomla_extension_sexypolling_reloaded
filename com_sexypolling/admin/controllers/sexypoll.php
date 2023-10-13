@@ -10,12 +10,12 @@
  *
  */
 
+use Joomla\CMS\MVC\Controller\FormController;
+
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
-jimport('joomla.application.component.controllerform');
-
-class SexyPollingControllerSexyPoll extends JControllerForm
+class SexyPollingControllerSexyPoll extends FormController
 {
 	
 }

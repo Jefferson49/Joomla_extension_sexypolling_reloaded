@@ -18,12 +18,13 @@
  */
 
 use Joomla\CMS\Factory;
+use Joomla\CMS\Form\FormField;
 use Joomla\CMS\Language\Text;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
-class JFormFieldPolls extends JFormField
+class FormFieldPolls extends FormField
 {
 
 	protected $type 		= 'sexypolling';

@@ -18,11 +18,12 @@
  */
 
 use Joomla\CMS\Factory;
+use Joomla\CMS\Form\Field\ListField;
 use Joomla\CMS\Language\Text;
  
 defined('_JEXEC') or die('Restircted access');
 
-class JElementPolls extends JFormFieldListement
+class JElementPolls extends ListFieldement
 {
 	var	$_name = 'Title';
 

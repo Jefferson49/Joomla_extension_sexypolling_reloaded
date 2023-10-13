@@ -19,13 +19,13 @@
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\Controller\FormController;
+use Joomla\CMS\Session\Session;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
-jimport('joomla.application.component.controllerform');
-
-class SexyPollingControllerSexyTemplate extends JControllerForm
+class SexyPollingControllerSexyTemplate extends FormController
 {
 	protected $view_item = 'aaa';
 	public function edit($key = null, $urlVar = null)
@@ -94,7 +94,7 @@ class SexyPollingControllerSexyTemplate extends JControllerForm
 	
 	public function cancel($key = null, $urlVar = null)
 	{
-		JSession::checkToken() or jexit(Text::_('JINVALID_TOKEN'));
+		Session::checkToken() or jexit(Text::_('JINVALID_TOKEN'));
 		
 		$msg = Text::_( 'COM_SEXYPOLLING_OPERATION_CANCELLED' );
 		$this->setRedirect( 'index.php?option=com_sexypolling&view=sexytemplates', $msg );

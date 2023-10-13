@@ -11,6 +11,7 @@
  */
 
 use Joomla\CMS\Factory;
+use Joomla\CMS\MVC\Model\AdminModel;
 use Joomla\CMS\Object\CMSObject;
 use Joomla\CMS\Table\Table;
 
@@ -20,7 +21,7 @@ defined('_JEXEC') or die('Restircted access');
 // import Joomla modelform library
 jimport('joomla.application.component.modeladmin');
 
-class SexypollingModelSexyTemplate extends JModelAdmin
+class SexypollingModelSexyTemplate extends AdminModel
 {
 	/**
 	 * Returns a reference to the a Table object, always creating it.

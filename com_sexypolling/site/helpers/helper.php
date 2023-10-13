@@ -15,6 +15,7 @@
  * 
  */
 
+use Joomla\CMS\Access\Access;
 use Joomla\CMS\Date\Date;
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
@@ -194,7 +195,7 @@ class SexypollingHelper
         $user = Factory::getUser();
         $user_id = $user->get('id');
         jimport( 'joomla.access.access' );
-        $groups = JAccess::getGroupsByUser($user_id);
+        $groups = Access::getGroupsByUser($user_id);
 
         //get data
         $this->get_data();

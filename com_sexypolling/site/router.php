@@ -11,6 +11,7 @@
  */
 
 use Joomla\CMS\Factory;
+use Joomla\CMS\Component\ComponentHelper;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -33,7 +34,7 @@ function SexypollingBuildRoute( &$query )
 
 	// Get the menu items for this component.
 	if (!$items) {
-		$component	= JComponentHelper::getComponent('com_sexypolling');
+		$component	= ComponentHelper::getComponent('com_sexypolling');
 		$menu	= $app->getMenu();
 		$items		= $menu->getItems('component_id', $component->id);
 	}

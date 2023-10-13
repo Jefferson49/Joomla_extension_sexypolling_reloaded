@@ -20,6 +20,7 @@
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\Router\Route;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -35,7 +36,7 @@ defined('_JEXEC') or die('Restircted access');
     $listOrder  = $this->escape($this->state->get('list.ordering'));
     $listDirn   = $this->escape($this->state->get('list.direction'));
 ?>
-<form action="<?php echo JRoute::_('index.php?option=com_sexypolling'); ?>" method="post" name="adminForm" id="adminForm">
+<form action="<?php echo Route::_('index.php?option=com_sexypolling'); ?>" method="post" name="adminForm" id="adminForm">
     <fieldset id="filter-bar">
         <div class="filter-search fltlft">
             <label class="filter-search-lbl" for="filter_search"><?php echo Text::_('COM_SEXYPOLLING_FILTER_LABEL'); ?></label>
@@ -98,12 +99,12 @@ defined('_JEXEC') or die('Restircted access');
                     <?php echo HTMLHelper::_('grid.id', $i, $item->id_vote); ?>
                 </td>
                 <td>
-                    <a href="<?php echo JRoute::_('index.php?option=com_sexypolling&task=sexyanswer.edit&id='.(int) $item->id_answer); ?>">
+                    <a href="<?php echo Route::_('index.php?option=com_sexypolling&task=sexyanswer.edit&id='.(int) $item->id_answer); ?>">
                         <?php echo $this->escape(strip_tags($item->answer)); ?>
                     </a>
                 </td>
                 <td>
-                    <a href="<?php echo JRoute::_('index.php?option=com_sexypolling&task=sexypoll.edit&id='.(int) $item->id_poll); ?>">
+                    <a href="<?php echo Route::_('index.php?option=com_sexypolling&task=sexypoll.edit&id='.(int) $item->id_poll); ?>">
                         <?php echo $this->escape($item->poll); ?>
                     </a>
                 </td>
@@ -172,7 +173,7 @@ $sortFields = $this->getSortFields();
         Joomla.tableOrdering(order, dirn, '');
     }
 </script>
-<form action="<?php echo JRoute::_('index.php?option=com_sexypolling'); ?>" method="post" name="adminForm" id="adminForm">
+<form action="<?php echo Route::_('index.php?option=com_sexypolling'); ?>" method="post" name="adminForm" id="adminForm">
 <?php if(!empty( $this->sidebar)): ?>
     <div id="j-sidebar-container" class="span2">
         <?php echo $this->sidebar; ?>
@@ -256,12 +257,12 @@ $sortFields = $this->getSortFields();
                         <?php echo HTMLHelper::_('grid.id', $i, $item->id_vote); ?>
                     </td>
                     <td>
-                        <a href="<?php echo JRoute::_('index.php?option=com_sexypolling&task=sexyanswer.edit&id='.(int) $item->id_answer); ?>">
+                        <a href="<?php echo Route::_('index.php?option=com_sexypolling&task=sexyanswer.edit&id='.(int) $item->id_answer); ?>">
                             <?php echo $this->escape(strip_tags($item->answer)); ?>
                         </a>
                     </td>
                     <td>
-                        <a href="<?php echo JRoute::_('index.php?option=com_sexypolling&task=sexypoll.edit&id='.(int) $item->id_poll); ?>">
+                        <a href="<?php echo Route::_('index.php?option=com_sexypolling&task=sexypoll.edit&id='.(int) $item->id_poll); ?>">
                             <?php echo $this->escape($item->poll); ?>
                         </a>
                     </td>

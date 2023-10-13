@@ -11,15 +11,16 @@
  */
 
 use Joomla\CMS\Factory;
-use Joomla\CMS\Form\FormField;
 use Joomla\CMS\Form\Field\ListField;
+use Joomla\CMS\Form\FormField;
+use Joomla\CMS\Form\FormHelper;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
 // import the list field type
 jimport('joomla.form.helper');
-JFormHelper::loadFieldClass('list');
+FormHelper::loadFieldClass('list');
 
 class FormFieldSexyPoll extends ListField
 {

@@ -18,6 +18,7 @@
  */
 
 use Joomla\CMS\Factory;
+use Joomla\CMS\MVC\Model\ListModel;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -25,7 +26,7 @@ defined('_JEXEC') or die('Restircted access');
 // Import Joomla! libraries
 jimport('joomla.application.component.modellist');
 
-class SexypollingModelSexyAnswers extends JModelList {
+class SexypollingModelSexyAnswers extends ListModel{
 
     /**
      * Constructor.

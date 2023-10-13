@@ -10,13 +10,15 @@
  *
  */
 
+use Joomla\CMS\MVC\Model\BaseDatabaseModel;
+
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
 // Import Joomla! libraries
 jimport('joomla.application.component.model');
 
-class SexypollingModelSexypoll extends JModelLegacy {
+class SexypollingModelSexypoll extends BaseDatabaseModel {
     function __construct() {
 		parent::__construct();
 		

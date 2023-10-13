@@ -11,6 +11,8 @@
  */
 
 use Joomla\CMS\Factory;
+use Joomla\CMS\MVC\Model\AdminModel;
+use Joomla\CMS\Table\Table;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -18,7 +20,7 @@ defined('_JEXEC') or die('Restircted access');
 // import Joomla modelform library
 jimport('joomla.application.component.modeladmin');
 
-class SexypollingModelSexyVote extends JModelAdmin
+class SexypollingModelSexyVote extends AdminModel
 {
     /**
      * Returns a reference to the a Table object, always creating it.
@@ -26,12 +28,12 @@ class SexypollingModelSexyVote extends JModelAdmin
      * @param   type    The table type to instantiate
      * @param   string  A prefix for the table class name. Optional.
      * @param   array   Configuration array for model. Optional.
-     * @return  JTable  A database object
+     * @return  Table  A database object
      * @since   1.6
      */
     public function getTable($type = 'SexyVote', $prefix = 'SexyPollTable', $config = array())
     {
-        return JTable::getInstance($type, $prefix, $config);
+        return Table::getInstance($type, $prefix, $config);
     }
     /**
      * Method to get the record form.

@@ -20,6 +20,7 @@
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\Router\Route;
 use Joomla\CMS\Uri\Uri;
 
 // no direct access
@@ -2222,7 +2223,7 @@ function seperate_tr($txt,$title='') {
 		 </div>
 	 	
 	 </div>
-<form action="<?php echo JRoute::_('index.php?option=com_sexypolling&layout=form&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="adminForm">
+<form action="<?php echo Route::_('index.php?option=com_sexypolling&layout=form&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="adminForm">
     <fieldset class="adminform" style="position: relative;">
         <legend><?php echo Text::_( 'Custom Styles' ); ?></legend>
         <div id="main_styles_table">

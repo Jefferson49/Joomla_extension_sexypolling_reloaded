@@ -20,6 +20,7 @@
 use Joomla\CMS\HTML\Helpers\Sidebar;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\View\HtmlView;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -28,7 +29,7 @@ defined('_JEXEC') or die('Restircted access');
 jimport( 'joomla.application.component.view');
 
 
-class SexypollingViewSexypolls extends JViewLegacy {
+class SexypollingViewSexypolls extends HtmlView {
 	
 	protected $items;
 	protected $pagination;

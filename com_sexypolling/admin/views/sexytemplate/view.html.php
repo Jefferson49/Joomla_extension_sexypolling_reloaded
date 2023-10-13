@@ -19,6 +19,7 @@
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\View\HtmlView;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -26,7 +27,7 @@ defined('_JEXEC') or die('Restircted access');
 // Import Joomla! libraries
 jimport( 'joomla.application.component.view');
 
-class SexypollingViewSexytemplate extends JViewLegacy
+class SexypollingViewSexytemplate extends HtmlView
 {
 	protected $form;
 	protected $item;

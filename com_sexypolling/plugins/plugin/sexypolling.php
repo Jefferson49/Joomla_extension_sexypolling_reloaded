@@ -19,6 +19,8 @@
 
 use Joomla\CMS\Uri\Uri;
 use Joomla\CMS\Factory;
+use Joomla\CMS\Plugin\CMSPlugin;
+use Joomla\CMS\Plugin\PluginHelper;
 
 defined('_JEXEC') or die('Restricted access');
 
@@ -26,7 +28,7 @@ defined('_JEXEC') or die('Restricted access');
 jimport('joomla.plugin.plugin');
 jimport('joomla.event.plugin');
 
-class plgSystemSexypolling extends JPlugin {
+class plgSystemSexypolling extends CMSPlugin {
 
     public $_plugin;
     public $_params;
@@ -36,9 +38,9 @@ class plgSystemSexypolling extends JPlugin {
     function __construct( &$subject ) {
       parent::__construct( $subject );
       // load plugin parameters and language file
-      $this->_plugin = JPluginHelper::getPlugin( 'system', 'sexypolling' );
+      $this->_plugin = PluginHelper::getPlugin( 'system', 'sexypolling' );
       $this->_params = json_decode( $this->_plugin->params );
-      JPlugin::loadLanguage('plg_system_sexypolling', JPATH_ADMINISTRATOR);
+      CMSPlugin::loadLanguage('plg_system_sexypolling', JPATH_ADMINISTRATOR);
     }
 
     function sp_make_poll($m) {
@@ -121,7 +123,7 @@ class plgSystemSexypolling extends JPlugin {
       if($mainframe->isClient('administrator'))
         return;
 
-      $plugin = JPluginHelper::getPlugin('system', 'sexypolling');
+      $plugin = PluginHelper::getPlugin('system', 'sexypolling');
       $pluginParams = json_decode( $plugin->params );
 
       $content = Factory::getApplication()->getBody();

@@ -10,13 +10,15 @@
  *
  */
 
+use Joomla\CMS\Table\Table;
+
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
 // import Joomla table library
 jimport('joomla.database.table');
 
-class SexyPollTableSexyCategory extends JTable
+class SexyPollTableSexyCategory extends Table
 {
 	/**
 	 * Constructor

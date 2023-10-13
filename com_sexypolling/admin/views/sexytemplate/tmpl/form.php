@@ -18,8 +18,9 @@
  */
 
 use Joomla\CMS\Factory;
-use Joomla\CMS\Uri\Uri;
+use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\Uri\Uri;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -2758,7 +2759,7 @@ function seperate_tr($txt,$title='') {
 <input type="hidden" name="option" value="com_sexypolling" />
 <input type="hidden" name="id" value="<?php echo $this->item->id; ?>" />
 <input type="hidden" name="task" value="sexytemplate.edit" />
-<?php echo JHtml::_('form.token'); ?>
+<?php echo HTMLHelper::_('form.token'); ?>
 </form>
 
 <style>

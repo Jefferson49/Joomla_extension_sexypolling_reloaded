@@ -18,6 +18,7 @@
  */
 
 use Joomla\CMS\Factory;
+use Joomla\CMS\HTML\Helpers\Sidebar;
 use Joomla\CMS\Language\Text;
 
 // no direct access
@@ -44,6 +45,6 @@ class SexypollingHelper {
 		$link = 'index.php?option=com_sexypolling&view='.$v;
 		if($controller != null) $link .= '&controller='.$controller;
 		
-		JHtmlSidebar::addEntry( Text::_($title), $link, $enabled);
+		Sidebar::addEntry( Text::_($title), $link, $enabled);
 	}
 }

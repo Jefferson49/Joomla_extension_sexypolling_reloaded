@@ -17,14 +17,15 @@
  * 
  */
 
+use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
 
-JHtml::_('bootstrap.tooltip');
-JHtml::_('behavior.formvalidator');
+HTMLHelper::_('bootstrap.tooltip');
+HTMLHelper::_('behavior.formvalidator');
 ?>
 <script type="text/javascript">
 Joomla.submitbutton = function(task) {
@@ -59,15 +60,15 @@ Joomla.submitbutton = function(task) {
     </fieldset>
     <div>
         <input type="hidden" name="task" value="sexyanswer.edit" />
-        <?php echo JHtml::_('form.token'); ?>
+        <?php echo HTMLHelper::_('form.token'); ?>
     </div>
 </form>
 <?php include (JPATH_BASE.'/components/com_sexypolling/helpers/footer.php'); ?>
 <?php }elseif(JV == 'j3') {//////////////////////////////////////////////////////////////////////////////////////Joomla3.x/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////?>
 <?php
-JHtml::_('bootstrap.tooltip');
-JHtml::_('behavior.formvalidator');
-JHtml::_('formbehavior.chosen', 'select');
+HTMLHelper::_('bootstrap.tooltip');
+HTMLHelper::_('behavior.formvalidator');
+HTMLHelper::_('formbehavior.chosen', 'select');
 ?>
 <form action="<?php echo JRoute::_('index.php?option=com_sexypolling&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="adminForm" class="form-validate form-horizontal">
     <div class="row-fluid">
@@ -89,7 +90,7 @@ JHtml::_('formbehavior.chosen', 'select');
         </div>
     </div>
 <input type="hidden" name="task" value="sexyanswer.edit" />
-<?php echo JHtml::_('form.token'); ?>
+<?php echo HTMLHelper::_('form.token'); ?>
 </form>
 <?php include (JPATH_BASE.'/components/com_sexypolling/helpers/footer.php'); ?>
 <?php }?>

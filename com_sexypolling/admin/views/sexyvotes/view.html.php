@@ -10,6 +10,8 @@
  *
  */
 
+use Joomla\CMS\HTML\Helpers\Sidebar;
+use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 
 // no direct access
@@ -38,19 +40,19 @@ class SexypollingViewSexyvotes extends JViewLegacy {
         $options = array();
         $polls  = $this->get('sexyPolls');
         foreach($polls AS $poll) {
-            $options[] = JHtml::_('select.option', $poll->id, $poll->name);
+            $options[] = HTMLHelper::_('select.option', $poll->id, $poll->name);
         }
 
         if(JV == 'j3') {
-            JHtmlSidebar::addFilter(
+            Sidebar::addFilter(
                     Text::_('COM_SEXYPOLLING_SELECT_POLL'),
                     'filter_poll_id',
-                    JHtml::_('select.options', $options, 'value', 'text', $this->state->get('filter.poll_id'))
+                    HTMLHelper::_('select.options', $options, 'value', 'text', $this->state->get('filter.poll_id'))
             );
         }
         $this->addToolbar();
         if(JV == 'j3')
-            $this->sidebar = JHtmlSidebar::render();
+            $this->sidebar = Sidebar::render();
         parent::display($tpl);
     }
 

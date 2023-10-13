@@ -18,6 +18,7 @@
  */
 
 use Joomla\CMS\Factory;
+use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 
 // no direct access
@@ -25,9 +26,9 @@ defined('_JEXEC') or die('Restircted access');
 ?>
 <?php if(JV == 'j2') {//////////////////////////////////////////////////////////////////////////////////////Joomla2.x/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////?>
 <?php
-    JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
-    JHtml::_('bootstrap.tooltip');
-    JHtml::_('behavior.multiselect');
+    HTMLHelper::addIncludePath(JPATH_COMPONENT.'/helpers/html');
+    HTMLHelper::_('bootstrap.tooltip');
+    HTMLHelper::_('behavior.multiselect');
 
     $user       = Factory::getUser();
     $userId     = $user->get('id');
@@ -47,17 +48,17 @@ defined('_JEXEC') or die('Restircted access');
 
             <select name="filter_published" class="inputbox" onchange="this.form.submit()">
                 <option value=""><?php echo Text::_('COM_SEXYPOLLING_SELECT_STATUS');?></option>
-                <?php echo JHtml::_('select.options', JHtml::_('jgrid.publishedOptions'), 'value', 'text', $this->state->get('filter.published'), true);?>
+                <?php echo HTMLHelper::_('select.options', HTMLHelper::_('jgrid.publishedOptions'), 'value', 'text', $this->state->get('filter.published'), true);?>
             </select>
 
             <select name="filter_category_id" class="inputbox" onchange="this.form.submit()">
                 <option value=""><?php echo Text::_('COM_SEXYPOLLING_SELECT_CATEGORY');?></option>
-                <?php echo JHtml::_('select.options', $this->category_options, 'value', 'text', $this->state->get('filter.category_id'));?>
+                <?php echo HTMLHelper::_('select.options', $this->category_options, 'value', 'text', $this->state->get('filter.category_id'));?>
             </select>
 
             <select name="filter_access" class="inputbox" onchange="this.form.submit()">
                 <option value=""><?php echo Text::_('COM_SEXYPOLLING_SELECT_ACCESS');?></option>
-                <?php echo JHtml::_('select.options', JHtml::_('access.assetgroups'), 'value', 'text', $this->state->get('filter.access'));?>
+                <?php echo HTMLHelper::_('select.options', HTMLHelper::_('access.assetgroups'), 'value', 'text', $this->state->get('filter.access'));?>
             </select>
         </div>
     </fieldset>
@@ -70,26 +71,26 @@ defined('_JEXEC') or die('Restircted access');
                     <input type="checkbox" name="checkall-toggle" value="" title="<?php echo Text::_('JGLOBAL_CHECK_ALL'); ?>" onclick="Joomla.checkAll(this)" />
                 </th>
                 <th>
-                    <?php echo JHtml::_('grid.sort', 'COM_SEXYPOLLING_NAME', 'sp.name', $listDirn, $listOrder); ?>
+                    <?php echo HTMLHelper::_('grid.sort', 'COM_SEXYPOLLING_NAME', 'sp.name', $listDirn, $listOrder); ?>
                 </th>
                 <th>
-                    <?php echo JHtml::_('grid.sort', 'COM_SEXYPOLLING_QUESTION', 'sp.question', $listDirn, $listOrder); ?>
+                    <?php echo HTMLHelper::_('grid.sort', 'COM_SEXYPOLLING_QUESTION', 'sp.question', $listDirn, $listOrder); ?>
                 </th>
                 <th width="10%">
-                    <?php echo JHtml::_('grid.sort', 'JCATEGORY', 'category_title', $listDirn, $listOrder); ?>
+                    <?php echo HTMLHelper::_('grid.sort', 'JCATEGORY', 'category_title', $listDirn, $listOrder); ?>
                 </th>
                 <th width="10%">
-                    <?php echo JHtml::_('grid.sort', 'COM_SEXYPOLLING_TEMPLATE', 'template_title', $listDirn, $listOrder); ?>
+                    <?php echo HTMLHelper::_('grid.sort', 'COM_SEXYPOLLING_TEMPLATE', 'template_title', $listDirn, $listOrder); ?>
                 </th>
 
                 <th width="5%">
-                    <?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ACCESS', 'sp.access', $listDirn, $listOrder); ?>
+                    <?php echo HTMLHelper::_('grid.sort', 'JGRID_HEADING_ACCESS', 'sp.access', $listDirn, $listOrder); ?>
                 </th>
                 <th width="5%">
-                    <?php echo JHtml::_('grid.sort', 'COM_SEXYPOLLING_NUM_ANSWERS', 'num_answers', $listDirn, $listOrder); ?>
+                    <?php echo HTMLHelper::_('grid.sort', 'COM_SEXYPOLLING_NUM_ANSWERS', 'num_answers', $listDirn, $listOrder); ?>
                 </th>
                 <th width="1%">
-                    <?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'sp.id', $listDirn, $listOrder); ?>
+                    <?php echo HTMLHelper::_('grid.sort', 'JGRID_HEADING_ID', 'sp.id', $listDirn, $listOrder); ?>
                 </th>
             </tr>
         </thead>
@@ -109,7 +110,7 @@ defined('_JEXEC') or die('Restircted access');
             ?>
             <tr class="row<?php echo $i % 2; ?>">
                 <td class="center">
-                    <?php echo JHtml::_('grid.id', $i, $item->id); ?>
+                    <?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
                 </td>
                 <td>
                     <a href="<?php echo JRoute::_('index.php?option=com_sexypolling&view=showstatistics&id='.(int) $item->id); ?>">
@@ -151,17 +152,17 @@ defined('_JEXEC') or die('Restircted access');
         <input type="hidden" name="boxchecked" value="0" />
         <input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
         <input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
-        <?php echo JHtml::_('form.token'); ?>
+        <?php echo HTMLHelper::_('form.token'); ?>
     </div>
 </form>
 <?php include (JPATH_BASE.'/components/com_sexypolling/helpers/footer.php'); ?>
 <?php }elseif(JV == 'j3') {//////////////////////////////////////////////////////////////////////////////////////Joomla3.x/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////?>
 <?php
-JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
-JHtml::_('bootstrap.tooltip');
-JHtml::_('behavior.multiselect');
-JHtml::_('dropdown.init');
-JHtml::_('formbehavior.chosen', 'select');
+HTMLHelper::addIncludePath(JPATH_COMPONENT.'/helpers/html');
+HTMLHelper::_('bootstrap.tooltip');
+HTMLHelper::_('behavior.multiselect');
+HTMLHelper::_('dropdown.init');
+HTMLHelper::_('formbehavior.chosen', 'select');
 
 $user       = Factory::getUser();
 $userId     = $user->get('id');
@@ -173,7 +174,7 @@ $saveOrder  = $listOrder == 'sp.ordering';
 if ($saveOrder)
 {
     $saveOrderingUrl = 'index.php?option=com_sexypolling&task=sexypolls.saveOrderAjax&tmpl=component';
-    JHtml::_('sortablelist.sortable', 'articleList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
+    HTMLHelper::_('sortablelist.sortable', 'articleList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
 }
 $sortFields = $this->getSortFields();
 ?>
@@ -224,7 +225,7 @@ $sortFields = $this->getSortFields();
                 <label for="sortTable" class="element-invisible"><?php echo Text::_('JGLOBAL_SORT_BY');?></label>
                 <select name="sortTable" id="sortTable" class="input-medium" onchange="Joomla.orderTable()">
                     <option value=""><?php echo Text::_('JGLOBAL_SORT_BY');?></option>
-                    <?php echo JHtml::_('select.options', $sortFields, 'value', 'text', $listOrder);?>
+                    <?php echo HTMLHelper::_('select.options', $sortFields, 'value', 'text', $listOrder);?>
                 </select>
             </div>
         </div>
@@ -233,23 +234,23 @@ $sortFields = $this->getSortFields();
             <thead>
                 <tr>
                     <th>
-                        <?php echo JHtml::_('grid.sort', 'COM_SEXYPOLLING_NAME', 'sp.name', $listDirn, $listOrder); ?>
+                        <?php echo HTMLHelper::_('grid.sort', 'COM_SEXYPOLLING_NAME', 'sp.name', $listDirn, $listOrder); ?>
                     </th>
                     <th>
-                        <?php echo JHtml::_('grid.sort', 'COM_SEXYPOLLING_QUESTION', 'sp.question', $listDirn, $listOrder); ?>
+                        <?php echo HTMLHelper::_('grid.sort', 'COM_SEXYPOLLING_QUESTION', 'sp.question', $listDirn, $listOrder); ?>
                     </th>
 
                     <th width="10%">
-                        <?php echo JHtml::_('grid.sort', 'JCATEGORY', 'category_title', $listDirn, $listOrder); ?>
+                        <?php echo HTMLHelper::_('grid.sort', 'JCATEGORY', 'category_title', $listDirn, $listOrder); ?>
                     </th>
                     <th width="10%">
-                        <?php echo JHtml::_('grid.sort', 'COM_SEXYPOLLING_TEMPLATE', 'template_title', $listDirn, $listOrder); ?>
+                        <?php echo HTMLHelper::_('grid.sort', 'COM_SEXYPOLLING_TEMPLATE', 'template_title', $listDirn, $listOrder); ?>
                     </th>
                     <th width="5%">
-                        <?php echo JHtml::_('grid.sort', 'COM_SEXYPOLLING_NUM_ANSWERS', 'num_answers', $listDirn, $listOrder); ?>
+                        <?php echo HTMLHelper::_('grid.sort', 'COM_SEXYPOLLING_NUM_ANSWERS', 'num_answers', $listDirn, $listOrder); ?>
                     </th>
                     <th width="1%" class="nowrap center hidden-phone">
-                        <?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'sp.id', $listDirn, $listOrder); ?>
+                        <?php echo HTMLHelper::_('grid.sort', 'JGRID_HEADING_ID', 'sp.id', $listDirn, $listOrder); ?>
                     </th>
                 </tr>
             </thead>
@@ -306,7 +307,7 @@ $sortFields = $this->getSortFields();
         <input type="hidden" name="boxchecked" value="0" />
         <input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
         <input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
-        <?php echo JHtml::_('form.token'); ?>
+        <?php echo HTMLHelper::_('form.token'); ?>
 
         <?php include (JPATH_BASE.'/components/com_sexypolling/helpers/footer.php'); ?>
     </div>

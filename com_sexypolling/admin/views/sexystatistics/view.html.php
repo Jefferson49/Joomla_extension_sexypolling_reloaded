@@ -17,6 +17,8 @@
  * 
  */
 
+use Joomla\CMS\HTML\Helpers\Sidebar;
+use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 
 // no direct access
@@ -46,33 +48,33 @@ class SexypollingViewSexystatistics extends JViewLegacy {
     	//get category options
     	$options        = array();
     	foreach($category_options AS $category) {
-    		$options[]      = JHtml::_('select.option', $category->id, $category->name);
+    		$options[]      = HTMLHelper::_('select.option', $category->id, $category->name);
     	}
     	if(JV == 'j2') {
 	    	$this->category_options = $options;
        	}
        	else {
-       		JHtmlSidebar::addFilter(
+       		Sidebar::addFilter(
        				Text::_('JOPTION_SELECT_PUBLISHED'),
        				'filter_published',
-       				JHtml::_('select.options', JHtml::_('jgrid.publishedOptions'), 'value', 'text', $this->state->get('filter.published'), true)
+       				HTMLHelper::_('select.options', HTMLHelper::_('jgrid.publishedOptions'), 'value', 'text', $this->state->get('filter.published'), true)
        		);
        		
-       		JHtmlSidebar::addFilter(
+       		Sidebar::addFilter(
        				Text::_('JOPTION_SELECT_CATEGORY'),
        				'filter_category_id',
-       				JHtml::_('select.options', $options, 'value', 'text', $this->state->get('filter.category_id'))
+       				HTMLHelper::_('select.options', $options, 'value', 'text', $this->state->get('filter.category_id'))
        		);
        		
-       		JHtmlSidebar::addFilter(
+       		Sidebar::addFilter(
        				Text::_('JOPTION_SELECT_ACCESS'),
        				'filter_access',
-       				JHtml::_('select.options', JHtml::_('access.assetgroups'), 'value', 'text', $this->state->get('filter.access'))
+       				HTMLHelper::_('select.options', HTMLHelper::_('access.assetgroups'), 'value', 'text', $this->state->get('filter.access'))
        		);
        	}
        	$this->addToolbar();
        	if(JV == 'j3')
-       		$this->sidebar = JHtmlSidebar::render();
+       		$this->sidebar = Sidebar::render();
 		parent::display($tpl);
     }
     

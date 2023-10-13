@@ -48,7 +48,7 @@ class FormFieldSexyPoll extends ListField
 		{
 			foreach($messages as $message) 
 			{
-				$options[] = JHtml::_('select.option', $message->id, $message->name);
+				$options[] = HTMLHelper::_('select.option', $message->id, $message->name);
 			}
 		}
 		$options = array_merge(parent::getOptions(), $options);

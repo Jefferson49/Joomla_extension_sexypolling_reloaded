@@ -15,7 +15,7 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
- * @todo J4 deprecated Factory::getUser()
+
  */
 
 use Joomla\CMS\Factory;
@@ -109,7 +109,6 @@ class SexypollingModelSexyTemplates extends ListModel{
 		// Create a new query object.
 		$db		= $this->getDbo();
 		$query	= $db->getQuery(true);
-		$user	= Factory::getUser();
 
 		// Select the required fields from the table.
 		$query->select(

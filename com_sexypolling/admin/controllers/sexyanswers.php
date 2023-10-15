@@ -15,7 +15,7 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
- * @todo J4 deprecated Factory::getUser()
+
  */
  
 use Joomla\CMS\Factory;
@@ -59,7 +59,6 @@ class SexyPollingControllerSexyAnswers extends AdminController
 		Session::checkToken() or jexit(Text::_('JINVALID_TOKEN'));
 
 		// Initialise variables.
-		$user	= Factory::getUser();
 		$ids	= Factory::getApplication()->input->get('cid');
 		$values	= array('featured' => 1, 'unfeatured' => 0);
 		$task	= $this->getTask();
@@ -67,18 +66,6 @@ class SexyPollingControllerSexyAnswers extends AdminController
 		// Get the model.
 		$model = $this->getModel();
 
-		/*
-		// Access checks.
-		foreach ($ids as $i => $id)
-		{
-			$item = $model->getItem($id);
-			if (!$user->authorise('core.edit.state', 'com_contact.category.'.(int) $item->catid)) {
-				// Prune items that you can't change.
-				unset($ids[$i]);
-				JError::raiseNotice(403, Text::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'));
-			}
-		}
-		*/
 
 		if (empty($ids)) {
 			Factory::getApplication()->enqueueMessage(500, Text::_('No Items'));

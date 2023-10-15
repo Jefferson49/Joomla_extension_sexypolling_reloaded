@@ -15,7 +15,7 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
- * @todo J4 deprecated Factory::getUser()
+
  */
 
 use Joomla\CMS\Factory;
@@ -65,8 +65,6 @@ class SexypollingViewSexytemplate extends HtmlView
 	{
 		Factory::getApplication()->input->set('hidemainmenu', true);
 
-		$user		= Factory::getUser();
-		$userId		= $user->get('id');
 		$isNew		= ($this->item->id == 0);
 		// Since we don't track these assets at the item level, use the category id.
 

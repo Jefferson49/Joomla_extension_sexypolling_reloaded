@@ -195,7 +195,6 @@ class SexypollingHelper
 		$date = new Date();
 		$date_time_zone = new DateTimeZone($time_zone);
 		$date->setTimezone($date_time_zone);
-		$debug_date = HtmlHelper::date('2022-03-15', Text::_('F d, Y'), false);
 
         $user = Factory::getUser();
         $user_id = $user->get('id');

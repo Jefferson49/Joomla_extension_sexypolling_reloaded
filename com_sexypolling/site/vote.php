@@ -15,9 +15,6 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
- * @todo J4 deprecated Factory::getUser()
- * @todo Call to unknown method: Joomla\CMS\Factory::getContainer()
- * @todo J3 deprecated Factory::getApplication('site')->initialise
  * @todo J3 deprecated Factory::getApplication()->input->post->get
  * @todo J3 deprecated Factory::getApplication()->input->server->get
  * @todo J3 deprecated Factory::getApplication()->input->cookie->get
@@ -28,7 +25,6 @@ use Joomla\CMS\Date\Date;
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Language;
-use Joomla\CMS\Language\Text;
 
 // no direct access
 define('_JEXEC',true);
@@ -80,7 +76,7 @@ $db = Factory::getDBO();
 $levels = array();
 $groups = array();
 
-$user = Factory::getUser();
+$user = $app->getIdentity();
 $user_id = $user->get('id');
 
 $groups = Access::getGroupsByUser($user_id);

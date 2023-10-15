@@ -122,7 +122,7 @@ class SexypollingModelSexypoll extends AdminModel
 		}
 		catch (Exception $e)
 		{
-			$app->enqueueMessage(JText::_($e->getMessage()), 'error');
+			$app->enqueueMessage(Text::_($e->getMessage()), 'error');
 		}
 	
 		$table->reorder();

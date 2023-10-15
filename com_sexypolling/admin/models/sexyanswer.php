@@ -15,10 +15,7 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
- * @todo deprecated J3 CMSObject->setError, 
- * @todo deprecated J3 JDatabase::getErrorMsg, 
  * @todo deprecated J3 Factory::getApplication()->input->request->getInt
- * @todo Call to unknown method: Joomla\CMS\Date\Date::toMySQL()
  * 
  */
 
@@ -26,7 +23,6 @@ use Joomla\CMS\Date\Date;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\Model\AdminModel;
-use Joomla\CMS\Object\CMSObject;
 use Joomla\CMS\Table\Table;
 use Joomla\Utilities\ArrayHelper;
 
@@ -112,13 +108,15 @@ class SexypollingModelSexyAnswer extends AdminModel
 	 */
 	public function featured($pks, $value = 0)
 	{
+
+		$app = Factory::getApplication();
+
 		// Sanitize the ids.
 		$pks = (array) $pks;
 		ArrayHelper::toInteger($pks);
 	
 		if (empty($pks)) {
-			$this->setError(Text::_('COM_SEXYPOLLING_NO_ITEM_SELECTED'));
-			return false;
+			$app->enqueueMessage(Text::_('COM_SEXYPOLLING_NO_ITEM_SELECTED'), 'error');
 		}
 	
 		$table = $this->getTable();
@@ -132,15 +130,12 @@ class SexypollingModelSexyAnswer extends AdminModel
 					' SET featured = '.(int) $value.
 					' WHERE id IN ('.implode(',', $pks).')'
 			);
-			if (!$db->execute()) {
-				throw new Exception($db->getErrorMsg());
-			}
-	
+
+			$db->execute();
 		}
 		catch (Exception $e)
 		{
-			$this->setError($e->getMessage());
-			return false;
+			$app->enqueueMessage(Text::_($e->getMessage()), 'error');
 		}
 	
 		$table->reorder();
@@ -160,7 +155,25 @@ class SexypollingModelSexyAnswer extends AdminModel
 		$id = Factory::getApplication()->input->request->getInt('id',0);
 		$jform = Factory::getApplication()->input->request->get('jform', null, null);
 	
-		$req = new CMSObject();
+		Class Req {
+			public $id;
+			public $created;
+			public $name;
+			public $show_name;
+			public $embed;
+			public $img_name;
+			public $img_url;
+			public $img_width;
+			public $id_poll;
+			public $published;
+			public $id_user;
+			public $publish_up;
+			public $publish_down;
+			public $ordering;
+
+		}
+
+		$req = new Req();
 		$req->name =  $jform['name'];
 		$req->show_name =  (int) $jform['show_name'];
 		$req->embed =  $jform['embed'];

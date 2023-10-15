@@ -96,13 +96,14 @@ class SexypollingModelSexypoll extends AdminModel
 	 */
 	public function featured($pks, $value = 0)
 	{
+		$app = Factory::getApplication();
+
 		// Sanitize the ids.
 		$pks = (array) $pks;
 		\Joomla\Utilities\ArrayHelper::toInteger($pks);
 	
 		if (empty($pks)) {
-			$this->setError(Text::_('COM_SEXYPOLLING_NO_ITEM_SELECTED'));
-			return false;
+			$app->enqueueMessage(Text::_('COM_SEXYPOLLING_NO_ITEM_SELECTED'), 'error');
 		}
 	
 		$table = $this->getTable();
@@ -116,15 +117,12 @@ class SexypollingModelSexypoll extends AdminModel
 					' SET featured = '.(int) $value.
 					' WHERE id IN ('.implode(',', $pks).')'
 			);
-			if (!$db->execute()) {
-				throw new Exception($db->getErrorMsg());
-			}
-	
+			
+			$db->execute();
 		}
 		catch (Exception $e)
 		{
-			$this->setError($e->getMessage());
-			return false;
+			$app->enqueueMessage(JText::_($e->getMessage()), 'error');
 		}
 	
 		$table->reorder();

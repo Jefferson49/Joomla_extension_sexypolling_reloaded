@@ -13,6 +13,7 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
+ * @todo J4 deprecated Factory::getUser()
  * @todo J3 deprecated Factory::getApplication()->getDocument()->addStyleSheet
  * @todo J3 deprecated Factory::getApplication()->getDocument()->addScript
  * @todo J3 deprecated Factory::getApplication()->input->server->get
@@ -195,7 +196,7 @@ class SexypollingHelper
 		$date_time_zone = new DateTimeZone($time_zone);
 		$date->setTimezone($date_time_zone);
 
-        $user = Factory::getApplication()->getIdentity();
+        $user = Factory::getUser();
         $user_id = $user->get('id');
 
         $groups = Access::getGroupsByUser($user_id);

@@ -16,8 +16,6 @@
  * @license GNU/GPL v3.0
  * 
  * @todo J3 deprecated Factory::getApplication()->getDocument()->addScript
- * @todo J4 deprecated strtotime(): Passing null to parameter #1 ($datetime) of type string is deprecated
- * @todo J4 deprecated Passing null to parameter #1 ($datetime) of type string is deprecated
  */
 
 use Joomla\CMS\Factory;

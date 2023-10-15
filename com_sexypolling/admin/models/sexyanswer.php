@@ -145,7 +145,7 @@ class SexypollingModelSexyAnswer extends AdminModel
 	
 		return true;
 	}
-	
+
 	/**
 	 * Method to save answer
 	 */
@@ -154,24 +154,6 @@ class SexypollingModelSexyAnswer extends AdminModel
 		$date = new Date();
 		$id = Factory::getApplication()->input->request->getInt('id',0);
 		$jform = Factory::getApplication()->input->request->get('jform', null, null);
-	
-		Class Req {
-			public $id;
-			public $created;
-			public $name;
-			public $show_name;
-			public $embed;
-			public $img_name;
-			public $img_url;
-			public $img_width;
-			public $id_poll;
-			public $published;
-			public $id_user;
-			public $publish_up;
-			public $publish_down;
-			public $ordering;
-
-		}
 
 		$req = new Req();
 		$req->name =  $jform['name'];
@@ -438,4 +420,21 @@ class SexypollingModelSexyAnswer extends AdminModel
 	
 		return max(round($result), 0);
 	}
+}
+
+Class Req {
+	public $id;
+	public $created;
+	public $name;
+	public $show_name;
+	public $embed;
+	public $img_name;
+	public $img_url;
+	public $img_width;
+	public $id_poll;
+	public $published;
+	public $id_user;
+	public $publish_up;
+	public $publish_down;
+	public $ordering;
 }

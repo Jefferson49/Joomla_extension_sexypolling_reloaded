@@ -7,7 +7,20 @@
  * @package Sexy Polling
  * @subpackage com_sexypolling
  * @license GNU/GPL
- *
+ * 
+ * Extended by:
+ * @version v3.0.0
+ * @author Jefferson49
+ * @link https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded
+ * @copyright Copyright (c) 2022 - 2023 Jefferson49
+ * @license GNU/GPL v3.0
+ * 
+ * @todo J4 deprecated Factory::getUser()
+ * @todo Call to unknown method: Joomla\CMS\Factory::getContainer()
+ * @todo J3 deprecated Factory::getApplication('site')->initialise
+ * @todo J3 deprecated Factory::getApplication()->input->post->get
+ * @todo J3 deprecated Factory::getApplication()->input->server->get
+ * @todo J3 deprecated Factory::getApplication()->input->cookie->get
  */
 
 use Joomla\CMS\Factory;

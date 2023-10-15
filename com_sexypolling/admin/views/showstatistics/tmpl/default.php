@@ -15,6 +15,9 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
+ * @todo J3 deprecated Factory::getApplication()->getDocument()->addScript
+ * @todo J4 deprecated strtotime(): Passing null to parameter #1 ($datetime) of type string is deprecated
+ * @todo J4 deprecated Passing null to parameter #1 ($datetime) of type string is deprecated
  */
 
 use Joomla\CMS\Factory;
@@ -38,9 +41,9 @@ $document->addScriptDeclaration ( 'jQuery.noConflict();' );
 
 //function to return dates array
 function get_dates_array($date1,$date2) {
-    $a = strtotime($date1);
+    $a = strtotime($date1 ?? '');
     $dates = array();
-    while ($a <= strtotime($date2)) {
+    while ($a <= strtotime($date2 ?? '')) {
         $dates[] = date('Y-m-d', $a);
         $a += (60 * 60 * 24);
     }
@@ -74,14 +77,14 @@ $statdata = $db->loadAssocList();
 
 $poll_name = $statdata[0]['name'];
 $poll_question = $statdata[0]['question'];
-$min_date = date('Y-m-d',strtotime($statdata[0]['date']));
+$min_date = date('Y-m-d',strtotime($statdata[0]['date'] ?? ''));
 $size = sizeof($statdata) - 1;
-$max_date = date('Y-m-d',strtotime($statdata[$size]['date']));
+$max_date = date('Y-m-d',strtotime($statdata[$size]['date'] ?? ''));
 
 
 $stat_array = array();
 foreach($statdata as $val) {
-    $only_date = date('Y-m-d',strtotime($val['date']));
+    $only_date = date('Y-m-d',strtotime($val['date'] ?? ''));
     $stat_array[$only_date] = $val['votes'];
 }
 

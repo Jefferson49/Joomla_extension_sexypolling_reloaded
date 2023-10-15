@@ -15,6 +15,11 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
+ * @todo J3 deprecated Factory::getApplication()->getDocument()->addStyleSheet
+ * @todo J3 deprecated Factory::getApplication()->getDocument()->addScript
+ * @todo J3 deprecated Factory::getApplication()->getCfg
+ * @todo Use of $this in global code might be unatended
+ * 
  */
 
 use Joomla\CMS\Factory;

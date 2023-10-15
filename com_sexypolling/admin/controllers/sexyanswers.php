@@ -15,12 +15,16 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
+ * @todo J4 deprecated Factory::getUser()
  */
  
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\Controller\AdminController;
+use Joomla\CMS\MVC\Model\AdminModel;
 use Joomla\CMS\Session\Session;
+use Joomla\Utilities\ArrayHelper;
+
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -33,7 +37,7 @@ class SexyPollingControllerSexyAnswers extends AdminController
 	 * @param	array	$config	An optional associative array of configuration settings.
 	 *
 	 * @return	ContactControllerContacts
-	 * @see		JController
+	 * @see		AdminController
 	 * @since	1.6
 	 */
 	public function __construct($config = array())
@@ -59,7 +63,7 @@ class SexyPollingControllerSexyAnswers extends AdminController
 		$ids	= Factory::getApplication()->input->get('cid');
 		$values	= array('featured' => 1, 'unfeatured' => 0);
 		$task	= $this->getTask();
-		$value	= \Joomla\Utilities\ArrayHelper::getValue($values, $task, 0, 'int');
+		$value	= ArrayHelper::getValue($values, $task, 0, 'int');
 		// Get the model.
 		$model = $this->getModel();
 
@@ -94,7 +98,7 @@ class SexyPollingControllerSexyAnswers extends AdminController
 	 * @param	string	$name	The name of the model.
 	 * @param	string	$prefix	The prefix for the PHP class name.
 	 *
-	 * @return	JModel
+	 * @return	AdminModel
 	 * @since	1.6
 	 */
 	public function getModel($name = 'sexyanswer', $prefix = 'SexyPollingModel', $config = array('ignore_request' => true))
@@ -118,8 +122,8 @@ class SexyPollingControllerSexyAnswers extends AdminController
 		$order = $this->input->post->get('order', array(), 'array');
 		
 		// Sanitize the input
-		\Joomla\Utilities\ArrayHelper::toInteger($pks);
-		\Joomla\Utilities\ArrayHelper::toInteger($order);
+		ArrayHelper::toInteger($pks);
+		ArrayHelper::toInteger($order);
 	
 		// Get the model
 		$model = $this->getModel();

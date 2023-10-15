@@ -11,6 +11,7 @@
  */
 
 use Joomla\CMS\MVC\View\HtmlView;
+use Joomla\CMS\Toolbar\ToolbarHelper;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -18,7 +19,7 @@ defined('_JEXEC') or die('Restircted access');
 class SexypollingViewShowstatistics extends HtmlView {
 
     function display($tpl = null) {
-        JToolBarHelper::cancel( 'showstatistics.cancel', 'JTOOLBAR_CLOSE' );
+        ToolbarHelper::cancel( 'showstatistics.cancel', 'JTOOLBAR_CLOSE' );
         parent::display($tpl);
     }
 }

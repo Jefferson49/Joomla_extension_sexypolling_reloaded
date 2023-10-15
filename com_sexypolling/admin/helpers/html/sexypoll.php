@@ -11,6 +11,7 @@
  */
 
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\HTML\HTMLHelper;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');

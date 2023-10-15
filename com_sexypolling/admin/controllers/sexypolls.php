@@ -15,10 +15,12 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
+ * @todo J4 deprecated Factory::getUser()
  */
  
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\Model\AdminModel;
 use Joomla\CMS\MVC\Controller\AdminController;
 use Joomla\CMS\Session\Session;
 
@@ -33,7 +35,7 @@ class SexyPollingControllerSexyPolls extends AdminController
 	 * @param	array	$config	An optional associative array of configuration settings.
 	 *
 	 * @return	ContactControllerContacts
-	 * @see		JController
+	 * @see		AdminController
 	 * @since	1.6
 	 */
 	public function __construct($config = array())
@@ -94,7 +96,7 @@ class SexyPollingControllerSexyPolls extends AdminController
 	 * @param	string	$name	The name of the model.
 	 * @param	string	$prefix	The prefix for the PHP class name.
 	 *
-	 * @return	JModel
+	 * @return	AdminModel
 	 * @since	1.6
 	 */
 	public function getModel($name = 'sexypoll', $prefix = 'SexyPollingModel', $config = array('ignore_request' => true))

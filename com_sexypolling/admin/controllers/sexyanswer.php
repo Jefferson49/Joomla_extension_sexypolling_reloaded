@@ -20,7 +20,6 @@
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\Controller\FormController;
-use Joomla\CMS\MVC\Model\BaseDatabaseModel;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');

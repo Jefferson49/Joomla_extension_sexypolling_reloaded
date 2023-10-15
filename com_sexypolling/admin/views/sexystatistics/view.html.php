@@ -15,6 +15,7 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
+ * @todo J4 deprecated JHtmlSidebar 
  */
 
 use Joomla\CMS\HTML\HTMLHelper;

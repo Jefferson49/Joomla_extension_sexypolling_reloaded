@@ -33,7 +33,7 @@ class SexypollingModelSexypoll extends AdminModel
 	/**
 	 * Returns a reference to the a Table object, always creating it.
 	 *
-	 * @param	type	The table type to instantiate
+	 * @param	string	The table type to instantiate
 	 * @param	string	A prefix for the table class name. Optional.
 	 * @param	array	Configuration array for model. Optional.
 	 * @return	Table	A database object

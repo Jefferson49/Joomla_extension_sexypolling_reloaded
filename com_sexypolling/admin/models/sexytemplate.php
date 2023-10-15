@@ -8,6 +8,15 @@
  * @subpackage com_sexypolling
  * @license GNU/GPL
  *
+ * Extended by:
+ * @version v3.0.0
+ * @author Jefferson49
+ * @link https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded
+ * @copyright Copyright (c) 2022 - 2023 Jefferson49
+ * @license GNU/GPL v3.0 * @todo J3 deprecated Joomla\CMS\Input\Input
+ * 
+ * @todo J3 deprecated Factory::getApplication()->input->get
+ * @todo J3 Factory::getApplication()->input->request->get
  */
 
 use Joomla\CMS\Factory;
@@ -23,7 +32,7 @@ class SexypollingModelSexyTemplate extends AdminModel
 	/**
 	 * Returns a reference to the a Table object, always creating it.
 	 *
-	 * @param	type	The table type to instantiate
+	 * @param	string	The table type to instantiate
 	 * @param	string	A prefix for the table class name. Optional.
 	 * @param	array	Configuration array for model. Optional.
 	 * @return	Table	A database object

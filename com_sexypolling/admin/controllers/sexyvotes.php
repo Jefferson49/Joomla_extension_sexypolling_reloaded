@@ -10,6 +10,7 @@
  *
  */
 
+use Joomla\CMS\MVC\Model\AdminModel; 
 use Joomla\CMS\MVC\Controller\AdminController;
 
 // no direct access
@@ -37,7 +38,7 @@ class SexyPollingControllerSexyVotes extends AdminController
      * @param   string  $name   The name of the model.
      * @param   string  $prefix The prefix for the PHP class name.
      *
-     * @return  JModel
+     * @return  AdminModel
      * @since   1.6
      */
     public function getModel($name = 'sexyvote', $prefix = 'SexyPollingModel', $config = array('ignore_request' => true))

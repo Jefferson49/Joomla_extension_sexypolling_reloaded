@@ -15,6 +15,11 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
+ * @todo deprecated J3 CMSObject->setError, 
+ * @todo deprecated J3 JDatabase::getErrorMsg, 
+ * @todo deprecated J3 Factory::getApplication()->input->request->getInt
+ * @todo Call to unknown method: Joomla\CMS\Date\Date::toMySQL()
+ * 
  */
 
 use Joomla\CMS\Date\Date;
@@ -23,6 +28,7 @@ use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\Model\AdminModel;
 use Joomla\CMS\Object\CMSObject;
 use Joomla\CMS\Table\Table;
+use Joomla\Utilities\ArrayHelper;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -32,7 +38,7 @@ class SexypollingModelSexyAnswer extends AdminModel
 	/**
 	 * Returns a reference to the a Table object, always creating it.
 	 *
-	 * @param	type	The table type to instantiate
+	 * @param	string	The table type to instantiate
 	 * @param	string	A prefix for the table class name. Optional.
 	 * @param	array	Configuration array for model. Optional.
 	 * @return	Table	A database object
@@ -108,7 +114,7 @@ class SexypollingModelSexyAnswer extends AdminModel
 	{
 		// Sanitize the ids.
 		$pks = (array) $pks;
-		\Joomla\Utilities\ArrayHelper::toInteger($pks);
+		ArrayHelper::toInteger($pks);
 	
 		if (empty($pks)) {
 			$this->setError(Text::_('COM_SEXYPOLLING_NO_ITEM_SELECTED'));
@@ -185,7 +191,7 @@ class SexypollingModelSexyAnswer extends AdminModel
 		elseif($id == 0) {//if id ==0, we add the record
 			$req->id = NULL;
 			if(JV == 'j2')
-				$req->created = $date->toMySQL();
+				$req->created = $date->toSQL();
 			else
 				$req->created = $date->toSql();
 	

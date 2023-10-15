@@ -15,6 +15,7 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
+ * @todo J3 deprecated Factory::getApplication()->getDocument()->addStyleSheet
  */
 use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Controller\BaseController;

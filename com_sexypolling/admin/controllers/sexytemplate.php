@@ -15,6 +15,8 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
+ * @todo deprecated Factory::getApplication()->input->get->getInt
+ * 
  */
 
 use Joomla\CMS\Factory;
@@ -48,6 +50,8 @@ class SexyPollingControllerSexyTemplate extends FormController
 		$msg = '';
 		$this->setRedirect($link, $msg);
 		//parent::display();
+
+		return true;
 	}
 	
 	
@@ -58,6 +62,8 @@ class SexyPollingControllerSexyTemplate extends FormController
 		Factory::getApplication()->input->set('hidemainmenu', 1);
 	
 		parent::display();
+
+		return true;
 	}
 	
 	public function save($key = null, $urlVar = null)
@@ -90,6 +96,8 @@ class SexyPollingControllerSexyTemplate extends FormController
 		else
 			$link = 'index.php?option=com_sexypolling&view=sexytemplates';
 		$this->setRedirect($link, $msg);
+
+		return true;
 	}
 	
 	public function cancel($key = null, $urlVar = null)
@@ -98,5 +106,7 @@ class SexyPollingControllerSexyTemplate extends FormController
 		
 		$msg = Text::_( 'COM_SEXYPOLLING_OPERATION_CANCELLED' );
 		$this->setRedirect( 'index.php?option=com_sexypolling&view=sexytemplates', $msg );
+
+		return true;
 	}
 }

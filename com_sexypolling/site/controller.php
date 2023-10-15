@@ -8,6 +8,13 @@
  * @subpackage com_sexypolling
  * @license GNU/GPL
  *
+ * Extended by:
+ * @version v3.0.0
+ * @author Jefferson49
+ * @link https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded
+ * @copyright Copyright (c) 2022 - 2023 Jefferson49
+ * @license GNU/GPL v3.0
+ *  
  */
 
 use Joomla\CMS\MVC\Controller\BaseController;
@@ -30,7 +37,7 @@ class SexypollingController extends BaseController {
 	protected $default_view = 'sexypolls';
 
     public function display($cachable = false, $urlparams = false) {
-		parent::display();
+		return parent::display();
     }
 }
 ?>

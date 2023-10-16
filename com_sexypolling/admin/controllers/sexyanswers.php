@@ -15,6 +15,8 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
+ * @tod J3 Function 'getError' has been deprecated. JError has been deprecated
+ * 
 
  */
  
@@ -66,13 +68,12 @@ class SexyPollingControllerSexyAnswers extends AdminController
 		// Get the model.
 		$model = $this->getModel();
 
-
 		if (empty($ids)) {
 			Factory::getApplication()->enqueueMessage(500, Text::_('No Items'));
 		} else {
 			// Publish the items.
 			if (!$model->featured($ids, $value)) {
-				Factory::getApplication()->enqueueMessage(500, $model->getError());
+				Factory::getApplication()->enqueueMessage($model->getError());
 			}
 		}
 

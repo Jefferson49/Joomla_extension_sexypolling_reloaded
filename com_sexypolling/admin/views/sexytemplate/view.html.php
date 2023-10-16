@@ -44,7 +44,7 @@ class SexypollingViewSexytemplate extends HtmlView
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) {
-			Factory::getApplication()->enqueueMessage(500, implode("\n", $errors));
+			Factory::getApplication()->enqueueMessage(implode("\n", $errors));
 			return false;
 		}
 		

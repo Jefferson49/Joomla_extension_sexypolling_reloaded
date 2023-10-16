@@ -17,7 +17,6 @@
  * 
  * @todo deprecated J3 CMSObject->setError, 
  * @todo deprecated J3 JDatabase::getErrorMsg, 
- * @todo Call to unknown method: Joomla\CMS\Date\Date::toMySQL()
  * 
  */
 

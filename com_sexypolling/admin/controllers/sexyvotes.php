@@ -24,7 +24,7 @@ class SexyPollingControllerSexyVotes extends AdminController
      * @param   array   $config An optional associative array of configuration settings.
      *
      * @return  ContactControllerContacts
-     * @see     JController
+     * @see     AdminController
      * @since   1.6
      */
     public function __construct($config = array())

@@ -117,7 +117,7 @@ class SexypollingModelSexyTemplate extends AdminModel
 			$this->_db->setQuery( $query );
 			$tmp = $this->_db->loadObject();
 	
-			$new_template = new CMSObject();
+			$new_template = new New_Template();
 			$new_template->id = NULL;
 			$new_template->name = $template_name;
 			$new_template->styles = $tmp->styles;
@@ -129,10 +129,10 @@ class SexypollingModelSexyTemplate extends AdminModel
 				return false;
 		}
 		else { //else update the record
-			$new_template = new CMSObject();
+			$new_template = new New_Template();
 			$new_template->id = $id;
 			$new_template->name = $template_name;
-			$styles = $request->getString('styles');
+			$styles = $request->get('styles', array(),'ARRAY');
 			$styles_formated = '';
 			$ind = 0;
 			foreach($styles as $k => $val) {
@@ -149,4 +149,13 @@ class SexypollingModelSexyTemplate extends AdminModel
 		}
 		return true;
 	}
+}
+
+Class New_Template {
+	public $id;
+	public $name;
+	public $styles;
+	public $published;
+	public $publish_up;
+	public $publish_down;
 }

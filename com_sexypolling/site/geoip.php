@@ -18,7 +18,6 @@
 
  * @todo Call to unknown method: Joomla\CMS\Factory::getContainer()
  * @todo J3 deprecated Factory::getApplication('site')->initialise
- * @todo Name '\Joomla\CMS\Factory' can be simplified with 'Factory'
  */
 
 use Joomla\CMS\Factory;
@@ -39,7 +38,7 @@ require_once ( JPATH_BASE .DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'f
 
 if(version_compare(JVERSION, '4', '>=')) {
 	// Boot the DI container.
-	$container = \Joomla\CMS\Factory::getContainer();
+	$container = Factory::getContainer();
 
 	// Alias the session service key to the web session service.
 	$container->alias(\Joomla\Session\SessionInterface::class, 'session.web.site');

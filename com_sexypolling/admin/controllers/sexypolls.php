@@ -23,6 +23,7 @@ use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\Model\AdminModel;
 use Joomla\CMS\MVC\Controller\AdminController;
 use Joomla\CMS\Session\Session;
+use Joomla\Utilities\ArrayHelper;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -60,7 +61,7 @@ class SexyPollingControllerSexyPolls extends AdminController
 		$ids	= Factory::getApplication()->input->get('cid');
 		$values	= array('featured' => 1, 'unfeatured' => 0);
 		$task	= $this->getTask();
-		$value	= \Joomla\Utilities\ArrayHelper::getValue($values, $task, 0, 'int');
+		$value	= ArrayHelper::getValue($values, $task, 0, 'int');
 		// Get the model.
 		$model = $this->getModel();
 
@@ -105,8 +106,8 @@ class SexyPollingControllerSexyPolls extends AdminController
 			$pks   = $this->input->get('cid', array(), 'array');
 			$order = $this->input->get('order', array(), 'array');
 			// Sanitize the input
-			\Joomla\Utilities\ArrayHelper::toInteger($pks);
-			\Joomla\Utilities\ArrayHelper::toInteger($order);
+			ArrayHelper::toInteger($pks);
+			ArrayHelper::toInteger($order);
 		
 			// Get the model
 			$model = $this->getModel();

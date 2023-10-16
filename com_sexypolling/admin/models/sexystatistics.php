@@ -20,6 +20,7 @@
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Model\ListModel;
+use Joomla\Utilities\ArrayHelper;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -193,7 +194,7 @@ class SexypollingModelSexyStatistics extends ListModel{
 			$query->where('sp.id_category = '.(int) $categoryId);
 		}
 		elseif (is_array($categoryId)) {
-			\Joomla\Utilities\ArrayHelper::toInteger($categoryId);
+			ArrayHelper::toInteger($categoryId);
 			$categoryId = implode(',', $categoryId);
 			$query->where('sp.id_category IN ('.$categoryId.')');
 		}

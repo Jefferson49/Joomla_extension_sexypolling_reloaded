@@ -17,7 +17,6 @@
  * 
  * @todo J3 deprecated Factory::getApplication()->getDocument()->addStyleSheet
  * @todo J3 deprecated Factory::getApplication()->getDocument()->addScript
- * @todo J3 deprecated Factory::getApplication()->getCfg
  * @todo Use of $this in global code might be unatended
  * 
  */
@@ -161,7 +160,7 @@ function processReqChange() {
         }
     }
 }
-setInterval("refreshSession()", <?php echo $timeout = intval(Factory::getApplication()->getCfg('lifetime') * 60 / 3 * 1000);?>);
+setInterval("refreshSession()", <?php echo $timeout = intval(Factory::getApplication()->get('lifetime') * 60 / 3 * 1000);?>);
 </script>
 <script>
 (function($) {

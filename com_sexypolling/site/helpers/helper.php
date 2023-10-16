@@ -16,8 +16,6 @@
  * @todo J4 deprecated Factory::getUser()
  * @todo J3 deprecated Factory::getApplication()->getDocument()->addStyleSheet
  * @todo J3 deprecated Factory::getApplication()->getDocument()->addScript
- * @todo J3 deprecated Factory::getApplication()->input->server->get
- * @todo J3 deprecated Factory::getApplication()->input->cookie->get
  */
 
 use Joomla\CMS\Access\Access;

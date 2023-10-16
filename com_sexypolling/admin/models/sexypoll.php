@@ -14,6 +14,7 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\Model\AdminModel;
 use Joomla\CMS\Table\Table;
+use Joomla\Utilities\ArrayHelper;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -96,14 +97,13 @@ class SexypollingModelSexypoll extends AdminModel
 	 */
 	public function featured($pks, $value = 0)
 	{
-		$app = Factory::getApplication();
-
 		// Sanitize the ids.
 		$pks = (array) $pks;
-		\Joomla\Utilities\ArrayHelper::toInteger($pks);
+		ArrayHelper::toInteger($pks);
 	
 		if (empty($pks)) {
-			$app->enqueueMessage(Text::_('COM_SEXYPOLLING_NO_ITEM_SELECTED'), 'error');
+			Factory::getApplication()->enqueueMessage(Text::_('COM_SEXYPOLLING_NO_ITEM_SELECTED'));
+			return false;
 		}
 	
 		$table = $this->getTable();
@@ -117,12 +117,14 @@ class SexypollingModelSexypoll extends AdminModel
 					' SET featured = '.(int) $value.
 					' WHERE id IN ('.implode(',', $pks).')'
 			);
-			
-			$db->execute();
+			if (!$db->execute()) {
+				throw new Exception($db->getErrorMsg());
+			}
+	
 		}
 		catch (Exception $e)
 		{
-			$app->enqueueMessage(Text::_($e->getMessage()), 'error');
+			Factory::getApplication()->enqueueMessage(Text::_($e->getMessage()), 'error');
 		}
 	
 		$table->reorder();

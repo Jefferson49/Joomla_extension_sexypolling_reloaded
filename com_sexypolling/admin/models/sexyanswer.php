@@ -15,7 +15,10 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
- * @todo deprecated J3 Factory::getApplication()->input->request->getInt 
+ * @todo deprecated J3 CMSObject->setError, 
+ * @todo deprecated J3 JDatabase::getErrorMsg, 
+ * @todo deprecated J3 Factory::getApplication()->input->request->getInt
+ * @todo Call to unknown method: Joomla\CMS\Date\Date::toMySQL()
  * 
  */
 
@@ -108,15 +111,13 @@ class SexypollingModelSexyAnswer extends AdminModel
 	 */
 	public function featured($pks, $value = 0)
 	{
-
-		$app = Factory::getApplication();
-
 		// Sanitize the ids.
 		$pks = (array) $pks;
 		ArrayHelper::toInteger($pks);
 	
 		if (empty($pks)) {
-			$app->enqueueMessage(Text::_('COM_SEXYPOLLING_NO_ITEM_SELECTED'), 'error');
+			$this->setError(Text::_('COM_SEXYPOLLING_NO_ITEM_SELECTED'));
+			return false;
 		}
 	
 		$table = $this->getTable();
@@ -130,12 +131,15 @@ class SexypollingModelSexyAnswer extends AdminModel
 					' SET featured = '.(int) $value.
 					' WHERE id IN ('.implode(',', $pks).')'
 			);
-
-			$db->execute();
+			if (!$db->execute()) {
+				throw new Exception($db->getErrorMsg());
+			}
+	
 		}
 		catch (Exception $e)
 		{
-			$app->enqueueMessage(Text::_($e->getMessage()), 'error');
+			$this->setError($e->getMessage());
+			return false;
 		}
 	
 		$table->reorder();

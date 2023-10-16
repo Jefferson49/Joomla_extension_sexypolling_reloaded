@@ -48,7 +48,7 @@ class SexypollingViewSexytemplate extends HtmlView
 			return false;
 		}
 		
-		if(Factory::getApplication()->input->get->get('id') !== null) {
+		if(Factory::getApplication()->input->get('id') !== null) {
 			$styles	= $this->get('Styles');
 			$this->styles = $styles;
 		}

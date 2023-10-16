@@ -26,7 +26,7 @@ require_once ( JPATH_BASE .DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'f
 //conects to datababse
 $db = Factory::getDBO();
 
-$id = Factory::getApplication()->input->post->getInt('id');
+$id = Factory::getApplication()->input->getInt('id');
 $query = "SELECT COUNT(id) as count_answers FROM #__sexy_answers WHERE id_poll = '$id' GROUP By id_poll";
 $db->setQuery($query);
 $db->execute();

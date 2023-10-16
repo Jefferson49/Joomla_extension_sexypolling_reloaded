@@ -18,7 +18,6 @@
  * @todo J4 deprecated Factory::getUser()
  * @todo Call to unknown method: Joomla\CMS\Factory::getContainer()
  * @todo J3 deprecated Factory::getApplication('site')->initialise
- * @todo J3 deprecated Factory::getApplication()->input->post->get
  * @todo J3 deprecated Factory::getApplication()->input->server->get
  * @todo J3 deprecated Factory::getApplication()->input->cookie->get
  */
@@ -61,7 +60,7 @@ else {
 	$app->initialise();
 }
 
-$post = Factory::getApplication()->input->post;
+$post = Factory::getApplication()->input;
 $server = Factory::getApplication()->input->server;
 
 //load language and timezone

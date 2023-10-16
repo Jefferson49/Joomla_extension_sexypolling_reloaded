@@ -18,7 +18,6 @@
 
  * @todo Call to unknown method: Joomla\CMS\Factory::getContainer()
  * @todo J3 deprecated Factory::getApplication('site')->initialise
- * @todo J3 deprecated Factory::getApplication()->input->post->get
  * @todo J3 deprecated Factory::getApplication()->input->server->get
  * @todo J3 deprecated Factory::getApplication()->input->cookie->get
  */

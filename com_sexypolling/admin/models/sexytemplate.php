@@ -15,7 +15,6 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0 
  * 
- * @todo J3 deprecated Factory::getApplication()->input->get
  * @todo J3 Factory::getApplication()->input->request->get
  */
 
@@ -56,8 +55,8 @@ class SexypollingModelSexyTemplate extends AdminModel
 	 *
 	 */
 	public function getStyles() {
-		if(Factory::getApplication()->input->get->get('id') !== null) {
-			$id = Factory::getApplication()->input->get->getInt('id');
+		if(Factory::getApplication()->input->get('id') !== null) {
+			$id = Factory::getApplication()->input->getInt('id');
 		};
 		$db = $this->getDbo();
 		$sql = "SELECT `styles` FROM `#__sexy_templates` WHERE `id` = ".$id;

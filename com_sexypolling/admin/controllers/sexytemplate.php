@@ -15,7 +15,6 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
- * @todo deprecated Factory::getApplication()->input->get->getInt
  * 
  */
 
@@ -32,7 +31,7 @@ class SexyPollingControllerSexyTemplate extends FormController
 	protected $view_item = 'aaa';
 	public function edit($key = null, $urlVar = null)
 	{
-		$cid  = Factory::getApplication()->input->post->get('cid');
+		$cid  = Factory::getApplication()->input->get('cid');
 
 		if ($cid !== null) {
 			$id = $cid[0];
@@ -41,7 +40,7 @@ class SexyPollingControllerSexyTemplate extends FormController
 			$id = 0;			
 		}
 		
-		$id = $id == 0 ? Factory::getApplication()->input->get->getInt('id',0) : $id;
+		$id = $id == 0 ? Factory::getApplication()->input->getInt('id',0) : $id;
 		Factory::getApplication()->input->set( 'view', 'sexytemplate' );
 		Factory::getApplication()->input->set( 'layout', 'form'  );
 		Factory::getApplication()->input->set('hidemainmenu', 1);
@@ -68,7 +67,7 @@ class SexyPollingControllerSexyTemplate extends FormController
 	
 	public function save($key = null, $urlVar = null)
 	{
-		$cid  = Factory::getApplication()->input->post->get('cid');
+		$cid  = Factory::getApplication()->input->get('cid');
 
 		if ($cid !== null) {
 			$id = $cid[0];
@@ -77,7 +76,7 @@ class SexyPollingControllerSexyTemplate extends FormController
 			$id = 0;			
 		}
 
-		$id = $id == 0 ? Factory::getApplication()->input->get->getInt('id',0) : $id;
+		$id = $id == 0 ? Factory::getApplication()->input->getInt('id',0) : $id;
 		
 		$task = Factory::getApplication()->input->getCmd('task');
 		$model = $this->getModel('sexytemplate');

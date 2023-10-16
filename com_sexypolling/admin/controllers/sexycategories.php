@@ -8,6 +8,7 @@
  * @subpackage com_sexypolling
  * @license GNU/GPL
  *
+ * @todo Return value of getModel() is expected to be of type JModel
  */
 
 use Joomla\CMS\MVC\Controller\AdminController;

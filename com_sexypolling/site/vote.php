@@ -17,6 +17,7 @@
  * 
  * @todo J4 deprecated Factory::getUser()
  * @todo Call to unknown method: Joomla\CMS\Factory::getContainer()
+ * @todo Name '\Joomla\CMS\Factory' can be simplified with 'Factory'
  * @todo J3 deprecated Factory::getApplication('site')->initialise
  * @todo J3 deprecated Factory::getApplication()->input->server->get
  * @todo J3 deprecated Factory::getApplication()->input->cookie->get

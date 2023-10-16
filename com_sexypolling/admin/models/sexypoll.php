@@ -8,6 +8,7 @@
  * @subpackage com_sexypolling
  * @license GNU/GPL
  *
+ * @todo deprecated Function 'getErrorMsg' has been deprecated. 
  */
 
 use Joomla\CMS\Factory;

@@ -230,7 +230,7 @@ if(is_array($adittional_answers) && $voting_enabled) {
 
         $add_answers[] = $insert_id;
 
-        $query = "INSERT INTO `#__sexy_votes` (`id_answer`,`id_user`,`ip`,`date`,`country`,`city`,`region`,`countrycode`) VALUES ('$insert_id','$user_id','$ip','$datenow','$countryname','$cityname','$regionname','$countrycode')";
+        $query = "INSERT IGNORE INTO `#__sexy_votes` (`id_answer`,`id_user`,`ip`,`date`,`country`,`city`,`region`,`countrycode`) VALUES ('$insert_id','$user_id','$ip','$datenow','$countryname','$cityname','$regionname','$countrycode')";
         $db->setQuery($query);
         $db->execute();
 
@@ -256,7 +256,7 @@ if ($mode != 'view' && $mode != 'view_by_date' && is_array($answer_id_array) && 
 
             //Only insert vote into datebase if is not related to a newly added answer; in this case vote was already inserted above
             if ($answer_id != 0) {
-                $query = "INSERT INTO `#__sexy_votes` (`id_answer`,`id_user`,`ip`,`date`,`country`,`city`,`region`,`countrycode`) VALUES ('$answer_id','$user_id','$ip','$datenow','$countryname','$cityname','$regionname','$countrycode')";
+                $query = "INSERT IGNORE INTO `#__sexy_votes` (`id_answer`,`id_user`,`ip`,`date`,`country`,`city`,`region`,`countrycode`) VALUES ('$answer_id','$user_id','$ip','$datenow','$countryname','$cityname','$regionname','$countrycode')";
                 $db->setQuery($query);
                 $db->execute();    
             }

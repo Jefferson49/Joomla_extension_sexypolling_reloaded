@@ -222,7 +222,7 @@ if(($writeinto == 1 || $autopublish == 0) && $voting_enabled) {
     $insert_id = $db->insertid();
 
     if($ipcountchecked) {
-        $query = "INSERT INTO `#__sexy_votes` (`id_answer`,`id_user`,`ip`,`date`,`country`,`city`,`region`,`countrycode`) VALUES ('$insert_id','$user_id','$ip','$datenow','$countryname','$cityname','$regionname','$countrycode')";
+        $query = "INSERT IGNORE INTO `#__sexy_votes` (`id_answer`,`id_user`,`ip`,`date`,`country`,`city`,`region`,`countrycode`) VALUES ('$insert_id','$user_id','$ip','$datenow','$countryname','$cityname','$regionname','$countrycode')";
         $db->setQuery($query);
         $db->execute();
         //set the cookie

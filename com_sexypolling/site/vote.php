@@ -243,12 +243,12 @@ if(is_array($adittional_answers) && $voting_enabled) {
 
         //set the cookie
         if($voting_period == 0) {
-            $expire = time()+(60*60*24*365*2);//2 years
+            $expire = time() + (60*60*24*365*2); //2 years
             setcookie("sexy_poll_$polling_id", $date_now, $expire, '/');
         }
         else {
-            $expire_time = (float)$voting_period*60*60;
-            $expire = (int)(time()+$expire_time);
+            $expire_time = (float) $voting_period*60*60;
+            $expire = time() + (int) $expire_time;
             setcookie("sexy_poll_$polling_id", $date_now, $expire, '/');
         }
     }
@@ -274,13 +274,13 @@ if ($mode != 'view' && $mode != 'view_by_date' && is_array($answer_id_array) && 
 
         //set the cookie
         if($voting_period == 0) {
-            $expire = time()+(60*60*24*365*2);//2 years
+            $expire = time() + (60*60*24*365*2); //2 years
             setcookie("sexy_poll_$polling_id", $date_now, $expire, '/');
         }
         else {
             $expire_time = (float)$voting_period*60*60;
 			$time = time();
-            $expire = (int)(time()+$expire_time);
+            $expire = time() + (int) $expire_time;
             setcookie("sexy_poll_$polling_id", $date_now, $expire, '/');
         }
 }

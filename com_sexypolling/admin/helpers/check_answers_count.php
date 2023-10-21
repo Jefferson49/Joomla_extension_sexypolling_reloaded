@@ -8,6 +8,7 @@
  * @subpackage com_sexypolling
  * @license GNU/GPL
  *
+ * @todo error_reporting(0) in the files
  */
 
 use Joomla\CMS\Factory; 

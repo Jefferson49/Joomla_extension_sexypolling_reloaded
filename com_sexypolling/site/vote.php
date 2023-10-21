@@ -17,6 +17,7 @@
  * 
  * @todo J4 deprecated Factory::getUser()
  * @todo Function 'getDBO' has been deprecated
+ * @todo error_reporting(0) in the files 
  */
 
 use Joomla\CMS\Access\Access;

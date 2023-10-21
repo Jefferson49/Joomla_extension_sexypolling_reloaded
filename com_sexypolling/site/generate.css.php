@@ -16,6 +16,7 @@
  * @license GNU/GPL v3.0
  * 
  * @todo Function 'getDBO' has been deprecated
+ * @todo error_reporting(0) in the files
  */
 
 use Joomla\CMS\Factory;

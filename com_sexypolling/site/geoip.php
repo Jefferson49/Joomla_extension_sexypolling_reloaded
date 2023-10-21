@@ -14,7 +14,8 @@
  * @link https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
- * 
+ *
+ * @todo error_reporting(0) in the files 
  */
 
 use Joomla\CMS\Factory;

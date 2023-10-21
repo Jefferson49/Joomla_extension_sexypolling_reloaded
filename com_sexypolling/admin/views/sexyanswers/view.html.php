@@ -48,25 +48,21 @@ class SexypollingViewSexyanswers extends HtmlView {
     	foreach($polls AS $poll) {
     		$options[]      = HTMLHelper::_('select.option', $poll->id, $poll->name);
     	}
-    	if(JV == 'j2') {
-    		$this->poll_options = $options;
-    	}
-    	else {
-    		JHtmlSidebar::addFilter(
-    				Text::_('JOPTION_SELECT_PUBLISHED'),
-    				'filter_published',
-    				HTMLHelper::_('select.options', HTMLHelper::_('jgrid.publishedOptions'), 'value', 'text', $this->state->get('filter.published'), true)
-    		);
-    		 
-    		JHtmlSidebar::addFilter(
-    				Text::_('COM_SEXYPOLLING_SELECT_POLL'),
-    				'filter_poll_id',
-    				HTMLHelper::_('select.options', $options, 'value', 'text', $this->state->get('filter.poll_id'))
-    		);
-    	}
+
+		JHtmlSidebar::addFilter(
+				Text::_('JOPTION_SELECT_PUBLISHED'),
+				'filter_published',
+				HTMLHelper::_('select.options', HTMLHelper::_('jgrid.publishedOptions'), 'value', 'text', $this->state->get('filter.published'), true)
+		);
+			
+		JHtmlSidebar::addFilter(
+				Text::_('COM_SEXYPOLLING_SELECT_POLL'),
+				'filter_poll_id',
+				HTMLHelper::_('select.options', $options, 'value', 'text', $this->state->get('filter.poll_id'))
+		);
+
        	$this->addToolbar();
-       	if(JV == 'j3')
-       		$this->sidebar = JHtmlSidebar::render();
+		$this->sidebar = JHtmlSidebar::render();
 		parent::display($tpl);
     }
 	    

@@ -48,16 +48,14 @@ class SexypollingViewSexyvotes extends HtmlView {
             $options[] = HTMLHelper::_('select.option', $poll->id, $poll->name);
         }
 
-        if(JV == 'j3') {
-            JHtmlSidebar::addFilter(
-                    Text::_('COM_SEXYPOLLING_SELECT_POLL'),
-                    'filter_poll_id',
-                    HTMLHelper::_('select.options', $options, 'value', 'text', $this->state->get('filter.poll_id'))
-            );
-        }
+		JHtmlSidebar::addFilter(
+				Text::_('COM_SEXYPOLLING_SELECT_POLL'),
+				'filter_poll_id',
+				HTMLHelper::_('select.options', $options, 'value', 'text', $this->state->get('filter.poll_id'))
+		);
+
         $this->addToolbar();
-        if(JV == 'j3')
-            $this->sidebar = JHtmlSidebar::render();
+		$this->sidebar = JHtmlSidebar::render();
         parent::display($tpl);
     }
 

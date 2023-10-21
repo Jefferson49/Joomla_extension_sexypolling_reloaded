@@ -41,18 +41,14 @@ class SexypollingViewSexytemplates extends HtmlView {
     	$this->items		= $this->get('Items');
     	$this->pagination	= $this->get('Pagination');
     	$this->state		= $this->get('State');
- 		$styles = $this->get('Styles');
  		
-       	if(JV == 'j3') {
-    		JHtmlSidebar::addFilter(
-    				Text::_('JOPTION_SELECT_PUBLISHED'),
-    				'filter_published',
-    				HTMLHelper::_('select.options', HTMLHelper::_('jgrid.publishedOptions'), 'value', 'text', $this->state->get('filter.published'), true)
-    		);
-    	}
+		JHtmlSidebar::addFilter(
+				Text::_('JOPTION_SELECT_PUBLISHED'),
+				'filter_published',
+				HTMLHelper::_('select.options', HTMLHelper::_('jgrid.publishedOptions'), 'value', 'text', $this->state->get('filter.published'), true)
+		);
     	$this->addToolbar();
-    	if(JV == 'j3')
-    		$this->sidebar = JHtmlSidebar::render();
+		$this->sidebar = JHtmlSidebar::render();
 		parent::display($tpl);
     }
     

@@ -19,7 +19,6 @@
  * @todo Use of $this in global code might be unatended
  */
 
-use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
@@ -27,124 +26,7 @@ use Joomla\CMS\Router\Route;
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 ?>
-<?php if(JV == 'j2') {//////////////////////////////////////////////////////////////////////////////////////Joomla2.x/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////?>
-<?php
-    HTMLHelper::addIncludePath(JPATH_COMPONENT.'/helpers/html');
-    HTMLHelper::_('bootstrap.tooltip');
-    HTMLHelper::_('behavior.multiselect');
 
-    $listOrder  = $this->escape($this->state->get('list.ordering'));
-    $listDirn   = $this->escape($this->state->get('list.direction'));
-?>
-<form action="<?php echo Route::_('index.php?option=com_sexypolling'); ?>" method="post" name="adminForm" id="adminForm">
-    <fieldset id="filter-bar">
-        <div class="filter-search fltlft">
-            <label class="filter-search-lbl" for="filter_search"><?php echo Text::_('COM_SEXYPOLLING_FILTER_LABEL'); ?></label>
-            <input type="text" name="filter_search" id="filter_search" value="<?php echo $this->escape($this->state->get('filter.search')); ?>" title="<?php echo Text::_('COM_SEXYPOLLING_SEARCH'); ?>" />
-            <button type="submit"><?php echo Text::_('COM_SEXYPOLLING_SEARCH'); ?></button>
-            <button type="button" onclick="document.getElementById('filter_search').value='';this.form.submit();"><?php echo Text::_('COM_SEXYPOLLING_RESET'); ?></button>
-        </div>
-    </fieldset>
-    <div class="clr"> </div>
-
-    <table class="adminlist">
-        <thead>
-            <tr>
-                <th width="1%">
-                    <input type="checkbox" name="checkall-toggle" value="" title="<?php echo Text::_('JGLOBAL_CHECK_ALL'); ?>" onclick="Joomla.checkAll(this)" />
-                </th>
-                <th nowrap>
-                    <?php echo HTMLHelper::_('grid.sort', 'COM_SEXYPOLLING_ANSWER', 'id_answer', $listDirn, $listOrder); ?>
-                </th>
-                <th nowrap>
-                    <?php echo HTMLHelper::_('grid.sort', 'COM_SEXYPOLLING_POLL', 'id_poll', $listDirn, $listOrder); ?>
-                </th>
-                <th nowrap>
-                    <?php echo HTMLHelper::_('grid.sort', 'COM_SEXYPOLLING_USER', 'username', $listDirn, $listOrder); ?>
-                </th>
-                <th>
-                    <?php echo HTMLHelper::_('grid.sort', 'COM_SEXYPOLLING_IP', 'ip', $listDirn, $listOrder); ?>
-                </th>
-                <th>
-                    <?php echo HTMLHelper::_('grid.sort', 'JDATE', 'date', $listDirn, $listOrder); ?>
-                </th>
-                <th>
-                    <?php echo HTMLHelper::_('grid.sort', 'COM_SEXYPOLLING_COUNTRY', 'country', $listDirn, $listOrder); ?>
-                </th>
-                <th>
-                    <?php echo HTMLHelper::_('grid.sort', 'COM_SEXYPOLLING_CITY', 'city', $listDirn, $listOrder); ?>
-                </th>
-                <th>
-                    <?php echo HTMLHelper::_('grid.sort', 'COM_SEXYPOLLING_REGION', 'region', $listDirn, $listOrder); ?>
-                </th>
-                <th width="1%">
-                    <?php echo HTMLHelper::_('grid.sort', 'JGRID_HEADING_ID', 'id_vote', $listDirn, $listOrder); ?>
-                </th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <td colspan="10">
-                    <?php echo $this->pagination->getListFooter(); ?>
-                </td>
-            </tr>
-        </tfoot>
-        <tbody>
-        <?php
-        $n = count($this->items);
-        foreach ($this->items as $i => $item) :
-            ?>
-            <tr class="row<?php echo $i % 2; ?>">
-                <td class="center">
-                    <?php echo HTMLHelper::_('grid.id', $i, $item->id_vote); ?>
-                </td>
-                <td>
-                    <a href="<?php echo Route::_('index.php?option=com_sexypolling&task=sexyanswer.edit&id='.(int) $item->id_answer); ?>">
-                        <?php echo $this->escape(strip_tags($item->answer)); ?>
-                    </a>
-                </td>
-                <td>
-                    <a href="<?php echo Route::_('index.php?option=com_sexypolling&task=sexypoll.edit&id='.(int) $item->id_poll); ?>">
-                        <?php echo $this->escape($item->poll); ?>
-                    </a>
-                </td>
-                <td>
-                    <?php echo $item->username; ?>
-                </td>
-                <td>
-                    <?php echo $item->ip; ?>
-                </td>
-                <td>
-                    <?php echo $item->date; ?>
-                </td>
-                <td>
-                    <?php echo $item->country; ?>
-                </td>
-                <td>
-                    <?php echo $item->city; ?>
-                </td>
-                <td>
-                    <?php echo $item->region; ?>
-                </td>
-                <td>
-                    <?php echo $item->id_vote; ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-
-    <div>
-        <input type="hidden" name="view" value="sexvotes" />
-        <input type="hidden" name="task" value="" />
-        <input type="hidden" name="boxchecked" value="0" />
-        <input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
-        <input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
-        <?php echo HTMLHelper::_('form.token'); ?>
-    </div>
-</form>
-<?php include (JPATH_BASE.'/components/com_sexypolling/helpers/footer.php'); ?>
-<?php }elseif(JV == 'j3') {//////////////////////////////////////////////////////////////////////////////////////Joomla3.x/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////?>
 <?php
 HTMLHelper::addIncludePath(JPATH_COMPONENT.'/helpers/html');
 HTMLHelper::_('bootstrap.tooltip');
@@ -306,4 +188,3 @@ $sortFields = $this->getSortFields();
         <?php include (JPATH_BASE.'/components/com_sexypolling/helpers/footer.php'); ?>
     </div>
 </form>
-<?php }?>

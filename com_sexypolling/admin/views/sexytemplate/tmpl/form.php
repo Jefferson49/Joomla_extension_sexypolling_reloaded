@@ -66,47 +66,35 @@ $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/layout.js?ver=1
 ?>
 
 <?php 
-if(JV == 'j2') {
-	echo '<style>
-	
-	</style>';
-}
-else {
-	echo '<style>
-			.colorpicker input {
-				background-color: transparent !important;
-				border: 1px solid transparent !important;
-				position: absolute !important;
-				font-size: 10px !important;
-				font-family: Arial, Helvetica, sans-serif !important;
-				color: #898989 !important;
-				top: 4px !important;
-				right: 11px !important;
-				text-align: right !important;
-				margin: 0 !important;
-				padding: 0 !important;
-				height: 11px !important;
-				outline: none !important;
-				box-shadow: none !important;
-				width: 32px !important;
-				height: 12px !important;
-				top: 2px !important;
-			}
-			.colorpicker_hex input {
-				width: 38px !important;
-				right: 6px !important;
-			}
-	</style>';
-}
+echo '<style>
+	.colorpicker input {
+		background-color: transparent !important;
+		border: 1px solid transparent !important;
+		position: absolute !important;
+		font-size: 10px !important;
+		font-family: Arial, Helvetica, sans-serif !important;
+		color: #898989 !important;
+		top: 4px !important;
+		right: 11px !important;
+		text-align: right !important;
+		margin: 0 !important;
+		padding: 0 !important;
+		height: 11px !important;
+		outline: none !important;
+		box-shadow: none !important;
+		width: 32px !important;
+		height: 12px !important;
+		top: 2px !important;
+	}
+	.colorpicker_hex input {
+		width: 38px !important;
+		right: 6px !important;
+	}
+</style>';
 ?>
 
-
 <script type="text/javascript">
-<?php if(version_compare( JVERSION, '1.6.0', '<' )) { ?>
-function submitbutton(task) {
-<?php } else { ?>
 Joomla.submitbutton = function(task) {
-<?php } ?>
 	var form = document.adminForm;
 	if (task == 'cancel') {
 		Joomla.submitform(task);   

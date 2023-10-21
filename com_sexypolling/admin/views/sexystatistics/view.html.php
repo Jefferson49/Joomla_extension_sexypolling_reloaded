@@ -48,31 +48,27 @@ class SexypollingViewSexystatistics extends HtmlView {
     	foreach($category_options AS $category) {
     		$options[]      = HTMLHelper::_('select.option', $category->id, $category->name);
     	}
-    	if(JV == 'j2') {
-	    	$this->category_options = $options;
-       	}
-       	else {
-       		JHtmlSidebar::addFilter(
-       				Text::_('JOPTION_SELECT_PUBLISHED'),
-       				'filter_published',
-       				HTMLHelper::_('select.options', HTMLHelper::_('jgrid.publishedOptions'), 'value', 'text', $this->state->get('filter.published'), true)
-       		);
-       		
-       		JHtmlSidebar::addFilter(
-       				Text::_('JOPTION_SELECT_CATEGORY'),
-       				'filter_category_id',
-       				HTMLHelper::_('select.options', $options, 'value', 'text', $this->state->get('filter.category_id'))
-       		);
-       		
-       		JHtmlSidebar::addFilter(
-       				Text::_('JOPTION_SELECT_ACCESS'),
-       				'filter_access',
-       				HTMLHelper::_('select.options', HTMLHelper::_('access.assetgroups'), 'value', 'text', $this->state->get('filter.access'))
-       		);
-       	}
+
+		JHtmlSidebar::addFilter(
+				Text::_('JOPTION_SELECT_PUBLISHED'),
+				'filter_published',
+				HTMLHelper::_('select.options', HTMLHelper::_('jgrid.publishedOptions'), 'value', 'text', $this->state->get('filter.published'), true)
+		);
+		
+		JHtmlSidebar::addFilter(
+				Text::_('JOPTION_SELECT_CATEGORY'),
+				'filter_category_id',
+				HTMLHelper::_('select.options', $options, 'value', 'text', $this->state->get('filter.category_id'))
+		);
+		
+		JHtmlSidebar::addFilter(
+				Text::_('JOPTION_SELECT_ACCESS'),
+				'filter_access',
+				HTMLHelper::_('select.options', HTMLHelper::_('access.assetgroups'), 'value', 'text', $this->state->get('filter.access'))
+		);
+
        	$this->addToolbar();
-       	if(JV == 'j3')
-       		$this->sidebar = JHtmlSidebar::render();
+		$this->sidebar = JHtmlSidebar::render();
 		parent::display($tpl);
     }
     

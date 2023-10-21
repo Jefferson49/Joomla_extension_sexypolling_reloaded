@@ -17,117 +17,14 @@
  * 
 
  */
- 
-use Joomla\CMS\Factory;
+
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
-?>
-<?php if(JV == 'j2') {//////////////////////////////////////////////////////////////////////////////////////Joomla2.x/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////?>
-<?php
-    HTMLHelper::addIncludePath(JPATH_COMPONENT.'/helpers/html');
-    HTMLHelper::_('bootstrap.tooltip');
-    HTMLHelper::_('behavior.multiselect');
 
-    $listOrder  = $this->escape($this->state->get('list.ordering'));
-    $listDirn   = $this->escape($this->state->get('list.direction'));
-?>
-<form action="<?php echo Route::_('index.php?option=com_sexypolling'); ?>" method="post" name="adminForm" id="adminForm">
-    <fieldset id="filter-bar">
-        <div class="filter-search fltlft">
-            <label class="filter-search-lbl" for="filter_search"><?php echo Text::_('COM_SEXYPOLLING_FILTER_LABEL'); ?></label>
-            <input type="text" name="filter_search" id="filter_search" value="<?php echo $this->escape($this->state->get('filter.search')); ?>" title="<?php echo Text::_('COM_SEXYPOLLING_SEARCH_BY_NAME'); ?>" />
-            <button type="submit"><?php echo Text::_('COM_SEXYPOLLING_SEARCH'); ?></button>
-            <button type="button" onclick="document.getElementById('filter_search').value='';this.form.submit();"><?php echo Text::_('COM_SEXYPOLLING_RESET'); ?></button>
-        </div>
-        <div class="filter-select fltrt">
-
-            <select name="filter_published" class="inputbox" onchange="this.form.submit()">
-                <option value=""><?php echo Text::_('COM_SEXYPOLLING_SELECT_STATUS');?></option>
-                <?php echo HTMLHelper::_('select.options', HTMLHelper::_('jgrid.publishedOptions'), 'value', 'text', $this->state->get('filter.published'), true);?>
-            </select>
-        </div>
-    </fieldset>
-    <div class="clr"> </div>
-
-    <table class="adminlist">
-        <thead>
-            <tr>
-                <th width="1%">
-                    <input type="checkbox" name="checkall-toggle" value="" title="<?php echo Text::_('JGLOBAL_CHECK_ALL'); ?>" onclick="Joomla.checkAll(this)" />
-                </th>
-                <th>
-                    <?php echo HTMLHelper::_('grid.sort', 'COM_SEXYPOLLING_NAME', 'sc.name', $listDirn, $listOrder); ?>
-                </th>
-                <th width="15%" class="nowrap hidden-phone center">
-                        Shortcode
-                </th>
-                <th width="5%">
-                    <?php echo HTMLHelper::_('grid.sort', 'JSTATUS', 'sc.published', $listDirn, $listOrder); ?>
-                </th>
-                <th width="5%">
-                    <?php echo HTMLHelper::_('grid.sort', 'COM_SEXYPOLLING_NUM_POLLS', 'count_polls', $listDirn, $listOrder); ?>
-                </th>
-                <th width="1%">
-                    <?php echo HTMLHelper::_('grid.sort', 'JGRID_HEADING_ID', 'sc.id', $listDirn, $listOrder); ?>
-                </th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <td colspan="5">
-                    <?php echo $this->pagination->getListFooter(); ?>
-                </td>
-            </tr>
-        </tfoot>
-        <tbody>
-        <?php
-        $n = count($this->items);
-        foreach ($this->items as $i => $item) :
-            $ordering   = $listOrder == 'sp.ordering';
-
-            ?>
-            <tr class="row<?php echo $i % 2; ?>">
-                <td class="center">
-                    <?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
-                </td>
-                <td>
-                    <a href="<?php echo Route::_('index.php?option=com_sexypolling&task=sexycategory.edit&id='.(int) $item->id); ?>">
-                        <?php echo $this->escape($item->name); ?>
-                    </a>
-                </td>
-                <td class="center hidden-phone">
-                    <input class="creative_shortcode" value='[sexypolling category=&quot;<?php echo $item->id;?>&quot;]' onclick="this.select()" readonly="readonly" />
-                </td>
-                <td align="center">
-                    <?php echo HTMLHelper::_('jgrid.published', $item->published, $i,'sexycategories.', true, 'cb', $item->publish_up, $item->publish_down); ?>
-                </td>
-                <td align="center">
-                    <?php echo $item->count_polls; ?>
-                </td>
-                <td align="center">
-                    <?php echo $item->id; ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-
-    <div>
-        <input type="hidden" name="view" value="sexycategories" />
-        <input type="hidden" name="task" value="" />
-        <input type="hidden" name="boxchecked" value="0" />
-        <input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
-        <input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
-        <?php echo HTMLHelper::_('form.token'); ?>
-    </div>
-</form>
-<?php include (JPATH_BASE.'/components/com_sexypolling/helpers/footer.php'); ?>
-<?php }elseif(JV == 'j3') {//////////////////////////////////////////////////////////////////////////////////////Joomla3.x/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////?>
-<?php
 HTMLHelper::addIncludePath(JPATH_COMPONENT.'/helpers/html');
 HTMLHelper::_('bootstrap.tooltip');
 HTMLHelper::_('behavior.multiselect');
@@ -258,4 +155,3 @@ $sortFields = $this->getSortFields();
         <?php include (JPATH_BASE.'/components/com_sexypolling/helpers/footer.php'); ?>
     </div>
 </form>
-<?php }?>

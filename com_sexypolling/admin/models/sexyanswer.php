@@ -187,10 +187,7 @@ class SexypollingModelSexyAnswer extends AdminModel
 		}
 		elseif($id == 0) {//if id ==0, we add the record
 			$req->id = NULL;
-			if(JV == 'j2')
-				$req->created = $date->toSQL();
-			else
-				$req->created = $date->toSql();
+			$req->created = $date->toSql();
 	
 			if (!$this->_db->insertObject( '#__sexy_answers', $req, 'id' )) {
 				return false;

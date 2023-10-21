@@ -19,146 +19,13 @@
  * @todo Use of $this in global code might be unatended
  */
 
-use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
-?>
-<?php if(JV == 'j2') {//////////////////////////////////////////////////////////////////////////////////////Joomla2.x/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////?>
-<?php
-    HTMLHelper::addIncludePath(JPATH_COMPONENT.'/helpers/html');
-    HTMLHelper::_('bootstrap.tooltip');
-    HTMLHelper::_('behavior.multiselect');
 
-    $listOrder  = $this->escape($this->state->get('list.ordering'));
-    $listDirn   = $this->escape($this->state->get('list.direction'));
-    $saveOrder  = $listOrder == 'sp.ordering';
-?>
-<form action="<?php echo Route::_('index.php?option=com_sexypolling'); ?>" method="post" name="adminForm" id="adminForm">
-    <fieldset id="filter-bar">
-        <div class="filter-search fltlft">
-            <label class="filter-search-lbl" for="filter_search"><?php echo Text::_('COM_SEXYPOLLING_FILTER_LABEL'); ?></label>
-            <input type="text" name="filter_search" id="filter_search" value="<?php echo $this->escape($this->state->get('filter.search')); ?>" title="<?php echo Text::_('COM_SEXYPOLLING_SEARCH_BY_NAME'); ?>" />
-            <button type="submit"><?php echo Text::_('COM_SEXYPOLLING_SEARCH'); ?></button>
-            <button type="button" onclick="document.getElementById('filter_search').value='';this.form.submit();"><?php echo Text::_('COM_SEXYPOLLING_RESET'); ?></button>
-        </div>
-        <div class="filter-select fltrt">
-
-            <select name="filter_published" class="inputbox" onchange="this.form.submit()">
-                <option value=""><?php echo Text::_('COM_SEXYPOLLING_SELECT_STATUS');?></option>
-                <?php echo HTMLHelper::_('select.options', HTMLHelper::_('jgrid.publishedOptions'), 'value', 'text', $this->state->get('filter.published'), true);?>
-            </select>
-
-            <select name="filter_category_id" class="inputbox" onchange="this.form.submit()">
-                <option value=""><?php echo Text::_('COM_SEXYPOLLING_SELECT_CATEGORY');?></option>
-                <?php echo HTMLHelper::_('select.options', $this->category_options, 'value', 'text', $this->state->get('filter.category_id'));?>
-            </select>
-
-            <select name="filter_access" class="inputbox" onchange="this.form.submit()">
-                <option value=""><?php echo Text::_('COM_SEXYPOLLING_SELECT_ACCESS');?></option>
-                <?php echo HTMLHelper::_('select.options', HTMLHelper::_('access.assetgroups'), 'value', 'text', $this->state->get('filter.access'));?>
-            </select>
-        </div>
-    </fieldset>
-    <div class="clr"> </div>
-
-    <table class="adminlist">
-        <thead>
-            <tr>
-                <th width="1%">
-                    <input type="checkbox" name="checkall-toggle" value="" title="<?php echo Text::_('JGLOBAL_CHECK_ALL'); ?>" onclick="Joomla.checkAll(this)" />
-                </th>
-                <th>
-                    <?php echo HTMLHelper::_('grid.sort', 'COM_SEXYPOLLING_NAME', 'sp.name', $listDirn, $listOrder); ?>
-                </th>
-                <th>
-                    <?php echo HTMLHelper::_('grid.sort', 'COM_SEXYPOLLING_QUESTION', 'sp.question', $listDirn, $listOrder); ?>
-                </th>
-                <th width="10%">
-                    <?php echo HTMLHelper::_('grid.sort', 'JCATEGORY', 'category_title', $listDirn, $listOrder); ?>
-                </th>
-                <th width="10%">
-                    <?php echo HTMLHelper::_('grid.sort', 'COM_SEXYPOLLING_TEMPLATE', 'template_title', $listDirn, $listOrder); ?>
-                </th>
-
-                <th width="5%">
-                    <?php echo HTMLHelper::_('grid.sort', 'JGRID_HEADING_ACCESS', 'sp.access', $listDirn, $listOrder); ?>
-                </th>
-                <th width="5%">
-                    <?php echo HTMLHelper::_('grid.sort', 'COM_SEXYPOLLING_NUM_ANSWERS', 'num_answers', $listDirn, $listOrder); ?>
-                </th>
-                <th width="1%">
-                    <?php echo HTMLHelper::_('grid.sort', 'JGRID_HEADING_ID', 'sp.id', $listDirn, $listOrder); ?>
-                </th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <td colspan="11">
-                    <?php echo $this->pagination->getListFooter(); ?>
-                </td>
-            </tr>
-        </tfoot>
-        <tbody>
-        <?php
-        $n = count($this->items);
-        foreach ($this->items as $i => $item) :
-            $ordering   = $listOrder == 'sp.ordering';
-
-            ?>
-            <tr class="row<?php echo $i % 2; ?>">
-                <td class="center">
-                    <?php echo HTMLHelper::_('grid.id', $i, $item->id); ?>
-                </td>
-                <td>
-                    <a href="<?php echo Route::_('index.php?option=com_sexypolling&view=showstatistics&id='.(int) $item->id); ?>">
-                        <?php echo $this->escape($item->name); ?>
-                    </a>
-                </td>
-                <td>
-                    <a href="<?php echo Route::_('index.php?option=com_sexypolling&view=showstatistics&id='.(int) $item->id); ?>">
-                        <?php echo $this->escape($item->question); ?>
-                    </a>
-                </td>
-                <td align="center">
-                    <a href="<?php echo Route::_('index.php?option=com_sexypolling&task=sexypoll.edit&id='.(int) $item->id); ?>">
-                        <?php echo $item->category_title; ?>
-                    </a>
-                </td>
-                <td align="center">
-                    <a href="<?php echo Route::_('index.php?option=com_sexypolling&task=sexypoll.edit&id='.(int) $item->id); ?>">
-                        <?php echo $item->template_title; ?>
-                    </a>
-                </td>
-                <td align="center">
-                    <?php echo $item->access_level; ?>
-                </td>
-                <td align="center">
-                    <?php echo $item->num_answers; ?>
-                </td>
-                <td align="center">
-                    <?php echo $item->id; ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-
-    <div>
-        <input type="hidden" name="view" value="sexystatistics" />
-        <input type="hidden" name="task" value="" />
-        <input type="hidden" name="boxchecked" value="0" />
-        <input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
-        <input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
-        <?php echo HTMLHelper::_('form.token'); ?>
-    </div>
-</form>
-<?php include (JPATH_BASE.'/components/com_sexypolling/helpers/footer.php'); ?>
-<?php }elseif(JV == 'j3') {//////////////////////////////////////////////////////////////////////////////////////Joomla3.x/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////?>
-<?php
 HTMLHelper::addIncludePath(JPATH_COMPONENT.'/helpers/html');
 HTMLHelper::_('bootstrap.tooltip');
 HTMLHelper::_('behavior.multiselect');
@@ -311,4 +178,3 @@ $sortFields = $this->getSortFields();
         <?php include (JPATH_BASE.'/components/com_sexypolling/helpers/footer.php'); ?>
     </div>
 </form>
-<?php }?>

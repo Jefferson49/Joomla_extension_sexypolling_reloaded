@@ -43,8 +43,6 @@ $cssFile = Uri::base(true).'/components/com_sexypolling/assets/css/icons_'.JV.'.
 $document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
 
 // Perform the Request task
-if(JV == 'j2')
-	$controller->execute(Factory::getApplication()->input->get('task'));
-else
-	$controller->execute(Factory::getApplication()->input->getCmd('task'));
+
+$controller->execute(Factory::getApplication()->input->getCmd('task'));
 $controller->redirect();

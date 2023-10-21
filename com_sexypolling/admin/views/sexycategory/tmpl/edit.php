@@ -50,28 +50,13 @@ Joomla.submitbutton = function(task) {
 	
 }
 </script>
-<?php if(JV == 'j2') {//////////////////////////////////////////////////////////////////////////////////////Joomla2.x/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////?>
-<form action="<?php echo Route::_('index.php?option=com_sexypolling&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="adminForm">
-	<fieldset class="adminform">
-		<legend><?php echo Text::_( 'COM_SEXYPOLLING_DETAILS' ); ?></legend>
-		<ul class="adminformlist">
-<?php foreach($this->form->getFieldset() as $field): ?>
-			<li><?php echo $field->label;echo $field->input;?></li>
-<?php endforeach; ?>
-		</ul>
-	</fieldset>
-	<div>
-		<input type="hidden" name="task" value="sexyanswer.edit" />
-		<?php echo HTMLHelper::_('form.token'); ?>
-	</div>
-</form>
-<?php include (JPATH_BASE.'/components/com_sexypolling/helpers/footer.php'); ?>
-<?php }elseif(JV == 'j3') {//////////////////////////////////////////////////////////////////////////////////////Joomla3.x/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////?>
-<?php 
+
+<?php
 HTMLHelper::_('bootstrap.tooltip');
 HTMLHelper::_('behavior.formvalidator');
 HTMLHelper::_('formbehavior.chosen', 'select');
 ?>
+
 <form action="<?php echo Route::_('index.php?option=com_sexypolling&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="adminForm" class="form-validate form-horizontal">
 	<div class="row-fluid">
 		<!-- Begin Newsfeed -->
@@ -91,8 +76,7 @@ HTMLHelper::_('formbehavior.chosen', 'select');
 			</fieldset>
 		</div>
 	</div>
-<input type="hidden" name="task" value="sexycategory.edit" />
-<?php echo HTMLHelper::_('form.token'); ?>
+	<input type="hidden" name="task" value="sexycategory.edit" />
+	<?php echo HTMLHelper::_('form.token'); ?>
 </form>
 <?php include (JPATH_BASE.'/components/com_sexypolling/helpers/footer.php'); ?>
-<?php }?>

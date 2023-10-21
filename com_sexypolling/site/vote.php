@@ -16,8 +16,7 @@
  * @license GNU/GPL v3.0
  * 
  * @todo J4 deprecated Factory::getUser()
- * @todo Call to unknown method: Joomla\CMS\Factory::getContainer()
- * @todo J3 deprecated Factory::getApplication('site')->initialise
+ * @todo Function 'getDBO' has been deprecated
  */
 
 use Joomla\CMS\Access\Access;
@@ -25,7 +24,6 @@ use Joomla\CMS\Date\Date;
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Language;
-use Joomla\CMS\Language\Text;
 
 // no direct access
 define('_JEXEC',true);
@@ -50,6 +48,11 @@ if(version_compare(JVERSION, '4', '>=')) {
 
 	// Get the application.
 	$app = $container->get(\Joomla\CMS\Application\SiteApplication::class);
+
+    // For Joomla 5: Set application if it is still null (in Joomla 4, application is set by $container->get)
+    if (Factory::$application === null) {
+        Factory::$application = $app;
+    }	
 }
 else {
 	// Get the application.

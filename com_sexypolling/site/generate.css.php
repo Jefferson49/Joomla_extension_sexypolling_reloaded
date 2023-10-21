@@ -15,9 +15,7 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
-
- * @todo Call to unknown method: Joomla\CMS\Factory::getContainer()
- * @todo J3 deprecated Factory::getApplication('site')->initialise
+ * @todo Function 'getDBO' has been deprecated
  */
 
 use Joomla\CMS\Factory;
@@ -45,6 +43,11 @@ if(version_compare(JVERSION, '4', '>=')) {
 
 	// Get the application.
 	$app = $container->get(\Joomla\CMS\Application\SiteApplication::class);
+
+    // For Joomla 5: Set application if it is still null (in Joomla 4, application is set by $container->get)
+    if (Factory::$application === null) {
+        Factory::$application = $app;
+    }	
 }
 else {
 	// Get the application.

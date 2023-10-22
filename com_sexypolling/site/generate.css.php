@@ -68,9 +68,9 @@ $custom_styles = array();
 $db->setQuery($query);
 $db->execute();
 $num_rows = $db->getNumRows();
-$row = $db->loadAssoc();
+$rows = $db->loadAssocList();
 
-if($num_rows > 0) {
+foreach($rows as $row) {
 	$custom_styles[$row['polling_id']] = $row['styles'];
 }
 

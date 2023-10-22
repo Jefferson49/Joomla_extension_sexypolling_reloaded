@@ -16,6 +16,7 @@
  * @todo J4 deprecated Factory::getUser()
  * @todo deprecated 4.3, removed 6.0: Factory::getApplication()->getDocument()->addStyleSheet
  * @todo deprecated 4.3, removed 6.0: Factory::getApplication()->getDocument()->addScript
+ * @todo deprecated 4.3, removed 6.0: Factory::getApplication()->getDocument()->addStyleDeclaration
  */
 
 use Joomla\CMS\Access\Access;
@@ -53,7 +54,7 @@ class SexypollingHelper
         $cssFile = Uri::base(true).'/components/com_sexypolling/assets/css/countdown.css';
         $document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
 
-        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexylib.js';
+        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexylib_unpacked.js';
         $document->addScript($jsFile);
 
         $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexylib-ui.js';
@@ -68,14 +69,12 @@ class SexypollingHelper
         $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/countdown.js';
         $document->addScript($jsFile);
 
-        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexypolling.js';
+        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexypolling_unpacked.js';
         $document->addScript($jsFile);
 
-        if((int) $this->id_category == 0)
-            $cssFile = Uri::base(true).'/components/com_sexypolling/generate.css.php?id_poll='.$this->id_poll.'&module_id='.$this->module_id;
-        else
-            $cssFile = Uri::base(true).'/components/com_sexypolling/generate.css.php?id_category='.$this->id_category.'&module_id='.$this->module_id;
-		$document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
+        require_once JPATH_BASE.'/modules/mod_sexypolling/helper.php';
+        $styles = modSexypollingHelper::getCSS($this->module_id, $this->id_category, $this->id_poll);
+        $document->addStyleDeclaration($styles);
     }
 
     private function if_contain($array1,$array2) {
@@ -735,4 +734,5 @@ class SexypollingHelper
 
         return $render_html = ob_get_clean();
     }
+
 }

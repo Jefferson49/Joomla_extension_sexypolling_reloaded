@@ -92,7 +92,7 @@ class plgSystemSexypolling extends CMSPlugin {
         $cssFile = Uri::base(true).'/components/com_sexypolling/assets/css/countdown.css';
         $scripts .= '<link rel="stylesheet" href="'.$cssFile.'" type="text/css" />'."\n";
 
-        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexylib.js';
+        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexylib_unpacked.js';
         $scripts .= '<script src="'.$jsFile.'" type="text/javascript"></script>'."\n";
 
         $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexylib-ui.js';
@@ -107,7 +107,7 @@ class plgSystemSexypolling extends CMSPlugin {
         $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/countdown.js';
         $scripts .= '<script src="'.$jsFile.'" type="text/javascript"></script>'."\n";
 
-        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexypolling.js';
+        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexypolling_unpacked.js';
         $scripts .= '<script src="'.$jsFile.'" type="text/javascript"></script>'."\n";
 
         $content = str_replace('</head>', $scripts . '</head>', $content);
@@ -139,7 +139,7 @@ class plgSystemSexypolling extends CMSPlugin {
         $module_id = 10000;
         $plg_order_index = 0;
         foreach($m[2] as $poll_id) {
-            $cssFileSrc = Uri::base(true).'/components/com_sexypolling/generate.css.php?id_poll='.$poll_id.'&module_id='.$module_id;
+            $cssFileSrc = Uri::base(true).'/index.php?option=com_ajax&module=sexypolling&method=generateCSS&format=raw?id_poll='.$poll_id.'&module_id='.$module_id;
             $cssFile = '<link rel="stylesheet" href="'.$cssFileSrc.'" type="text/css" />'."\n";
             $c = str_replace('</head>', $cssFile . '</head>', $c);
 
@@ -158,7 +158,7 @@ class plgSystemSexypolling extends CMSPlugin {
         $module_id = 20000;
         $plg_order_index = 0;
         foreach($m[2] as $category_id) {
-            $cssFileSrc = Uri::base(true).'/components/com_sexypolling/generate.css.php?id_category='.$category_id.'&module_id='.$module_id;
+            $cssFileSrc = Uri::base(true).'/index.php?option=com_ajax&module=sexypolling&method=generateCSS&format=raw?id_category='.$category_id.'&module_id='.$module_id;
             $cssFile = '<link rel="stylesheet" href="'.$cssFileSrc.'" type="text/css" />'."\n";
             $c = str_replace('</head>', $cssFile . '</head>', $c);
 

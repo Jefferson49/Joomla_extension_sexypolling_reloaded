@@ -105,7 +105,7 @@ $(document).ready(function() {
 
             $.ajax
             ({
-                url: sexyPath + 'components/com_sexypolling/geoip.php?ip=' + sexyIp,
+                url: sexyPath + 'index.php?option=com_ajax&module=sexypolling&method=geoip&format=raw?ip=' + sexyIp,
                 type: "get",
                 dataType: "json",
                 success: function(data)
@@ -438,7 +438,7 @@ $(document).ready(function() {
                     var sexypolling_token = $container.find('.sexypolling_token').attr("name");
 
                     $.ajax({
-                        url: sexyPath + 'components/com_sexypolling/vote.php',
+                        url: sexyPath + 'index.php?option=com_ajax&module=sexypolling&method=vote&format=raw',
                         type: "post",
                         data: 'polling_id=' + polling_id +ch_data + '&dateformat=' + sexy_dateFormat[polling_id] + additionalAnswers  + '&min_date=' + min_date + '&max_date=' + max_date + '&country_name=' + sexyCountry + '&country_code=' + sexyCountryCode + '&city_name=' + sexyCity + '&region_name=' + sexyRegion + '&voting_period='+voting_period+'&'+sexypolling_token+'=1',
                         dataType: "json",
@@ -520,7 +520,7 @@ $(document).ready(function() {
                     $.ajax
                     ({
 
-                        url: sexyPath + 'components/com_sexypolling/vote.php',
+                        url: sexyPath + 'index.php?option=com_ajax&module=sexypolling&method=vote&format=raw',
                         type: "post",
                         data: 'polling_id=' + polling_id + '&mode=view_by_date&min_date=' + min_date + '&max_date=' + max_date + '&dateformat=' + sexy_dateFormat[polling_id] + '&module_id=' + module_id+'&'+sexypolling_token+'=1',
                         dataType: "json",
@@ -761,7 +761,7 @@ $(document).ready(function() {
                     //send request
                     $.ajax
                     ({
-                        url: sexyPath + 'components/com_sexypolling/vote.php',
+                        url: sexyPath + 'index.php?option=com_ajax&module=sexypolling&method=vote&format=raw',
                         type: "post",
                         data: 'polling_id=' + polling_id + '&mode=view_by_date&min_date=' + min_date + '&max_date=' + max_date + '&dateformat=' + sexy_dateFormat[polling_id] + '&curr_date=' + use_current_date+'&'+sexypolling_token+'=1',
                         dataType: "json",
@@ -1129,7 +1129,7 @@ $(document).ready(function() {
                 setTimeout(function() {
                     $.ajax
                     ({
-                        url: sexyPath + 'components/com_sexypolling/vote.php',
+                        url: sexyPath + 'index.php?option=com_ajax&module=sexypolling&method=vote&format=raw',
                         type: "post",
                         data: 'polling_id=' + polling_id +ch_data + '&dateformat=' + sexy_dateFormat[polling_id] + additionalAnswers  + '&min_date=' + min_date + '&max_date=' + max_date + '&country_name=' + sexyCountry + '&country_code=' + sexyCountryCode + '&city_name=' + sexyCity + '&region_name=' + sexyRegion + '&voting_period='+voting_period+'&'+sexypolling_token+'=1',
                         dataType: "json",
@@ -1690,7 +1690,7 @@ $(document).ready(function() {
                 $this.fadeOut(400);
                 $.ajax
                 ({
-                    url: sexyPath + 'components/com_sexypolling/addanswer.php',
+                    url: sexyPath + 'index.php?option=com_ajax&module=sexypolling&method=addanswer&format=raw',
                     type: "post",
                     data: 'polling_id=' + $poll_id + '&answer=' + added_answer + '&autopublish=' + sexyAutoPublish[$poll_id] + '&writeinto=' + writeInto  + '&country_name=' + sexyCountry + '&country_code=' + sexyCountryCode + '&city_name=' + sexyCity + '&region_name=' + sexyRegion + '&voting_period='+voting_period+'&'+sexypolling_token+'=1',
                     dataType: "json",

@@ -33,10 +33,6 @@
         <filename>index.html</filename>
         <filename>router.php</filename>
         <filename>sexypolling.php</filename>
-        <filename>vote.php</filename>
-        <filename>addanswer.php</filename>
-        <filename>geoip.php</filename>
-        <filename>generate.css.php</filename>
         <folder>models</folder>
         <folder>views</folder>
         <folder>assets</folder>

@@ -52,19 +52,19 @@ $custom_styles = array();
 $db->setQuery($query);
 $db->execute();
 $num_rows = $db->getNumRows();
-$row = $db->loadAssoc();
+$rows = $db->loadAssocList();
 
-if($num_rows > 0) {
+foreach($rows as $row) {
 	$custom_styles[$row['polling_id']] = $row['styles'];
 }
 
 if(sizeof($custom_styles) > 0)
 	foreach ($custom_styles as $poll_id => $styles_list) {
-	$styles_array = explode('|',$styles_list);
-	foreach ($styles_array as $val) {
-		$arr = explode('~',$val);
-		$styles_[$poll_id][$arr[0]] = $arr[1];
-	}
+		$styles_array = explode('|',$styles_list);
+		foreach ($styles_array as $val) {
+			$arr = explode('~',$val);
+			$styles_[$poll_id][$arr[0]] = $arr[1];
+		}
 }
 
 if(!isset($styles_)) $styles_ = [];

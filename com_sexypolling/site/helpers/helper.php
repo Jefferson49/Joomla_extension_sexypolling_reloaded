@@ -69,7 +69,7 @@ class SexypollingHelper
         $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/countdown.js';
         $document->addScript($jsFile);
 
-        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexypolling.js';
+        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexypolling_unpacked.js';
         $document->addScript($jsFile);
 
         require_once JPATH_BASE.'/modules/mod_sexypolling/helper.php';

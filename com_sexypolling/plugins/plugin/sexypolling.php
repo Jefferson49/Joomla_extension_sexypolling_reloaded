@@ -107,7 +107,7 @@ class plgSystemSexypolling extends CMSPlugin {
         $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/countdown.js';
         $scripts .= '<script src="'.$jsFile.'" type="text/javascript"></script>'."\n";
 
-        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexypolling.js';
+        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexypolling_unpacked.js';
         $scripts .= '<script src="'.$jsFile.'" type="text/javascript"></script>'."\n";
 
         $content = str_replace('</head>', $scripts . '</head>', $content);

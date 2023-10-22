@@ -12,6 +12,8 @@
     <files>
         <filename>index.html</filename>
         <filename module="mod_sexypolling">mod_sexypolling.php</filename>
+		<filename>helper.php</filename>
+        <filename>generate.css.php</filename>
     </files>
     <languages>
             <language tag="de-DE">language/de-DE/de-DE.mod_sexypolling.ini</language>

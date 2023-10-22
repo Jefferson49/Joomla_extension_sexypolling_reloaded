@@ -42,7 +42,7 @@ function SexypollingBuildRoute( &$query )
 	// Get the menu items for this component.
 	if (!$items) {
 		$component	= ComponentHelper::getComponent('com_sexypolling');
-		$menu	= $app->getMenu();
+		$menu	    = $app->getMenu();
 		$items		= $menu->getItems('component_id', $component->id);
 	}
 

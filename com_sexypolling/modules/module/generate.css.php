@@ -16,54 +16,21 @@
  * @license GNU/GPL v3.0
  * 
  * @todo Function 'getDBO' has been deprecated
- * @todo error_reporting(0) in the files
  */
 
 use Joomla\CMS\Factory;
 
 // no direct access
-define('_JEXEC',true);
 defined('_JEXEC') or die('Restircted access');
-/*
- * This is external PHP file and used on AJAX calls, so it has not "defined('_JEXEC') or die;" part.
- */
-define('JPATH_BASE', dirname(dirname(dirname(__FILE__))));
 
-error_reporting(0);
-header('Content-Type: text/css');
-
-require_once ( JPATH_BASE .DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'defines.php' );
-require_once ( JPATH_BASE .DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'framework.php' );
-
-if(version_compare(JVERSION, '4', '>=')) {
-	// Boot the DI container.
-	$container = Factory::getContainer();
-
-	// Alias the session service key to the web session service.
-	$container->alias(\Joomla\Session\SessionInterface::class, 'session.web.site');
-
-	// Get the application.
-	$app = $container->get(\Joomla\CMS\Application\SiteApplication::class);
-
-    // For Joomla 5: Set application if it is still null (in Joomla 4, application is set by $container->get)
-    if (Factory::$application === null) {
-        Factory::$application = $app;
-    }	
-}
-else {
-	// Get the application.
-	$app = Factory::getApplication('site');
-	$app->initialise();
-}
-
-$get = $app->input->get;
+$app = Factory::getApplication();
 
 //conects to datababse
 $db = Factory::getDBO();
 
-$category_id = $get->getInt('id_category', 0);
-$poll_id = $get->getInt('id_poll', 0);
-$module_id = $get->getInt('module_id', 0);
+$category_id	= $app->input->getInt('id_category', 0);
+$poll_id 		= $app->input->getInt('id_poll', 0);
+$module_id 		= $app->input->getInt('module_id', 0);
 
 $query = 
 						'SELECT '.
@@ -75,6 +42,7 @@ $query =
 						'`#__sexy_templates` st ON st.id = sp.id_template ';
 $query .=
 					'WHERE sp.published = \'1\' ';
+					
 if($poll_id != 0)
 	$query .= 'AND sp.id = '.$poll_id;
 else

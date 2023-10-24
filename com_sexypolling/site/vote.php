@@ -19,8 +19,9 @@
 
 use Joomla\CMS\Date\Date;
 use Joomla\CMS\HTML\HTMLHelper;
-use Joomla\CMS\Language\Text;
 use Joomla\CMS\Language\Language;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Session\Session;
 
 // no direct access
 define('_JEXEC',true);
@@ -50,6 +51,12 @@ else {
 	// Get the application.
 	$app = JFactory::getApplication('site');
 	$app->initialise();
+}
+
+//Check CSRF token
+if (!Session::checkToken()) {
+    echo '[{"invalid":"invalid_token"}]';
+    exit();
 }
 
 $post = JFactory::getApplication()->input->post;
@@ -125,12 +132,6 @@ $poll_options = $db->loadAssoc();
 $stringdateformat = $poll_options["stringdateformat"];
 $ipcount = $poll_options["ipcount"];
 $voting_period = (float) $poll_options["voting_period"];
-
-//check token
-if ($poll_options["checktoken"] == 1 and !JFactory::getApplication()->input) {
-    echo '[{"invalid":"invalid_token"}]';
-    exit();
-}
 
 //check ipcount security
 $query = "SELECT COUNT( sv.ip )

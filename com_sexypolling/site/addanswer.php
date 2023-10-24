@@ -19,8 +19,9 @@
 
 use Joomla\CMS\Date\Date;
 use Joomla\CMS\HTML\HTMLHelper;
-use Joomla\CMS\Language\Text;
 use Joomla\CMS\Language\Language;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Session\Session;
 
 // no direct access
 define('_JEXEC',true);
@@ -51,6 +52,12 @@ else {
 	// Get the application.
 	$app = JFactory::getApplication('site');
 	$app->initialise();
+}
+
+//Check CSRF token
+if (!Session::checkToken()) {
+    echo '[{"invalid":"invalid_token"}]';
+    exit();
 }
 
 $post = JFactory::getApplication()->input->post;
@@ -104,12 +111,6 @@ $poll_options = $db->loadAssoc();
 $ipcount = $poll_options["ipcount"];
 $voting_period = (float) $poll_options["voting_period"];
 
-//check token
-if (!JFactory::getApplication()->input && $poll_options["checktoken"] == 1) {
-    echo '[{"invalid":"invalid_token"}]';
-    exit();
-}
-
 $countryname = $post->get('country_name', 'Unknown');
 $countryname = $countryname === "" ? 'Unknown' : $countryname;
 $cityname = $post->get('city_name', 'Unknown');
@@ -152,7 +153,7 @@ if($poll_options["votechecks"] == 1) {
         return false;
     }
 
-    //check ACL to add answer
+    //check ACL (acces control) to add answer
     $add_answer_permissions_id =$poll_options["answerpermission"];
     $query = "SELECT `rules` FROM #__viewlevels WHERE id = '$add_answer_permissions_id'";
     $db->setQuery($query);

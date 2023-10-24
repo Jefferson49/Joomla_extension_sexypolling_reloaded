@@ -16,6 +16,7 @@ use Joomla\CMS\Date\Date;
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Language;
+use Joomla\CMS\Session\Session;
  
  // no direct access
  defined('_JEXEC') or die('Restricted access');
@@ -32,6 +33,12 @@ use Joomla\CMS\Language\Language;
 	  */
 	 public static function voteAjax(): void
 	 {
+		//Check CSRF token
+		if (!Session::checkToken()) {
+			echo '[{"invalid":"invalid_token"}]';
+			exit();
+		}
+
 		$app = Factory::getApplication();
 		$post = Factory::getApplication()->input;
 		$server = Factory::getApplication()->input->server;
@@ -431,6 +438,12 @@ use Joomla\CMS\Language\Language;
 	 */
 	public static function addanswerAjax(): void
 	{
+		//Check CSRF token
+		if (!Session::checkToken()) {
+			echo '[{"invalid":"invalid_token"}]';
+			exit();
+		}
+
 		$app = Factory::getApplication();
 
 		$post = Factory::getApplication()->input;

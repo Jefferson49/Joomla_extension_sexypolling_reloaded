@@ -209,12 +209,8 @@
           <option value="easeOutBounce">easeOutBounce</option>
           <option value="easeInOutBounce">easeInOutBounce</option>
         </field>
-
+        
         <field type="note" label="COM_SEXYPOLLING_SECURITY_OPTIONS" description="" />
-        <field name="checktoken" type="radio" default="1" label="COM_SEXYPOLLING_CHECK_TOKEN_LABEL" description="COM_SEXYPOLLING_CHECK_TOKEN_DESCRIPTION" class="btn-group">
-          <option value="1">JYes</option>
-          <option value="0">JNo</option>
-        </field>
         <field name="checkacl" type="radio" default="1" label="COM_SEXYPOLLING_CHECK_ACL_LABEL" description="COM_SEXYPOLLING_CHECK_ACL_DESCRIPTION" class="btn-group">
           <option value="1">JYes</option>
           <option value="0">JNo</option>

@@ -178,26 +178,26 @@ class SexypollingHelper
         $levels = array();
         $groups = array();
 
-		//load language and timezone
-		$lang = Factory::getLanguage();
-		$lang->load('com_sexypolling');
-		$lang_tag = $lang->getTag();
-		$iterator = new ArrayIterator(iterator_to_array(IntlTimeZone::createEnumeration(substr($lang_tag, -2))));
-		$iterator->rewind();
-		$time_zone = $iterator->current();
-		setcookie("sexy_poll_lang_tag", $lang_tag, time()+3*60*60, '/');
-		setcookie("sexy_poll_time_zone", $time_zone, time()+3*60*60, '/');
-		
-		//Create date format
-		$date = new Date();
-		$date_time_zone = new DateTimeZone($time_zone);
-		$date->setTimezone($date_time_zone);
-
         $user = Factory::getUser();
         $user_id = $user->get('id');
 
         $groups = Access::getGroupsByUser($user_id);
 
+		//load language and timezone
+		$lang = Factory::getLanguage();
+		$lang->load('com_sexypolling');
+		$lang_tag = $lang->getTag();
+        $user_time_zone = $user->getTimezone()->getName();
+        if ($user_time_zone === 'UTC') {
+            $iterator = new ArrayIterator(iterator_to_array(IntlTimeZone::createEnumeration(substr($lang_tag, -2))));
+            $iterator->rewind();
+            $user_time_zone = $iterator->current();    
+        }
+        
+        $debug_date = HTMLHelper::date('2022-03-15', Text::_('F d, Y'), false);
+		
+		//Set UTC as time zone for database values and calculations
+		$data_time_zone = 'UTC';
         //get data
         $this->get_data();
 
@@ -214,7 +214,7 @@ class SexypollingHelper
         $start_disabled_ids = array();
         $end_disabled_ids = array();
         $hide_results_ids = array();
-        $date_now = strtotime("now");
+        $date_now = strtotime(HTMLHelper::date("now", "Y-m-d H:i:s", $data_time_zone));
         $voting_periods = array();
         $voting_permissions = array();
         $number_answers_array = array();
@@ -307,15 +307,15 @@ class SexypollingHelper
                 if($polling_array[0]->date_start != '0000-00-00' &&  $date_now < strtotime($polling_array[0]->date_start  ?? '')) {
                     $datevoted = strtotime($polling_array[0]->date_start ?? '');
                     $hours_diff = ($datevoted - $date_now) / 3600;
-                    $start_disabled_ids[] = array($poll_index,$polling_words[17] . HtmlHelper::date(strtotime($polling_array[0]->date_start ?? ''),$stringdateformat,false),$hours_diff);
+                    $start_disabled_ids[] = array($poll_index,$polling_words[17] . HTMLHelper::date(($polling_array[0]->date_start ?? ''), $stringdateformat, $data_time_zone),$hours_diff);
                 }
                 if($polling_array[0]->date_end != '0000-00-00' &&  $date_now > strtotime($polling_array[0]->date_end ?? '')) {
-                    $end_disabled_ids[] = array($poll_index,$polling_words[18] . HtmlHelper::date(strtotime($polling_array[0]->date_end ?? ''),$stringdateformat,false));
+                    $end_disabled_ids[] = array($poll_index,$polling_words[18] . HTMLHelper::date(($polling_array[0]->date_end ?? ''), $stringdateformat, $data_time_zone));
                 }
 
                 // disable results till poll is ended
                 if($polling_array[0]->showresultsduringpoll == '0' and $polling_array[0]->date_end != '0000-00-00')
-                    $hide_results_ids[$poll_index] = $polling_words[25] . HtmlHelper::date(strtotime($polling_array[0]->date_end ?? ''),$stringdateformat,false);
+                    $hide_results_ids[$poll_index] = $polling_words[25] . HTMLHelper::date($polling_array[0]->date_end ?? '', $stringdateformat, $data_time_zonealse);
 
                 //check user_id
                 if($registration_to_vote_required) {
@@ -485,7 +485,7 @@ class SexypollingHelper
                 $max_date = strtotime($row_total['max_date'] ?? '');
                 //if no votes, set time to current
                 if((int)$min_date == 0) {
-                    $min_date = $max_date = strtotime("now");
+                    $min_date = $max_date = strtotime(HTMLHelper::date("now", "Y-m-d H:i:s", $data_time_zone));
                 }
 
                 $timeline_array = array();
@@ -495,7 +495,7 @@ class SexypollingHelper
                 }
 
                 //check, if max date is not included in timeline array, then add it.
-                if(HtmlHelper::date($max_date,$stringdateformat, false) !== HtmlHelper::date($timeline_array[sizeof($timeline_array) - 1],$stringdateformat, false))
+                if(HTMLHelper::date($max_date,$stringdateformat, $data_time_zone) !== HTMLHelper::date($timeline_array[sizeof($timeline_array) - 1],$stringdateformat, $data_time_zone))
                     $timeline_array[] = $max_date;
 
                 echo '<div class="timeline_wrapper">';
@@ -524,14 +524,14 @@ class SexypollingHelper
                     $checked_label = sizeof($timeline_array) - 8;
                 elseif($showvotesperiod == 2) {//last month
                     //get last month label
-                    $d =  (int) HtmlHelper::date($max_date,"d", false);
-                    $m =  (int) HtmlHelper::date($max_date,"m", false);
+                    $d =  (int) HTMLHelper::date($max_date,"d", $data_time_zone);
+                    $m =  (int) HTMLHelper::date($max_date,"m", $data_time_zone);
                     $m --;
-                    $y =  (int) HtmlHelper::date($max_date,"Y", false);
+                    $y =  (int) HTMLHelper::date($max_date,"Y", $data_time_zone);
                     if($m == 1)
                         $days_ = 31;
                     else
-                        echo $days_ = HtmlHelper::date(strtotime($d.'-'.$m.'-'.$y),'t',false);
+                        echo $days_ = HTMLHelper::date($d.'-'.$m.'-'.$y,'t', $user_time_zone);
                     $checked_label = sizeof($timeline_array) - 1 - $days_;
                 }
                 elseif($showvotesperiod == 3)//last year
@@ -543,39 +543,39 @@ class SexypollingHelper
 
                 $optionGroups = array();
                 foreach ($timeline_array as $k => $curr_time) {
-                    if(!in_array(HtmlHelper::date($curr_time,'F Y', false),$optionGroups)) {
+                    if(!in_array(HTMLHelper::date($curr_time,'F Y', $data_time_zone),$optionGroups)) {
 
                         if (sizeof($optionGroups) != 0)
                             echo '</optgroup>';
 
-                        $optionGroups[] = HtmlHelper::date($curr_time,'F Y',false);
-                        echo '<optgroup label="'.HtmlHelper::date($curr_time,'F Y', false).'">';
+                        $optionGroups[] = HTMLHelper::date($curr_time,'F Y', $data_time_zone);
+                        echo '<optgroup label="'.HTMLHelper::date($curr_time,'F Y', $user_time_zone).'">';
                     }
 
                     $selected = $k == $checked_label ? 'selected="selected"' : '';
 
-                    $date_item = HtmlHelper::date($curr_time,$stringdateformat, false);
+                    $date_item = HTMLHelper::date($curr_time,$stringdateformat, $data_time_zone);
 
-                    echo '<option '.$selected.' value="'.HtmlHelper::date($curr_time,'Y-m-d', false).'">'.$date_item.'</option>';
+                    echo '<option '.$selected.' value="'.HTMLHelper::date($curr_time,'Y-m-d', $user_time_zone).'">'.$date_item.'</option>';
                 }
                 echo '</select>';
                 echo '<select class="polling_select2" id="polling_select_'.$module_id.'_'.$poll_index.'_2" name="polling_select_'.$module_id.'_'.$poll_index.'_2">';
                 $optionGroups = array();
                 foreach ($timeline_array as $k => $curr_time) {
 
-                    if(!in_array(HtmlHelper::date($curr_time,'F Y',false),$optionGroups)) {
+                    if(!in_array(HTMLHelper::date($curr_time,'F Y', $data_time_zone),$optionGroups)) {
 
                         if (sizeof($optionGroups) != 0)
                             echo '</optgroup>';
 
-                        $optionGroups[] = HtmlHelper::date($curr_time,'F Y', false);
-                        echo '<optgroup label="'.HtmlHelper::date($curr_time,'F Y', false).'">';
+                        $optionGroups[] = HTMLHelper::date($curr_time,'F Y', $data_time_zone);
+                        echo '<optgroup label="'.HTMLHelper::date($curr_time,'F Y', $user_time_zone).'">';
                     }
                     $selected = $k == sizeof($timeline_array) - 1 ? 'selected="selected"' : '';
 
-                    $date_item = HtmlHelper::date($curr_time,$stringdateformat, false);
+                    $date_item = HTMLHelper::date($curr_time,$stringdateformat, $data_time_zone);
 
-                    echo '<option '.$selected.' value="'.HtmlHelper::date($curr_time,'Y-m-d', false).'">'.$date_item.'</option>';
+                    echo '<option '.$selected.' value="'.HTMLHelper::date($curr_time,'Y-m-d', $user_time_zone).'">'.$date_item.'</option>';
                 }
                 echo '</select></div>';
                 echo '</div>';

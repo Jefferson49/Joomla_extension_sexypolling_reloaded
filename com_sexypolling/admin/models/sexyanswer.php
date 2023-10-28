@@ -22,6 +22,7 @@
 
 use Joomla\CMS\Date\Date;
 use Joomla\CMS\Factory;
+use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\Model\AdminModel;
 use Joomla\CMS\Table\Table;
@@ -208,7 +209,7 @@ class SexypollingModelSexyAnswer extends AdminModel
 			if($res > 0) {
 				$query = 'INSERT INTO `#__sexy_votes` (`id_answer`, `ip`, `date`) VALUES ';
 				for($i = 0; $i < $res; $i ++) {
-					$query .= '('.$id.', \'\', NOW())';
+					$query .= '('.$id.', \'\', ' . HTMLHelper::date("now", "Y-m-d H:i:s", 'UTC') . ')';
 					if($i != $res - 1)
 						$query .= ',';
 				}

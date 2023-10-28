@@ -17,10 +17,7 @@
  * 
  */
 
-use Joomla\CMS\Date\Date;
 use Joomla\CMS\HTML\HTMLHelper;
-use Joomla\CMS\Language\Language;
-use Joomla\CMS\Language\Text;
 use Joomla\CMS\Session\Session;
 
 // no direct access
@@ -65,13 +62,10 @@ $server = JFactory::getApplication()->input->server;
 
 //load language and timezone
 $lang_tag = $app->input->cookie->getString('sexy_poll_lang_tag', 'en-GB');
-$time_zone = $app->input->cookie->getString('sexy_poll_time_zone', '');
-JFactory::$language = new Language($lang_tag);
-//Create date format
-$date = new Date();
-$date_time_zone = new DateTimeZone($time_zone);
-$date->setTimezone($date_time_zone);
-$debug_date = HtmlHelper::date('now', Text::_('Y-F-d H:i:s'), false);
+$user_time_zone = $app->input->cookie->getString('sexy_poll_time_zone', 'Europe/London');
+
+//Set UTC as time zone for database values and calculations
+$data_time_zone = 'UTC';
 
 $db = JFactory::getDBO();
 
@@ -85,9 +79,9 @@ jimport( 'joomla.access.access' );
 $groups = JAccess::getGroupsByUser($user_id);
 $is_logged_in_user = ( in_array(2,$groups) || in_array(3,$groups) || in_array(6,$groups) || in_array(8,$groups) ) ? true : false;
 
-$date_now = strtotime("now");
-$datenow = HtmlHelper::date($date_now,"Y-m-d H:i:s", false);
-$datenow_sql = HtmlHelper::date($date_now,"Y-m-d", false);
+$date_now = strtotime(HTMLHelper::date("now", "Y-m-d H:i:s", $data_time_zone));
+$datenow = HTMLHelper::date("now", "Y-m-d H:i:s", $data_time_zone);
+$datenow_sql = HTMLHelper::date("now", "Y-m-d", $data_time_zone);
 
 //get ip address
 $REMOTE_ADDR = null;

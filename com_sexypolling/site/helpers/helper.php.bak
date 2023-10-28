@@ -178,12 +178,11 @@ class SexypollingHelper
 
         $user = Factory::getUser();
         $user_id = $user->get('id');
-
         $groups = Access::getGroupsByUser($user_id);
 
-		//load language and timezone
+        //load language and timezone
 		$lang = Factory::getLanguage();
-		$lang->load('com_sexypolling');
+        $lang->load('com_sexypolling');
 		$lang_tag = $lang->getTag();
 		$iterator = new ArrayIterator(iterator_to_array(IntlTimeZone::createEnumeration(substr($lang_tag, -2))));
 		$iterator->rewind();
@@ -191,6 +190,10 @@ class SexypollingHelper
 		setcookie("sexy_poll_lang_tag", $lang_tag, time()+3*60*60, '/');
 		setcookie("sexy_poll_time_zone", $user_time_zone, time()+3*60*60, '/');  
 
+		//Create date format
+		$date = new Date();
+		$date_time_zone = new DateTimeZone($user_time_zone);
+		$date->setTimezone($date_time_zone);
         $debug_date = HTMLHelper::date('2022-03-15', Text::_('F d, Y'), false);
 		
 		//Set UTC as time zone for database values and calculations
@@ -732,5 +735,4 @@ class SexypollingHelper
 
         return $render_html = ob_get_clean();
     }
-
 }

@@ -17,6 +17,8 @@
  * 
  */
 
+use Joomla\CMS\HTML\HTMLHelper;
+
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
@@ -204,7 +206,7 @@ class SexypollingModelSexyAnswer extends JModelAdmin
 			if($res > 0) {
 				$query = 'INSERT INTO `#__sexy_votes` (`id_answer`, `ip`, `date`) VALUES ';
 				for($i = 0; $i < $res; $i ++) {
-					$query .= '('.$id.', \'\', NOW())';
+					$query .= '('.$id.', \'\', ' . HTMLHelper::date("now", "Y-m-d H:i:s", 'UTC') . ')';
 					if($i != $res - 1)
 						$query .= ',';
 				}

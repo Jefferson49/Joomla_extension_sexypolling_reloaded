@@ -65,14 +65,10 @@ $request = JFactory::getApplication()->input->request;
 
 //load language and timezone
 $lang_tag = $app->input->cookie->getString('sexy_poll_lang_tag', 'en-GB');
-$time_zone = $app->input->cookie->getString('sexy_poll_time_zone', '');
-JFactory::$language = new Language($lang_tag);
+$user_time_zone = $app->input->cookie->getString('sexy_poll_time_zone', 'Europe/London');
 
-//Create date format
-$date = new Date();
-$date_time_zone = new DateTimeZone($time_zone);
-$date->setTimezone($date_time_zone);
-$debug_date = HtmlHelper::date('now', Text::_('Y-F-d H:i:s'), false);
+//Set UTC as time zone for database values and calculations
+$data_time_zone = 'UTC';
 
 $db = JFactory::getDBO();
 
@@ -86,9 +82,9 @@ jimport( 'joomla.access.access' );
 $groups = JAccess::getGroupsByUser($user_id);
 $is_logged_in_user = ( in_array(2,$groups) || in_array(3,$groups) || in_array(6,$groups) || in_array(8,$groups) ) ? true : false;
 
-$date_now = strtotime("now");
-$datenow = HtmlHelper::date($date_now, "Y-m-d H:i:s", false);
-$datenow_sql = HtmlHelper::date($date_now, "Y-m-d", false);
+$date_now = strtotime(HTMLHelper::date("now", "Y-m-d H:i:s", $data_time_zone));
+$datenow = HTMLHelper::date("now", "Y-m-d H:i:s", $data_time_zone);
+$datenow_sql = HTMLHelper::date("now", "Y-m-d", $data_time_zone);
 
 //get ip address
 $REMOTE_ADDR = null;
@@ -214,7 +210,7 @@ if($poll_options["votechecks"] == 1) {
 
 $use_current = $post->get('curr_date', '');
 if($use_current == 'yes') {
-    $max_date_sended = HtmlHelper::date(strtotime("now"),'Y-m-d',false).' 23:59:59';
+    $max_date_sended = HTMLHelper::date("now",'Y-m-d', $data_time_zone).' 23:59:59';
 }
 
 $add_answers = array();
@@ -303,12 +299,12 @@ $row_total = $db->loadAssoc();
 
 $count_total_votes = $row_total['total_count'];
 if ($count_total_votes > 0) {
-    $min_date = HtmlHelper::date(strtotime($row_total['min_date']),$stringdateformat, false);
-    $max_date = HtmlHelper::date(strtotime($row_total['max_date']),$stringdateformat, false);
+    $min_date = HTMLHelper::date($row_total['min_date'], $stringdateformat, $data_time_zone);
+    $max_date = HTMLHelper::date($row_total['max_date'], $stringdateformat, $data_time_zone);
 }
 elseif($min_date_sended != ''){
-    $min_date = HtmlHelper::date(strtotime($min_date_sended),$stringdateformat, false);
-    $max_date = HtmlHelper::date(strtotime($max_date_sended),$stringdateformat, false);
+    $min_date = HTMLHelper::date($min_date_sended, $stringdateformat, $data_time_zone);
+    $max_date = HTMLHelper::date($max_date_sended, $stringdateformat, $data_time_zone);
 }
 else {
     $max_date = "";

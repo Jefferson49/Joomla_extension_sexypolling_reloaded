@@ -15,7 +15,6 @@ use Joomla\CMS\Access\Access;
 use Joomla\CMS\Date\Date;
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
-use Joomla\CMS\Language\Language;
 use Joomla\CMS\Session\Session;
  
  // no direct access
@@ -42,17 +41,7 @@ use Joomla\CMS\Session\Session;
 		$app = Factory::getApplication();
 		$post = Factory::getApplication()->input;
 		$server = Factory::getApplication()->input->server;
-		
-		//load language and timezone
-		$lang_tag = $app->input->cookie->getString('sexy_poll_lang_tag', 'en-GB');
-		$time_zone = $app->input->cookie->getString('sexy_poll_time_zone', '');
-		Factory::$language = new Language($lang_tag);
-		
-		//Create date format
-		$date = new Date();
-		$date_time_zone = new DateTimeZone($time_zone);
-		$date->setTimezone($date_time_zone);
-		
+
 		$db = Factory::getDBO();
 		
 		//get user groups
@@ -63,10 +52,14 @@ use Joomla\CMS\Session\Session;
 		$user_id = $user->get('id');
 		
 		$groups = Access::getGroupsByUser($user_id);
-		
-		$date_now = strtotime("now");
-		$datenow = HtmlHelper::date($date_now, "Y-m-d H:i:s", false);
-		$datenow_sql = HtmlHelper::date($date_now, "Y-m-d", false);
+
+		//Set UTC as time zone for database values and calculations
+		$data_time_zone = 'UTC';
+
+		$current_date = new Date("now", $data_time_zone);
+		$date_now = strtotime($current_date);
+		$datenow = HTMLHelper::date($current_date, "Y-m-d H:i:s", $data_time_zone);
+		$datenow_sql = HTMLHelper::date($current_date, "Y-m-d", $data_time_zone);
 		
 		//get ip address
 		$REMOTE_ADDR = null;
@@ -190,7 +183,7 @@ use Joomla\CMS\Session\Session;
 		
 		$use_current = $post->get('curr_date', '');
 		if($use_current == 'yes') {
-			$max_date_sended = HtmlHelper::date(strtotime("now"),'Y-m-d',false).' 23:59:59';
+			$max_date_sended = HTMLHelper::date("now",'Y-m-d', $data_time_zone).' 23:59:59';
 		}
 		
 		$add_answers = array();
@@ -200,7 +193,7 @@ use Joomla\CMS\Session\Session;
 				$answer = preg_replace('/sexydoublequestionmark/','??',$answer);
 		
 				$published = 1;
-				$query = "INSERT IGNORE INTO `#__sexy_answers` (`id_poll`,`name`,`published`,`created`) VALUES ('$polling_id','$answer','$published',NOW())";
+				$query = "INSERT IGNORE INTO `#__sexy_answers` (`id_poll`,`name`,`published`,`created`) VALUES ('$polling_id','$answer','$published','$datenow')";
 				$db->setQuery($query);
 				$db->execute();
 				$insert_id = $db->insertid();
@@ -279,12 +272,12 @@ use Joomla\CMS\Session\Session;
 		
 		$count_total_votes = $row_total['total_count'];
 		if ($count_total_votes > 0) {
-			$min_date = HtmlHelper::date(strtotime($row_total['min_date']),$stringdateformat, false);
-			$max_date = HtmlHelper::date(strtotime($row_total['max_date']),$stringdateformat, false);
+			$min_date = HTMLHelper::date($row_total['min_date'], $stringdateformat, $data_time_zone);
+			$max_date = HTMLHelper::date($row_total['max_date'], $stringdateformat, $data_time_zone);
 		}
 		elseif($min_date_sended != ''){
-			$min_date = HtmlHelper::date(strtotime($min_date_sended),$stringdateformat, false);
-			$max_date = HtmlHelper::date(strtotime($max_date_sended),$stringdateformat, false);
+			$min_date = HTMLHelper::date($min_date_sended, $stringdateformat, $data_time_zone);
+			$max_date = HTMLHelper::date($max_date_sended, $stringdateformat, $data_time_zone);
 		}
 		else {
 			$max_date = "";
@@ -448,16 +441,7 @@ use Joomla\CMS\Session\Session;
 
 		$post = Factory::getApplication()->input;
 		$server = Factory::getApplication()->input->server;
-		
-		//load language and timezone
-		$lang_tag = $app->input->cookie->getString('sexy_poll_lang_tag', 'en-GB');
-		$time_zone = $app->input->cookie->getString('sexy_poll_time_zone', '');
-		Factory::$language = new Language($lang_tag);
-		//Create date format
-		$date = new Date();
-		$date_time_zone = new DateTimeZone($time_zone);
-		$date->setTimezone($date_time_zone);
-		
+
 		$db = Factory::getDBO();
 		
 		//get user groups
@@ -468,10 +452,14 @@ use Joomla\CMS\Session\Session;
 		$user_id = $user->get('id');
 		
 		$groups = Access::getGroupsByUser($user_id);
-		
-		$date_now = strtotime("now");
-		$datenow = HtmlHelper::date($date_now,"Y-m-d H:i:s", false);
-		$datenow_sql = HtmlHelper::date($date_now,"Y-m-d", false);
+
+		//Set UTC as time zone for database values and calculations
+		$data_time_zone = 'UTC';
+
+		$current_date = new Date("now", $data_time_zone);
+		$date_now = strtotime($current_date);
+		$datenow = HTMLHelper::date($current_date, "Y-m-d H:i:s", $data_time_zone);
+		$datenow_sql = HTMLHelper::date($current_date, "Y-m-d", $data_time_zone);
 		
 		//get ip address
 		$REMOTE_ADDR = null;

@@ -92,7 +92,7 @@ class plgSystemSexypolling extends CMSPlugin {
         $cssFile = Uri::base(true).'/components/com_sexypolling/assets/css/countdown.css';
         $scripts .= '<link rel="stylesheet" href="'.$cssFile.'" type="text/css" />'."\n";
 
-        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexylib_unpacked.js';
+        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexylib.js';
         $scripts .= '<script src="'.$jsFile.'" type="text/javascript"></script>'."\n";
 
         $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexylib-ui.js';
@@ -107,7 +107,7 @@ class plgSystemSexypolling extends CMSPlugin {
         $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/countdown.js';
         $scripts .= '<script src="'.$jsFile.'" type="text/javascript"></script>'."\n";
 
-        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexypolling_unpacked.js';
+        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexypolling.js';
         $scripts .= '<script src="'.$jsFile.'" type="text/javascript"></script>'."\n";
 
         $content = str_replace('</head>', $scripts . '</head>', $content);

@@ -54,7 +54,7 @@ class SexypollingHelper
         $cssFile = Uri::base(true).'/components/com_sexypolling/assets/css/countdown.css';
         $document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
 
-        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexylib_unpacked.js';
+        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexylib.js';
         $document->addScript($jsFile);
 
         $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexylib-ui.js';
@@ -69,7 +69,7 @@ class SexypollingHelper
         $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/countdown.js';
         $document->addScript($jsFile);
 
-        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexypolling_unpacked.js';
+        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexypolling.js';
         $document->addScript($jsFile);
 
         require_once JPATH_BASE.'/modules/mod_sexypolling/helper.php';

@@ -49,7 +49,7 @@ $document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
 $cssFile = Uri::base(true).'/components/com_sexypolling/assets/css/main.css';
 $document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
 
-$jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexylib_unpacked.js';
+$jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexylib.js';
 $document->addScript($jsFile);
 
 $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/colorpicker.js';

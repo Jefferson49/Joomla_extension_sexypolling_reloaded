@@ -190,11 +190,11 @@ class SexypollingHelper
 		$user_time_zone = $iterator->current();
 		setcookie("sexy_poll_lang_tag", $lang_tag, time()+3*60*60, '/');
 		setcookie("sexy_poll_time_zone", $user_time_zone, time()+3*60*60, '/');  
-
-        $debug_date = HTMLHelper::date('2022-03-15', Text::_('F d, Y'), false);
 		
 		//Set UTC as time zone for database values and calculations
 		$data_time_zone = 'UTC';
+        $debug_date_UTC =  HTMLHelper::date('now', Text::_('F d, Y'), $data_time_zone);
+        $debug_date_user = HTMLHelper::date('now', Text::_('F d, Y'), $user_time_zone);
 
         //get data
         $this->get_data();

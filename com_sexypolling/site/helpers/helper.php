@@ -193,13 +193,13 @@ class SexypollingHelper
             $iterator->rewind();
             $user_time_zone = $iterator->current();    
         }
-        
-        $debug_date = HTMLHelper::date('2022-03-15', Text::_('F d, Y'), false);
-		
+ 		
 		//Set UTC as time zone for database values and calculations
 		$data_time_zone = 'UTC';
         //get data
         $this->get_data();
+
+        $debug_date = HTMLHelper::date('2022-03-15', Text::_('F d, Y'), $data_time_zone);
 
         //create polls array
         $pollings = array();
@@ -315,7 +315,7 @@ class SexypollingHelper
 
                 // disable results till poll is ended
                 if($polling_array[0]->showresultsduringpoll == '0' and $polling_array[0]->date_end != '0000-00-00')
-                    $hide_results_ids[$poll_index] = $polling_words[25] . HTMLHelper::date($polling_array[0]->date_end ?? '', $stringdateformat, $data_time_zonealse);
+                    $hide_results_ids[$poll_index] = $polling_words[25] . HTMLHelper::date($polling_array[0]->date_end ?? '', $stringdateformat, $data_time_zone);
 
                 //check user_id
                 if($registration_to_vote_required) {
@@ -734,5 +734,6 @@ class SexypollingHelper
 
         return $render_html = ob_get_clean();
     }
+
 
 }

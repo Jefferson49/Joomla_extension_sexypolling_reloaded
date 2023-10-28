@@ -313,7 +313,7 @@ class SexypollingHelper
 
                 // disable results till poll is ended
                 if($polling_array[0]->showresultsduringpoll == '0' and $polling_array[0]->date_end != '0000-00-00')
-                    $hide_results_ids[$poll_index] = $polling_words[25] . HTMLHelper::date($polling_array[0]->date_end ?? '', $stringdateformat, $data_time_zonealse);
+                    $hide_results_ids[$poll_index] = $polling_words[25] . HTMLHelper::date($polling_array[0]->date_end ?? '', $stringdateformat, $data_time_zone);
 
                 //check user_id
                 if($registration_to_vote_required) {

@@ -18,6 +18,7 @@
  */
 
 use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Language\Language;
 use Joomla\CMS\Session\Session;
 
 // no direct access
@@ -63,6 +64,7 @@ $server = JFactory::getApplication()->input->server;
 //load language and timezone
 $lang_tag = $app->input->cookie->getString('sexy_poll_lang_tag', 'en-GB');
 $user_time_zone = $app->input->cookie->getString('sexy_poll_time_zone', 'Europe/London');
+JFactory::$language = new Language($lang_tag);
 
 //Set UTC as time zone for database values and calculations
 $data_time_zone = 'UTC';

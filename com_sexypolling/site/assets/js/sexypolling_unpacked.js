@@ -1520,6 +1520,10 @@ $(document).ready(function() {
                 var sexypolling_token = $(this).parents('.polling_container_wrapper').find('.sexypolling_token').attr("name");
 
                 var answers_count = parseInt($(this).parents('.polling_container_wrapper').find('.answer_input').length);
+                if($(this).hasClass('voted_button')) {
+                    make_alert(sexyPolling_words[9],'sexy_error');
+                    return;
+                }                
                 if(answers_count < 0) {
                     make_alert('This poll can not have more than 5 answers','sexy_error');
                     return false;

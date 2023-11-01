@@ -16,7 +16,6 @@
  */
 
 use Joomla\CMS\Access\Access;
-use Joomla\CMS\Date\Date;
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
@@ -269,6 +268,7 @@ class SexypollingHelper
                 $number_answers_array[$poll_index] = $number_answers;
                 $voting_period = $polling_array[0]->voting_period;
                 $voting_periods[$poll_index] = $voting_period;
+                $ipcount = $polling_array[0]->ipcount;                
 
                 //check ACL to add answer
                 $add_answer_permissions_id = $polling_array[0]->answerpermission;
@@ -334,7 +334,7 @@ class SexypollingHelper
                 }
                 else {
                     //check ip
-                    $query = "SELECT sv.`ip`,sv.`date` FROM #__sexy_votes sv JOIN #__sexy_answers sa ON sa.id_poll = '$poll_index' WHERE sv.id_answer = sa.id AND sv.ip = '$sexyip' ORDER BY sv.`date` DESC LIMIT 1";
+                    $query = "SELECT sv.`ip`,sv.`date` FROM #__sexy_votes sv JOIN #__sexy_answers sa ON sa.id_poll = '$poll_index' WHERE sv.id_answer = sa.id AND sv.ip = '$sexyip' ORDER BY sv.`date` DESC";
                     $db->setQuery($query);
                     $db->execute();
                     $num_rows = $db->getNumRows();
@@ -356,6 +356,11 @@ class SexypollingHelper
                         if(!in_array($poll_index,array_keys($voted_ids)))
                             $voted_ids[$poll_index] = $voting_period - $hours_diff;
                     }
+
+                    //Check if number of votes per IP is greater than allowed votes per IP 
+                    if ($num_rows >= $ipcount) {
+                        $voted_ids[$poll_index] = -1; //No voting allowed
+                    }                         
                 }
 
                 //set visibility options
@@ -455,15 +460,25 @@ class SexypollingHelper
                 //check perrmision, to show add answer option
                 if($permission_to_show_add_answer_block) {
                     echo '<div class="answer_wrapper opened" ><div style="padding:6px">';
+
+                    //If voting is not allowed add voted button to class
+                    $voted_ids_value = $voted_ids[$poll_index] ?? 0;
+                    $add_answers_voted_button_class = !in_array($poll_index,$voted_ids) && $voted_ids_value !== -1 ? '' : ' voted_button';
+
                     echo '<div class="add_answer"><input name="answer_name" class="add_ans_name" value="'.$polling_words[11].'" />
-                    <input type="button" value="'.$polling_words[12].'" class="add_ans_submit" /><input type="hidden" value="'.$poll_index.'" class="poll_id" /><img class="loading_small" src="'.Uri::base(true).'/components/com_sexypolling/assets/images/loading_small.gif" /></div>';
+                    <input type="button" value="'.$polling_words[12].'" class="add_ans_submit'.$add_answers_voted_button_class.'" /><input type="hidden" value="'.$poll_index.'" class="poll_id" /><img class="loading_small" src="'.Uri::base(true).'/components/com_sexypolling/assets/images/loading_small.gif" /></div>';
                     echo '</div></div>';
                 }
 
                 $new_answer_bar_index = ($k + 1) % 20 + 1;
 
                 echo '<span class="polling_bottom_wrapper1"><img src="components/com_sexypolling/assets/images/loading_polling.gif" class="polling_loading" />';
-                echo '<input type="button" value="'.$polling_words[6].'" class="polling_submit" id="poll_'.$module_id.'_'.$poll_index.'" />';
+
+                //If voting allowed add polling submit button else add voted button
+                $voted_ids_value = $voted_ids[$poll_index] ?? 0;
+                $polling_submit_voted_button_class = !in_array($poll_index,$voted_ids) && $voted_ids_value !== -1 ? '' : ' voted_button';
+                echo '<input type="button" value="'.$polling_words[6].'" class="polling_submit' . $polling_submit_voted_button_class . '" id="poll_'.$module_id.'_'.$poll_index.'" />';
+
                 $result_button_class = (($showresultbutton == 0 and $est_time < 0) or isset($hide_results_ids[$poll_index])) ? 'hide_sexy_button' : '';
                 echo '<input type="button" value="'.$polling_words[7].'" class="polling_result '.$result_button_class.'" id="res_'.$module_id.'_'.$poll_index.'" />';
                 echo '<input type="hidden" name="'.Session::getFormToken().'" class="sexypolling_token" value="1" />';
@@ -500,7 +515,9 @@ class SexypollingHelper
                 echo '<div '.$timeline_icon_visibility.' class="timeline_icon" title="'.$polling_words[4].'"></div>';
                 echo '<div '.$back_icon_visibility.' class="sexyback_icon" title="'.$polling_words[19].'"></div>';
 
-                if(!in_array($poll_index,$voted_ids)) {
+                $voted_ids_value = $voted_ids[$poll_index] ?? 0;
+
+                if(!in_array($poll_index,$voted_ids) && $voted_ids_value !== -1) {
                     $add_ans_txt = $polling_words[10];
                     $o_class = 'opened';
                 }

@@ -188,15 +188,15 @@ if($poll_options["votechecks"] == 1) {
     }
     else {
         //check ip
-        $query = "SELECT sv.`ip`,sv.`date` FROM #__sexy_votes sv JOIN #__sexy_answers sa ON sa.id_poll = '$polling_id' WHERE sv.id_answer = sa.id AND sv.ip = '$ip' ORDER BY sv.`date` DESC LIMIT 1";
+        $query = "SELECT sv.`ip`,sv.`date` FROM #__sexy_votes sv JOIN #__sexy_answers sa ON sa.id_poll = '$polling_id' WHERE sv.id_answer = sa.id AND sv.ip = '$ip' ORDER BY sv.`date` DESC";
         $db->setQuery($query);
         $db->execute();
         $num_rows = $db->getNumRows();
         $row = $db->loadAssoc();
-        if($ipcount != 0 && $num_rows >= $ipcount) {
+        if($num_rows > 0) {
             $datevoted = strtotime($row['date']);
             $hours_diff = ($date_now - $datevoted) / 3600;
-            if($voting_period == 0 || ($hours_diff < $voting_period)) {
+            if($voting_period == 0 || ($hours_diff < $voting_period) || ($ipcount != 0 && $num_rows >= $ipcount)) {
                 $voting_enabled = false;
             }
         }

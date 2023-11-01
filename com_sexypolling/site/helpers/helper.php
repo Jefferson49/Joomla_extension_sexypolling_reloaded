@@ -193,6 +193,9 @@ class SexypollingHelper
             $user_time_zone = $iterator->current();    
         }
  		
+		setcookie("sexy_poll_lang_tag", $lang_tag, ['expires' => time()+3*60*60, 'path' => '/', 'SameSite' => 'Strict']);
+		setcookie("sexy_poll_time_zone", $user_time_zone, ['expires' => time()+3*60*60, 'path' => '/', 'SameSite' => 'Strict']);
+		
 		//Set UTC as time zone for database values and calculations
 		$data_time_zone = 'UTC';
         $debug_date_UTC =  HTMLHelper::date('now', Text::_('F d, Y'), $data_time_zone);

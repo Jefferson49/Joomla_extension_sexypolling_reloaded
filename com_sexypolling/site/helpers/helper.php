@@ -500,10 +500,13 @@ class SexypollingHelper
                 $row_total = $db->loadAssoc();
                 $count_total_votes = $row_total['total_count'];
                 $min_date = strtotime($row_total['min_date'] ?? '');
-                $max_date = strtotime($row_total['max_date'] ?? '');
+
+                //use current date as max date
+                $max_date = $date_now;
+                
                 //if no votes, set time to current
                 if((int)$min_date == 0) {
-                    $min_date = $max_date = strtotime(HTMLHelper::date("now", "Y-m-d H:i:s", $data_time_zone));
+                    $min_date = $max_date = $date_now;
                 }
 
                 $timeline_array = array();

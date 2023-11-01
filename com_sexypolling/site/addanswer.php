@@ -225,12 +225,12 @@ if(($writeinto == 1 || $autopublish == 0) && $voting_enabled) {
         //set the cookie
         if($voting_period == 0) {
             $expire = time()+(60*60*24*365*2);//2 years
-            setcookie("sexy_poll_$polling_id", $date_now, $expire, '/');
+            setcookie("sexy_poll_$polling_id", $date_now, ['expires' => $expire, 'path' => '/', 'SameSite' => 'Strict']);			
         }
         else {
             $expire_time = (float)$voting_period*60*60;
             $expire = (int)(time()+$expire_time);
-            setcookie("sexy_poll_$polling_id", $date_now, $expire, '/');
+            setcookie("sexy_poll_$polling_id", $date_now,  ['expires' => $expire, 'path' => '/', 'SameSite' => 'Strict']);
         }
     }
 }

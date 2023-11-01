@@ -40,69 +40,6 @@ $(document).ready(function() {
                 sp_make_ul_h_();
             },1000);
 
-            function check_pro_version($elem) {
-
-                return true;
-
-                $elem_1 = $elem.find('.powered_by');
-                $elem_2 = $elem.find('.powered_by a');
-
-                var sexy_font_size_1 = parseInt($elem_1.css('font-size'));
-                var sexy_top_1 = parseInt($elem_1.css('top'));
-                var sexy_left_1 = parseInt($elem_1.css('left'));
-                var sexy_bottom_1 = parseInt($elem_1.css('bottom'));
-                var sexy_right_1 = parseInt($elem_1.css('right'));
-                var sexy_text_indent_1 = parseInt($elem_1.css('text-indent'));
-                var sexy_margin_top_1 = parseInt($elem_1.css('margin-top'));
-                var sexy_margin_bottom_1 = parseInt($elem_1.css('margin-bottom'));
-                var sexy_margin_left_1 = parseInt($elem_1.css('margin-left'));
-                var sexy_margin_right_1 = parseInt($elem_1.css('margin-right'));
-                var sexy_display_1 = $elem_1.css('display');
-                var sexy_position_1 = $elem_1.css('position');
-                var sexy_width_1 = parseInt($elem_1.css('width'));
-                var sexy_height_1 = parseInt($elem_1.css('height'));
-                var sexy_visibility_1 = $elem_1.css('visibility');
-                var sexy_overflow_1 = $elem_1.css('overflow');
-                var sexy_zindex_1 = parseInt($elem_1.css('z-index'));
-                var sexy_font_size_2 = parseInt($elem_2.css('font-size'));
-                var sexy_top_2 = parseInt($elem_2.css('top'));
-                var sexy_left_2 = parseInt($elem_2.css('left'));
-                var sexy_bottom_2 = parseInt($elem_2.css('bottom'));
-                var sexy_right_2 = parseInt($elem_2.css('right'));
-                var sexy_text_indent_2 = parseInt($elem_2.css('text-indent'));
-                var sexy_margin_top_2 = parseInt($elem_2.css('margin-top'));
-                var sexy_margin_right_2 = parseInt($elem_2.css('margin-right'));
-                var sexy_margin_bottom_2 = parseInt($elem_2.css('margin-bottom'));
-                var sexy_margin_left_2 = parseInt($elem_2.css('margin-left'));
-                var sexy_display_2 = $elem_2.css('display');
-                var sexy_position_2 = $elem_2.css('position');
-                var sexy_width_2 = parseInt($elem_2.css('width'));
-                var sexy_height_2 = parseInt($elem_2.css('height'));
-                var sexy_visibility_2 = $elem_2.css('visibility');
-                var sexy_overflow_2 = $elem_2.css('overflow');
-                var sexy_zindex_2 = parseInt($elem_2.css('z-index'));
-
-                var txt1 = $.trim($elem_1.html().replace(/<[^>]+>.*?<\/[^>]+>/gi, ''));
-                var txt2 = $.trim($elem_2.html().replace(/<[^>]+>.*?<\/[^>]+>/gi, ''));
-                var txt1_l = parseInt(txt1.length);
-                var txt2_l = parseInt(txt2.length);
-
-                var a_href = $elem_2.attr("href").replace('http://','');
-                a_href = a_href.replace('www.','');
-                a_href = $.trim(a_href.replace('www',''));
-                a_href_l = parseInt(a_href.length);
-
-                if(
-                        sexy_font_size_1 == '13' && sexy_top_1 == '0' && sexy_left_1 == '0' && sexy_bottom_1 == '0' && sexy_right_1 == '0' && sexy_text_indent_1 == '0' && sexy_margin_top_1 == '-1' && sexy_margin_right_1 == '8' && sexy_margin_bottom_1 == '13' && sexy_margin_left_1 == '0' &&
-                        sexy_display_1 == 'block' && sexy_position_1 == 'relative' && sexy_width_1 > '20' && sexy_height_1 > '10' && sexy_visibility_1 == 'visible' && sexy_overflow_1 == 'visible' && sexy_zindex_1 == '10' &&
-                        sexy_font_size_2 == '13' && sexy_top_2 == '0' && sexy_left_2 == '0' && sexy_bottom_2 == '0' && sexy_right_2 == '0' && sexy_text_indent_2 == '0' && sexy_margin_top_2 == '0' && sexy_margin_right_2 == '0' && sexy_margin_bottom_2 == '0' && sexy_margin_left_2 == '0' &&
-                        sexy_display_2 != 'none' && sexy_position_2 == 'relative' && sexy_width_2 > '20' && sexy_height_2 > '10' && sexy_visibility_2 == 'visible' && sexy_overflow_2 == 'visible' && sexy_zindex_2 == '10' &&
-                        txt1 != '' && (txt2 == 'Sexy Polling' || txt2 == 'Fancy Polling') && txt1_l > 1 && (txt2_l == '12' || txt2_l == '13') && a_href_l == '30' && a_href == '2glux.com/projects/sexypolling'
-                )
-                    return true;
-                return false;
-            };
-
             $.ajax
             ({
                 url: sexyPath + 'components/com_sexypolling/geoip.php?ip=' + sexyIp,
@@ -327,10 +264,6 @@ $(document).ready(function() {
 
             $('.polling_submit').click(function() {
                 $elem = $(this).parents('.polling_container');
-                if(!check_pro_version($elem)) {
-                    make_alert('To hide a backlink please purchase a Sexy Polling PRO version','sexy_error');
-                    return false;
-                }
                 if($(this).hasClass('voted_button')) {
                     make_alert(sexyPolling_words[9],'sexy_error');
                     return;
@@ -458,10 +391,6 @@ $(document).ready(function() {
             });
             $('.polling_result').click(function() {
                 $elem = $(this).parents('.polling_container');
-                if(!check_pro_version($elem)) {
-                    make_alert('To hide a backlink please purchase a Sexy Polling PRO version','sexy_error');
-                    return false;
-                }
                 var $t = $(this);
                 show_polling($t);
             });

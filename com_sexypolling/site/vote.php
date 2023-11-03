@@ -128,19 +128,36 @@ $stringdateformat = $poll_options["stringdateformat"];
 $ipcount = $poll_options["ipcount"];
 $voting_period = (float) $poll_options["voting_period"];
 
-//check ipcount security
-$query = "SELECT COUNT( sv.ip )
-            FROM  `#__sexy_answers` sa
-            JOIN  `#__sexy_votes` sv ON sv.id_answer = sa.id
-            AND DATE_FORMAT(sv.date, '%Y-%m-%d') = '$datenow_sql'
-            AND sv.ip = '$ip'
-            WHERE sa.id_poll =  '$polling_id'
-        ";
+
+//as a default, voting is enabled
+$voting_enabled = true;
+
+//if is logged in user, query otes per user
+if($is_logged_in_user) {
+    $query = "SELECT COUNT( sv.ip )
+        FROM  `#__sexy_answers` sa
+        JOIN  `#__sexy_votes` sv ON sv.id_answer = sa.id
+        AND sv.id_user = '$user_id'
+        WHERE sa.id_poll =  '$polling_id'
+    ";
+}
+//otherwise query votes per IP
+else {
+    $query = "SELECT COUNT( sv.ip )
+        FROM  `#__sexy_answers` sa
+        JOIN  `#__sexy_votes` sv ON sv.id_answer = sa.id
+        AND sv.ip = '$ip'
+        WHERE sa.id_poll =  '$polling_id'
+    ";
+}
+
 $db->setQuery($query);
 $count_votes = $db->loadResult();
-$voting_enabled = true;
+
+//if number of votes exceeds max votes per user or IP
 if($ipcount != 0 && $count_votes >= $ipcount)
     $voting_enabled = false;
+
 
 //make additional checkings
 if($poll_options["votechecks"] == 1) {
@@ -162,46 +179,34 @@ if($poll_options["votechecks"] == 1) {
     if($poll_options["checkacl"] == 1 and !if_contain($levels,$groups))
         $voting_enabled = false;
 
-    $registration_to_vote_required = ( in_array(2,$levels) || in_array(3,$levels) || in_array(6,$levels) || in_array(8,$levels) ) ? true : false;
-
     //check start,end dates
     if($poll_options["date_start"] != '0000-00-00' &&  $date_now < strtotime($poll_options["date_start"]))
         $voting_enabled = false;
     if($poll_options["date_end"] != '0000-00-00' &&  $date_now > strtotime($poll_options["date_end"]))
         $voting_enabled = false;
 
-    //check user_id
-    if($registration_to_vote_required) {
-        $query = "SELECT sv.`ip`,sv.`date` FROM #__sexy_votes sv JOIN #__sexy_answers sa ON sa.id_poll = '$polling_id' WHERE sv.id_answer = sa.id AND sv.id_user = '$user_id' ORDER BY sv.`date` DESC LIMIT 1";
-        $db->setQuery($query);
-        $db->execute();
-        $num_rows = $db->getNumRows();
-        $row = $db->loadAssoc();
-        if($num_rows > 0) {
-            $datevoted = strtotime($row['date']);
-            $hours_diff = ($date_now - $datevoted) / 3600;
-            if($voting_period == 0 || ($hours_diff < $voting_period)) {
-                $voting_enabled = false;
-            }
-        }
+    //query votes per user id
+    if($is_logged_in_user) {
+        $query = "SELECT sv.`ip`,sv.`date` FROM #__sexy_votes sv JOIN #__sexy_answers sa ON sa.id_poll = '$polling_id' WHERE sv.id_answer = sa.id AND sv.id_user = '$user_id' ORDER BY sv.`date` DESC";
     }
+    //query votes per ip
     else {
-        //check ip
         $query = "SELECT sv.`ip`,sv.`date` FROM #__sexy_votes sv JOIN #__sexy_answers sa ON sa.id_poll = '$polling_id' WHERE sv.id_answer = sa.id AND sv.ip = '$ip' ORDER BY sv.`date` DESC";
-        $db->setQuery($query);
-        $db->execute();
-        $num_rows = $db->getNumRows();
-        $row = $db->loadAssoc();
-        if($num_rows > 0) {
-            $datevoted = strtotime($row['date']);
-            $hours_diff = ($date_now - $datevoted) / 3600;
-            if($voting_period == 0 || ($hours_diff < $voting_period) || ($ipcount != 0 && $num_rows >= $ipcount)) {
-                $voting_enabled = false;
-            }
-        }
 
         //check cookie		
-		if (JFactory::getApplication()->input->cookie->get('sexy_poll_$polling_id') !== null) {
+		if (JFactory::getApplication()->input->cookie->get('sexy_poll_$polling_id') !== null)
+            $voting_enabled = false;
+    }
+
+    //check time difference to last vote
+    $db->setQuery($query);
+    $db->execute();
+    $num_rows = $db->getNumRows();
+    $row = $db->loadAssoc();
+    if($num_rows > 0) {
+        $datevoted = strtotime($row['date']);
+        $hours_diff = ($date_now - $datevoted) / 3600;
+        if($voting_period == 0 || ($hours_diff < $voting_period)) {
             $voting_enabled = false;
         }
     }

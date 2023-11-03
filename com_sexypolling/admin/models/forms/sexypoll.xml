@@ -15,6 +15,7 @@
         </field>
         <field id="number_answers" name="number_answers" type="text" label="COM_SEXYPOLLING_NUMBER_ANSWERS_LABEL" description="COM_SEXYPOLLING_NUMBER_ANSWERS_DESCRIPTION" class="inputbox" size="1" default="0" />
         <field id="voting_period" name="voting_period" type="text" label="COM_SEXYPOLLING_VOTING_PERIOD_LABEL" description="COM_SEXYPOLLING_VOTING_PERIOD_DESCRIPTION" class="inputbox" size="1" default="24" />
+        <field name="ipcount" type="text" label="COM_SEXYPOLLING_IP_COUNT_LABEL" description="COM_SEXYPOLLING_IP_COUNT_DESCRIPTION" size="40" class="inputbox" default="0" />
         <field name="voting_permission" type="accesslevel" label="COM_SEXYPOLLING_VOTING_PERMISSION_LABEL" description="COM_SEXYPOLLING_VOTING_PERMISSION_DESCRIPTION" class="inputbox" size="1"/>
 
         <field name="answerpermission" type="accesslevel" label="COM_SEXYPOLLING_WHO_CAN_ADD_AN_ANSWER_LABEL" description="COM_SEXYPOLLING_WHO_CAN_ADD_AN_ANSWER_DESCRIPTION" class="inputbox" size="1"/>
@@ -219,7 +220,6 @@
           <option value="1">JYes</option>
           <option value="0">JNo</option>
         </field>
-        <field name="ipcount" type="text" label="COM_SEXYPOLLING_IP_COUNT_LABEL" description="COM_SEXYPOLLING_IP_COUNT_DESCRIPTION" size="40" class="inputbox" default="0" />
 
         <field type="note" label="COM_SEXYPOLLING_STATUS_OPTIONS" description="" />
         <field id="published" name="published" type="list" label="JSTATUS" description="JFIELD_PUBLISHED_DESC" class="inputbox" size="1" default="1">

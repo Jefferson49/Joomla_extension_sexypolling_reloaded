@@ -422,7 +422,7 @@ class SexypollingHelper
                     echo '<li id="answer_'.$poll_data->answer_id.'" class="polling_li"><div class="animation_block"></div>';
                     echo '<div class="answer_name"><label uniq_index="'.$module_id.'_'.$poll_data->answer_id.'" class="twoglux_label">';
                     if($img_path != '') {
-                        echo '<img src="'.$img_path.'" class="poll_answer_img" style="width: '.$poll_data->img_width.'px;" />';
+                        echo '<img alt="Image for answer '.$poll_data->answer_id.'" src='.$img_path.' class="poll_answer_img" style="width: '.$poll_data->img_width.'px;" />';
                     }
                     if($poll_data->show_name == 1)
                         echo $answer_name;
@@ -434,9 +434,9 @@ class SexypollingHelper
                     echo '<div class="answer_input">';
 
                     if($multiple_answers == 0)
-                        echo '<input  id="'.$module_id.'_'.$poll_data->answer_id.'" type="radio" class="poll_answer '.$poll_data->answer_id.' twoglux_styled" value="'.$poll_data->answer_id.'" name="'.$poll_data->polling_id.'" data-color="'.$colors_array[$data_color_index].'" />';
+                        echo '<input uniq_index="'.$module_id.'_'.$poll_data->answer_id.'" type="radio" class="poll_answer '.$poll_data->answer_id.' twoglux_styled" value="'.$poll_data->answer_id.'" name="'.$poll_data->polling_id.'" data-color="'.$colors_array[$data_color_index].'" aria-label="answer_'.$module_id.'_'.$poll_data->answer_id.'"/>';
                     else
-                        echo '<input  id="'.$module_id.'_'.$poll_data->answer_id.'" type="checkbox" class="poll_answer '.$poll_data->answer_id.' twoglux_styled" value="'.$poll_data->answer_id.'" name="'.$poll_data->polling_id.'"  data-color="'.$colors_array[$data_color_index].'" />';
+                        echo '<input uniq_index="'.$module_id.'_'.$poll_data->answer_id.'" type="checkbox" class="poll_answer '.$poll_data->answer_id.' twoglux_styled" value="'.$poll_data->answer_id.'" name="'.$poll_data->polling_id.'"  data-color="'.$colors_array[$data_color_index].'" aria-label="answer_'.$module_id.'_'.$poll_data->answer_id.'"/>';
 
                     echo '</div><div class="sexy_clear"></div>';
                     echo '<div class="answer_result">';
@@ -465,14 +465,14 @@ class SexypollingHelper
                     $voted_ids_value = $voted_ids[$poll_index] ?? 0;
                     $add_answers_voted_button_class = !in_array($poll_index,$voted_ids) && $voted_ids_value !== -1 ? '' : ' voted_button';
 
-                    echo '<div class="add_answer"><input name="answer_name" class="add_ans_name" value="'.$polling_words[11].'" />
-                    <input type="button" value="'.$polling_words[12].'" class="add_ans_submit'.$add_answers_voted_button_class.'" /><input type="hidden" value="'.$poll_index.'" class="poll_id" /><img class="loading_small" src="'.Uri::base(true).'/components/com_sexypolling/assets/images/loading_small.gif" /></div>';
+                    echo '<div class="add_answer"><input name="answer_name" class="add_ans_name" value="'.$polling_words[11].'" aria-label="Answer name" />
+                    <input type="button" value="'.$polling_words[12].'" class="add_ans_submit'.$add_answers_voted_button_class.'" /><input type="hidden" value="'.$poll_index.'" class="poll_id" /><img alt="Loading icon small" class="loading_small" src="'.Uri::base(true).'/components/com_sexypolling/assets/images/loading_small.gif" /></div>';
                     echo '</div></div>';
                 }
 
                 $new_answer_bar_index = ($k + 1) % 20 + 1;
 
-                echo '<span class="polling_bottom_wrapper1"><img src="components/com_sexypolling/assets/images/loading_polling.gif" class="polling_loading" />';
+                echo '<span class="polling_bottom_wrapper1"><img alt="Icon loading polling" src="components/com_sexypolling/assets/images/loading_polling.gif" class="polling_loading" />';
 
                 //If voting allowed add polling submit button else add voted button
                 $voted_ids_value = $voted_ids[$poll_index] ?? 0;
@@ -534,7 +534,7 @@ class SexypollingHelper
                 echo '<div '.$scaling_icon_visibility.' class="scale_icon'.$scale_class.'" title="'.$polling_words[14].'"></div>';
 
                 echo '<div class="timeline_select_wrapper" '.$timeline_visibility.'>';
-                echo '<div style="padding:5px 6px"><select class="polling_select1" id="polling_select_'.$module_id.'_'.$poll_index.'_1" name="polling_select_'.$module_id.'_'.$poll_index.'_1">';
+                echo '<div style="padding:5px 6px"><select class="polling_select1" id="polling_select_'.$module_id.'_'.$poll_index.'_1" name="polling_select_'.$module_id.'_'.$poll_index.'_1" aria-label="polling_select_'.$module_id.'_'.$poll_index.'_1">';
 
                 if($showvotesperiod == 0)//last day
                     $checked_label = sizeof($timeline_array) - 1;
@@ -577,7 +577,7 @@ class SexypollingHelper
                     echo '<option '.$selected.' value="'.HTMLHelper::date($curr_time,'Y-m-d', $user_time_zone).'">'.$date_item.'</option>';
                 }
                 echo '</select>';
-                echo '<select class="polling_select2" id="polling_select_'.$module_id.'_'.$poll_index.'_2" name="polling_select_'.$module_id.'_'.$poll_index.'_2">';
+                echo '<select class="polling_select2" id="polling_select_'.$module_id.'_'.$poll_index.'_2" name="polling_select_'.$module_id.'_'.$poll_index.'_2" aria-label="polling_select_'.$module_id.'_'.$poll_index.'_1">';
                 $optionGroups = array();
                 foreach ($timeline_array as $k => $curr_time) {
 

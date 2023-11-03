@@ -52,6 +52,7 @@ use Joomla\CMS\Session\Session;
 		$user_id = $user->get('id');
 		
 		$groups = Access::getGroupsByUser($user_id);
+		$is_logged_in_user = ( in_array(2,$groups) || in_array(3,$groups) || in_array(6,$groups) || in_array(8,$groups) ) ? true : false;
 
 		//Set UTC as time zone for database values and calculations
 		$data_time_zone = 'UTC';
@@ -103,27 +104,39 @@ use Joomla\CMS\Session\Session;
 		$stringdateformat = $poll_options["stringdateformat"];
 		$ipcount = $poll_options["ipcount"];
 		$voting_period = (float) $poll_options["voting_period"];
-		
-		//check token
-		if ($poll_options["checktoken"] == 1 and !Factory::getApplication()->input) {
-			echo '[{"invalid":"invalid_token"}]';
-			exit();
+
+		//as a default, voting is enabled
+		$voting_enabled = true;
+
+		//if is logged in user, check maximum of votes per user
+		if($is_logged_in_user) {
+			$query = "SELECT COUNT( sv.ip )
+				FROM  `#__sexy_answers` sa
+				JOIN  `#__sexy_votes` sv ON sv.id_answer = sa.id
+				AND sv.id_user = '$user_id'
+				WHERE sa.id_poll =  '$polling_id'
+			";
+			$db->setQuery($query);
+			$count_votes = $db->loadResult();
+
+			//In this case ipcount is used as maximum of allowed votes per user
+			if($ipcount != 0 && $count_votes >= $ipcount)
+				$voting_enabled = false;
 		}
-		
-		//check ipcount security
+		//otherwise check check maximum of votes per IP
+		else {
 		$query = "SELECT COUNT( sv.ip )
 					FROM  `#__sexy_answers` sa
 					JOIN  `#__sexy_votes` sv ON sv.id_answer = sa.id
-					AND DATE_FORMAT(sv.date, '%Y-%m-%d') = '$datenow_sql'
 					AND sv.ip = '$ip'
 					WHERE sa.id_poll =  '$polling_id'
 				";
-		$db->setQuery($query);
-		$count_votes = $db->loadResult();
-		$voting_enabled = true;
-		if($ipcount != 0 && $count_votes >= $ipcount)
-			$voting_enabled = false;
-		
+			$db->setQuery($query);
+			$count_votes = $db->loadResult();
+			if($ipcount != 0 && $count_votes >= $ipcount)
+				$voting_enabled = false;
+		}
+
 		//make additional checkings
 		if($poll_options["votechecks"] == 1) {
 			//check ACL to vote
@@ -452,6 +465,7 @@ use Joomla\CMS\Session\Session;
 		$user_id = $user->get('id');
 		
 		$groups = Access::getGroupsByUser($user_id);
+		$is_logged_in_user = ( in_array(2,$groups) || in_array(3,$groups) || in_array(6,$groups) || in_array(8,$groups) ) ? true : false;		
 
 		//Set UTC as time zone for database values and calculations
 		$data_time_zone = 'UTC';
@@ -504,19 +518,34 @@ use Joomla\CMS\Session\Session;
 		$regionname = $db->escape($regionname);
 		$countrycode = $db->escape($countrycode);
 		
-		//check ipcount security
+		//if is logged in user, check maximum of votes per user
+		if($is_logged_in_user) {
+			$query = "SELECT COUNT( sv.ip )
+				FROM  `#__sexy_answers` sa
+				JOIN  `#__sexy_votes` sv ON sv.id_answer = sa.id
+				AND sv.id_user = '$user_id'
+				WHERE sa.id_poll =  '$polling_id'
+			";
+			$db->setQuery($query);
+			$count_votes = $db->loadResult();
+
+			//In this case ipcount is used as maximum of allowed votes per user
+			if($ipcount != 0 && $count_votes >= $ipcount)
+				$voting_enabled = false;
+		}
+		//otherwise check check maximum of votes per IP
+		else {
 		$query = "SELECT COUNT( sv.ip )
 					FROM  `#__sexy_answers` sa
 					JOIN  `#__sexy_votes` sv ON sv.id_answer = sa.id
-					AND DATE_FORMAT(sv.date, '%Y-%m-%d') = '$datenow_sql'
 					AND sv.ip = '$ip'
 					WHERE sa.id_poll =  '$polling_id'
 				";
-		$db->setQuery($query);
-		$count_votes = $db->loadResult();
-		$ipcountchecked = true;
-		if($ipcount != 0 && $count_votes >= $ipcount)
-			$ipcountchecked = false;
+			$db->setQuery($query);
+			$count_votes = $db->loadResult();
+			if($ipcount != 0 && $count_votes >= $ipcount)
+				$voting_enabled = false;
+		}
 		
 		//make additional checkings
 		$voting_enabled = true;
@@ -592,20 +621,18 @@ use Joomla\CMS\Session\Session;
 			$db->execute();
 			$insert_id = $db->insertid();
 		
-			if($ipcountchecked) {
-				$query = "INSERT INTO `#__sexy_votes` (`id_answer`,`id_user`,`ip`,`date`,`country`,`city`,`region`,`countrycode`) VALUES ('$insert_id','$user_id','$ip','$datenow','$countryname','$cityname','$regionname','$countrycode')";
-				$db->setQuery($query);
-				$db->execute();
-				//set the cookie
-				if($voting_period == 0) {
-					$expire = time()+(60*60*24*365*2);//2 years
-					setcookie("sexy_poll_$polling_id", $date_now, ['expires' =>  $expire, 'path' => '/', 'SameSite' => 'Strict']);
-				}
-				else {
-					$expire_time = (float)$voting_period*60*60;
-					$expire = (int)(time()+$expire_time);
-					setcookie("sexy_poll_$polling_id", $date_now, ['expires' =>  $expire, 'path' => '/', 'SameSite' => 'Strict']);
-				}
+			$query = "INSERT INTO `#__sexy_votes` (`id_answer`,`id_user`,`ip`,`date`,`country`,`city`,`region`,`countrycode`) VALUES ('$insert_id','$user_id','$ip','$datenow','$countryname','$cityname','$regionname','$countrycode')";
+			$db->setQuery($query);
+			$db->execute();
+			//set the cookie
+			if($voting_period == 0) {
+				$expire = time()+(60*60*24*365*2);//2 years
+				setcookie("sexy_poll_$polling_id", $date_now, ['expires' =>  $expire, 'path' => '/', 'SameSite' => 'Strict']);
+			}
+			else {
+				$expire_time = (float)$voting_period*60*60;
+				$expire = (int)(time()+$expire_time);
+				setcookie("sexy_poll_$polling_id", $date_now, ['expires' =>  $expire, 'path' => '/', 'SameSite' => 'Strict']);
 			}
 		}
 		else {

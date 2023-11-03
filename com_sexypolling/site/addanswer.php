@@ -122,22 +122,39 @@ $cityname = $db->escape($cityname);
 $regionname = $db->escape($regionname);
 $countrycode = $db->escape($countrycode);
 
-//check ipcount security
+//as a default, voting is enabled
+$voting_enabled = true;
+
+//if is logged in user, check maximum of votes per user
+if($is_logged_in_user) {
+    $query = "SELECT COUNT( sv.ip )
+        FROM  `#__sexy_answers` sa
+        JOIN  `#__sexy_votes` sv ON sv.id_answer = sa.id
+        AND sv.id_user = '$user_id'
+        WHERE sa.id_poll =  '$polling_id'
+    ";
+    $db->setQuery($query);
+    $count_votes = $db->loadResult();
+
+    //In this case ipcount is used as maximum of allowed votes per user
+    if($ipcount != 0 && $count_votes >= $ipcount)
+        $voting_enabled = false;
+}
+//otherwise check check maximum of votes per IP
+else {
 $query = "SELECT COUNT( sv.ip )
             FROM  `#__sexy_answers` sa
             JOIN  `#__sexy_votes` sv ON sv.id_answer = sa.id
-            AND DATE_FORMAT(sv.date, '%Y-%m-%d') = '$datenow_sql'
             AND sv.ip = '$ip'
             WHERE sa.id_poll =  '$polling_id'
         ";
-$db->setQuery($query);
-$count_votes = $db->loadResult();
-$ipcountchecked = true;
-if($ipcount != 0 && $count_votes >= $ipcount)
-    $ipcountchecked = false;
+    $db->setQuery($query);
+    $count_votes = $db->loadResult();
+    if($ipcount != 0 && $count_votes >= $ipcount)
+        $voting_enabled = false;
+}
 
 //make additional checkings
-$voting_enabled = true;
 if($poll_options["votechecks"] == 1) {
     //check ACL to vote
     function if_contain($array1,$array2) {
@@ -184,7 +201,10 @@ if($poll_options["votechecks"] == 1) {
         if($num_rows > 0) {
             $datevoted = strtotime($row['date']);
             $hours_diff = ($date_now - $datevoted) / 3600;
-            if($voting_period == 0 || ($hours_diff < $voting_period)) {
+
+            //Includes check if number of votes of user is greater than allowed votes
+            //In this case ipcount is used as maximum of allowed votes
+            if($voting_period == 0 || ($hours_diff < $voting_period) || ($ipcount != 0 && $num_rows >= $ipcount)) {
                 $voting_enabled = false;
             }
         }
@@ -218,20 +238,18 @@ if(($writeinto == 1 || $autopublish == 0) && $voting_enabled) {
     $db->execute();
     $insert_id = $db->insertid();
 
-    if($ipcountchecked) {
-        $query = "INSERT INTO `#__sexy_votes` (`id_answer`,`id_user`,`ip`,`date`,`country`,`city`,`region`,`countrycode`) VALUES ('$insert_id','$user_id','$ip','$datenow','$countryname','$cityname','$regionname','$countrycode')";
-        $db->setQuery($query);
-        $db->execute();
-        //set the cookie
-        if($voting_period == 0) {
-            $expire = time()+(60*60*24*365*2);//2 years
-            setcookie("sexy_poll_$polling_id", $date_now, ['expires' => $expire, 'path' => '/', 'SameSite' => 'Strict']);			
-        }
-        else {
-            $expire_time = (float)$voting_period*60*60;
-            $expire = (int)(time()+$expire_time);
-            setcookie("sexy_poll_$polling_id", $date_now,  ['expires' => $expire, 'path' => '/', 'SameSite' => 'Strict']);
-        }
+    $query = "INSERT INTO `#__sexy_votes` (`id_answer`,`id_user`,`ip`,`date`,`country`,`city`,`region`,`countrycode`) VALUES ('$insert_id','$user_id','$ip','$datenow','$countryname','$cityname','$regionname','$countrycode')";
+    $db->setQuery($query);
+    $db->execute();
+    //set the cookie
+    if($voting_period == 0) {
+        $expire = time()+(60*60*24*365*2);//2 years
+        setcookie("sexy_poll_$polling_id", $date_now, ['expires' => $expire, 'path' => '/', 'SameSite' => 'Strict']);			
+    }
+    else {
+        $expire_time = (float)$voting_period*60*60;
+        $expire = (int)(time()+$expire_time);
+        setcookie("sexy_poll_$polling_id", $date_now,  ['expires' => $expire, 'path' => '/', 'SameSite' => 'Strict']);
     }
 }
 else {

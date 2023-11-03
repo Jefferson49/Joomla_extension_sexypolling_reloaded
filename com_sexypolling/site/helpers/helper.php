@@ -317,7 +317,7 @@ class SexypollingHelper
 
                 //check user_id
                 if($registration_to_vote_required) {
-                    $query = "SELECT sv.`ip`,sv.`date` FROM #__sexy_votes sv JOIN #__sexy_answers sa ON sa.id_poll = '$poll_index' WHERE sv.id_answer = sa.id AND sv.id_user = '$user_id' ORDER BY sv.`date` DESC LIMIT 1";
+                    $query = "SELECT sv.`ip`,sv.`date` FROM #__sexy_votes sv JOIN #__sexy_answers sa ON sa.id_poll = '$poll_index' WHERE sv.id_answer = sa.id AND sv.id_user = '$user_id' ORDER BY sv.`date` DESC";
                     $db->setQuery($query);
                     $db->execute();
                     $num_rows = $db->getNumRows();
@@ -331,6 +331,12 @@ class SexypollingHelper
                         elseif(!in_array($poll_index,array_keys($voted_ids)) && ($hours_diff < $voting_period))
                             $voted_ids[$poll_index] = $voting_period - $hours_diff;
                     }
+
+                    // Check if number of votes of user is greater than allowed votes.
+                    // In this case ipcount is used as maximum of allowed votes per user
+                    if ($num_rows >= $ipcount) {
+                        $voted_ids[$poll_index] = -1; //No voting allowed
+                    }                      
                 }
                 else {
                     //check ip

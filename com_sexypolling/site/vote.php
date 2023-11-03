@@ -128,19 +128,38 @@ $stringdateformat = $poll_options["stringdateformat"];
 $ipcount = $poll_options["ipcount"];
 $voting_period = (float) $poll_options["voting_period"];
 
-//check ipcount security
+
+//as a default, voting is enabled
+$voting_enabled = true;
+
+//if is logged in user, check maximum of votes per user
+if($is_logged_in_user) {
+    $query = "SELECT COUNT( sv.ip )
+        FROM  `#__sexy_answers` sa
+        JOIN  `#__sexy_votes` sv ON sv.id_answer = sa.id
+        AND sv.id_user = '$user_id'
+        WHERE sa.id_poll =  '$polling_id'
+    ";
+    $db->setQuery($query);
+    $count_votes = $db->loadResult();
+
+    //In this case ipcount is used as maximum of allowed votes per user
+    if($ipcount != 0 && $count_votes >= $ipcount)
+        $voting_enabled = false;
+}
+//otherwise check check maximum of votes per IP
+else {
 $query = "SELECT COUNT( sv.ip )
             FROM  `#__sexy_answers` sa
             JOIN  `#__sexy_votes` sv ON sv.id_answer = sa.id
-            AND DATE_FORMAT(sv.date, '%Y-%m-%d') = '$datenow_sql'
             AND sv.ip = '$ip'
             WHERE sa.id_poll =  '$polling_id'
         ";
-$db->setQuery($query);
-$count_votes = $db->loadResult();
-$voting_enabled = true;
-if($ipcount != 0 && $count_votes >= $ipcount)
-    $voting_enabled = false;
+    $db->setQuery($query);
+    $count_votes = $db->loadResult();
+    if($ipcount != 0 && $count_votes >= $ipcount)
+        $voting_enabled = false;
+}
 
 //make additional checkings
 if($poll_options["votechecks"] == 1) {
@@ -172,7 +191,7 @@ if($poll_options["votechecks"] == 1) {
 
     //check user_id
     if($registration_to_vote_required) {
-        $query = "SELECT sv.`ip`,sv.`date` FROM #__sexy_votes sv JOIN #__sexy_answers sa ON sa.id_poll = '$polling_id' WHERE sv.id_answer = sa.id AND sv.id_user = '$user_id' ORDER BY sv.`date` DESC LIMIT 1";
+        $query = "SELECT sv.`ip`,sv.`date` FROM #__sexy_votes sv JOIN #__sexy_answers sa ON sa.id_poll = '$polling_id' WHERE sv.id_answer = sa.id AND sv.id_user = '$user_id' ORDER BY sv.`date` DESC";
         $db->setQuery($query);
         $db->execute();
         $num_rows = $db->getNumRows();
@@ -180,7 +199,10 @@ if($poll_options["votechecks"] == 1) {
         if($num_rows > 0) {
             $datevoted = strtotime($row['date']);
             $hours_diff = ($date_now - $datevoted) / 3600;
-            if($voting_period == 0 || ($hours_diff < $voting_period)) {
+
+            //Includes check if number of votes of user is greater than allowed votes
+            //In this case ipcount is used as maximum of allowed votes
+            if($voting_period == 0 || ($hours_diff < $voting_period) || ($ipcount != 0 && $num_rows >= $ipcount)) {
                 $voting_enabled = false;
             }
         }

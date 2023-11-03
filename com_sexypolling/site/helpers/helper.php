@@ -181,6 +181,7 @@ class SexypollingHelper
         $user_id = $user->get('id');
 
         $groups = Access::getGroupsByUser($user_id);
+        $is_logged_in_user = ( in_array(2,$groups) || in_array(3,$groups) || in_array(6,$groups) || in_array(8,$groups) ) ? true : false;
 
 		//load language and timezone
 		$lang = Factory::getLanguage();
@@ -323,59 +324,43 @@ class SexypollingHelper
                 if($polling_array[0]->showresultsduringpoll == '0' and $polling_array[0]->date_end != '0000-00-00')
                     $hide_results_ids[$poll_index] = $polling_words[25] . HTMLHelper::date($polling_array[0]->date_end ?? '', $stringdateformat, $data_time_zone);
 
-                //check user_id
-                if($registration_to_vote_required) {
+                //if is logged in user, query votes per user
+                if($is_logged_in_user) {
                     $query = "SELECT sv.`ip`,sv.`date` FROM #__sexy_votes sv JOIN #__sexy_answers sa ON sa.id_poll = '$poll_index' WHERE sv.id_answer = sa.id AND sv.id_user = '$user_id' ORDER BY sv.`date` DESC";
-                    $db->setQuery($query);
-                    $db->execute();
-                    $num_rows = $db->getNumRows();
-                    $row = $db->loadAssoc();
-                    if($num_rows > 0) {
-                        $datevoted = strtotime($row['date'] ?? '');
-                        $hours_diff = ($date_now - $datevoted) / 3600;
-                        if($voting_period == 0 && !in_array($poll_index,array_keys($voted_ids))) {
-                            $voted_ids[$poll_index] = '17520';//two years
-                        }
-                        elseif(!in_array($poll_index,array_keys($voted_ids)) && ($hours_diff < $voting_period))
-                            $voted_ids[$poll_index] = $voting_period - $hours_diff;
-                    }
-
-                    // Check if number of votes of user is greater than allowed votes.
-                    // In this case ipcount is used as maximum of allowed votes per user
-                    if ($num_rows >= $ipcount) {
-                        $voted_ids[$poll_index] = -1; //No voting allowed
-                    }                      
                 }
+                //otherwise query votes per IP
                 else {
-                    //check ip
                     $query = "SELECT sv.`ip`,sv.`date` FROM #__sexy_votes sv JOIN #__sexy_answers sa ON sa.id_poll = '$poll_index' WHERE sv.id_answer = sa.id AND sv.ip = '$sexyip' ORDER BY sv.`date` DESC";
-                    $db->setQuery($query);
-                    $db->execute();
-                    $num_rows = $db->getNumRows();
-                    $row = $db->loadAssoc();
-                    if($num_rows > 0) {
-                        $datevoted = strtotime($row['date'] ?? '');
-                        $hours_diff = ($date_now - $datevoted) / 3600;
-                        if($voting_period == 0 && !in_array($poll_index,array_keys($voted_ids))) {
-                            $voted_ids[$poll_index] = '17520';//two years
-                        }
-                        elseif(!in_array($poll_index,array_keys($voted_ids)) && ($hours_diff < $voting_period))
-                            $voted_ids[$poll_index] = $voting_period - $hours_diff;
-                    }
 
-					//check cookie		
-					if (Factory::getApplication()->input->cookie->get('sexy_poll_$poll_index') !== null) {
+                    //check cookie		
+                    if (Factory::getApplication()->input->cookie->get('sexy_poll_$poll_index') !== null) {
                         $datevoted = Factory::getApplication()->input->cookie->get('sexy_poll_$poll_index');
                         $hours_diff = ($date_now - $datevoted) / 3600;
                         if(!in_array($poll_index,array_keys($voted_ids)))
                             $voted_ids[$poll_index] = $voting_period - $hours_diff;
                     }
-
-                    //Check if number of votes per IP is greater than allowed votes per IP 
-                    if ($num_rows >= $ipcount) {
-                        $voted_ids[$poll_index] = -1; //No voting allowed
-                    }                         
                 }
+
+                $db->setQuery($query);
+                $db->execute();
+                $num_rows = $db->getNumRows();
+                $row = $db->loadAssoc();
+
+                //Check time since last vote
+                if($num_rows > 0) {
+                    $datevoted = strtotime($row['date'] ?? '');
+                    $hours_diff = ($date_now - $datevoted) / 3600;
+                    if($voting_period == 0 && !in_array($poll_index,array_keys($voted_ids))) {
+                        $voted_ids[$poll_index] = '17520';//two years
+                    }
+                    elseif(!in_array($poll_index,array_keys($voted_ids)) && ($hours_diff < $voting_period))
+                        $voted_ids[$poll_index] = $voting_period - $hours_diff;
+                }
+
+                //Check if number of votes greater than allowed votes per user or per IP 
+                if($ipcount != 0 && $num_rows >= $ipcount) {
+                    $voted_ids[$poll_index] = -1; //No voting allowed
+                }                         
 
                 //set visibility options
                 $add_asnwer_icon_visibility = $showaddanswericon == 0 || !$permission_to_show_add_answer_block ? 'style="display: none !important;" rell="noanimate"' : '';

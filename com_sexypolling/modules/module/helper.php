@@ -160,10 +160,6 @@ use Joomla\CMS\Session\Session;
 			//query votes per ip
 			else {
 				$query = "SELECT sv.`ip`,sv.`date` FROM #__sexy_votes sv JOIN #__sexy_answers sa ON sa.id_poll = '$polling_id' WHERE sv.id_answer = sa.id AND sv.ip = '$ip' ORDER BY sv.`date` DESC";
-
-				//check cookie		
-				if (JFactory::getApplication()->input->cookie->get('sexy_poll_$polling_id') !== null)
-					$voting_enabled = false;
 			}
 
 			//check time difference to last vote
@@ -202,17 +198,6 @@ use Joomla\CMS\Session\Session;
 				$query = "INSERT INTO `#__sexy_votes` (`id_answer`,`id_user`,`ip`,`date`,`country`,`city`,`region`,`countrycode`) VALUES ('$insert_id','$user_id','$ip','$datenow','$countryname','$cityname','$regionname','$countrycode')";
 				$db->setQuery($query);
 				$db->execute();
-		
-				//set the cookie
-				if($voting_period == 0) {
-					$expire = time() + (60*60*24*365*2); //2 years
-					setcookie("sexy_poll_$polling_id", $date_now, ['expires' =>  $expire, 'path' => '/', 'SameSite' => 'Strict']);
-				}
-				else {
-					$expire_time = (float) $voting_period*60*60;
-					$expire = time() + (int) $expire_time;
-					setcookie("sexy_poll_$polling_id", $date_now, ['expires' =>  $expire, 'path' => '/', 'SameSite' => 'Strict']);
-				}
 			}
 		}
 		
@@ -233,18 +218,6 @@ use Joomla\CMS\Session\Session;
 		
 				//update max date sended
 				$max_date_sended = $datenow_sql.' 23:59:59';
-		
-				//set the cookie
-				if($voting_period == 0) {
-					$expire = time() + (60*60*24*365*2); //2 years
-					setcookie("sexy_poll_$polling_id", $date_now, ['expires' =>  $expire, 'path' => '/', 'SameSite' => 'Strict']);
-				}
-				else {
-					$expire_time = (float)$voting_period*60*60;
-					$time = time();
-					$expire = time() + (int) $expire_time;
-					setcookie("sexy_poll_$polling_id", $date_now, ['expires' =>  $expire, 'path' => '/', 'SameSite' => 'Strict']);
-				}
 		}
 		
 		//get count of total votes, min and max dates of voting
@@ -570,10 +543,6 @@ use Joomla\CMS\Session\Session;
 			//query votes per ip
 			else {
 				$query = "SELECT sv.`ip`,sv.`date` FROM #__sexy_votes sv JOIN #__sexy_answers sa ON sa.id_poll = '$polling_id' WHERE sv.id_answer = sa.id AND sv.ip = '$ip' ORDER BY sv.`date` DESC";
-
-				//check cookie		
-				if (JFactory::getApplication()->input->cookie->get('sexy_poll_$polling_id') !== null)
-					$voting_enabled = false;
 			}
 
 			//check time difference to last vote
@@ -600,16 +569,6 @@ use Joomla\CMS\Session\Session;
 			$query = "INSERT INTO `#__sexy_votes` (`id_answer`,`id_user`,`ip`,`date`,`country`,`city`,`region`,`countrycode`) VALUES ('$insert_id','$user_id','$ip','$datenow','$countryname','$cityname','$regionname','$countrycode')";
 			$db->setQuery($query);
 			$db->execute();
-			//set the cookie
-			if($voting_period == 0) {
-				$expire = time()+(60*60*24*365*2);//2 years
-				setcookie("sexy_poll_$polling_id", $date_now, ['expires' =>  $expire, 'path' => '/', 'SameSite' => 'Strict']);
-			}
-			else {
-				$expire_time = (float)$voting_period*60*60;
-				$expire = (int)(time()+$expire_time);
-				setcookie("sexy_poll_$polling_id", $date_now, ['expires' =>  $expire, 'path' => '/', 'SameSite' => 'Strict']);
-			}
 		}
 		else {
 			$insert_id = 0;

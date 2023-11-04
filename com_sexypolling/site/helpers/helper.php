@@ -331,14 +331,6 @@ class SexypollingHelper
                 //otherwise query votes per IP
                 else {
                     $query = "SELECT sv.`ip`,sv.`date` FROM #__sexy_votes sv JOIN #__sexy_answers sa ON sa.id_poll = '$poll_index' WHERE sv.id_answer = sa.id AND sv.ip = '$sexyip' ORDER BY sv.`date` DESC";
-
-                    //check cookie		
-                    if (Factory::getApplication()->input->cookie->get('sexy_poll_$poll_index') !== null) {
-                        $datevoted = Factory::getApplication()->input->cookie->get('sexy_poll_$poll_index');
-                        $hours_diff = ($date_now - $datevoted) / 3600;
-                        if(!in_array($poll_index,array_keys($voted_ids)))
-                            $voted_ids[$poll_index] = $voting_period - $hours_diff;
-                    }
                 }
 
                 $db->setQuery($query);

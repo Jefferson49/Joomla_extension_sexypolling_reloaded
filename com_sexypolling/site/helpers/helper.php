@@ -331,14 +331,6 @@ class SexypollingHelper
                     $db->execute();
                     $num_rows = $db->getNumRows();
                     $row = $db->loadAssoc();
-
-                    //check cookie		
-                    if (Factory::getApplication()->input->cookie->get('sexy_poll_$poll_index') !== null) {
-                        $datevoted = Factory::getApplication()->input->cookie->get('sexy_poll_$poll_index');
-                        $hours_diff = ($date_now - $datevoted) / 3600;
-                        if(!in_array($poll_index,array_keys($voted_ids)))
-                            $voted_ids[$poll_index] = $voting_period - $hours_diff;
-                    }
                 }
 
                 //Check time since last vote

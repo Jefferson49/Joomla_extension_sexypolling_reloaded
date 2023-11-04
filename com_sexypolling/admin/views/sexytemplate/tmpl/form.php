@@ -1905,8 +1905,8 @@ function echo_size_tr($txt,$i,$size,$min,$max) {
             	<div class="size_container">
 	            	<input class="size_input" type="text" value="'. $size .'" name="styles['.$i.']" readonly="readonly" roll="'.$i.'" id="elem-'.$i.'" />
 	            	<div class="size_arrows">
-	            		<div class="size_up" maxval="'.$max.'" title="'; echo JText::_( 'Up' ); echo '"></div>
-	            		<div class="size_down" minval="'.$min.'" title="'; echo JText::_( 'Down' );echo '"></div>
+	            		<div class="size_up" maxval="'.$max.'" title="'; echo JText::_( 'COM_SEXYPOLLING_UP' ); echo '"></div>
+	            		<div class="size_down" minval="'.$min.'" title="'; echo JText::_( 'COM_SEXYPOLLING_DOWN' );echo '"></div>
 	            	</div>
 	            	<div class="pix_info">px</div>
 	            </div>
@@ -2219,7 +2219,7 @@ function seperate_tr($txt,$title='') {
 	 </div>
 <form action="<?php echo JRoute::_('index.php?option=com_sexypolling&layout=form&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="adminForm">
     <fieldset class="adminform" style="position: relative;">
-        <legend><?php echo JText::_( 'Custom Styles' ); ?></legend>
+        <legend><?php echo JText::_( 'COM_SEXYPOLLING_CUSTOM_STYLES' ); ?></legend>
         <div id="main_styles_table">
 	        <table class="temp_table">
 	        <?php seperate_tr("Template Name");
@@ -2227,7 +2227,7 @@ function seperate_tr($txt,$title='') {
 	        <tr>
 	            <td width="180" align="right" class="key" style="width: 230px;">
 	                <label for="name">
-	                    <?php echo JText::_( 'Name' ); ?>:
+	                    <?php echo JText::_( 'COM_SEXYPOLLING_NAME' ); ?>:
 	                </label>
 	            </td>
 	            <td class="st_td">

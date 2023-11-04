@@ -68,7 +68,7 @@ class SexypollingViewSexypoll extends JViewLegacy
 		$checkedOut	= !($this->item->checked_out == 0 || $this->item->checked_out == $userId);
 		// Since we don't track these assets at the item level, use the category id.
 
-		$text = $isNew ? JText::_( 'New' ) : JText::_( 'JTOOLBAR_EDIT' );
+		$text = $isNew ? JText::_( 'JTOOLBAR_NEW' ) : JText::_( 'JTOOLBAR_EDIT' );
 		JToolBarHelper::title(   JText::_( 'COM_SEXYPOLLING_POLL' ).': <small><small>[ ' . $text.' ]</small></small>','manage.png' );
 	
 		JToolBarHelper::apply('sexypoll.apply');

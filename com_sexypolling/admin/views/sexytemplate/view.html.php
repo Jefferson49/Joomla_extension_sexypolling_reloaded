@@ -68,8 +68,8 @@ class SexypollingViewSexytemplate extends JViewLegacy
 		$isNew		= ($this->item->id == 0);
 		// Since we don't track these assets at the item level, use the category id.
 
-		$text = $isNew ? JText::_( 'New' ) : JText::_( 'JTOOLBAR_EDIT' );
-		JToolBarHelper::title(   JText::_( 'Sexy Template' ).': <small><small>[ ' . $text.' ]</small></small>','manage.png' );
+		$text = $isNew ? JText::_( 'JTOOLBAR_NEW' ) : JText::_( 'JTOOLBAR_EDIT' );
+		JToolBarHelper::title(   JText::_( 'COM_SEXYPOLLING_SEXY_TEMPLATE' ).': <small><small>[ ' . $text.' ]</small></small>','manage.png' );
 
 		// Build the actions for new and existing records.
 		if ($isNew)  {

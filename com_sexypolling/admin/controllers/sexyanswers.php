@@ -74,7 +74,7 @@ class SexyPollingControllerSexyAnswers extends JControllerAdmin
 		*/
 
 		if (empty($ids)) {
-			JFactory::getApplication()->enqueueMessage(500, JText::_('No Items'));
+			JFactory::getApplication()->enqueueMessage(500, JText::_('COM_SEXYPOLLING_NO_ITEM_SELECTED'));
 		} else {
 			// Publish the items.
 			if (!$model->featured($ids, $value)) {

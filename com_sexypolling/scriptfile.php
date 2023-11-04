@@ -31,16 +31,16 @@ class com_sexypollingInstallerScript {
         // installing module
         $module_installer = new JInstaller;
         if(@$module_installer->install(dirname(__FILE__).DIRECTORY_SEPARATOR.'modules'.DIRECTORY_SEPARATOR.'module')) {
-            //echo '<p>'.JText::_('COM_SEXYPOLLING_MODULE_INSTALL_SUCCESS').'</p>';
+            //echo '<p>'.JText::_('MOD_SEXYPOLLING_MODULE_INSTALL_SUCCESS').'</p>';
         } else
-           echo '<p>'.JText::_('COM_SEXYPOLLING_MODULE_INSTALL_FAILED').'</p>';
+           echo '<p>'.JText::_('MOD_SEXYPOLLING_MODULE_INSTALL_FAILED').'</p>';
 
         // installing plugin
         $plugin_installer = new JInstaller;
         if($plugin_installer->install(dirname(__FILE__).DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.'plugin')) {
-            //echo '<p>'.JText::_('COM_SEXYPOLLING_PLUGIN_INSTALL_SUCCESS').'</p>';
+            //echo '<p>'.JText::_('MOD_SEXYPOLLING_MODULE_INSTALL_SUCCESS').'</p>';
         } else
-            echo '<p>'.JText::_('COM_SEXYPOLLING_PLUGIN_INSTALL_FAILED').'</p>';
+            echo '<p>'.JText::_('MOD_SEXYPOLLING_MODULE_INSTALL_FAILED').'</p>';
 
         // enabling plugin
         $db = JFactory::getDBO();
@@ -82,9 +82,9 @@ class com_sexypollingInstallerScript {
     function update($parent) {
         $module_installer = new JInstaller;
         if(@$module_installer->install(dirname(__FILE__).DIRECTORY_SEPARATOR.'modules'.DIRECTORY_SEPARATOR.'module')) {
-            //echo '<p>'.JText::_('COM_SEXYPOLLING_MODULE_INSTALL_SUCCESS').'</p>';
+            //echo '<p>'.JText::_('MOD_SEXYPOLLING_MODULE_INSTALL_SUCCESS').'</p>';
         } else
-           echo '<p>'.JText::_('COM_SEXYPOLLING_MODULE_INSTALL_FAILED').'</p>';
+           echo '<p>'.JText::_('MOD_SEXYPOLLING_MODULE_INSTALL_FAILED').'</p>';
 
         $plugin_uninstaller = new JInstaller;
         if(@$plugin_uninstaller->install(dirname(__FILE__).DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.'plugin')) {

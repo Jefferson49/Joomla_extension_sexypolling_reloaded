@@ -68,8 +68,8 @@ class SexypollingViewSexytemplate extends HtmlView
 		$isNew		= ($this->item->id == 0);
 		// Since we don't track these assets at the item level, use the category id.
 
-		$text = $isNew ? Text::_( 'New' ) : Text::_( 'JTOOLBAR_EDIT' );
-		JToolBarHelper::title(   Text::_( 'Sexy Template' ).': <small><small>[ ' . $text.' ]</small></small>','manage.png' );
+		$text = $isNew ? Text::_( 'JTOOLBAR_NEW' ) : Text::_( 'JTOOLBAR_EDIT' );
+		JToolBarHelper::title(   Text::_( 'COM_SEXYPOLLING_SEXY_TEMPLATE' ).': <small><small>[ ' . $text.' ]</small></small>','manage.png' );
 
 		// Build the actions for new and existing records.
 		if ($isNew)  {

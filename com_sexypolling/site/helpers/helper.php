@@ -196,13 +196,13 @@ class SexypollingHelper
 		
 		//Set UTC as time zone for database values and calculations
 		$data_time_zone = 'UTC';
-        $debug_date_UTC =  HTMLHelper::date('now', Text::_('F d, Y'), $data_time_zone);
-        $debug_date_user = HTMLHelper::date('now', Text::_('F d, Y'), $user_time_zone);
+        $debug_date_UTC =  HTMLHelper::date('now', 'F d, Y', $data_time_zone);
+        $debug_date_user = HTMLHelper::date('now', 'F d, Y', $user_time_zone);
 
         //get data
         $this->get_data();
 
-        $debug_date = HTMLHelper::date('2022-03-15', Text::_('F d, Y'), $data_time_zone);
+        $debug_date = HTMLHelper::date('2022-03-15', 'F d, Y', $data_time_zone);
 
         //create polls array
         $pollings = array();

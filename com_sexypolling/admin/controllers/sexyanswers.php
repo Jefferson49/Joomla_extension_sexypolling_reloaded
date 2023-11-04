@@ -69,7 +69,7 @@ class SexyPollingControllerSexyAnswers extends AdminController
 		$model = $this->getModel();
 
 		if (empty($ids)) {
-			Factory::getApplication()->enqueueMessage(500, Text::_('No Items'));
+			Factory::getApplication()->enqueueMessage(500, Text::_('COM_SEXYPOLLING_NO_ITEM_SELECTED'));
 		} else {
 			// Publish the items.
 			if (!$model->featured($ids, $value)) {

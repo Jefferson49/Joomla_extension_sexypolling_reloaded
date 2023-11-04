@@ -36,16 +36,16 @@ class com_sexypollingInstallerScript {
         // installing module
         $module_installer = new Installer;
         if(@$module_installer->install(dirname(__FILE__).DIRECTORY_SEPARATOR.'modules'.DIRECTORY_SEPARATOR.'module')) {
-            //echo '<p>'.Text::_('COM_SEXYPOLLING_MODULE_INSTALL_SUCCESS').'</p>';
+            //echo '<p>'.Text::_('MOD_SEXYPOLLING_MODULE_INSTALL_SUCCESS').'</p>';
         } else
-           echo '<p>'.Text::_('COM_SEXYPOLLING_MODULE_INSTALL_FAILED').'</p>';
+           echo '<p>'.Text::_('MOD_SEXYPOLLING_MODULE_INSTALL_FAILED').'</p>';
 
         // installing plugin
         $plugin_installer = new Installer;
         if($plugin_installer->install(dirname(__FILE__).DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.'plugin')) {
-            //echo '<p>'.Text::_('COM_SEXYPOLLING_PLUGIN_INSTALL_SUCCESS').'</p>';
+            //echo '<p>'.Text::_('MOD_SEXYPOLLING_MODULE_INSTALL_SUCCESS').'</p>';
         } else
-            echo '<p>'.Text::_('COM_SEXYPOLLING_PLUGIN_INSTALL_FAILED').'</p>';
+            echo '<p>'.Text::_('MOD_SEXYPOLLING_MODULE_INSTALL_FAILED').'</p>';
 
         // enabling plugin
         $db = Factory::getDBO();
@@ -89,9 +89,9 @@ class com_sexypollingInstallerScript {
     function update($parent) {
         $module_installer = new Installer;
         if(@$module_installer->install(dirname(__FILE__).DIRECTORY_SEPARATOR.'modules'.DIRECTORY_SEPARATOR.'module')) {
-            //echo '<p>'.Text::_('COM_SEXYPOLLING_MODULE_INSTALL_SUCCESS').'</p>';
+            //echo '<p>'.Text::_('MOD_SEXYPOLLING_MODULE_INSTALL_SUCCESS').'</p>';
         } else
-           echo '<p>'.Text::_('COM_SEXYPOLLING_MODULE_INSTALL_FAILED').'</p>';
+           echo '<p>'.Text::_('MOD_SEXYPOLLING_MODULE_INSTALL_FAILED').'</p>';
 
         $plugin_uninstaller = new Installer;
         if(@$plugin_uninstaller->install(dirname(__FILE__).DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.'plugin')) {

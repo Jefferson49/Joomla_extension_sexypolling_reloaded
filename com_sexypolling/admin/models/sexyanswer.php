@@ -207,7 +207,7 @@ class SexypollingModelSexyAnswer extends AdminModel
 			//add votes
 			$res = (int) $jform['insert_votes'];
 			if($res > 0) {
-				$query = 'INSERT INTO `#__sexy_votes` (`id_answer`, `ip`, `date`) VALUES ';
+				$query = 'INSERT IGNORE INTO `#__sexy_votes` (`id_answer`, `ip`, `date`) VALUES ';
 				for($i = 0; $i < $res; $i ++) {
 					$query .= '('.$id.', \'\', ' . HTMLHelper::date("now", "Y-m-d H:i:s", 'UTC') . ')';
 					if($i != $res - 1)

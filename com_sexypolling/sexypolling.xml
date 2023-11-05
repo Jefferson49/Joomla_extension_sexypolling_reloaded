@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="3.10" method="upgrade">
     <name>COM_SEXYPOLLING</name>
-    <creationDate>2023-10-12</creationDate>
+    <creationDate>2023-11-05</creationDate>
     <author>Jefferson49</author>
     <copyright>Copyright (c) 2010 - 2021 2GLux. All rights reserved. Copyright (c) 2022 - 2023 Jefferson49</copyright>
  	<authorEmail>sexypolling.reloaded@gmail.com</authorEmail>
@@ -22,7 +22,7 @@
             <file charset="utf8" driver="mysql">install/sql/uninstall.sql</file>
         </sql>
     </uninstall>
-
+    <changelogurl>https://raw.githubusercontent.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/updates/changelog.xml</changelogurl>
     <updateservers>
         <server type="extension" name="Github Jefferson49/Joomla_plugin_sexypolling_reloaded" priority="1">https://raw.githubusercontent.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/updates/updates.xml</server>
     </updateservers>

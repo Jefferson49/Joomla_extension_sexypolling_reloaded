@@ -1,14 +1,15 @@
 [![Latest Release](https://img.shields.io/github/v/release/Jefferson49/Joomla_plugin_sexypolling_reloaded?display_name=tag)](https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/latest)
-[![Joomla major version](https://img.shields.io/badge/joomla-v3.x-green)](https://downloads.joomla.org/cms/joomla3)
+[![Joomla major version](https://img.shields.io/badge/joomla-v5.x-green)](https://downloads.joomla.org/cms/joomla4)
 [![Joomla major version](https://img.shields.io/badge/joomla-v4.x-green)](https://downloads.joomla.org/cms/joomla4)
+[![Joomla major version](https://img.shields.io/badge/joomla-v3.10-green)](https://downloads.joomla.org/cms/joomla3)
 ## Sexy Polling Reloaded: A Joomla 4.x migration (and Joomla 3.x update) for the [Joomla](https://www.joomla.org/) plugin "Sexy Polling" 
 + "Sexy Polling Reloaded" is a fork of the "Sexy Polling" plugin (version 2.1.7), which was developed by 2GLux.com and provided on the former website [2GLux.com](https://web.archive.org/web/20211215150923/https://2glux.com/projects/sexypolling)
-+ The fork intends to make the functionality of the former "Sexy Polling" plugin available for Joomla 4, because the original plugin is not provided and supported any more
++ The fork intends to make the functionality of the former "Sexy Polling" plugin available for Joomla 4 and 5, because the original plugin is not provided and supported any more
 + A patch was added to fix a reported [security issue](https://www.exploit-db.com/exploits/50927)
 + Some limitations of the former FREE version were removed
 + Support for the Joomla update system was added to check and install new releases of the plugin
-+ **The code was migrated to the Joomla 4.x CMS and module API, while still keeping it usable for Joomla 3.10**
-+ The latest release can be used for both Joomla 4.x and Joomla 3.10
++ **The code was migrated to the Joomla 4.x and 5.x CMS and module API, while still keeping it usable for Joomla 3.10**
++ The latest release can be used for **Joomla 5.x, Joomla 4.x and Joomla 3.10**
 
 ##  Installation
 + Manual installation
@@ -21,14 +22,13 @@
 + **PHP extension intl required**
    + The plugin requires the PHP exension "intl" (Internationalization). Usually, the "intl" extension is included in the PHP installation. However, it might be necessary to activate it, i.e. the php.ini file must contain the following line: extension=intl
    + If the "intl" extension is not installed, PHP errors like "Class IntlTimeZone not found", or "Attempted to load class IntlTimeZone from the global namespace" might occur.
-+ **MySQL version**
-   + Plugin releases starting from **v4.1.7** need a MySQL version of 5.7.24 (8.0.13) or later.
-   + For MySQL versions earlier than 5.7.24, the former plugin release v4.1.6 can be used. 
 + **Migration from the former "Sexy Polling" plugin**
     + During installation, the plugin re-uses existing data from the former Sexy Polling plugin. 
     + If you want to reuse data from the former Sexy Polling plugin, do not uninstall the former Sexy Polling plugin. Instead, just install the Sexy Polling Reloaded plugin. It will re-use the existing database tables.
 + **Known issues**
-    + If the plugin installation fails with an error "**... column 'country' can't have a default value**", an incompatibility with the database version (earlier than 5.7.24/8.0.13) or database configuration exists. In this case, it is recommended to use the former plugin release **v4.1.6**. 
+    + **Security: Due to improvements in the component architecture of release v5.0.0, it is highly recommended to upgrade from earlier 4.x.x versions to 5.0.0**.
+    + Installation errors with **v4.1.x** plugin versions, failing with an "**... column 'country' can't have a default value**" error, are avoided if installing a plugin release **v5.0.0** or later.
+    + If using PHP 8.2, certain deprecation messages might be shown in the frontend, see issues [#58](https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/issues/58) and [#61](https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/issues/61). The root cause for these warnings lies in the Joomla platform and will hopefully be solved in one of the next Joomla releases.
 ##  Date formats
 The date format, which is shown in poll modules, can be specified in the Joomla administration at: Components -> Sexy Polling Reloaded -> Polls -> Edit -> Date Format.
 
@@ -46,9 +46,9 @@ For more details about the format options, [see PHP documentation about date tim
 + Further contributions on [Github](https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded) are welcome!
 
 ##  Versions 
-+ The latest plugin version was developed and tested with: 
-    + [Joomla 3.10.11](https://downloads.joomla.org/cms/joomla3) and [Joomla 4.2.6](https://downloads.joomla.org/cms/joomla4); but should also run with other Joomla 3.10 or 4.x versions. Other 3.x versions have not been tested, but might also be feasible.
-    + PHP 8.0.23 as well as PHP 8.1.13; but should also run with other PHP 8 versions. 7.x versions have not been testetd, but might also be feasible.
++ The latest plugin version v5.0.0 was developed and tested with: 
+    + [Joomla 5.0.0](https://downloads.joomla.org/cms/joomla5), [Joomla 4.4.0](https://downloads.joomla.org/cms/joomla4), and [Joomla 3.10.12](https://downloads.joomla.org/cms/joomla3) ; but should also run with other Joomla 5.x, 4.x or 3.10.x versions.
+    + PHP 8.2.5 as well as PHP 8.0.28; but should also run with other PHP 8 versions.
 
 ## Translation
 You can help to translate this module:

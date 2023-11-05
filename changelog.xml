@@ -1,0 +1,22 @@
+<changelogs>
+    <changelog>
+		<element>COM_SEXYPOLLING</element>
+		<type>component</type>
+		<version>5.0.0</version>
+        <security>
+            <item>Due to improvements in the component architecture, it is highly recommended to upgrade from earlier 4.x.x versions to 5.0.0</item>
+        </security>
+        <fix>
+            <item>Improvement regarding MySQL errors during installation; avoiding errors of the tpye "column 'country' can't have a default value", which sometimes occured in plugin releases starting from v4.1.7</item>
+            <item>![CDATA[Bugfixes for several issues, see <a href="https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/tag/v5.0.0">release note</a>]]</item>
+        </fix>
+        <addition>
+            <item>Major refactoring and ready for Joomla 5, while still compatible to Joomla 4 and 3.10</item>
+        </addition>
+        <note>
+            <item>With PHP 8.2., some deprecation warnings might be shown, which have their root cause in the Joomla platform and hopefully will be be solved in one of the next Joomla releases</item>
+            <item>Example error message: "Function strftime() is deprecated /libraries/src/Form/Field/CalendarField.php on line 322"</item>
+            <item>Example error message: "Save failed with the following error: Incorrect date value: 'NOW'"</item>
+        </note>
+    </changelog>
+</changelogs>

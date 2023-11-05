@@ -177,5 +177,6 @@
 		<maintainerurl>https://github.com/Jefferson49</maintainerurl>
 		<targetplatform name="joomla" version="((3.10)|(4.*)|(5.*))" />
 		<sha256>b94a4b1c21230f7b6b4769950cc078317f84bb2bd99042095058ff3f67a6790f</sha256>
-    </update> 	
+    </update>
+	<changelogurl>https://raw.githubusercontent.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/updates/changelog.xml</changelogurl>
 </updates>

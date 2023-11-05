@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <updates>
 	<update>
 		<name>Sexy Polling Reloaded</name>
@@ -167,6 +168,7 @@
 		<type>component</type>
 		<version>5.0.0</version>
 		<infourl title="Sexy Polling Reloaded">https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/tag/v5.0.0</infourl>
+		<changelogurl>https://raw.githubusercontent.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/updates/changelog.xml</changelogurl>
 		<downloads>
 			<downloadurl type="full" format="zip">https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/download/v5.0.0/joomla_plugin_sexypolling_reloaded_v5.0.0.zip</downloadurl>
 		</downloads>
@@ -178,5 +180,4 @@
 		<targetplatform name="joomla" version="((3.10)|(4.*)|(5.*))" />
 		<sha256>b94a4b1c21230f7b6b4769950cc078317f84bb2bd99042095058ff3f67a6790f</sha256>
     </update>
-	<changelogurl>https://raw.githubusercontent.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/updates/changelog.xml</changelogurl>
 </updates>

@@ -9,7 +9,7 @@
 + Some limitations of the former FREE version were removed
 + Support for the Joomla update system was added to check and install new releases of the plugin
 + **The code was migrated to the Joomla 4.x and 5.x CMS and module API, while still keeping it usable for Joomla 3.10**
-+ The latest release can be used for **Joomla 5.x, Joomla 4.x and Joomla 3.10**
++ The latest release can be used for **Joomla 5.x** (with Backward Compatibility plugin), **Joomla 4.x** and **Joomla 3.10**
 
 ##  Installation
 + Manual installation
@@ -47,7 +47,7 @@ For more details about the format options, [see PHP documentation about date tim
 
 ##  Versions 
 + The latest plugin version v5.0.0 was developed and tested with: 
-    + [Joomla 5.0.0](https://downloads.joomla.org/cms/joomla5), [Joomla 4.4.0](https://downloads.joomla.org/cms/joomla4), and [Joomla 3.10.12](https://downloads.joomla.org/cms/joomla3) ; but should also run with other Joomla 5.x, 4.x or 3.10.x versions.
+    + [Joomla 5.0.0 with Backward Compatibility plugin](https://downloads.joomla.org/cms/joomla5), [Joomla 4.4.0](https://downloads.joomla.org/cms/joomla4), and [Joomla 3.10.12](https://downloads.joomla.org/cms/joomla3) ; but should also run with other Joomla 5.x, 4.x or 3.10.x versions.
     + PHP 8.2.5 as well as PHP 8.0.28; but should also run with other PHP 8 versions.
 
 ## Translation

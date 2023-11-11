@@ -16,7 +16,6 @@
  * @license GNU/GPL v3.0
  * 
 
- * @todo Use of $this in global code might be unatended
  */
 
 use Joomla\CMS\HTML\HTMLHelper;

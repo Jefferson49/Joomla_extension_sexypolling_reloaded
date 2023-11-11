@@ -15,8 +15,6 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
- * @todo Function 'getInstance' has been deprecated. will be removed in 6.0
- * @todo Function 'getDbo' has been deprecated. will be removed in 6.0
  */
 
 use Joomla\CMS\Date\Date;
@@ -50,7 +48,7 @@ class SexypollingModelSexyAnswer extends AdminModel
 	public function getMax_id()
 	{
 		// Create a new query object.
-		$db		= $this->getDbo();
+		$db		= $this->getDatabase();
 		$query = 'SELECT COUNT(id) AS count_id FROM #__sexy_answers';
 		$db->setQuery($query);
 		$max_id = $db->loadResult();
@@ -122,7 +120,7 @@ class SexypollingModelSexyAnswer extends AdminModel
 	
 		try
 		{
-			$db = $this->getDbo();
+			$db = $this->getDatabase();
 	
 			$db->setQuery(
 					'UPDATE #__sexy_answers' .

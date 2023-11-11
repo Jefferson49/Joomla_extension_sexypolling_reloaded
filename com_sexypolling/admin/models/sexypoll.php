@@ -25,7 +25,7 @@ class SexypollingModelSexypoll extends AdminModel
 	public function getMax_id()
 	{
 		// Create a new query object.
-		$db		= $this->getDbo();
+		$db		= $this->getDatabase();
 		$query = 'SELECT COUNT(id) AS count_id FROM #__sexy_polls';
 		$db->setQuery($query);
 		$max_id = $db->loadResult();
@@ -110,7 +110,7 @@ class SexypollingModelSexypoll extends AdminModel
 	
 		try
 		{
-			$db = $this->getDbo();
+			$db = $this->getDatabase();
 	
 			$db->setQuery(
 					'UPDATE #__sexy_polls' .

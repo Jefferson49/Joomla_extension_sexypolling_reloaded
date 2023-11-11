@@ -27,7 +27,7 @@ defined('_JEXEC') or die('Restircted access');
 
 /** @var Joomla\CMS\WebAsset\WebAssetManager $wa */
 $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
-$uri_base = str_starts_with(Uri::base(true), '/') ? substr(Uri::base(true), 1) .'/' : '';
+$uri_base = 'administrator/';
 
 $jsFile = $uri_base.'components/com_sexypolling/assets/js/jquery-1.7.2.min.js';
 $wa->registerAndUseStyle('jquery-1.7.2.min', $cssFile);

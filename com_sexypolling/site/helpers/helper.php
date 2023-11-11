@@ -13,9 +13,6 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
- * @todo deprecated 4.3, removed 6.0: Factory::getApplication()->getDocument()->addStyleSheet
- * @todo deprecated 4.3, removed 6.0: Factory::getApplication()->getDocument()->addScript
- * @todo deprecated 4.3, removed 6.0: Factory::getApplication()->getDocument()->addStyleDeclaration
  */
 
 use Joomla\CMS\Access\Access;
@@ -41,38 +38,40 @@ class SexypollingHelper
     //function to add scripts/styles
     private function add_scripts() {
         //add scripts, styles
-        $document = Factory::getApplication()->getDocument();
+        /** @var Joomla\CMS\WebAsset\WebAssetManager $wa */
+        $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+        $uri_base = str_starts_with(Uri::base(true), '/') ? substr(Uri::base(true), 1) .'/' : '';
 
-        $cssFile = Uri::base(true).'/components/com_sexypolling/assets/css/main.css';
-        $document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
+        $cssFile = $uri_base.'components/com_sexypolling/assets/css/main.css';
+        $wa->registerAndUseStyle('main', $cssFile);
 
-        $cssFile = Uri::base(true).'/components/com_sexypolling/assets/css/sexycss-ui.css';
-        $document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
+        $cssFile = $uri_base.'components/com_sexypolling/assets/css/sexycss-ui.css';
+        $wa->registerAndUseStyle('sexycss-ui', $cssFile);
 
-        $cssFile = Uri::base(true).'/components/com_sexypolling/assets/css/countdown.css';
-        $document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
+        $cssFile = $uri_base.'components/com_sexypolling/assets/css/countdown.css';
+        $wa->registerAndUseStyle('countdown', $cssFile);
 
-        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexylib.js';
-        $document->addScript($jsFile);
+        $jsFile = $uri_base.'components/com_sexypolling/assets/js/sexylib.js';
+        $wa->registerAndUseScript('sexylib', $jsFile);
 
-        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexylib-ui.js';
-        $document->addScript($jsFile);
+        $jsFile = $uri_base.'components/com_sexypolling/assets/js/sexylib-ui.js';
+        $wa->registerAndUseScript('sexylib-ui', $jsFile);
 
-        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/selectToUISlider.jQuery.js';
-        $document->addScript($jsFile);
+        $jsFile = $uri_base.'components/com_sexypolling/assets/js/selectToUISlider.jQuery.js';
+        $wa->registerAndUseScript('selectToUISlider.jQuery', $jsFile);
 
-        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/color.js';
-        $document->addScript($jsFile);
+        $jsFile = $uri_base.'components/com_sexypolling/assets/js/color.js';
+        $wa->registerAndUseScript('color', $jsFile);
 
-        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/countdown.js';
-        $document->addScript($jsFile);
+        $jsFile = $uri_base.'components/com_sexypolling/assets/js/countdown.js';
+        $wa->registerAndUseScript('countdown', $jsFile);
 
-        $jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexypolling.js';
-        $document->addScript($jsFile);
+        $jsFile = $uri_base.'components/com_sexypolling/assets/js/sexypolling.js';
+        $wa->registerAndUseScript('sexypolling', $jsFile);
 
         require_once JPATH_BASE.'/modules/mod_sexypolling/helper.php';
         $styles = modSexypollingHelper::getCSS($this->module_id, $this->id_category, $this->id_poll);
-        $document->addStyleDeclaration($styles);
+        $wa->addInlineStyle($styles);
     }
 
     private function if_contain($array1,$array2) {
@@ -183,7 +182,7 @@ class SexypollingHelper
         $is_logged_in_user = ( in_array(2,$groups) || in_array(3,$groups) || in_array(6,$groups) || in_array(8,$groups) ) ? true : false;
 
 		//load language and timezone
-		$lang = Factory::getLanguage();
+		$lang = Factory::getApplication()->getLanguage();
 		$lang->load('com_sexypolling');
 		$lang_tag = $lang->getTag();
         $user_time_zone = $user->getTimezone()->getName();
@@ -726,8 +725,8 @@ class SexypollingHelper
             }
 
             if($this->type != 'plugin') {
-                $document = Factory::getApplication()->getDocument();
-                $document->addScriptDeclaration ( $jsInclude );
+                $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+                $wa->addInlineScript($jsInclude);
             }
             else {
                 echo $jstoinclude = '<script type="text/javascript">'.$jsInclude.'</script>';
@@ -739,6 +738,4 @@ class SexypollingHelper
 
         return $render_html = ob_get_clean();
     }
-
-
 }

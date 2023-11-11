@@ -153,8 +153,8 @@ class SexypollingModelSexyVotes extends ListModel{
         }
 
         // Add the list ordering clause.
-        $orderCol   = $this->state->get('list.ordering', 'id_vote');
-        $orderDirn  = $this->state->get('list.direction', 'desc');
+        $orderCol   = $this->getState()->get('list.ordering', 'id_vote');
+        $orderDirn  = $this->getState()->get('list.direction', 'desc');
         $query->order($db->escape($orderCol.' '.$orderDirn));
 
         return $query;

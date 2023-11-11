@@ -15,7 +15,6 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
- * @todo Type 'Joomla\CMS\MVC\Model\State' has been deprecated. Use the Registry directly 
  */
 
 use Joomla\CMS\Factory;
@@ -190,8 +189,8 @@ class SexypollingModelSexyAnswers extends ListModel{
         }
 
         // Add the list ordering clause.
-        $orderCol   = $this->state->get('list.ordering', 'sa.name');
-        $orderDirn  = $this->state->get('list.direction', 'asc');
+        $orderCol   = $this->getState()->get('list.ordering', 'sa.name');
+        $orderDirn  = $this->getState()->get('list.direction', 'asc');
         /*
             if ($orderCol == 'a.ordering' || $orderCol == 'category_title') {
         $orderCol = 'c.title '.$orderDirn.', a.ordering';

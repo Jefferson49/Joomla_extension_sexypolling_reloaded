@@ -221,8 +221,8 @@ class SexypollingModelSexyPolls extends ListModel{
 		}
 	
 		// Add the list ordering clause.
-		$orderCol	= $this->state->get('list.ordering', 'sp.name');
-		$orderDirn	= $this->state->get('list.direction', 'asc');
+		$orderCol	= $this->getState()->get('list.ordering', 'sp.name');
+		$orderDirn	= $this->getState()->get('list.direction', 'asc');
 		/*
 		if ($orderCol == 'a.ordering' || $orderCol == 'category_title') {
 			$orderCol = 'c.title '.$orderDirn.', a.ordering';

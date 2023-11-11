@@ -25,7 +25,7 @@ defined('_JEXEC') or die('Restircted access');
 $app = Factory::getApplication();
 
 //conects to datababse
-$db = Factory::getDBO();
+$db = Factory::getContainer()->get('DatabaseDriver');
 
 $category_id	= $app->input->getInt('id_category', 0);
 $poll_id 		= $app->input->getInt('id_poll', 0);

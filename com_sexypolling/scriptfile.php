@@ -48,7 +48,7 @@ class com_sexypollingInstallerScript {
             echo '<p>'.Text::_('MOD_SEXYPOLLING_MODULE_INSTALL_FAILED').'</p>';
 
         // enabling plugin
-        $db = Factory::getDBO();
+        $db = Factory::getContainer()->get('DatabaseDriver');
         $db->setQuery('UPDATE #__extensions SET enabled = 1 WHERE element = "sexypolling" AND folder = "system"');
         $db->execute();
     }
@@ -83,7 +83,7 @@ class com_sexypollingInstallerScript {
             echo '<p>'.Text::_('COM_SEXYPOLLING_PLUGIN_INSTALL_FAILED').'</p>';
 
         // enabling plugin
-        $db = Factory::getDBO();
+        $db = Factory::getContainer()->get('DatabaseDriver');
         $db->setQuery('UPDATE #__extensions SET enabled = 1 WHERE element = "sexypolling" AND folder = "system"');
         $db->execute();
     }
@@ -111,7 +111,7 @@ class com_sexypollingInstallerScript {
             return; 
         }
 
-        $db = Factory::getDBO();
+        $db = Factory::getContainer()->get('DatabaseDriver');
         $query = "SELECT * FROM `#__sexy_polls` LIMIT 1";
         $db->setQuery($query);
         $columns_data = $db->LoadAssoc();

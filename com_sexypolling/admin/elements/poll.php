@@ -30,7 +30,7 @@ class JElementPoll extends ListField
 	{
 		$doc 		=& Factory::getApplication()->getDocument();
 		$fieldName	= $control_name.'['.$name.']';
-		$db 		=& Factory::getDBO();
+		$db 		=& Factory::getContainer()->get('DatabaseDriver');
 
 		$query = "SELECT name text,id value FROM #__sexy_polls WHERE published = '1'";
 		$db->setQuery($query);

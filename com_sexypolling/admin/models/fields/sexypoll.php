@@ -44,7 +44,7 @@ class FormFieldSexyPoll extends ListField
 	 */
 	protected function getOptions() 
 	{
-		$db = Factory::getDBO();
+		$db = Factory::getContainer()->get('DatabaseDriver');
 		$query = $db->getQuery(true);
 		$query->select('id,name');
 		$query->from('#__sexy_polls');

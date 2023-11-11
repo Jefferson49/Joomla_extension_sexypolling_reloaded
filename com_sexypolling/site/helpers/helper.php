@@ -85,7 +85,7 @@ class SexypollingHelper
     }
 
     private function get_data() {
-        $db = Factory::getDBO();
+        $db = Factory::getContainer()->get('DatabaseDriver');
 
                     $query = 'SELECT '.
                         'sp.id polling_id, '.
@@ -237,7 +237,7 @@ class SexypollingHelper
             $polling_words = array(Text::_("COM_SEXYPOLLING_WORD_1"),Text::_("COM_SEXYPOLLING_WORD_2"),Text::_("COM_SEXYPOLLING_WORD_3"),Text::_("COM_SEXYPOLLING_WORD_4"),Text::_("COM_SEXYPOLLING_WORD_5"),Text::_("COM_SEXYPOLLING_WORD_6"),Text::_("COM_SEXYPOLLING_WORD_7"),Text::_("COM_SEXYPOLLING_WORD_8"),Text::_("COM_SEXYPOLLING_WORD_9"),Text::_("COM_SEXYPOLLING_WORD_10"),Text::_("COM_SEXYPOLLING_WORD_11"),Text::_("COM_SEXYPOLLING_WORD_12"),Text::_("COM_SEXYPOLLING_WORD_13"),Text::_("COM_SEXYPOLLING_WORD_14"),Text::_("COM_SEXYPOLLING_WORD_15"),Text::_("COM_SEXYPOLLING_WORD_16"),Text::_("COM_SEXYPOLLING_WORD_17"),Text::_("COM_SEXYPOLLING_WORD_18"),Text::_("COM_SEXYPOLLING_WORD_19"),Text::_("COM_SEXYPOLLING_WORD_20"),Text::_("COM_SEXYPOLLING_WORD_21"),Text::_("COM_SEXYPOLLING_WORD_22"),Text::_("COM_SEXYPOLLING_WORD_23"),Text::_("COM_SEXYPOLLING_WORD_24"),Text::_("COM_SEXYPOLLING_WORD_25"),Text::_("COM_SEXYPOLLING_WORD_26"));
 
             $module_id = $this->module_id;
-            $db = Factory::getDBO();
+            $db = Factory::getContainer()->get('DatabaseDriver');
 
             foreach ($pollings as $poll_index => $polling_array) {
 

@@ -34,7 +34,7 @@ class FormFieldPoll extends FormField
 		$doc 		= Factory::getApplication()->getDocument();
 		$fieldName	= $this->name;
 
-		$db = Factory::getDBO();
+		$db = Factory::getContainer()->get('DatabaseDriver');
 
 		$query = "SELECT name text,id value FROM #__sexy_polls WHERE published = '1'";
 		$db->setQuery($query);

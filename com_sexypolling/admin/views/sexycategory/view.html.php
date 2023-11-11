@@ -15,7 +15,6 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
- * @todo Return value of display() is expected to be of type null, bool returned
  */
 
 use Joomla\CMS\Factory;
@@ -42,7 +41,7 @@ class SexypollingViewSexycategory extends HtmlView
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) {
 			Factory::getApplication()->enqueueMessage(implode("\n", $errors));
-			return false;
+			return;
 		}
 
 		$this->addToolbar();

@@ -14,7 +14,7 @@
  * @link https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
- * 
+ *  
  */
 
 use Joomla\CMS\Date\Date;
@@ -41,7 +41,7 @@ class SexypollingModelSexyAnswer extends AdminModel
 	 */
 	public function getTable($type = 'SexyAnswer', $prefix = 'SexyPollTable', $config = array()) 
 	{
-		return Table::getInstance($type, $prefix, $config);
+		return $this->getMVCFactory()->createTable($type, $prefix, $config);
 	}
 	
 	//get max id

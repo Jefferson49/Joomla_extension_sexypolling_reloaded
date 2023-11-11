@@ -16,6 +16,7 @@
  * @license GNU/GPL v3.0
  * 
  * @todo deprecated 4.3, removed 6.0: Factory::getApplication()->getDocument()->addStyleSheet
+ * @todo Function 'getInstance' has been deprecated. will be removed in 6.0. Get the controller through the MVCFactory instead
  */
 use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Controller\BaseController;

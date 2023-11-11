@@ -15,7 +15,6 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
- * @todo Function 'getDBO' has been deprecated
  */
 
 use Joomla\CMS\Factory;

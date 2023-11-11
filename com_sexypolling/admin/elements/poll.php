@@ -15,14 +15,14 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
- * @todo J4 deprecated JFormFieldList
  */
  
 use Joomla\CMS\Factory;
+use Joomla\CMS\Form\Field\ListField;
  
 defined('_JEXEC') or die('Restircted access');
 
-class JElementPoll extends JFormFieldList
+class JElementPoll extends ListField
 {
 	var	$_name = 'Title';
 

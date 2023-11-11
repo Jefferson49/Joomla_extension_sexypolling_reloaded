@@ -48,8 +48,8 @@ use Joomla\CMS\Session\Session;
 		$levels = array();
 		$groups = array();
 		
-		$user = Factory::getUser();
-		$user_id = $user->get('id');
+		$user = Factory::getApplication()->getIdentity();
+		$user_id = $user !== null ? $user->id : 0;
 		
 		$groups = Access::getGroupsByUser($user_id);
 		$is_logged_in_user = ( in_array(2,$groups) || in_array(3,$groups) || in_array(6,$groups) || in_array(8,$groups) ) ? true : false;
@@ -420,8 +420,8 @@ use Joomla\CMS\Session\Session;
 		$levels = array();
 		$groups = array();
 		
-		$user = Factory::getUser();
-		$user_id = $user->get('id');
+		$user = Factory::getApplication()->getIdentity();
+		$user_id = $user !== null ? $user->id : 0;
 		
 		$groups = Access::getGroupsByUser($user_id);
 		$is_logged_in_user = ( in_array(2,$groups) || in_array(3,$groups) || in_array(6,$groups) || in_array(8,$groups) ) ? true : false;		

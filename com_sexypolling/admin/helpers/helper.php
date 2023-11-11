@@ -15,11 +15,11 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
- * @todo J4 deprecated JHtmlSidebar
  */
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\HTML\Helpers\Sidebar;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -45,6 +45,6 @@ class SexypollingHelper {
 		$link = 'index.php?option=com_sexypolling&view='.$v;
 		if($controller != null) $link .= '&controller='.$controller;
 		
-		JHtmlSidebar::addEntry( Text::_($title), $link, $enabled);
+		Sidebar::addEntry( Text::_($title), $link, $enabled);
 	}
 }

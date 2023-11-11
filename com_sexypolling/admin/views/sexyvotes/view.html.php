@@ -15,12 +15,12 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
- * @todo J4 deprecated JHtmlSidebar 
  */
 
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView;
+use Joomla\CMS\HTML\Helpers\Sidebar;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -48,14 +48,14 @@ class SexypollingViewSexyvotes extends HtmlView {
             $options[] = HTMLHelper::_('select.option', $poll->id, $poll->name);
         }
 
-		JHtmlSidebar::addFilter(
+		Sidebar::addFilter(
 				Text::_('COM_SEXYPOLLING_SELECT_POLL'),
 				'filter_poll_id',
 				HTMLHelper::_('select.options', $options, 'value', 'text', $this->state->get('filter.poll_id'))
 		);
 
         $this->addToolbar();
-		$this->sidebar = JHtmlSidebar::render();
+		$this->sidebar = Sidebar::render();
         parent::display($tpl);
     }
 

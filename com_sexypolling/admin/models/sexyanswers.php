@@ -15,7 +15,7 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
- 
+ * @todo Type 'Joomla\CMS\MVC\Model\State' has been deprecated. Use the Registry directly 
  */
 
 use Joomla\CMS\Factory;

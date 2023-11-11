@@ -1,0 +1,2 @@
+# Set line endings for ini language files to UNIX
+*.ini text eol=lf

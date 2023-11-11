@@ -19,7 +19,9 @@
  */
 
 use Joomla\CMS\Factory;
+use Joomla\CMS\MVC\Controller\BaseController;
 use Joomla\CMS\MVC\Model\ListModel;
+use Joomla\Database\DatabaseQuery;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -30,8 +32,7 @@ class SexypollingModelSexyCategories extends ListModel{
 	 * Constructor.
 	 *
 	 * @param	array	An optional associative array of configuration settings.
-	 * @see		JController
-	 * @since	1.6
+	 * @see		BaseController
 	 */
 	public function __construct($config = array())
 	{
@@ -102,8 +103,7 @@ class SexypollingModelSexyCategories extends ListModel{
 	/**
 	 * Build an SQL query to load the list data.
 	 *
-	 * @return	JDatabaseQuery
-	 * @since	1.6
+	 * @return	DatabaseQuery
 	 */
 	protected function getListQuery()
 	{

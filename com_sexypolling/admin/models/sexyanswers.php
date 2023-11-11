@@ -19,7 +19,9 @@
  */
 
 use Joomla\CMS\Factory;
+use Joomla\CMS\MVC\Controller\BaseController;
 use Joomla\CMS\MVC\Model\ListModel;
+use Joomla\Database\DatabaseQuery;
 use Joomla\Utilities\ArrayHelper;
 
 // no direct access
@@ -31,8 +33,7 @@ class SexypollingModelSexyAnswers extends ListModel{
      * Constructor.
      *
      * @param   array   An optional associative array of configuration settings.
-     * @see     JController
-     * @since   1.6
+     * @see     BaseController
      */
     public function __construct($config = array())
     {
@@ -126,8 +127,7 @@ class SexypollingModelSexyAnswers extends ListModel{
     /**
      * Build an SQL query to load the list data.
      *
-     * @return  JDatabaseQuery
-     * @since   1.6
+     * @return  DatabaseQuery
      */
     protected function getListQuery()
     {

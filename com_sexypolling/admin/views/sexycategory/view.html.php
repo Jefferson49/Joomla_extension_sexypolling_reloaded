@@ -21,6 +21,7 @@
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView;
+use Joomla\CMS\Toolbar\ToolbarHelper;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -61,20 +62,20 @@ class SexypollingViewSexycategory extends HtmlView
 		// Since we don't track these assets at the item level, use the category id.
 
 		$text = $isNew ? Text::_( 'JTOOLBAR_NEW' ) : Text::_( 'JTOOLBAR_EDIT' );
-		JToolBarHelper::title(   Text::_( 'COM_SEXYPOLLING_CATEGORY' ).': <small><small>[ ' . $text.' ]</small></small>','manage.png' );
+		ToolbarHelper::title(   Text::_( 'COM_SEXYPOLLING_CATEGORY' ).': <small><small>[ ' . $text.' ]</small></small>','manage.png' );
 
 		// Build the actions for new and existing records.
 		if ($isNew)  {
-			JToolBarHelper::apply('sexycategory.apply');
-			JToolBarHelper::save('sexycategory.save');
+			ToolbarHelper::apply('sexycategory.apply');
+			ToolbarHelper::save('sexycategory.save');
 
-			JToolBarHelper::cancel('sexycategory.cancel');
+			ToolbarHelper::cancel('sexycategory.cancel');
 		}
 		else {
-			JToolBarHelper::apply('sexycategory.apply');
-			JToolBarHelper::save('sexycategory.save');
+			ToolbarHelper::apply('sexycategory.apply');
+			ToolbarHelper::save('sexycategory.save');
 			
-			JToolBarHelper::cancel('sexycategory.cancel','JTOOLBAR_CLOSE');
+			ToolbarHelper::cancel('sexycategory.cancel','JTOOLBAR_CLOSE');
 		}
 	}
 }

@@ -17,10 +17,11 @@
  * 
  */
 
+use Joomla\CMS\HTML\Helpers\Sidebar;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView;
-use Joomla\CMS\HTML\Helpers\Sidebar;
+use Joomla\CMS\Toolbar\ToolbarHelper;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -66,7 +67,7 @@ class SexypollingViewSexyvotes extends HtmlView {
      */
     protected function addToolbar()
     {
-        JToolBarHelper::deleteList('', 'sexyvotes.delete', 'JTOOLBAR_DELETE');
+        ToolbarHelper::deleteList('', 'sexyvotes.delete', 'JTOOLBAR_DELETE');
     }
 
     /**

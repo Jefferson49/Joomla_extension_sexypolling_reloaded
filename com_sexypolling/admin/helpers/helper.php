@@ -18,8 +18,9 @@
  */
 
 use Joomla\CMS\Factory;
-use Joomla\CMS\Language\Text;
 use Joomla\CMS\HTML\Helpers\Sidebar;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Toolbar\ToolbarHelper;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -39,7 +40,7 @@ class SexypollingHelper {
 		if($view == $v) {
 			$img = $v;
 			if($image != null) $img = $image;
-			JToolBarHelper::title(   Text::_( $title).' - '.( 'Sexy Polling' ), $img.'.png' );
+			ToolbarHelper::title(   Text::_( $title).' - '.( 'Sexy Polling' ), $img.'.png' );
 			$enabled = true;
 		}
 		$link = 'index.php?option=com_sexypolling&view='.$v;

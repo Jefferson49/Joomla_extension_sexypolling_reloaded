@@ -162,10 +162,48 @@
 		<sha256>a38f6b316e3008221368b3af1da23b4b2870417f8e06e02e81aa97c4b86fe962</sha256>
     </update>
 	<update>
-		<name>Sexy Polling Reloaded</name>
-		<description>A Joomla plugin to provide polls</description>
+		<name>COM_SEXYPOLLING</name>
+		<description>COM_SEXYPOLLING_DESCRIPTION</description>
 		<element>COM_SEXYPOLLING</element>
 		<type>component</type>
+		<version>5.0.0</version>
+		<infourl title="Sexy Polling Reloaded">https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/tag/v5.0.0</infourl>
+		<changelogurl>https://raw.githubusercontent.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/updates/changelog.xml</changelogurl>
+		<downloads>
+			<downloadurl type="full" format="zip">https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/download/v5.0.0/joomla_plugin_sexypolling_reloaded_v5.0.0.zip</downloadurl>
+		</downloads>
+		<tags>
+			<tag>stable</tag>
+		</tags>
+		<maintainer>Jefferson49</maintainer>
+		<maintainerurl>https://github.com/Jefferson49</maintainerurl>
+		<targetplatform name="joomla" version="((3.10)|(4.*)|(5.*))" />
+		<sha256>b94a4b1c21230f7b6b4769950cc078317f84bb2bd99042095058ff3f67a6790f</sha256>
+    </update>
+	<update>
+		<name>PLG_SEXYPOLLING</name>
+		<description>PLG_SEXYPOLLING_DESCRIPTION</description>
+		<element>PLG_SEXYPOLLING</element>
+		<type>plugin</type>
+		<version>5.0.0</version>
+		<infourl title="Sexy Polling Reloaded">https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/tag/v5.0.0</infourl>
+		<changelogurl>https://raw.githubusercontent.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/updates/changelog.xml</changelogurl>
+		<downloads>
+			<downloadurl type="full" format="zip">https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/download/v5.0.0/joomla_plugin_sexypolling_reloaded_v5.0.0.zip</downloadurl>
+		</downloads>
+		<tags>
+			<tag>stable</tag>
+		</tags>
+		<maintainer>Jefferson49</maintainer>
+		<maintainerurl>https://github.com/Jefferson49</maintainerurl>
+		<targetplatform name="joomla" version="((3.10)|(4.*)|(5.*))" />
+		<sha256>b94a4b1c21230f7b6b4769950cc078317f84bb2bd99042095058ff3f67a6790f</sha256>
+    </update>
+	<update>
+		<name>MOD_SEXYPOLLING</name>
+		<description>MOD_SEXYPOLLING_DESCRIPTION</description>
+		<element>MOD_SEXYPOLLING</element>
+		<type>module</type>
 		<version>5.0.0</version>
 		<infourl title="Sexy Polling Reloaded">https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/tag/v5.0.0</infourl>
 		<changelogurl>https://raw.githubusercontent.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/updates/changelog.xml</changelogurl>

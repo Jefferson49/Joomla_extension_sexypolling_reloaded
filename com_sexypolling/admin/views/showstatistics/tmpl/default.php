@@ -39,9 +39,9 @@ $document->addScriptDeclaration ( 'jQuery.noConflict();' );
 
 //function to return dates array
 function get_dates_array($date1,$date2) {
-    $a = strtotime($date1 ?? '');
+    $a = strtotime($date1 ?? '2010-01-01');
     $dates = array();
-    while ($a <= strtotime($date2 ?? '')) {
+    while ($a <= strtotime($date2 ?? '2038-01-01')) {
         $dates[] = date('Y-m-d', $a);
         $a += (60 * 60 * 24);
     }
@@ -75,14 +75,14 @@ $statdata = $db->loadAssocList();
 
 $poll_name = $statdata[0]['name'];
 $poll_question = $statdata[0]['question'];
-$min_date = date('Y-m-d',strtotime($statdata[0]['date'] ?? ''));
+$min_date = date('Y-m-d',strtotime($statdata[0]['date'] ?? '2010-01-01'));
 $size = sizeof($statdata) - 1;
-$max_date = date('Y-m-d',strtotime($statdata[$size]['date'] ?? ''));
+$max_date = date('Y-m-d',strtotime($statdata[$size]['date'] ?? '2038-01-01'));
 
 
 $stat_array = array();
 foreach($statdata as $val) {
-    $only_date = date('Y-m-d',strtotime($val['date'] ?? ''));
+    $only_date = date('Y-m-d',strtotime($val['date'] ?? '2010-01-01'));
     $stat_array[$only_date] = $val['votes'];
 }
 

@@ -49,7 +49,7 @@ class SexypollingViewSexypoll extends HtmlView
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) {
 			Factory::getApplication()->enqueueMessage(implode("\n", $errors));
-			return false;
+			return;
 		}
 
 		$this->addToolbar($max_id);

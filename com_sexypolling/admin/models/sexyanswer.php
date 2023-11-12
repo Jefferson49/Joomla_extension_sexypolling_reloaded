@@ -15,8 +15,6 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
- * @todo deprecated J3 CMSObject->setError, 
- * @todo deprecated J3 JDatabase::getErrorMsg, 
  * 
  */
 
@@ -115,7 +113,7 @@ class SexypollingModelSexyAnswer extends AdminModel
 		ArrayHelper::toInteger($pks);
 	
 		if (empty($pks)) {
-			$this->setError(Text::_('COM_SEXYPOLLING_NO_ITEM_SELECTED'));
+			Factory::getApplication()->enqueueMessage(Text::_('COM_SEXYPOLLING_NO_ITEM_SELECTED'));
 			return false;
 		}
 	
@@ -130,23 +128,20 @@ class SexypollingModelSexyAnswer extends AdminModel
 					' SET featured = '.(int) $value.
 					' WHERE id IN ('.implode(',', $pks).')'
 			);
-			if (!$db->execute()) {
-				throw new Exception($db->getErrorMsg());
-			}
+			$db->execute();	
+
+			$table->reorder();
 	
+			// Clean component's cache
+			$this->cleanCache();
+		
+			return true;	
 		}
 		catch (Exception $e)
 		{
-			$this->setError($e->getMessage());
+			Factory::getApplication()->enqueueMessage(Text::_($e->getMessage()), 'error');
 			return false;
 		}
-	
-		$table->reorder();
-	
-		// Clean component's cache
-		$this->cleanCache();
-	
-		return true;
 	}
 
 	/**

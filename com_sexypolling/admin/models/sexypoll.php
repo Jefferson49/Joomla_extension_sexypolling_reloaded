@@ -8,7 +8,6 @@
  * @subpackage com_sexypolling
  * @license GNU/GPL
  *
- * @todo deprecated Function 'getErrorMsg' has been deprecated. 
  */
 
 use Joomla\CMS\Factory;
@@ -118,21 +117,20 @@ class SexypollingModelSexypoll extends AdminModel
 					' SET featured = '.(int) $value.
 					' WHERE id IN ('.implode(',', $pks).')'
 			);
-			if (!$db->execute()) {
-				throw new Exception($db->getErrorMsg());
-			}
+			$db->execute();
+
+			$table->reorder();
 	
+			// Clean component's cache
+			$this->cleanCache();
+		
+			return true;
+		
 		}
 		catch (Exception $e)
 		{
 			Factory::getApplication()->enqueueMessage(Text::_($e->getMessage()), 'error');
+			return false;
 		}
-	
-		$table->reorder();
-	
-		// Clean component's cache
-		$this->cleanCache();
-	
-		return true;
 	}
 }

@@ -15,12 +15,12 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
- * @todo J4 deprecated JHtmlSidebar 
  */
 
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView;
+use Joomla\CMS\HTML\Helpers\Sidebar;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -42,13 +42,13 @@ class SexypollingViewSexytemplates extends HtmlView {
     	$this->pagination	= $this->get('Pagination');
     	$this->state		= $this->get('State');
  		
-		JHtmlSidebar::addFilter(
+		Sidebar::addFilter(
 				Text::_('JOPTION_SELECT_PUBLISHED'),
 				'filter_published',
 				HTMLHelper::_('select.options', HTMLHelper::_('jgrid.publishedOptions'), 'value', 'text', $this->state->get('filter.published'), true)
 		);
     	$this->addToolbar();
-		$this->sidebar = JHtmlSidebar::render();
+		$this->sidebar = Sidebar::render();
 		parent::display($tpl);
     }
     

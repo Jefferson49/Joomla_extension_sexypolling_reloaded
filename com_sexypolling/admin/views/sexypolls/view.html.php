@@ -15,12 +15,12 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
- * @todo J4 deprecated JHtmlSidebar 
  */
 
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView;
+use Joomla\CMS\HTML\Helpers\Sidebar;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -49,26 +49,26 @@ class SexypollingViewSexypolls extends HtmlView {
     		$options[]      = HTMLHelper::_('select.option', $category->id, $category->name);
     	}
 		
-		JHtmlSidebar::addFilter(
+		Sidebar::addFilter(
 				Text::_('JOPTION_SELECT_PUBLISHED'),
 				'filter_published',
 				HTMLHelper::_('select.options', HTMLHelper::_('jgrid.publishedOptions'), 'value', 'text', $this->state->get('filter.published'), true)
 		);
 		
-		JHtmlSidebar::addFilter(
+		Sidebar::addFilter(
 				Text::_('JOPTION_SELECT_CATEGORY'),
 				'filter_category_id',
 				HTMLHelper::_('select.options', $options, 'value', 'text', $this->state->get('filter.category_id'))
 		);
 		
-		JHtmlSidebar::addFilter(
+		Sidebar::addFilter(
 				Text::_('JOPTION_SELECT_ACCESS'),
 				'filter_access',
 				HTMLHelper::_('select.options', HTMLHelper::_('access.assetgroups'), 'value', 'text', $this->state->get('filter.access'))
 		);
 
 		$this->addToolbar();
-		$this->sidebar = JHtmlSidebar::render();
+		$this->sidebar = Sidebar::render();
 		parent::display($tpl);
     }
     

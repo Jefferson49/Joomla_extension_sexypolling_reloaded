@@ -15,12 +15,12 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
- * @todo J4 deprecated JFormFieldList  
  */
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Form\FormHelper;
 use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Form\Field\ListField;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -28,7 +28,7 @@ defined('_JEXEC') or die('Restircted access');
 // import the list field type
 FormHelper::loadFieldClass('list');
 
-class FormFieldSexyPoll extends JFormFieldList
+class FormFieldSexyPoll extends ListField
 {
 	/**
 	 * The field type.

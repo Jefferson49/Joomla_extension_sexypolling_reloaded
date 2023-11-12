@@ -17,6 +17,7 @@
  * 
 
  * @todo Use of $this in global code might be unatended
+ * @todo Function 'addIncludePath' has been deprecated. will be removed in 6.0 Use the service registry instead
  */
 
 use Joomla\CMS\HTML\HTMLHelper;

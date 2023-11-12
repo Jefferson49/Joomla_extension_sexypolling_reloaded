@@ -8,6 +8,7 @@
  * @subpackage com_sexypolling
  * @license GNU/GPL
  *
+ * @todo Use of unknown class: 'ContactControllerContacts' 
  */
 
 use Joomla\CMS\MVC\Model\AdminModel; 

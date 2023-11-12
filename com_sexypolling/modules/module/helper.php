@@ -42,7 +42,7 @@ use Joomla\CMS\Session\Session;
 		$post = Factory::getApplication()->input;
 		$server = Factory::getApplication()->input->server;
 
-		$db = Factory::getDBO();
+		$db = Factory::getContainer()->get('DatabaseDriver');
 		
 		//get user groups
 		$levels = array();
@@ -414,7 +414,7 @@ use Joomla\CMS\Session\Session;
 		$post = Factory::getApplication()->input;
 		$server = Factory::getApplication()->input->server;
 
-		$db = Factory::getDBO();
+		$db = Factory::getContainer()->get('DatabaseDriver');
 		
 		//get user groups
 		$levels = array();

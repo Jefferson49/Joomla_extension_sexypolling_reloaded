@@ -51,7 +51,7 @@ function get_dates_array($date1,$date2) {
 }
 
 
-$db = Factory::getDBO();
+$db = Factory::getContainer()->get('DatabaseDriver');
 
 $poll_id = Factory::getApplication()->input->get('id');
 

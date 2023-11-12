@@ -17,10 +17,11 @@
  * 
  */
 
+use Joomla\CMS\HTML\Helpers\Sidebar;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView;
-use Joomla\CMS\HTML\Helpers\Sidebar;
+use Joomla\CMS\Toolbar\ToolbarHelper;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -79,18 +80,18 @@ class SexypollingViewSexypolls extends HtmlView {
      */
 	protected function addToolbar()
 	{
-		JToolBarHelper::addNew('sexypoll.add');
-		JToolBarHelper::editList('sexypoll.edit');
+		ToolbarHelper::addNew('sexypoll.add');
+		ToolbarHelper::editList('sexypoll.edit');
 		    	
-		JToolBarHelper::divider();
-		JToolBarHelper::publish('sexypolls.publish', 'JTOOLBAR_PUBLISH', true);
-		JToolBarHelper::unpublish('sexypolls.unpublish', 'JTOOLBAR_UNPUBLISH', true);
-		JToolBarHelper::divider();
-		JToolBarHelper::archiveList('sexypolls.archive');
-		JToolBarHelper::checkin('sexypolls.checkin');
-    	JToolBarHelper::deleteList('', 'sexypolls.delete', 'JTOOLBAR_DELETE');
+		ToolbarHelper::divider();
+		ToolbarHelper::publish('sexypolls.publish', 'JTOOLBAR_PUBLISH', true);
+		ToolbarHelper::unpublish('sexypolls.unpublish', 'JTOOLBAR_UNPUBLISH', true);
+		ToolbarHelper::divider();
+		ToolbarHelper::archiveList('sexypolls.archive');
+		ToolbarHelper::checkin('sexypolls.checkin');
+    	ToolbarHelper::deleteList('', 'sexypolls.delete', 'JTOOLBAR_DELETE');
 	    
-		JToolBarHelper::divider();
+		ToolbarHelper::divider();
 	}
 	
 	/**

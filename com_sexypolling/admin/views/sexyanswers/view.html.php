@@ -17,10 +17,11 @@
  * 
  */
 
+use Joomla\CMS\HTML\Helpers\Sidebar;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView;
-use Joomla\CMS\HTML\Helpers\Sidebar;
+use Joomla\CMS\Toolbar\ToolbarHelper;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -73,13 +74,13 @@ class SexypollingViewSexyanswers extends HtmlView {
      */
     protected function addToolbar()
     {
-    	JToolBarHelper::addNew('sexyanswer.add');
-    	JToolBarHelper::editList('sexyanswer.edit');
+    	ToolbarHelper::addNew('sexyanswer.add');
+    	ToolbarHelper::editList('sexyanswer.edit');
 	    	
-		JToolBarHelper::divider();
- 		JToolBarHelper::publish('sexyanswers.publish', 'JTOOLBAR_PUBLISH', true);
-		JToolBarHelper::unpublish('sexyanswers.unpublish', 'JTOOLBAR_UNPUBLISH', true);
-		JToolBarHelper::deleteList('', 'sexyanswers.delete', 'JTOOLBAR_DELETE');
+		ToolbarHelper::divider();
+ 		ToolbarHelper::publish('sexyanswers.publish', 'JTOOLBAR_PUBLISH', true);
+		ToolbarHelper::unpublish('sexyanswers.unpublish', 'JTOOLBAR_UNPUBLISH', true);
+		ToolbarHelper::deleteList('', 'sexyanswers.delete', 'JTOOLBAR_DELETE');
 	    
     }
     

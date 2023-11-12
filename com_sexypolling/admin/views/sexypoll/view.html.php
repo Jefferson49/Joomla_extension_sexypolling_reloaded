@@ -21,6 +21,7 @@
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView;
+use Joomla\CMS\Toolbar\ToolbarHelper;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -68,17 +69,17 @@ class SexypollingViewSexypoll extends HtmlView
 		// Since we don't track these assets at the item level, use the category id.
 
 		$text = $isNew ? Text::_( 'JTOOLBAR_NEW' ) : Text::_( 'JTOOLBAR_EDIT' );
-		JToolBarHelper::title(   Text::_( 'COM_SEXYPOLLING_POLL' ).': <small><small>[ ' . $text.' ]</small></small>','manage.png' );
+		ToolbarHelper::title(   Text::_( 'COM_SEXYPOLLING_POLL' ).': <small><small>[ ' . $text.' ]</small></small>','manage.png' );
 	
-		JToolBarHelper::apply('sexypoll.apply');
-		JToolBarHelper::save('sexypoll.save');
+		ToolbarHelper::apply('sexypoll.apply');
+		ToolbarHelper::save('sexypoll.save');
 		
 		// Build the actions for new and existing records.
 		if ($isNew)  {
-			JToolBarHelper::cancel('sexypoll.cancel');
+			ToolbarHelper::cancel('sexypoll.cancel');
 		}
 		else {
-			JToolBarHelper::cancel('sexypoll.cancel','JTOOLBAR_CLOSE');
+			ToolbarHelper::cancel('sexypoll.cancel','JTOOLBAR_CLOSE');
 		}
 	}
 }

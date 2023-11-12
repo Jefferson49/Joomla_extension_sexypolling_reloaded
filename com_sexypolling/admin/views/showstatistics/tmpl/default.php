@@ -20,6 +20,7 @@
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\Toolbar\ToolbarHelper;
 use Joomla\CMS\Uri\Uri;
 
 // no direct access
@@ -165,7 +166,7 @@ $query = "
 $db->setQuery($query);
 $totalvotes = $db->loadResult();
 
-JToolBarHelper::title(   Text::_( 'COM_SEXYPOLLING_STATISTICS' ).' - ('.$poll_name.')' ,'manage.png' );
+ToolbarHelper::title(   Text::_( 'COM_SEXYPOLLING_STATISTICS' ).' - ('.$poll_name.')' ,'manage.png' );
 
 
 if($totalvotes > 0) {

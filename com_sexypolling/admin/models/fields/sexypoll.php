@@ -40,7 +40,7 @@ class FormFieldSexyPoll extends ListField
 	/**
 	 * Method to get a list of options for a list input.
 	 *
-	 * @return	array		An array of JHtml options.
+	 * @return	array		An array of Html options.
 	 */
 	protected function getOptions() 
 	{

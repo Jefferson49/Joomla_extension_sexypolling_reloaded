@@ -15,8 +15,6 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
-
- * @todo Use of $this in global code might be unatended
  * @todo Function 'addIncludePath' has been deprecated. will be removed in 6.0 Use the service registry instead
  */
 

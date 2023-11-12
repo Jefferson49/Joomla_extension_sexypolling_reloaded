@@ -15,7 +15,6 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
- * @todo deprecated 4.3, removed 6.0: Factory::getApplication()->getDocument()->addStyleSheet
  * @todo Function 'getInstance' has been deprecated. will be removed in 6.0. Get the controller through the MVCFactory instead
  */
 use Joomla\CMS\Factory;
@@ -39,9 +38,11 @@ require_once JPATH_COMPONENT.DIRECTORY_SEPARATOR.'helpers'.DIRECTORY_SEPARATOR.'
 // Initialize the controller
 $controller	= BaseController::getInstance('SexyPolling');
 
-$document = Factory::getApplication()->getDocument();
-$cssFile = Uri::base(true).'/components/com_sexypolling/assets/css/icons_'.JV.'.css';
-$document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
+/** @var Joomla\CMS\WebAsset\WebAssetManager $wa */
+$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+$uri_base = str_starts_with(Uri::base(true), '/') ? substr(Uri::base(true), 1) .'/' : '';
+$cssFile = $uri_base.'components/com_sexypolling/assets/css/icons_'.JV.'.css';
+$wa->registerAndUseStyle('icons_'.JV, $cssFile);
 
 // Perform the Request task
 

@@ -15,7 +15,6 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
- * @todo deprecated 4.3, removed 6.0: Factory::getApplication()->getDocument()->addScript
  */
 
 use Joomla\CMS\Factory;
@@ -26,16 +25,20 @@ use Joomla\CMS\Uri\Uri;
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
-$document = Factory::getApplication()->getDocument();
+/** @var Joomla\CMS\WebAsset\WebAssetManager $wa */
+$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+$uri_base = str_starts_with(Uri::base(true), '/') ? substr(Uri::base(true), 1) .'/' : '';
 
-$jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/jquery-1.7.2.min.js';
-$document->addScript($jsFile);
-$jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/highstock.js';
-$document->addScript($jsFile);
-$jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/exporting.js';
-$document->addScript($jsFile);
+$jsFile = $uri_base.'components/com_sexypolling/assets/js/jquery-1.7.2.min.js';
+$wa->registerAndUseStyle('jquery-1.7.2.min', $cssFile);
 
-$document->addScriptDeclaration ( 'jQuery.noConflict();' );
+$jsFile = $uri_base.'components/com_sexypolling/assets/js/highstock.js';
+$wa->registerAndUseStyle('highstock', $cssFile);
+
+$jsFile = $uri_base.'components/com_sexypolling/assets/js/exporting.js';
+$wa->registerAndUseStyle('exporting', $cssFile);
+
+$wa->addInlineScript('jQuery.noConflict();' );
 
 
 //function to return dates array

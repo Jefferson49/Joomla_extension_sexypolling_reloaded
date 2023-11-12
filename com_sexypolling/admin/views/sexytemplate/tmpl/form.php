@@ -15,10 +15,6 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
- * @todo deprecated 4.3, removed 6.0: Factory::getApplication()->getDocument()->addStyleSheet
- * @todo deprecated 4.3, removed 6.0: Factory::getApplication()->getDocument()->addScript
- * @todo Use of $this in global code might be unatended
- * 
  */
 
 use Joomla\CMS\Factory;
@@ -30,38 +26,41 @@ use Joomla\CMS\Uri\Uri;
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
-$document = Factory::getApplication()->getDocument();
-$cssFile = Uri::base(true).'/components/com_sexypolling/assets/css/colorpicker.css';
-$document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
+/** @var Joomla\CMS\WebAsset\WebAssetManager $wa */
+$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+$uri_base = str_starts_with(Uri::base(true), '/') ? substr(Uri::base(true), 1) .'/' : '';
 
-$cssFile = Uri::base(true).'/components/com_sexypolling/assets/css/layout.css';
-$document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
+$cssFile = $uri_base.'components/com_sexypolling/assets/css/colorpicker.css';
+$wa->registerAndUseStyle('colorpicker', $cssFile);
 
-$cssFile = Uri::base(true).'/components/com_sexypolling/assets/css/temp_'.JV.'.css';
-$document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
+$cssFile = $uri_base.'components/com_sexypolling/assets/css/layout.css';
+$wa->registerAndUseStyle('layout', $cssFile);
 
-$cssFile = Uri::base(true).'/components/com_sexypolling/assets/css/jquery-ui-1.7.1.custom.css';
-$document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
+$cssFile = $uri_base.'components/com_sexypolling/assets/css/temp_'.JV.'.css';
+$wa->registerAndUseStyle('temp_'.JV, $cssFile);
 
-$cssFile = Uri::base(true).'/components/com_sexypolling/assets/css/ui.slider.extras.css';
-$document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
+$cssFile = $uri_base.'components/com_sexypolling/assets/css/jquery-ui-1.7.1.custom.css';
+$wa->registerAndUseStyle('jquery-ui-1.7.1.custom', $cssFile);
 
-$cssFile = Uri::base(true).'/components/com_sexypolling/assets/css/main.css';
-$document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
+$cssFile = $uri_base.'components/com_sexypolling/assets/css/ui.slider.extras.css';
+$wa->registerAndUseStyle('ui.slider.extras', $cssFile);
 
-$jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/sexylib.js';
-$document->addScript($jsFile);
+$cssFile = $uri_base.'components/com_sexypolling/assets/css/main.css';
+$wa->registerAndUseStyle('main', $cssFile);
 
-$jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/colorpicker.js';
-$document->addScript($jsFile);
+$jsFile = $uri_base.'components/com_sexypolling/assets/js/sexylib.js';
+$wa->registerAndUseScript('sexylib', $jsFile);
 
-$jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/eye.js';
-$document->addScript($jsFile);
+$jsFile = $uri_base.'components/com_sexypolling/assets/js/colorpicker.js';
+$wa->registerAndUseScript('colorpicker', $jsFile);
 
-$jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/utils.js';
-$document->addScript($jsFile);
+$jsFile = $uri_base.'components/com_sexypolling/assets/js/eye.js';
+$wa->registerAndUseScript('eye', $jsFile);
 
-$jsFile = Uri::base(true).'/components/com_sexypolling/assets/js/layout.js?ver=1.0.2';
+$jsFile = $uri_base.'components/com_sexypolling/assets/js/utils.js';
+$wa->registerAndUseScript('utils', $jsFile);
+
+$jsFile = $uri_base.'components/com_sexypolling/assets/js/layout.js?ver=1.0.2';
 //$document->addScript($jsFile);
 ?>
 
@@ -3373,4 +3372,4 @@ function seperate_tr($txt,$title='') {
 	
 </style>
 
-<?php include (JPATH_BASE.'/components/com_sexypolling/helpers/footer.php'); ?>
+<?php include (JPATH_BASE.'/administrator/components/com_sexypolling/helpers/footer.php'); ?>

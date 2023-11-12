@@ -8,7 +8,6 @@
  * @subpackage com_sexypolling
  * @license GNU/GPL
  *
- * @todo Use of unknown class: 'ContactControllerContacts'
  */
 
 use Joomla\CMS\MVC\Controller\AdminController;
@@ -23,10 +22,6 @@ class SexyPollingControllerSexyCategories extends AdminController
 	 * Constructor.
 	 *
 	 * @param	array	$config	An optional associative array of configuration settings.
-	 *
-	 * @return	ContactControllerContacts
-	 * @see		AdminController
-	 * @since	1.6
 	 */
 	public function __construct($config = array())
 	{

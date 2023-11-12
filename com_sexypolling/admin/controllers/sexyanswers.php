@@ -16,7 +16,6 @@
  * @license GNU/GPL v3.0
  * 
  * @todo J3 Function 'getError' has been deprecated. JError has been deprecated
- * @todo Use of unknown class: 'ContactControllerContacts'
  * 
  */
  
@@ -37,10 +36,6 @@ class SexyPollingControllerSexyAnswers extends AdminController
 	 * Constructor.
 	 *
 	 * @param	array	$config	An optional associative array of configuration settings.
-	 *
-	 * @return	ContactControllerContacts
-	 * @see		AdminController
-	 * @since	1.6
 	 */
 	public function __construct($config = array())
 	{

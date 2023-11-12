@@ -15,8 +15,6 @@
  * @copyright Copyright (c) 2022 - 2023 Jefferson49
  * @license GNU/GPL v3.0
  * 
- * @todo J3 Function 'getError' has been deprecated. JError has been deprecated
- * 
  */
  
 use Joomla\CMS\Factory;
@@ -67,8 +65,14 @@ class SexyPollingControllerSexyAnswers extends AdminController
 			Factory::getApplication()->enqueueMessage(500, Text::_('COM_SEXYPOLLING_NO_ITEM_SELECTED'));
 		} else {
 			// Publish the items.
-			if (!$model->featured($ids, $value)) {
-				Factory::getApplication()->enqueueMessage($model->getError());
+			try{
+				$result = $model->featured($ids, $value);
+				if (!$result)
+					throw new Exception('Toggling the featured setting of the model was not successful');
+			}
+			catch (Exception $e) 	 
+			{
+				Factory::getApplication()->enqueueMessage($e->getMessage());
 			}
 		}
 

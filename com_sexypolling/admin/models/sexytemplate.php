@@ -37,7 +37,7 @@ class SexypollingModelSexyTemplate extends AdminModel
 	 */
 	public function getTable($type = 'SexyTemplate', $prefix = 'SexyPollTable', $config = array()) 
 	{
-		return Table::getInstance($type, $prefix, $config);
+		return $this->getMVCFactory()->createTable($type, $prefix, $config);
 	}
 	/**
 	 * Method to get the record form.

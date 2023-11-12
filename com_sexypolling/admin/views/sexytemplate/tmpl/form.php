@@ -28,7 +28,7 @@ defined('_JEXEC') or die('Restircted access');
 
 /** @var Joomla\CMS\WebAsset\WebAssetManager $wa */
 $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
-$uri_base = str_starts_with(Uri::base(true), '/') ? substr(Uri::base(true), 1) .'/' : '';
+$uri_base = 'administrator/';
 
 $cssFile = $uri_base.'components/com_sexypolling/assets/css/colorpicker.css';
 $wa->registerAndUseStyle('colorpicker', $cssFile);

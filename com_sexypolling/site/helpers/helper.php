@@ -40,7 +40,7 @@ class SexypollingHelper
         //add scripts, styles
         /** @var Joomla\CMS\WebAsset\WebAssetManager $wa */
         $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
-        $uri_base = str_starts_with(Uri::base(true), '/') ? substr(Uri::base(true), 1) .'/' : '';
+        $uri_base = '';
 
         $cssFile = $uri_base.'components/com_sexypolling/assets/css/main.css';
         $wa->registerAndUseStyle('main', $cssFile);

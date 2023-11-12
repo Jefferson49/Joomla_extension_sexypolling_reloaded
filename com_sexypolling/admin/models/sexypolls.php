@@ -65,7 +65,7 @@ class SexypollingModelSexyPolls extends ListModel{
 	 *
 	 */
 	public function getCategory_options() {
-		$db		= $this->getDbo();
+		$db		= $this->getDatabase();
 		$sql = "SELECT `id`, `name` FROM `#__sexy_categories` ";
     	$db->setQuery($sql);
     	return $opts = $db->loadObjectList();
@@ -140,7 +140,7 @@ class SexypollingModelSexyPolls extends ListModel{
 	protected function getListQuery()
 	{
 		// Create a new query object.
-		$db		= $this->getDbo();
+		$db		= $this->getDatabase();
 		$query	= $db->getQuery(true);
 	
 		// Select the required fields from the table.

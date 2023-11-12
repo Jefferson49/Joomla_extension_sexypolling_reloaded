@@ -56,7 +56,7 @@ class SexypollingModelSexyTemplate extends AdminModel
 		if(Factory::getApplication()->input->get('id') !== null) {
 			$id = Factory::getApplication()->input->getInt('id');
 		};
-		$db = $this->getDbo();
+		$db = $this->getDatabase();
 		$sql = "SELECT `styles` FROM `#__sexy_templates` WHERE `id` = ".$id;
 		$db->setQuery($sql);
 		return $styles = $db->loadResult();

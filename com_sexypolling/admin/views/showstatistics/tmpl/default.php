@@ -30,13 +30,13 @@ $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
 $uri_base = 'administrator/';
 
 $jsFile = $uri_base.'components/com_sexypolling/assets/js/jquery-1.7.2.min.js';
-$wa->registerAndUseStyle('jquery-1.7.2.min', $cssFile);
+$wa->registerAndUseScript('jquery-1.7.2.min', $jsFile);
 
 $jsFile = $uri_base.'components/com_sexypolling/assets/js/highstock.js';
-$wa->registerAndUseStyle('highstock', $cssFile);
+$wa->registerAndUseScript('highstock', $jsFile);
 
 $jsFile = $uri_base.'components/com_sexypolling/assets/js/exporting.js';
-$wa->registerAndUseStyle('exporting', $cssFile);
+$wa->registerAndUseScript('exporting', $jsFile);
 
 $wa->addInlineScript('jQuery.noConflict();' );
 

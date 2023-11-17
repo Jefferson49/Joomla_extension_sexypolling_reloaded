@@ -383,7 +383,7 @@ if($totalvotes > 0) {
 })
 })(jQuery);
 </script>
-<div style="color: rgb(21, 90, 177);font-size: 20px;font-weight: bold;clear: both;text-align: center;margin: 5px 0 5px 0;"><?php echo Text::_('COM_SEXYPOLLING_STATISTICS_DEMO')?></div>
+<div style="color: rgb(21, 90, 177);font-size: 20px;font-weight: bold;clear: both;text-align: center;margin: 5px 0 5px 0;"><?php echo Text::_('COM_SEXYPOLLING_STATISTICS')?></div>
 
 <div style="position: relative;float: left; width: 48%;padding: 8px;border: 1px solid #ccc;border-radius: 6px;box-shadow: inset 0 0 28px -3px #bbb;margin: 15px 0;">
     <div id="container2" style=""></div>

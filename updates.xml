@@ -291,7 +291,7 @@
 		</tags>
 		<maintainer>Jefferson49</maintainer>
 		<maintainerurl>https://github.com/Jefferson49</maintainerurl>
-		<targetplatform name="joomla" version="((4.*)|(5.*))" />
+		<targetplatform name="joomla" version="(5.*)" />
 		<sha256>fe7c18959b9f5150d86430cb6333e700562181123069653e8bd2bc3c654e67e9</sha256>
     </update>
 	<update>
@@ -310,7 +310,7 @@
 		</tags>
 		<maintainer>Jefferson49</maintainer>
 		<maintainerurl>https://github.com/Jefferson49</maintainerurl>
-		<targetplatform name="joomla" version="((4.*)|(5.*))" />
+		<targetplatform name="joomla" version="(5.*)" />
 		<sha256>fe7c18959b9f5150d86430cb6333e700562181123069653e8bd2bc3c654e67e9</sha256>
     </update>
 	<update>
@@ -329,7 +329,7 @@
 		</tags>
 		<maintainer>Jefferson49</maintainer>
 		<maintainerurl>https://github.com/Jefferson49</maintainerurl>
-		<targetplatform name="joomla" version="((4.*)|(5.*))" />
+		<targetplatform name="joomla" version="(5.*)" />
 		<sha256>fe7c18959b9f5150d86430cb6333e700562181123069653e8bd2bc3c654e67e9</sha256>
     </update>
 </updates>

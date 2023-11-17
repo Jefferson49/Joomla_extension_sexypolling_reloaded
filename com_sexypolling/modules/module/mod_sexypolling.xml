@@ -9,6 +9,11 @@
     <version>5.0.1</version>
     <license>GNU/GPL v3.0</license>
     <description>MOD_SEXYPOLLING_DESCRIPTION</description>
+
+    <updateservers>
+        <server type="extension" name="Github Jefferson49/Joomla_plugin_sexypolling_reloaded" priority="1">https://raw.githubusercontent.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/updates/updates.xml</server>
+    </updateservers>
+
     <files>
         <filename>index.html</filename>
         <filename module="mod_sexypolling">mod_sexypolling.php</filename>

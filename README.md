@@ -9,7 +9,8 @@
 + Some limitations of the former FREE version were removed
 + Support for the Joomla update system was added to check and install new releases of the plugin
 + **The code was migrated to the Joomla 4.x and 5.x CMS and module API, while still keeping it usable for Joomla 3.10**
-+ The latest release can be used for **Joomla 5.x** (with Backward Compatibility plugin), **Joomla 4.x** and **Joomla 3.10**
++ The latest 5.1.x release can be used for **Joomla 5.x** and **Joomla 4.x**
++ The latest 5.0.x release can be used for **Joomla 4.x**, and **Joomla 3.10**. It also runs with **Joomla 5.x** if using the Backward Compatibility plugin.
 
 ##  Installation
 + Manual installation
@@ -26,7 +27,7 @@
     + During installation, the plugin re-uses existing data from the former Sexy Polling plugin. 
     + If you want to reuse data from the former Sexy Polling plugin, do not uninstall the former Sexy Polling plugin. Instead, just install the Sexy Polling Reloaded plugin. It will re-use the existing database tables.
 + **Known issues**
-    + **Security: Due to improvements in the component architecture of release v5.0.0, it is highly recommended to upgrade from earlier 4.x.x versions to 5.0.0**.
+    + **Security: Due to improvements in the component architecture of release v5.0.0, it is highly recommended to upgrade from earlier 4.x.x versions to 5.x.x**.
     + Installation errors with **v4.1.x** plugin versions, failing with an "**... column 'country' can't have a default value**" error, are avoided if installing a plugin release **v5.0.0** or later.
     + If using PHP 8.2, certain deprecation messages might be shown in the frontend, see issues [#58](https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/issues/58) and [#61](https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/issues/61). The root cause for these warnings lies in the Joomla platform and will hopefully be solved in one of the next Joomla releases.
 ##  Date formats
@@ -46,7 +47,10 @@ For more details about the format options, [see PHP documentation about date tim
 + Further contributions on [Github](https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded) are welcome!
 
 ##  Versions 
-+ The latest plugin version v5.0.0 was developed and tested with: 
++ The latest version v5.1.0 was developed and tested with: 
+    + [Joomla 5.0.0](https://downloads.joomla.org/cms/joomla5) and [Joomla 4.4.0](https://downloads.joomla.org/cms/joomla4); but should also run with other Joomla 5.x, 4.x versions.
+    + PHP 8.2.5; but should also run with other PHP 8.2 versions.
++ The version v5.0.1 was developed and tested with: 
     + [Joomla 5.0.0 with Backward Compatibility plugin](https://downloads.joomla.org/cms/joomla5), [Joomla 4.4.0](https://downloads.joomla.org/cms/joomla4), and [Joomla 3.10.12](https://downloads.joomla.org/cms/joomla3) ; but should also run with other Joomla 5.x, 4.x or 3.10.x versions.
     + PHP 8.2.5 as well as PHP 8.0.28; but should also run with other PHP 8 versions.
 

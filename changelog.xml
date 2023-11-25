@@ -42,4 +42,28 @@
             <item>Major refactoring and ready for Joomla 5 without Backward Compatibility plugin</item>
         </addition>
     </changelog>
+    <changelog>
+		<element>COM_SEXYPOLLING</element>
+		<type>component</type>
+		<version>5.0.2</version>
+        <security>
+            <item>Due to improvements in the component architecture, it is highly recommended to upgrade from earlier 4.x.x versions to version 5.0.0 or later</item>
+        </security>
+        <fix>
+            <item>Site module is shown with module name "MOD_SEXYPOLLING" in Joomla next update</item>
+            <item>Start/end dates for polls are saved with wrong values if server timezone is different from user timezone</item>
+        </fix>
+    </changelog>    
+    <changelog>
+		<element>COM_SEXYPOLLING</element>
+		<type>component</type>
+		<version>5.1.1</version>
+        <security>
+            <item>Due to improvements in the component architecture, it is highly recommended to upgrade from earlier 4.x.x versions to version 5.0.0 or later</item>
+        </security>
+        <fix>
+            <item>Site module is shown with module name "MOD_SEXYPOLLING" in Joomla next update</item>
+            <item>Start/end dates for polls are saved with wrong values if server timezone is different from user timezone</item>
+        </fix>
+    </changelog>    
 </changelogs>

@@ -401,10 +401,10 @@
 		<tags>
 			<tag>stable</tag>
 		</tags>
-		<maintainer>Jefferson49</>maintainer>
+		<maintainer>Jefferson49</maintainer>
 		<maintainerurl>https://github.com/Jefferson49</maintainerurl>
 		<targetplatform name="joomla" version="((4.*)|(5.*))" />
-		<sha256>d8862aa9a9327d7600e965c2cb39efd7d8e6a1293b5c38ff4200a9ab4ad34875</sha256
+		<sha256>d8862aa9a9327d7600e965c2cb39efd7d8e6a1293b5c38ff4200a9ab4ad34875</sha256>
     </update>
 	<update>
 		<name>PLG_SEXYPOLLING</name>
@@ -420,10 +420,10 @@
 		<tags>
 			<tag>stable</tag>
 		</tags>
-		<maintainer>Jefferson49</>maintainer>
+		<maintainer>Jefferson49</maintainer>
 		<maintainerurl>https://github.com/Jefferson49</maintainerurl>
 		<targetplatform name="joomla" version="((4.*)|(5.*))" />
-		<sha256>d8862aa9a9327d7600e965c2cb39efd7d8e6a1293b5c38ff4200a9ab4ad34875</sha256
+		<sha256>d8862aa9a9327d7600e965c2cb39efd7d8e6a1293b5c38ff4200a9ab4ad34875</sha256>
 	</update>
 	<update>
 		<name>MOD_SEXYPOLLING</name>
@@ -439,9 +439,9 @@
 		<tags>
 			<tag>stable</tag>
 		</tags>
-		<maintainer>Jefferson49</>maintainer>
+		<maintainer>Jefferson49</maintainer>
 		<maintainerurl>https://github.com/Jefferson49</maintainerurl>
 		<targetplatform name="joomla" version="((4.*)|(5.*))" />
-		<sha256>d8862aa9a9327d7600e965c2cb39efd7d8e6a1293b5c38ff4200a9ab4ad34875</sha256
+		<sha256>d8862aa9a9327d7600e965c2cb39efd7d8e6a1293b5c38ff4200a9ab4ad34875</sha256>
     </update>	
 </updates>

@@ -82,8 +82,8 @@
         </field>
 
         <field type="spacer" />
-        <field name="date_start" type="calendar" default="NOW" label="COM_SEXYPOLLING_DATE_START_LABEL" description="COM_SEXYPOLLING_DATE_START_DESCRIPTION" format="%Y-%m-%d" size="22" filter="user_utc" />
-        <field name="date_end" type="calendar" default="2040-12-31" label="COM_SEXYPOLLING_DATE_END_LABEL" description="COM_SEXYPOLLING_DATE_END_DESCRIPTION" format="%Y-%m-%d" size="22" filter="user_utc" />
+        <field name="date_start" type="calendar" default="NOW" label="COM_SEXYPOLLING_DATE_START_LABEL" description="COM_SEXYPOLLING_DATE_START_DESCRIPTION" format="%Y-%m-%d" size="22" filter="none" />
+        <field name="date_end" type="calendar" default="2040-12-31" label="COM_SEXYPOLLING_DATE_END_LABEL" description="COM_SEXYPOLLING_DATE_END_DESCRIPTION" format="%Y-%m-%d" size="22" filter="none" />
         <field name="showresultsduringpoll" type="radio" default="1" label="COM_SEXYPOLLING_SHOW_RESULTS_DURING_POLL_LABEL" description="COM_SEXYPOLLING_SHOW_RESULTS_DURING_POLL_DESCRIPTION" class="btn-group">
           <option value="1">JYes</option>
           <option value="0">JNo</option>
@@ -232,7 +232,7 @@
             <option value="0">JNo</option>
             <option value="1">JYES</option>
         </field>
-        <field name="created" type="calendar" label="COM_SEXYPOLLING_CREATED_LABEL" default="NOW"  description="COM_SEXYPOLLING_CREATED_DESCRIPTION" class="inputbox" size="22" format="%Y-%m-%d %H:%M:%S" filter="user_utc" />
+        <field name="created" type="calendar" label="COM_SEXYPOLLING_CREATED_LABEL" default="NOW"  description="COM_SEXYPOLLING_CREATED_DESCRIPTION" class="inputbox" size="22" format="%Y-%m-%d %H:%M:%S" filter="none" />
 
         <field name="id_user" type="hidden" default="0"/>
         <field name="alias" type="hidden" default=""/>

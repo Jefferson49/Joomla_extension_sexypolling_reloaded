@@ -78,9 +78,9 @@ class com_sexypollingInstallerScript {
 
         $plugin_uninstaller = new Installer;
         if(@$plugin_uninstaller->install(dirname(__FILE__).DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.'plugin')) {
-            //echo '<p>'.Text::_('COM_SEXYPOLLING_PLUGIN_INSTALL_SUCCESS').'</p>';
+            //echo '<p>'.Text::_('PLG_SEXYPOLLING_PLUGIN_INSTALL_SUCCESS').'</p>';
         } else
-            echo '<p>'.Text::_('COM_SEXYPOLLING_PLUGIN_INSTALL_FAILED').'</p>';
+            echo '<p>'.Text::_('PLG_SEXYPOLLING_PLUGIN_INSTALL_FAILED').'</p>';
 
         // enabling plugin
         $db = Factory::getContainer()->get('DatabaseDriver');

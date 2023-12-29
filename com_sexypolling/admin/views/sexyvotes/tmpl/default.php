@@ -136,7 +136,7 @@ $sortFields = $this->getSortFields();
                     </td>
                     <td>
                         <a href="<?php echo Route::_('index.php?option=com_sexypolling&task=sexyanswer.edit&id='.(int) $item->id_answer); ?>">
-                            <?php echo $this->escape(strip_tags($item->answer)); ?>
+                            <?php echo $this->escape(strip_tags($item->answer ?? '')); ?>
                         </a>
                     </td>
                     <td>

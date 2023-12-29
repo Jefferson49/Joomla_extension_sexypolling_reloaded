@@ -59,9 +59,9 @@ foreach($rows as $row) {
 
 if(sizeof($custom_styles) > 0)
 	foreach ($custom_styles as $poll_id => $styles_list) {
-		$styles_array = explode('|',$styles_list);
+		$styles_array = explode('|', $styles_list ?? '');
 		foreach ($styles_array as $val) {
-			$arr = explode('~',$val);
+			$arr = explode('~', $val ?? '');
 			$styles_[$poll_id][$arr[0]] = $arr[1];
 		}
 }

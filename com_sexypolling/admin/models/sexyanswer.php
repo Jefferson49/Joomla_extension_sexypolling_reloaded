@@ -239,7 +239,7 @@ class SexypollingModelSexyAnswer extends AdminModel
 		}
 	
 		//strip path
-		$img_parts = explode('/',$image);
+		$img_parts = explode('/', $image ?? '');
 		$filename = $img_parts[sizeof($img_parts) - 1];
 		preg_match('/^(.*)\.([a-z]{3,4}$)/i',$filename,$matches);
 		$resized = $matches[1] . '-tmb-w' . $width . '.' . $matches[2];
@@ -272,7 +272,7 @@ class SexypollingModelSexyAnswer extends AdminModel
 		$size	= GetImageSize($image);
 		$mime	= $size['mime'];
 	
-		if (substr($mime, 0, 6) != 'image/')
+		if (substr($mime ?? '', 0, 6) != 'image/')
 		{
 			$error = 'Wrong filetype';
 			return false;

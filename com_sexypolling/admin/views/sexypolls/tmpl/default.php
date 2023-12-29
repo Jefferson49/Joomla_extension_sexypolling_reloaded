@@ -39,7 +39,7 @@ $saveOrder  = $listOrder == 'sp.ordering';
 if ($saveOrder)
 {
     $saveOrderingUrl = 'index.php?option=com_sexypolling&task=sexypolls.saveOrderAjax&tmpl=component';
-    HTMLHelper::_('sortablelist.sortable', 'articleList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
+    HTMLHelper::_('sortablelist.sortable', 'articleList', 'adminForm', strtolower($listDirn ?? ''), $saveOrderingUrl);
 }
 $sortFields = $this->getSortFields();
 ?>

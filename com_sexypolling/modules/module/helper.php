@@ -184,7 +184,7 @@ use Joomla\CMS\Session\Session;
 		$add_answers = array();
 		if(is_array($adittional_answers) && $voting_enabled) {
 			foreach ($adittional_answers as $answer) {
-				$answer = $db->escape(strip_tags($answer));
+				$answer = $db->escape(strip_tags($answer ?? ''));
 				$answer = preg_replace('/sexydoublequestionmark/','??',$answer);
 		
 				$published = 1;
@@ -650,7 +650,7 @@ use Joomla\CMS\Session\Session;
 	private static function cmp($a, $b): int
 	{
 		if ($a[0] == $b[0]) {
-			$strcmp = strcasecmp($a[1], $b[1]);
+			$strcmp = strcasecmp($a[1] ?? '', $b[1] ?? '');
 			if ($strcmp > 0)
 				return -1;
 			elseif($strcmp < 0)
@@ -669,7 +669,7 @@ use Joomla\CMS\Session\Session;
 	private static function cmp1($a, $b): int
 	{
 		if ($a["votes"] == $b["votes"]) {
-			return $strcmp = strcasecmp($a["name"], $b["name"]);
+			return $strcmp = strcasecmp($a["name"] ?? '', $b["name"] ?? '');
 		}
 		return ($a["votes"] < $b["votes"]) ? 1 : -1;
 	}

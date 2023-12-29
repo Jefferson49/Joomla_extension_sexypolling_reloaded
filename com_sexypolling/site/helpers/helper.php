@@ -187,7 +187,7 @@ class SexypollingHelper
 		$lang_tag = $lang->getTag();
         $user_time_zone = $user->getTimezone()->getName();
         if ($user_time_zone === 'UTC') {
-            $iterator = new ArrayIterator(iterator_to_array(IntlTimeZone::createEnumeration(substr($lang_tag, -2))));
+            $iterator = new ArrayIterator(iterator_to_array(IntlTimeZone::createEnumeration(substr($lang_tag ?? '', -2))));
             $iterator->rewind();
             $user_time_zone = $iterator->current();    
         }
@@ -371,7 +371,7 @@ class SexypollingHelper
                 $container_styles .= $pollalign == 2 ? 'margin: '.$poll_margintop.'px auto '.$poll_marginbottom.'px;' : 'margin: '.$poll_margintop.'px '.$poll_marginright.'px '.$poll_marginbottom.'px '.$poll_marginleft.'px;';
 
                 echo '<div class="polling_container_wrapper'.$container_class_suffix.'" id="mod_'.$module_id.'_'.$poll_index.'" roll="'.$module_id.'" style="'.$container_styles.'"><div class="polling_container" id="poll_'.$poll_index.'">';
-                echo '<div class="polling_name">'.stripslashes($polling_array[0]->polling_question).'</div>';
+                echo '<div class="polling_name">'.stripslashes($polling_array[0]->polling_question ?? '').'</div>';
 
                 $multiple_answers = $polling_array[0]->multiple_answers;
                 $multiple_answers_info_array[$poll_index] = $multiple_answers;
@@ -387,7 +387,7 @@ class SexypollingHelper
                     $color_index = $k % 20 + 1;
                     $data_color_index = $k % 9;
                     //get answer name
-                    $answer_name = stripslashes($poll_data->answer_name);
+                    $answer_name = stripslashes($poll_data->answer_name ?? '');
                     //get image
                     $img_path = $poll_data->img_name != '' ? $poll_data->img_name : $poll_data->img_url;
                     if($poll_data->img_name != '') {
@@ -590,9 +590,9 @@ class SexypollingHelper
 
             if(sizeof($custom_styles) > 0)
                 foreach ($custom_styles as $poll_id => $styles_list) {
-                $styles_array = explode('|',$styles_list);
+                $styles_array = explode('|', $styles_list ?? '');
                 foreach ($styles_array as $val) {
-                    $arr = explode('~',$val);
+                    $arr = explode('~', $val ?? '');
                     $styles_[$poll_id][$arr[0]] = $arr[1];
                 }
             }

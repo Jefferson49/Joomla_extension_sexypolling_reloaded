@@ -79,7 +79,7 @@ class plgSystemSexypolling extends CMSPlugin {
         $content = Factory::getApplication()->getBody();
 
         //check if the scripts did not included
-        if (strpos($content,'components/com_sexypolling/assets/css/main.css') !== false) {
+        if (strpos($content ?? '','components/com_sexypolling/assets/css/main.css') !== false) {
             return $content;
         }
 

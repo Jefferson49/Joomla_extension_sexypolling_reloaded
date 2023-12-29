@@ -118,10 +118,7 @@ class SexypollingModelSexypoll extends AdminModel
 					' SET featured = '.(int) $value.
 					' WHERE id IN ('.implode(',', $pks).')'
 			);
-			if (!$db->execute()) {
-				throw new Exception($db->getErrorMsg());
-			}
-	
+			$db->execute();
 		}
 		catch (Exception $e)
 		{

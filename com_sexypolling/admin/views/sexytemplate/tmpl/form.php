@@ -2234,10 +2234,10 @@ function seperate_tr($txt,$title='') {
 	            <?php close_accordion();?>
 	        </tr>
 	        <?php 
-	        	$styles_array = explode('|',$this->styles);
+	        	$styles_array = explode('|',$this->styles ?? '');
 	        	$max = 0;
 	        	foreach ($styles_array as $val) {
-	        		$arr = explode('~',$val);
+	        		$arr = explode('~', $val ?? '');
 	        		$styles[$arr[0]] = $arr[1];
 	        		$max = $arr[0]> $max ? $arr[0] : $max;
 	        	}

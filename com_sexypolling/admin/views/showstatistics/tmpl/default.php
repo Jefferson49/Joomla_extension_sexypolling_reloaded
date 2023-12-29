@@ -94,7 +94,7 @@ $stat_array_final = array();
 foreach($dates_array as $k => $date_val) {
     $cur_votes = (in_array($date_val,array_keys($stat_array))) ? $stat_array[$date_val] : 0;
 
-    $date_data = explode('-',$date_val);
+    $date_data = explode('-', $date_val ?? '');
 
     $stat_array_final[$k]["votes"] = $cur_votes;
     $stat_array_final[$k]["y"] = $date_data[0];
@@ -352,14 +352,14 @@ if($totalvotes > 0) {
                                 foreach($statanswersdata as $k => $val) {
                                     $perc = sprintf ("%.2f", ((100 * $val['votes']) / $totalvotes));
                                     $val['name'] = preg_replace('/(\<\s\>.*?\<\s\>)/si','',$val['name']);
-                                    $val['name'] = str_replace("\n","",$val['name']);
-                                    $val['name'] = str_replace("\r","",$val['name']);
+                                    $val['name'] = str_replace("\n","", $val['name'] ?? '');
+                                    $val['name'] = str_replace("\r","", $val['name'] ?? '');
 
                                     $val['name'] = preg_replace('/(<[a-zA-Z]+.*?>(.*?)<\/[a-zA-Z]+>)/si','',$val['name']);
 
                                     if($val['id'] == $max_ans_id) {
                                         echo "{
-                                                name: '".str_replace(array('\'','"',"'"),"",stripslashes(htmlspecialchars_decode(strip_tags($val['name']),ENT_NOQUOTES)))."',
+                                                name: '".str_replace(array('\'','"',"'"),"",stripslashes(htmlspecialchars_decode(strip_tags($val['name'] ?? ''),ENT_NOQUOTES)))."',
                                                 y: $perc,
                                                 sliced: true,
                                                 selected: true
@@ -367,7 +367,7 @@ if($totalvotes > 0) {
                                     }
                                     else {
                                         //echo "['".str_replace(array('\'','"'),"",htmlspecialchars_decode($val['name']))."',".$perc."]";
-                                        echo "['".str_replace(array('\'','"',"'"),"",stripslashes(htmlspecialchars_decode(strip_tags($val['name']),ENT_NOQUOTES)))."',".$perc."]";
+                                        echo "['".str_replace(array('\'','"',"'"),"",stripslashes(htmlspecialchars_decode(strip_tags($val['name'] ?? ''),ENT_NOQUOTES)))."',".$perc."]";
                                     }
                                     if($k != sizeof($statanswersdata) - 1)
                                         echo ',';

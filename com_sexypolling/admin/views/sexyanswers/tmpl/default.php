@@ -40,7 +40,7 @@ $saveOrder  = $listOrder == 'sa.ordering';
 if ($saveOrder)
 {
     $saveOrderingUrl = 'index.php?option=com_sexypolling&task=sexyanswers.saveOrderAjax&tmpl=component';
-    HTMLHelper::_('sortablelist.sortable', 'articleList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
+    HTMLHelper::_('sortablelist.sortable', 'articleList', 'adminForm', strtolower($listDirn ?? ''), $saveOrderingUrl);
 }
 $sortFields = $this->getSortFields();
 ?>
@@ -152,7 +152,7 @@ $sortFields = $this->getSortFields();
                     <td class="nowrap has-context">
                         <div class="pull-left">
                             <a href="<?php echo Route::_('index.php?option=com_sexypolling&task=sexyanswer.edit&id='.(int) $item->id); ?>">
-                                <?php echo $this->escape(strip_tags($item->name)); ?>
+                                <?php echo $this->escape(strip_tags($item->name ?? '')); ?>
                             </a>
                         </div>
                     </td>

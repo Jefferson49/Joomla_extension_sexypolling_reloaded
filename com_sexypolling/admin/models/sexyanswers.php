@@ -12,7 +12,7 @@
  * @version v3.0.0
  * @author Jefferson49
  * @link https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded
- * @copyright Copyright (c) 2022 - 2023 Jefferson49
+ * @copyright Copyright (c) 2022 - 2024 Jefferson49
  * @license GNU/GPL v3.0
  * 
  

@@ -153,7 +153,7 @@ class SexypollingModelSexyAnswer extends AdminModel
 	{
 		$date = new Date();
 		$id = Factory::getApplication()->input->request->getInt('id',0);
-		$jform = Factory::getApplication()->input->request->get('jform', null, null);
+		$jform = Factory::getApplication()->input->request->get('jform', [], 'ARRAY');
 
 		$req = new Req();
 		$req->name =  $jform['name'];

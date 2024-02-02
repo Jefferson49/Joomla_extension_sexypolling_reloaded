@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
+	<fieldset
+		name="general"
+		label="COM_SEXYPOLLING_CONFIG_GENERAL_SETTINGS_LABEL"
+		description="COM_SEXYPOLLING_CONFIG_GENERAL_SETTINGS_DESC"
+		addfieldprefix="Joomla\Component\SexyPolling\Administrator\Field"
+	>
+		<field
+			name="permission_control_for_answers_and_votes"
+			type="radio"
+			layout="joomla.form.field.radio.switcher"
+			label="COM_SEXYPOLLING_CONFIG_PERMISSION_CONTROL_FOR_ANSWERS_AND_VOTES_LABEL"
+			description="COM_SEXYPOLLING_CONFIG_PERMISSION_CONTROL_FOR_ANSWERS_AND_VOTES_DESC"
+			default="0"
+		>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+	</fieldset>
 
 	<fieldset
 		name="permissions"
 		label="JCONFIG_PERMISSIONS_LABEL"
 		description="JCONFIG_PERMISSIONS_DESC"
 	>
-
 		<field
 			name="rules"
 			type="rules"
@@ -17,7 +34,6 @@
 			component="com_sexypolling"
 			section="component"
 		/>
-
    </fieldset>
 
 </config>

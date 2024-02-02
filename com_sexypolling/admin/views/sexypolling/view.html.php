@@ -17,6 +17,16 @@ defined('_JEXEC') or die('Restircted access');
 
 class SexypollingViewsexypolling extends HtmlView {
     function display($tpl = null) {
+        $this->addToolbar();
         parent::display($tpl);
+    }
+
+    /**
+     * Add the page title and toolbar.
+     *
+     */
+    protected function addToolbar()
+    {
+        JToolBarHelper::preferences('com_sexypolling');
     }
 }

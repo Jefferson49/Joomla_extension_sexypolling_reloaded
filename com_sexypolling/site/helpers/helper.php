@@ -646,6 +646,7 @@ class SexypollingHelper
             }
             $jsInclude .= 'if (typeof votingPermissions === \'undefined\') { var votingPermissions = new Array();};';
             foreach ($voting_permissions as $key => $voting_permission) {
+				//Todo: Check if ['24'] is a wrong and should be [24]
                 $message = $voting_permission ? 'allow_voting' : $polling_words['24'];
                 $jsInclude .= 'votingPermissions.push("'.$key.'");';
                 $jsInclude .= 'votingPermissions["'.$key.'"]="'.$message.'";';

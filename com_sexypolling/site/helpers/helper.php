@@ -316,8 +316,9 @@ class SexypollingHelper
                 }
 
                 // disable results till poll is ended
-                if($polling_array[0]->showresultsduringpoll == '0' and $polling_array[0]->date_end != '0000-00-00')
-                    $hide_results_ids[$poll_index] = $polling_words[25] . HTMLHelper::date($polling_array[0]->date_end ?? '', $stringdateformat, $data_time_zone);
+                if($polling_array[0]->showresultsduringpoll === 0 && $date_now < strtotime($polling_array[0]->date_end ?? '')) {
+                    $hide_results_ids[$poll_index] = $polling_words[25] . HTMLHelper::date(($polling_array[0]->date_end ?? ''), $stringdateformat, $data_time_zone);
+                }
 
                 //if is logged in user, query votes per user
                 if($is_logged_in_user) {

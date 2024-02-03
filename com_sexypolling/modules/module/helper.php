@@ -63,21 +63,21 @@ use Joomla\CMS\Session\Session;
 		$datenow_sql = HTMLHelper::date($current_date, "Y-m-d", $data_time_zone);
 		
 		//get ip address
-		$REMOTE_ADDR = null;
-		if($server->get('HTTP_X_FORWARDED_FOR') !== null) { list($REMOTE_ADDR) = explode(',', $server->get('HTTP_X_FORWARDED_FOR')); }
-		elseif($server->get('HTTP_X_REAL_IP') !== null) { $REMOTE_ADDR = $server->get('HTTP_X_REAL_IP'); }
-		elseif($server->get('REMOTE_ADDR') !== null) { $REMOTE_ADDR = $server->get('REMOTE_ADDR'); }
+		$REMOTE_ADDR = 'Unknown';
+		if($server->get('HTTP_X_FORWARDED_FOR') !== null) { list($REMOTE_ADDR) = explode(',', $server->getString('HTTP_X_FORWARDED_FOR', 'Unknown')); }
+		elseif($server->get('HTTP_X_REAL_IP') !== null) { $REMOTE_ADDR = $server->getString('HTTP_X_REAL_IP', 'Unknown'); }
+		elseif($server->get('REMOTE_ADDR') !== null) { $REMOTE_ADDR = $server->getString('REMOTE_ADDR', 'Unknown'); }
 		else { $REMOTE_ADDR = 'Unknown'; }
 		$ip = $REMOTE_ADDR;
 		
-		$countryname = $post->get('country_name', 'Unknown');
-		$countryname = $countryname === "" ? 'Unknown' : $countryname;
-		$cityname = $post->get('city_name', 'Unknown');
-		$cityname = $cityname === "" ? 'Unknown' : $cityname;
-		$regionname = $post->get('region_name', 'Unknown');
-		$regionname = $regionname === "" ? 'Unknown' : $regionname;
-		$countrycode = $post->get('country_code', 'Unknown');
-		$countrycode = $countrycode === "" ? 'Unknown' : $countrycode;
+		$countryname = $post->getString('country_name', 'Unknown');
+		$countryname = in_array($countryname, ["", "-"]) ? 'Unknown' : $countryname;
+		$cityname = $post->getString('city_name', 'Unknown');
+		$cityname = in_array($cityname, ["", "-"]) ? 'Unknown' : $cityname;
+		$regionname = $post->getString('region_name', 'Unknown');
+		$regionname = in_array($regionname, ["", "-"]) ? 'Unknown' : $regionname;
+		$countrycode = $post->getString('country_code', 'Unknown');
+		$countrycode = in_array($countrycode, ["", "-"]) ? 'Unknown' : $countrycode;
 		
 		$ip = $db->escape($ip);
 		$countryname = $db->escape($countryname);
@@ -435,10 +435,10 @@ use Joomla\CMS\Session\Session;
 		$datenow_sql = HTMLHelper::date($current_date, "Y-m-d", $data_time_zone);
 		
 		//get ip address
-		$REMOTE_ADDR = null;
-		if($server->get('HTTP_X_FORWARDED_FOR') !== null) { list($REMOTE_ADDR) = explode(',', $server->get('HTTP_X_FORWARDED_FOR')); }
-		elseif($server->get('HTTP_X_REAL_IP') !== null) { $REMOTE_ADDR = $server->get('HTTP_X_REAL_IP'); }
-		elseif($server->get('REMOTE_ADDR') !== null) { $REMOTE_ADDR = $server->get('REMOTE_ADDR'); }
+		$REMOTE_ADDR = 'Unknown';
+		if($server->get('HTTP_X_FORWARDED_FOR') !== null) { list($REMOTE_ADDR) = explode(',', $server->getString('HTTP_X_FORWARDED_FOR', 'Unknown')); }
+		elseif($server->get('HTTP_X_REAL_IP') !== null) { $REMOTE_ADDR = $server->getString('HTTP_X_REAL_IP', 'Unknown'); }
+		elseif($server->get('REMOTE_ADDR') !== null) { $REMOTE_ADDR = $server->getString('REMOTE_ADDR', 'Unknown'); }
 		else { $REMOTE_ADDR = 'Unknown'; }
 		$ip = $REMOTE_ADDR;
 		
@@ -462,14 +462,14 @@ use Joomla\CMS\Session\Session;
 			exit();
 		}
 		
-		$countryname = $post->get('country_name', 'Unknown');
-		$countryname = $countryname === "" ? 'Unknown' : $countryname;
-		$cityname = $post->get('city_name', 'Unknown');
-		$cityname = $cityname === "" ? 'Unknown' : $cityname;
-		$regionname = $post->get('region_name', 'Unknown');
-		$regionname = $regionname === "" ? 'Unknown' : $regionname;
-		$countrycode = $post->get('country_code', 'Unknown');
-		$countrycode = $countrycode === "" ? 'Unknown' : $countrycode;
+		$countryname = $post->getString('country_name', 'Unknown');
+		$countryname = in_array($countryname, ["", "-"]) ? 'Unknown' : $countryname;
+		$cityname = $post->getString('city_name', 'Unknown');
+		$cityname = in_array($cityname, ["", "-"]) ? 'Unknown' : $cityname;
+		$regionname = $post->getString('region_name', 'Unknown');
+		$regionname = in_array($regionname, ["", "-"]) ? 'Unknown' : $regionname;
+		$countrycode = $post->getString('country_code', 'Unknown');
+		$countrycode = in_array($countrycode, ["", "-"]) ? 'Unknown' : $countrycode;
 		
 		$ip = $db->escape($ip);
 		$countryname = $db->escape($countryname);
@@ -585,9 +585,16 @@ use Joomla\CMS\Session\Session;
 	 */
 	public static function geoipAjax(): void
 	{
-		$app = Factory::getApplication();
-		$ip = $app->input->server->get('REMOTE_ADDR');
+		$server = Factory::getApplication()->input->server;
 
+		//get ip address
+		$REMOTE_ADDR = 'Unknown';
+		if($server->get('HTTP_X_FORWARDED_FOR') !== null) { list($REMOTE_ADDR) = explode(',', $server->getString('HTTP_X_FORWARDED_FOR', 'Unknown')); }
+		elseif($server->get('HTTP_X_REAL_IP') !== null) { $REMOTE_ADDR = $server->getString('HTTP_X_REAL_IP', 'Unknown'); }
+		elseif($server->get('REMOTE_ADDR') !== null) { $REMOTE_ADDR = $server->getString('REMOTE_ADDR', 'Unknown'); }
+		else { $REMOTE_ADDR = 'Unknown'; }
+		$ip = $REMOTE_ADDR;
+		
 		$url = 'http://api.ipinfodb.com/v3/ip-city/?key=4f01028c9fcae27423d5d0cc4489b5679f26febf98d28b90a29c2f3f7531aafd&format=json&ip=' . $ip;
 		$ch = curl_init ($url) ;
 		curl_setopt($ch, CURLOPT_URL, $url);

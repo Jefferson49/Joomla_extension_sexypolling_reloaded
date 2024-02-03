@@ -20,6 +20,17 @@ class SexypollingViewShowstatistics extends HtmlView {
 
     function display($tpl = null) {
         ToolbarHelper::cancel( 'showstatistics.cancel', 'JTOOLBAR_CLOSE' );
+        $this->addToolbar();
+		$this->sidebar = JHtmlSidebar::render();
         parent::display($tpl);
+    }
+
+    /**
+     * Add the page title and toolbar.
+     *
+     */
+    protected function addToolbar()
+    {
+		JToolBarHelper::preferences('com_sexypolling');
     }
 }

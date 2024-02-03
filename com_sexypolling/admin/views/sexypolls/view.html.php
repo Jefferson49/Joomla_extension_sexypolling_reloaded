@@ -91,6 +91,7 @@ class SexypollingViewSexypolls extends HtmlView {
     	JToolBarHelper::deleteList('', 'sexypolls.delete', 'JTOOLBAR_DELETE');
 	    
 		JToolBarHelper::divider();
+		JToolBarHelper::preferences('com_sexypolling');
 	}
 	
 	/**

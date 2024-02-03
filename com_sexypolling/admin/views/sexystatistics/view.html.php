@@ -79,7 +79,7 @@ class SexypollingViewSexystatistics extends HtmlView {
      */
     protected function addToolbar()
     {
-    
+		JToolBarHelper::preferences('com_sexypolling');
     }
     
     /**

@@ -69,6 +69,8 @@
             <filename>controller.php</filename>
             <filename>sexypolling.php</filename>
             <filename>index.html</filename>
+            <filename>access.xml</filename>
+			<filename>config.xml</filename>
 
             <folder>install</folder>
             <folder>assets</folder>

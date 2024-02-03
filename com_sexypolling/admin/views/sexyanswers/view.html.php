@@ -81,7 +81,9 @@ class SexypollingViewSexyanswers extends HtmlView {
  		ToolbarHelper::publish('sexyanswers.publish', 'JTOOLBAR_PUBLISH', true);
 		ToolbarHelper::unpublish('sexyanswers.unpublish', 'JTOOLBAR_UNPUBLISH', true);
 		ToolbarHelper::deleteList('', 'sexyanswers.delete', 'JTOOLBAR_DELETE');
-	    
+
+		ToolbarHelper::divider();
+		ToolbarHelper::preferences('com_sexypolling');
     }
     
     /**

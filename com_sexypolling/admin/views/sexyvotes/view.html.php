@@ -68,6 +68,9 @@ class SexypollingViewSexyvotes extends HtmlView {
     protected function addToolbar()
     {
         ToolbarHelper::deleteList('', 'sexyvotes.delete', 'JTOOLBAR_DELETE');
+
+		ToolbarHelper::divider();
+		ToolbarHelper::preferences('com_sexypolling');
     }
 
     /**

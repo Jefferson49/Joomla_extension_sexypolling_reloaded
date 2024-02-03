@@ -67,6 +67,9 @@ class SexypollingViewSexytemplates extends HtmlView {
     	ToolbarHelper::publish('sexytemplates.publish', 'JTOOLBAR_PUBLISH', true);
     	ToolbarHelper::unpublish('sexytemplates.unpublish', 'JTOOLBAR_UNPUBLISH', true);
     	ToolbarHelper::deleteList('', 'sexytemplates.delete', 'JTOOLBAR_DELETE');
+
+		ToolbarHelper::divider();
+		ToolbarHelper::preferences('com_sexypolling');
     }
     
     /**

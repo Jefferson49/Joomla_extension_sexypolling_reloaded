@@ -21,6 +21,7 @@ use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView;
 use Joomla\CMS\HTML\Helpers\Sidebar;
+use Joomla\CMS\Toolbar\ToolbarHelper;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -79,7 +80,7 @@ class SexypollingViewSexystatistics extends HtmlView {
      */
     protected function addToolbar()
     {
-    
+		ToolbarHelper::preferences('com_sexypolling');
     }
     
     /**

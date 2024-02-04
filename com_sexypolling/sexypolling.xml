@@ -81,6 +81,7 @@
             <folder>controllers</folder>
             <folder>elements</folder>
             <folder>fields</folder>
+            <folder>export</folder>
         </files>
 
         <languages folder="admin">

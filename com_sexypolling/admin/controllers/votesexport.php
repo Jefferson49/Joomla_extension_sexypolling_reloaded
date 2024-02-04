@@ -57,12 +57,12 @@ use Joomla\CMS\HTML\HTMLHelper;
         Session::checkToken() or jexit(Text::_('JINVALID_TOKEN'));
 
         $db = Factory::getDBO();
-
-        $params = ComponentHelper::getParams('com_jdownloads');
-        $files_uploaddir = $params->get('files_uploaddir');
-        $tempdir         = $params->get('tempzipfiles_folder_name');
-        
         $config = Factory::getConfig();
+        $params = ComponentHelper::getParams('com_sexypolling');
+
+        $tempdir    = JPATH_ADMINISTRATOR.'/components/com_sexypolling/export';
+        $separator  = $params->get('separator_for_csv_export');
+        
         $sitename = $db->escape($config->get('sitename'));
         $sitename = substr($sitename, 0, 10);
   	    
@@ -89,22 +89,23 @@ use Joomla\CMS\HTML\HTMLHelper;
 
             if ($result){
                 
-                // create file with data             
+                // Create file with data             
                 $date_current = HtmlHelper::_('date', '','Y-m-d_H-i-s');
-                $filename = $sitename.'_com_sexypolling_votes_'.$date_current.'.txt';
-                $path = $files_uploaddir.'/'.$tempdir.'/'.$filename;                 
-                $fp = fopen($path, 'w'); 
-
-                fputcsv($fp, $columns_titles, ",", "\"");
+                $filename = $sitename.'_com_sexypolling_votes_'.$date_current.'.csv';
+                $path = $tempdir.'/'.$filename;                 
+                $fp = fopen($path, 'w');
+     
+                fputcsv($fp, $columns_titles, $separator);
                 
                 foreach($rows as $row) {
-                    fputcsv($fp, array_values($row), ",", "\"");
+                    fputcsv($fp, array_values($row), $separator);
                 }
-                
+
+                //Export
                 if ($result !== false && File::exists($path)){
                
                     $len = filesize($path);
-                    $ctype = 'text/plain';
+                    $ctype = 'text/csv';
 
                     ob_end_clean();
                     
@@ -124,11 +125,11 @@ use Joomla\CMS\HTML\HTMLHelper;
                 
                 } else {
                     // We could not create the file
-                    $this->setRedirect(ROUTE::_('index.php?option=com_sexypolling'),  Text::_('Abort! Could not create the options export file!'), 'error');
+                    $this->setRedirect(ROUTE::_('index.php?option=com_sexypolling'),  Text::_('COM_SEXYPOLLING_VOTES_EXPORT_FILE_ERROR'), 'error');
                 }
             } else {
                 // We could not find any data
-                $this->setRedirect(ROUTE::_('index.php?option=com_sexypolling'),  Text::_('Abort! No configuration data found!'), 'error');
+                $this->setRedirect(ROUTE::_('index.php?option=com_sexypolling'),  Text::_('COM_SEXYPOLLING_VOTES_EXPORT_DATA_ERROR'), 'error');
             }
             
         }     

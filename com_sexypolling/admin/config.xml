@@ -17,6 +17,17 @@
 			<option value="0">JNO</option>
 			<option value="1">JYES</option>
 		</field>
+		<field
+			name="separator_for_csv_export"
+			type="text"
+			label="COM_SEXYPOLLING_CONFIG_SEPARATOR_CSV_EXPORT_LABEL"
+			description="COM_SEXYPOLLING_CONFIG_SEPARATOR_CSV_EXPORT_DESC"
+            required="true"
+            filter="string"
+            class="inputbox"
+            default=";"    
+            maxlength="1" 
+		/>
 	</fieldset>
 
 	<fieldset

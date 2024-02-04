@@ -61,7 +61,7 @@ use Joomla\CMS\HTML\HTMLHelper;
         $params = ComponentHelper::getParams('com_sexypolling');
 
         $tempdir    = JPATH_ADMINISTRATOR.'/components/com_sexypolling/export';
-        $separator  = $params->get('separator_for_csv_export');
+        $separator  = substr($params->get('separator_for_csv_export', ';'), 0, 1);
         
         $sitename = $db->escape($config->get('sitename'));
         $sitename = substr($sitename, 0, 10);

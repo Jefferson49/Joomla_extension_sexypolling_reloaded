@@ -18,6 +18,8 @@
  * @todo J4 deprecated JHtmlSidebar 
  */
 
+use Joomla\CMS\Component\ComponentHelper;
+use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView;
@@ -68,8 +70,30 @@ class SexypollingViewSexyvotes extends HtmlView {
     {
         JToolBarHelper::deleteList('', 'sexyvotes.delete', 'JTOOLBAR_DELETE');
 
-		JToolBarHelper::divider();
-        JToolBarHelper::custom( 'votesexport.runexport', 'new', 'new', Text::_('COM_SEXYPOLLING_VOTES_EXPORT'), false, false ); 
+        //Get user and params
+        $application = Factory::getApplication();
+        $user = $application->getIdentity();
+
+        if ($application->isClient('site')) {
+            $params = $application->getParams('com_sexypolling');
+        } else {
+            $params = ComponentHelper::getParams('com_sexypolling');
+        }
+
+        //If permission control for votes/answers is activated, check permission for user
+        if ($params->get('permission_control_for_answers_and_votes', 0)) {
+            $show_votes   = $user !== null && $user->authorise('core.view.votes', 'com_sexypolling');
+            $show_answers = $user !== null && $user->authorise('core.view.answers', 'com_sexypolling');
+        } else {
+            $show_votes   = true;
+            $show_answers = true;
+        }
+
+        //If permission for votes and answers is available, include export for votes
+        if($show_votes && $show_answers) {
+            JToolBarHelper::divider();
+            JToolBarHelper::custom( 'votesexport.runexport', 'new', 'new', Text::_('COM_SEXYPOLLING_VOTES_EXPORT'), false, false );     
+        }
 
         JToolBarHelper::divider();
 		JToolBarHelper::preferences('com_sexypolling');

@@ -53,9 +53,9 @@ if ($application->isClient('site')) {
 
 //if permission control for answers is activated, use permission settings for viewing answers
 if ($params->get('permission_control_for_answers_and_votes', 0)) {
-    $show_answers = $user !== null && $user->authorise('core.view.votes', 'com_sexypolling');
+    $show_votes = $user !== null && $user->authorise('core.view.votes', 'com_sexypolling');
 } else {
-    $show_answers = true;
+    $show_votes = true;
 }
 ?>
 <script type="text/javascript">
@@ -80,7 +80,7 @@ if ($params->get('permission_control_for_answers_and_votes', 0)) {
 <?php else : ?>
     <div id="j-main-container">
 <?php endif;?>
-<?php if(!$show_answers): ?>
+<?php if(!$show_votes): ?>
     <h3 style="color: red;"><?php echo Text::_('COM_SEXYPOLLING_ACTION_VIEW_VOTES_NO_PERMISSION');?></h3>
 <?php else : ?>
         <div id="filter-bar" class="btn-toolbar">

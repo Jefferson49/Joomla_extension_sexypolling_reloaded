@@ -39,8 +39,10 @@ require_once JPATH_COMPONENT.DIRECTORY_SEPARATOR.'helpers'.DIRECTORY_SEPARATOR.'
 $controller	= BaseController::getInstance('SexyPolling');
 
 $document = Factory::getApplication()->getDocument();
-$cssFile = Uri::base(true).'/components/com_sexypolling/assets/css/icons_'.JV.'.css';
-$document->addStyleSheet($cssFile, array('type' => 'text/css'), array());
+$cssFileIcons   = Uri::base(true).'/components/com_sexypolling/assets/css/icons_'.JV.'.css';
+$cssFileSidebar = Uri::base(true).'/components/com_sexypolling/assets/css/sidebar-nav.css';
+$document->addStyleSheet($cssFileIcons, array('type' => 'text/css'), array());
+$document->addStyleSheet($cssFileSidebar, array('type' => 'text/css'), array());
 
 // Perform the Request task
 

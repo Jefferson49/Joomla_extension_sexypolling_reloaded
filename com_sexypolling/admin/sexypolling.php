@@ -40,9 +40,13 @@ $controller	= BaseController::getInstance('SexyPolling');
 
 $document = Factory::getApplication()->getDocument();
 $cssFileIcons   = Uri::base(true).'/components/com_sexypolling/assets/css/icons_'.JV.'.css';
-$cssFileSidebar = Uri::base(true).'/components/com_sexypolling/assets/css/sidebar-nav.css';
 $document->addStyleSheet($cssFileIcons, array('type' => 'text/css'), array());
-$document->addStyleSheet($cssFileSidebar, array('type' => 'text/css'), array());
+
+//If Joomla version is 4.0 or greater, add additional CSS for sidebar navigation
+if(version_compare(JVERSION, '4', '>=')) {
+    $cssFileSidebar = Uri::base(true).'/components/com_sexypolling/assets/css/sidebar-nav.css';
+    $document->addStyleSheet($cssFileSidebar, array('type' => 'text/css'), array());
+}
 
 // Perform the Request task
 

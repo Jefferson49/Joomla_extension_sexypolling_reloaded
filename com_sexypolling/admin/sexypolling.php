@@ -41,8 +41,10 @@ $controller	= BaseController::getInstance('SexyPolling');
 /** @var Joomla\CMS\WebAsset\WebAssetManager $wa */
 $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
 $uri_base = 'administrator/';
-$cssFile = $uri_base.'components/com_sexypolling/assets/css/icons_'.JV.'.css';
-$wa->registerAndUseStyle('icons_'.JV, $cssFile);
+$cssFileIcons = $uri_base.'components/com_sexypolling/assets/css/icons_'.JV.'.css';
+$cssFileSidebar = $uri_base.'components/com_sexypolling/assets/css/sidebar-nav.css';
+$wa->registerAndUseStyle('icons_'.JV, $cssFileIcons);
+$wa->registerAndUseStyle('sidebar-nav', $cssFileSidebar);
 
 // Perform the Request task
 

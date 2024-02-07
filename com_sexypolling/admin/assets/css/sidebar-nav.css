@@ -1,0 +1,42 @@
+/**
+ * @author Jefferson49
+ * @link https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded
+ * @copyright Copyright (c) 2022 - 2024 Jefferson49
+ * @license GNU/GPL v3.0
+**/
+
+.com_sexypolling .sidebar-nav .d-md-block {display: inline-block !important}
+.com_sexypolling .sidebar-nav .d-md-block .chosen-container {max-width: 200px !important; margin-right: 20px}
+
+.com_sexypolling .sidebar-nav .flex-column {
+	flex-direction: row !important;
+}
+
+.com_sexypolling .sidebar-nav li a {
+    font-size: 1rem;
+	font-weight: bold;
+    line-height: 1.8rem;
+    width: 7rem;
+    margin: 0.5rem;
+    display: block;
+    color: var(--template-link-color);
+    background: white;
+	border: solid 1px;
+    border-radius: 5px;
+    padding: 0.25rem;
+    border-color: hsl(var(--hue), 20%, 80%);
+}
+
+.com_sexypolling .sidebar-nav li.active {
+    background: var(--template-bg-dark);
+    border-radius: 5px;
+}
+
+.com_sexypolling .sidebar-nav li.active a {
+    color: var(--template-link-color);
+}
+
+.com_sexypolling .sidebar-nav li a:hover {
+    background: var(--template-bg-dark);
+    color: white;
+}

@@ -2,8 +2,8 @@
 <updates>
 	<update>
 		<name>Sexy Polling Reloaded</name>
-		<description>A Joomla plugin to provide polls</description>
-		<element>COM_SEXYPOLLING</element>
+		<description>Sexy Polling Reloaded - An extension for polling with single/multiple voting, adding answers by users, start/end dates, voting periods, and extensive template customizing.</description>
+		<element>com_sexypolling</element>
 		<type>component</type>
 		<version>4.1.0</version>
 		<infourl title="Sexy Polling Reloaded">https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/tag/v4.1.0</infourl>
@@ -19,8 +19,8 @@
     </update> 
 	<update>
 		<name>Sexy Polling Reloaded</name>
-		<description>A Joomla plugin to provide polls</description>
-		<element>COM_SEXYPOLLING</element>
+		<description>Sexy Polling Reloaded - An extension for polling with single/multiple voting, adding answers by users, start/end dates, voting periods, and extensive template customizing.</description>
+		<element>com_sexypolling</element>
 		<type>component</type>
 		<version>4.1.1</version>
 		<infourl title="Sexy Polling Reloaded">https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/tag/v4.1.1</infourl>
@@ -37,8 +37,8 @@
     </update> 
 	<update>
 		<name>Sexy Polling Reloaded</name>
-		<description>A Joomla plugin to provide polls</description>
-		<element>COM_SEXYPOLLING</element>
+		<description>Sexy Polling Reloaded - An extension for polling with single/multiple voting, adding answers by users, start/end dates, voting periods, and extensive template customizing.</description>
+		<element>com_sexypolling</element>
 		<type>component</type>
 		<version>4.1.2</version>
 		<infourl title="Sexy Polling Reloaded">https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/tag/v4.1.2</infourl>
@@ -55,8 +55,8 @@
     </update> 
 	<update>
 		<name>Sexy Polling Reloaded</name>
-		<description>A Joomla plugin to provide polls</description>
-		<element>COM_SEXYPOLLING</element>
+		<description>Sexy Polling Reloaded - An extension for polling with single/multiple voting, adding answers by users, start/end dates, voting periods, and extensive template customizing.</description>
+		<element>com_sexypolling</element>
 		<type>component</type>
 		<version>4.1.3</version>
 		<infourl title="Sexy Polling Reloaded">https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/tag/v4.1.3</infourl>
@@ -73,8 +73,8 @@
     </update> 	
 	<update>
 		<name>Sexy Polling Reloaded</name>
-		<description>A Joomla plugin to provide polls</description>
-		<element>COM_SEXYPOLLING</element>
+		<description>Sexy Polling Reloaded - An extension for polling with single/multiple voting, adding answers by users, start/end dates, voting periods, and extensive template customizing.</description>
+		<element>com_sexypolling</element>
 		<type>component</type>
 		<version>4.1.4</version>
 		<infourl title="Sexy Polling Reloaded">https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/tag/v4.1.4</infourl>
@@ -91,8 +91,8 @@
     </update> 	
 	<update>
 		<name>Sexy Polling Reloaded</name>
-		<description>A Joomla plugin to provide polls</description>
-		<element>COM_SEXYPOLLING</element>
+		<description>Sexy Polling Reloaded - An extension for polling with single/multiple voting, adding answers by users, start/end dates, voting periods, and extensive template customizing.</description>
+		<element>com_sexypolling</element>
 		<type>component</type>
 		<version>4.1.5</version>
 		<infourl title="Sexy Polling Reloaded">https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/tag/v4.1.5</infourl>
@@ -109,8 +109,8 @@
     </update> 		
 	<update>
 		<name>Sexy Polling Reloaded</name>
-		<description>A Joomla plugin to provide polls</description>
-		<element>COM_SEXYPOLLING</element>
+		<description>Sexy Polling Reloaded - An extension for polling with single/multiple voting, adding answers by users, start/end dates, voting periods, and extensive template customizing.</description>
+		<element>com_sexypolling</element>
 		<type>component</type>
 		<version>4.1.6</version>
 		<infourl title="Sexy Polling Reloaded">https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/tag/v4.1.6</infourl>
@@ -127,8 +127,8 @@
     </update> 	
 	<update>
 		<name>Sexy Polling Reloaded</name>
-		<description>A Joomla plugin to provide polls</description>
-		<element>COM_SEXYPOLLING</element>
+		<description>Sexy Polling Reloaded - An extension for polling with single/multiple voting, adding answers by users, start/end dates, voting periods, and extensive template customizing.</description>
+		<element>com_sexypolling</element>
 		<type>component</type>
 		<version>4.1.7</version>
 		<infourl title="Sexy Polling Reloaded">https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/tag/v4.1.7</infourl>
@@ -145,8 +145,8 @@
     </update> 	
 	<update>
 		<name>Sexy Polling Reloaded</name>
-		<description>A Joomla plugin to provide polls</description>
-		<element>COM_SEXYPOLLING</element>
+		<description>Sexy Polling Reloaded - An extension for polling with single/multiple voting, adding answers by users, start/end dates, voting periods, and extensive template customizing.</description>
+		<element>com_sexypolling</element>
 		<type>component</type>
 		<version>4.2.0</version>
 		<infourl title="Sexy Polling Reloaded">https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/tag/v4.2.0</infourl>
@@ -162,9 +162,9 @@
 		<sha256>a38f6b316e3008221368b3af1da23b4b2870417f8e06e02e81aa97c4b86fe962</sha256>
     </update>
 	<update>
-		<name>COM_SEXYPOLLING</name>
-		<description>COM_SEXYPOLLING_DESCRIPTION</description>
-		<element>COM_SEXYPOLLING</element>
+		<name>Sexy Polling Reloaded</name>
+		<description>Sexy Polling Reloaded - An extension for polling with single/multiple voting, adding answers by users, start/end dates, voting periods, and extensive template customizing.</description>
+		<element>com_sexypolling</element>
 		<type>component</type>
 		<version>5.0.0</version>
 		<infourl title="Sexy Polling Reloaded">https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/tag/v5.0.0</infourl>
@@ -181,9 +181,9 @@
 		<sha256>b94a4b1c21230f7b6b4769950cc078317f84bb2bd99042095058ff3f67a6790f</sha256>
     </update>
 	<update>
-		<name>COM_SEXYPOLLING</name>
-		<description>COM_SEXYPOLLING_DESCRIPTION</description>
-		<element>COM_SEXYPOLLING</element>
+		<name>Sexy Polling Reloaded</name>
+		<description>Sexy Polling Reloaded - An extension for polling with single/multiple voting, adding answers by users, start/end dates, voting periods, and extensive template customizing.</description>
+		<element>com_sexypolling</element>
 		<type>component</type>
 		<version>5.0.1</version>
 		<infourl title="Sexy Polling Reloaded">https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/tag/v5.0.1</infourl>
@@ -200,9 +200,9 @@
 		<sha256>cc19309f6b12b16c02031b687b90ce7c13ff81694737caa57708a1986457b0b3</sha256>
     </update>
 	<update>
-		<name>COM_SEXYPOLLING</name>
-		<description>COM_SEXYPOLLING_DESCRIPTION</description>
-		<element>COM_SEXYPOLLING</element>
+		<name>Sexy Polling Reloaded</name>
+		<description>Sexy Polling Reloaded - An extension for polling with single/multiple voting, adding answers by users, start/end dates, voting periods, and extensive template customizing.</description>
+		<element>com_sexypolling</element>
 		<type>component</type>
 		<version>5.1.0</version>
 		<infourl title="Sexy Polling Reloaded">https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/tag/v5.1.0</infourl>
@@ -219,9 +219,9 @@
 		<sha256>fe7c18959b9f5150d86430cb6333e700562181123069653e8bd2bc3c654e67e9</sha256>
     </update>
 	<update>
-		<name>COM_SEXYPOLLING</name>
-		<description>COM_SEXYPOLLING_DESCRIPTION</description>
-		<element>COM_SEXYPOLLING</element>
+		<name>Sexy Polling Reloaded</name>
+		<description>Sexy Polling Reloaded - An extension for polling with single/multiple voting, adding answers by users, start/end dates, voting periods, and extensive template customizing.</description>
+		<element>com_sexypolling</element>
 		<type>component</type>
 		<version>5.0.2</version>
 		<infourl title="Sexy Polling Reloaded">https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/tag/v5.0.2</infourl>
@@ -238,9 +238,9 @@
 		<sha256>7a181d4fdfadc240890595a8ec178824910246072db986ec7d214ec7dd419d24</sha256>
     </update>
 	<update>
-		<name>COM_SEXYPOLLING</name>
-		<description>COM_SEXYPOLLING_DESCRIPTION</description>
-		<element>COM_SEXYPOLLING</element>
+		<name>Sexy Polling Reloaded</name>
+		<description>Sexy Polling Reloaded - An extension for polling with single/multiple voting, adding answers by users, start/end dates, voting periods, and extensive template customizing.</description>
+		<element>com_sexypolling</element>
 		<type>component</type>
 		<version>5.1.1</version>
 		<infourl title="Sexy Polling Reloaded">https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/tag/v5.1.1</infourl>
@@ -257,9 +257,9 @@
 		<sha256>d8862aa9a9327d7600e965c2cb39efd7d8e6a1293b5c38ff4200a9ab4ad34875</sha256>
     </update>
 	<update>
-		<name>COM_SEXYPOLLING</name>
-		<description>COM_SEXYPOLLING_DESCRIPTION</description>
-		<element>COM_SEXYPOLLING</element>
+		<name>Sexy Polling Reloaded</name>
+		<description>Sexy Polling Reloaded - An extension for polling with single/multiple voting, adding answers by users, start/end dates, voting periods, and extensive template customizing.</description>
+		<element>com_sexypolling</element>
 		<type>component</type>
 		<version>5.0.3</version>
 		<infourl title="Sexy Polling Reloaded">https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/tag/v5.0.3</infourl>
@@ -276,9 +276,9 @@
 		<sha256>d98e877b072eba788be9d1d3fc466c0b02e5c56fc94ff64f3e2736f153666470</sha256>
     </update>
 	<update>
-		<name>COM_SEXYPOLLING</name>
-		<description>COM_SEXYPOLLING_DESCRIPTION</description>
-		<element>COM_SEXYPOLLING</element>
+		<name>Sexy Polling Reloaded</name>
+		<description>Sexy Polling Reloaded - An extension for polling with single/multiple voting, adding answers by users, start/end dates, voting periods, and extensive template customizing.</description>
+		<element>com_sexypolling</element>
 		<type>component</type>
 		<version>5.1.2</version>
 		<infourl title="Sexy Polling Reloaded">https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/tag/v5.1.2</infourl>

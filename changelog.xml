@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <changelogs>
     <changelog>
-		<element>COM_SEXYPOLLING</element>
+		<element>com_sexypolling</element>
 		<type>component</type>
 		<version>5.0.0</version>
         <security>
@@ -21,7 +21,7 @@
         </note>
     </changelog>
     <changelog>
-		<element>COM_SEXYPOLLING</element>
+		<element>com_sexypolling</element>
 		<type>component</type>
 		<version>5.0.1</version>
         <security>
@@ -32,7 +32,7 @@
         </fix>
     </changelog>
     <changelog>
-		<element>COM_SEXYPOLLING</element>
+		<element>com_sexypolling</element>
 		<type>component</type>
 		<version>5.1.0</version>
         <security>
@@ -43,7 +43,7 @@
         </addition>
     </changelog>
     <changelog>
-		<element>COM_SEXYPOLLING</element>
+		<element>com_sexypolling</element>
 		<type>component</type>
 		<version>5.0.2</version>
         <security>
@@ -55,7 +55,7 @@
         </fix>
     </changelog>    
     <changelog>
-		<element>COM_SEXYPOLLING</element>
+		<element>com_sexypolling</element>
 		<type>component</type>
 		<version>5.1.1</version>
         <security>
@@ -67,7 +67,7 @@
         </fix>
     </changelog>    
     <changelog>
-		<element>COM_SEXYPOLLING</element>
+		<element>com_sexypolling</element>
 		<type>component</type>
 		<version>5.0.3</version>
         <security>
@@ -78,7 +78,7 @@
         </fix>
     </changelog>    
     <changelog>
-		<element>COM_SEXYPOLLING</element>
+		<element>com_sexypolling</element>
 		<type>component</type>
 		<version>5.1.2</version>
         <security>

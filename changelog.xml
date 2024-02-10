@@ -88,4 +88,44 @@
             <item>Error Invalid default value for 'date_start' during installation</item>
         </fix>
     </changelog>        
+    <changelog>
+		<element>com_sexypolling</element>
+		<type>component</type>
+		<version>5.0.4.0</version>
+        <security>
+            <item>Due to improvements in the component architecture, it is highly recommended to upgrade from earlier 4.x.x versions to version 5.0.0 or later</item>
+        </security>
+        <addition>
+            <item>CSV/EXCEL export for votes</item>
+            <item>Changed backend linkbar to horizontal</item>
+            <item>Added general permission control for component</item>
+            <item>Added option in general settings and actions in permission control to enable permission control for viewing answers and votes</item>
+        </addition>
+        <fix>
+            <item>Embedded HTML code without result</item>
+            <item>Wrong string handling for IPv6 adresses and IPv4 addresses with ::ffff: prefix</item>
+            <item>Component name not shown correctly in extensions update</item>
+            <item>End date of poll is not correctly handled if option "Show Results During Poll" is set to "no"</item>
+        </fix>
+    </changelog>    
+    <changelog>
+		<element>com_sexypolling</element>
+		<type>component</type>
+		<version>5.4.0</version>
+        <security>
+            <item>Due to improvements in the component architecture, it is highly recommended to upgrade from earlier 4.x.x versions to version 5.0.0 or later</item>
+        </security>
+        <addition>
+            <item>CSV/EXCEL export for votes</item>
+            <item>Changed backend linkbar to horizontal</item>
+            <item>Added general permission control for component</item>
+            <item>Added option in general settings and actions in permission control to enable permission control for viewing answers and votes</item>
+        </addition>
+        <fix>
+            <item>Embedded HTML code without result</item>
+            <item>Wrong string handling for IPv6 adresses and IPv4 addresses with ::ffff: prefix</item>
+            <item>Component name not shown correctly in extensions update</item>
+            <item>End date of poll is not correctly handled if option "Show Results During Poll" is set to "no"</item>
+        </fix>
+    </changelog>         
 </changelogs>

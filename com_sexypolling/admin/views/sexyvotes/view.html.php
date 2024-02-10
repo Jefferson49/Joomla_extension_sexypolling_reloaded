@@ -83,14 +83,12 @@ class SexypollingViewSexyvotes extends HtmlView {
         //If permission control for votes/answers is activated, check permission for user
         if ($params->get('permission_control_for_answers_and_votes', 0)) {
             $show_votes   = $user !== null && $user->authorise('core.view.votes', 'com_sexypolling');
-            $show_answers = $user !== null && $user->authorise('core.view.answers', 'com_sexypolling');
         } else {
             $show_votes   = true;
-            $show_answers = true;
         }
 
-        //If permission for votes and answers is available, include export for votes
-        if($show_votes && $show_answers) {
+        //If permission to show votes (and related answers), include export for votes
+        if($show_votes) {
             JToolBarHelper::divider();
             JToolBarHelper::custom( 'votesexport.runexport', 'new', 'new', Text::_('COM_SEXYPOLLING_VOTES_EXPORT'), false, false );     
         }

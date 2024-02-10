@@ -42,21 +42,10 @@ $archived   = $this->state->get('filter.published') == 2 ? true : false;
 $trashed    = $this->state->get('filter.published') == -2 ? true : false;
 $sortFields = $this->getSortFields();
 
-$application = Factory::getApplication();
-$user = $application->getIdentity();
+//Permission control for viewing votes
+$user = Factory::getApplication()->getIdentity();
+$show_votes = $user !== null && $user->authorise('core.view.votes', 'com_sexypolling');
 
-if ($application->isClient('site')) {
-    $params = $application->getParams('com_sexypolling');
-} else {
-    $params = ComponentHelper::getParams('com_sexypolling');
-}
-
-//If permission control for answers and votes is activated, use permission settings for viewing votes
-if ($params->get('permission_control_for_answers_and_votes', 0)) {
-    $show_votes = $user !== null && $user->authorise('core.view.votes', 'com_sexypolling');
-} else {
-    $show_votes = true;
-}
 ?>
 <script type="text/javascript">
     Joomla.orderTable = function() {

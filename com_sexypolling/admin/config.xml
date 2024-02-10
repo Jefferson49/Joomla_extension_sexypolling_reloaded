@@ -7,17 +7,6 @@
 		addfieldprefix="Joomla\Component\SexyPolling\Administrator\Field"
 	>
 		<field
-			name="permission_control_for_answers_and_votes"
-			type="radio"
-			layout="joomla.form.field.radio.switcher"
-			label="COM_SEXYPOLLING_CONFIG_PERMISSION_CONTROL_FOR_ANSWERS_AND_VOTES_LABEL"
-			description="COM_SEXYPOLLING_CONFIG_PERMISSION_CONTROL_FOR_ANSWERS_AND_VOTES_DESC"
-			default="0"
-		>
-			<option value="0">JNO</option>
-			<option value="1">JYES</option>
-		</field>
-		<field
 			name="separator_for_csv_export"
 			type="text"
 			label="COM_SEXYPOLLING_CONFIG_SEPARATOR_CSV_EXPORT_LABEL"

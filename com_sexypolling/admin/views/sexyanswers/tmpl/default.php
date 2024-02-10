@@ -45,21 +45,10 @@ if ($saveOrder)
 }
 $sortFields = $this->getSortFields();
 
-$application = Factory::getApplication();
-$user = $application->getIdentity();
+//Permission control for viewing answers
+$user = Factory::getApplication()->getIdentity();
+$show_answers = $user !== null && $user->authorise('core.view.answers', 'com_sexypolling');
 
-if ($application->isClient('site')) {
-    $params = $application->getParams('com_sexypolling');
-} else {
-    $params = ComponentHelper::getParams('com_sexypolling');
-}
-
-//If permission control for answers and votes is activated, use permission settings for viewing answers
-if ($params->get('permission_control_for_answers_and_votes', 0)) {
-    $show_answers = $user !== null && $user->authorise('core.view.answers', 'com_sexypolling');
-} else {
-    $show_answers = true;
-}
 ?>
 <script type="text/javascript">
     Joomla.orderTable = function() {

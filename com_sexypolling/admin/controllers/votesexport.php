@@ -66,7 +66,7 @@ use Joomla\CMS\HTML\HTMLHelper;
         $sitename = substr($sitename, 0, 10);
   	    
         // Access check 
-        if (!$app->getIdentity()->authorise('core.admin','com_sexypolling')){            
+        if (!$app->getIdentity()->authorise('core.view.votes','com_sexypolling')){            
             Factory::getApplication()->enqueueMessage( Text::_('JERROR_ALERTNOAUTHOR'), 'warning');
             $this->setRedirect(ROUTE::_('index.php?option=com_sexypolling', true));
         } else {

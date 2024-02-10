@@ -51,7 +51,7 @@ if ($application->isClient('site')) {
     $params = ComponentHelper::getParams('com_sexypolling');
 }
 
-//if permission control for answers is activated, use permission settings for viewing answers
+//If permission control for answers and votes is activated, use permission settings for viewing votes
 if ($params->get('permission_control_for_answers_and_votes', 0)) {
     $show_votes = $user !== null && $user->authorise('core.view.votes', 'com_sexypolling');
 } else {

@@ -585,6 +585,12 @@ use Joomla\CMS\Session\Session;
 	 */
 	public static function geoipAjax(): void
 	{
+		//Check CSRF token
+		if (!Session::checkToken()) {
+			echo '[{"invalid":"invalid_token"}]';
+			exit();
+		}
+
 		$server = Factory::getApplication()->input->server;
 
 		//get ip address

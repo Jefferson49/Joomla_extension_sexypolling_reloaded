@@ -40,18 +40,26 @@ $(document).ready(function() {
                 sp_make_ul_h_();
             },1000);
 
+            var $t = $(this);
+			var sexypolling_token = $t.find('.sexypolling_token').attr("name");
+
             $.ajax
             ({
-                url: sexyPath + 'index.php?option=com_ajax&module=sexypolling&method=geoip&format=raw?ip=' + sexyIp,
-                type: "get",
+                url: sexyPath + 'index.php?option=com_ajax&module=sexypolling&method=geoip&format=raw',
+                type: "post",
+				data: sexypolling_token+'=1',
                 dataType: "json",
-                success: function(data)
-                {
-                    if(data != null) {
-                        sexyCountry = data.countryName;
-                        sexyCountryCode = data.countryCode;
-                        sexyCity = data.cityName;
-                        sexyRegion = data.regionName;
+                success: function(data) {
+					if((data.invalid) == 'invalid_token') {
+                        make_alert('Invalid Token','sexy_error');
+                    } 
+                    else {
+                        if(data != null) {
+                            sexyCountry = data.countryName;
+                            sexyCountryCode = data.countryCode;
+                            sexyCity = data.cityName;
+                            sexyRegion = data.regionName;
+                        }
                     }
                 },
                 error: function()

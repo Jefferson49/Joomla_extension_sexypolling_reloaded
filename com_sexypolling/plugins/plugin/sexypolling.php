@@ -139,9 +139,10 @@ class plgSystemSexypolling extends CMSPlugin {
         $module_id = 10000;
         $plg_order_index = 0;
         foreach($m[2] as $poll_id) {
-            $cssFileSrc = Uri::base(true).'/index.php?option=com_ajax&module=sexypolling&method=generateCSS&format=raw?id_poll='.$poll_id.'&module_id='.$module_id;
-            $cssFile = '<link rel="stylesheet" href="'.$cssFileSrc.'" type="text/css" />'."\n";
-            $c = str_replace('</head>', $cssFile . '</head>', $c);
+            require_once JPATH_BASE.'/modules/mod_sexypolling/helper.php';
+            $css = modSexypollingHelper::getCSS($module_id, 0, $poll_id);
+            $style = '<style type="text/css">' . $css . '</style>';
+            $c = str_replace('</head>', $style . '</head>', $c);
 
             //$plg_order_index ++;
             $module_id += 1;
@@ -158,9 +159,10 @@ class plgSystemSexypolling extends CMSPlugin {
         $module_id = 20000;
         $plg_order_index = 0;
         foreach($m[2] as $category_id) {
-            $cssFileSrc = Uri::base(true).'/index.php?option=com_ajax&module=sexypolling&method=generateCSS&format=raw?id_category='.$category_id.'&module_id='.$module_id;
-            $cssFile = '<link rel="stylesheet" href="'.$cssFileSrc.'" type="text/css" />'."\n";
-            $c = str_replace('</head>', $cssFile . '</head>', $c);
+            require_once JPATH_BASE.'/modules/mod_sexypolling/helper.php';
+            $css = modSexypollingHelper::getCSS($module_id, $category_id, 0);
+            $style = '<style type="text/css">' . $css . '</style>';
+            $c = str_replace('</head>', $style . '</head>', $c);
 
             $plg_order_index ++;
             $module_id += $plg_order_index;

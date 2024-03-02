@@ -70,7 +70,7 @@ $(document).ready(function() {
             setTimeout(function() {
                 $(".polling_container_wrapper").each(function() {
                     var w = $(this).width();
-                    $(this).css("width",w);
+                    //$(this).css("width",w);
                     var curr_h = $(this).find('.answer_wrapper').height();
                     $(this).find('.answer_wrapper').attr("h",curr_h);
                 });

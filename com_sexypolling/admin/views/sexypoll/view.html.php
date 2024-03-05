@@ -72,6 +72,7 @@ class SexypollingViewSexypoll extends HtmlView
 	
 		JToolBarHelper::apply('sexypoll.apply');
 		JToolBarHelper::save('sexypoll.save');
+		JToolBarHelper::save2copy('sexypoll.save2copy');
 		
 		// Build the actions for new and existing records.
 		if ($isNew)  {

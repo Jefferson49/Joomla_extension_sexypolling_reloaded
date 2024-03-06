@@ -80,6 +80,7 @@ class SexypollingViewSexypolls extends HtmlView {
 	protected function addToolbar()
 	{
 		JToolBarHelper::addNew('sexypoll.add');
+		JToolBarHelper::custom('sexypoll.copy', 'add', 'add', 'Copy', true);
 		JToolBarHelper::editList('sexypoll.edit');
 		    	
 		JToolBarHelper::divider();

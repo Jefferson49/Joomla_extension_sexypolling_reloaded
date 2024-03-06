@@ -51,7 +51,7 @@ class SexyPollingControllerSexyPoll extends FormController
 		// Get the previous record id (if any) and the current record id.
 		$recordId = (int) (\count($cid) ? $cid[0] : $this->input->getInt($urlVar));
 
-		// Save the data to the session in post->jform
+		// Create array with poll settings
 		$data = [];
 		$table->load($recordId);
 
@@ -65,6 +65,18 @@ class SexyPollingControllerSexyPoll extends FormController
 			$data[$field->Field] = $table->{$field->Field};
 		}
 
+		// Create poll name for copy
+		$poll_names = $this->getPollNames();
+		$poll_name = $data['name'];
+
+		$i = 1;
+		while(in_array($copy_poll_name = $poll_name . ' (' . (string) $i  . ')', $poll_names)) {
+			$i++;
+		}
+
+		$data['name'] = $copy_poll_name;		
+
+		// Save the data to the session in post->jform
 		$input->post->set('jform', $data);
 
 		// Set task to save2copy
@@ -74,5 +86,25 @@ class SexyPollingControllerSexyPoll extends FormController
 		parent::save();
 
 		$this->setRedirect('index.php?option=com_sexypolling&view=sexypolls');
-	}	
+	}
+    /**
+	 * Create a list of all existing poll names
+	 *
+	 * @return	array
+	 */
+	function getPollNames(): array
+	{
+		$db = Factory::getDBO();
+		$query = "SELECT * FROM `#__sexy_polls`";
+		$db->setQuery( $query );
+		$polls = $db->loadAssocList();
+
+		$poll_names = [];
+
+		foreach($polls as $poll) {
+			$poll_names[] = $poll['name'];
+		}
+
+		return $poll_names;
+	}
 }

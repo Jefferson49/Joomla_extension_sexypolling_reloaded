@@ -69,7 +69,7 @@ class SexyPollingControllerSexyPoll extends FormController
 		$poll_names = $this->getPollNames();
 		$poll_name = $data['name'];
 
-		$i = 1;
+		$i = 2;
 		while(in_array($copy_poll_name = $poll_name . ' (' . (string) $i  . ')', $poll_names)) {
 			$i++;
 		}

@@ -30,8 +30,7 @@ class SexyPollingControllerSexyPoll extends FormController
 		// Check for request forgeries
 		Session::checkToken() or jexit(Text::_('JINVALID_TOKEN'));
 
-		$app   	 = Factory::getApplication();
-		$input   = $app->getInput();
+		$input	 = Factory::getApplication()->input;
 		$model   = $this->getModel();
         $table   = $model->getTable();
 		

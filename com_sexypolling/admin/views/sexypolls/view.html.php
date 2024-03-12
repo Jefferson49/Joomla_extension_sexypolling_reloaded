@@ -81,7 +81,7 @@ class SexypollingViewSexypolls extends HtmlView {
 	protected function addToolbar()
 	{
 		ToolbarHelper::addNew('sexypoll.add');
-		ToolbarHelper::custom('sexypoll.copy', 'add', 'add', 'Copy', true);
+		ToolbarHelper::custom('sexypoll.copy', 'save-copy', 'save-copy', 'JTOOLBAR_SAVE_AS_COPY', true);
 		ToolbarHelper::editList('sexypoll.edit');
 		    	
 		ToolbarHelper::divider();

@@ -1,11 +1,24 @@
 <?php
 /**
  * Joomla! component sexypolling
+ * 
+ * @version $Id: default.php 2012-04-05 14:30:25 svn $
+ * @author 2GLux.com
+ * @package Sexy Polling
+ * @subpackage com_sexypolling
+ * @license GNU/GPL
  *
+ * Extended by:  
  * @author Jefferson49
  * @link https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded
  * @copyright Copyright (c) 2022 - 2024 Jefferson49
  * @license GNU/GPL v3.0
+ * 
+ * JavaScript window.jSelectSexypoll, document.addEventListener from JDownloads:
+ * @version 3.8
+ * @package JDownloads
+ * @copyright (C) 2007/2018 www.jdownloads.com
+ * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
  * 
  */
 

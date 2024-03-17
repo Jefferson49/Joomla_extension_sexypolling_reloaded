@@ -18,6 +18,7 @@
  */
 
 use Joomla\CMS\HTML\Helpers\Sidebar;
+use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView;
@@ -43,7 +44,11 @@ class SexypollingViewSexypolls extends HtmlView {
     	$this->pagination	= $this->get('Pagination');
     	$this->state		= $this->get('State');
     	$category_options	= $this->get('category_options');
- 
+
+		//get layout (if called as a modal)
+		$input = Factory::getApplication()->input;
+		$layout = $input->getString('layout', '');
+
     	//get category options
     	$options        = array();
     	foreach($category_options AS $category) {
@@ -68,9 +73,14 @@ class SexypollingViewSexypolls extends HtmlView {
 				HTMLHelper::_('select.options', HTMLHelper::_('access.assetgroups'), 'value', 'text', $this->state->get('filter.access'))
 		);
 
-		$this->addToolbar();
-		$this->sidebar = Sidebar::render();
-		parent::display($tpl);
+		if($layout === 'modal') {
+			parent::display($tpl);
+		}		
+		else {
+			$this->addToolbar();
+			$this->sidebar = Sidebar::render();
+			parent::display($tpl);
+		}
     }
     
     /**

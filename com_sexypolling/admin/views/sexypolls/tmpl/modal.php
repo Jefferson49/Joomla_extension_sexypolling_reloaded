@@ -42,7 +42,7 @@ $editor = Factory::getApplication()->input->getCmd('editor', '');
 if (!empty($editor))
 {
     $this->document->addScriptOptions('xtd-sexypolling', array('editor' => $editor));
-    $onclick = "jSelectDownload";
+    $onclick = "jSelectSexypoll";
 }
 ?>
 
@@ -59,7 +59,7 @@ if (!empty($editor))
         Joomla.tableOrdering(order, dirn, '');   
     }
 
-    window.jSelectDownload = function (id) {
+    window.jSelectSexypoll = function (id) {
 		var editor, tag;
 
         if (!Joomla.getOptions('xtd-sexypolling')) {
@@ -96,7 +96,7 @@ if (!empty($editor))
 	        	} = event;
 				var functionName = target.getAttribute('data-function');
 
-				if (functionName === 'jSelectDownload') {
+				if (functionName === 'jSelectSexypoll') {
 					// Used in xtd_contacts
 					window[functionName](target.getAttribute('data-id'), target.getAttribute('data-title'), event.target.getAttribute('data-cat-id'), null, target.getAttribute('data-uri'), target.getAttribute('data-language'));
 				} else {
@@ -194,7 +194,7 @@ if (!empty($editor))
                     </td>
                     <td class="nowrap has-context">
                         <div class="pull-left">
-                            <?php $attribs = 'data-function="' . 'jSelectDownload' . '"' . ' data-id="' . $item->id . '"'?>
+                            <?php $attribs = 'data-function="' . 'jSelectSexypoll' . '"' . ' data-id="' . $item->id . '"'?>
                             <a class="select-link" href="javascript:void(0)" <?php echo $attribs; ?>>
                                 <?php echo $this->escape($item->name); ?>
                             </a>

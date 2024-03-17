@@ -90,9 +90,8 @@ if (!empty($editor))
 			window.parent.jInsertEditorText(tag, editor);
 		}
 
-	    if (window.parent.Joomla.Modal) {
-	      window.parent.Joomla.Modal.getCurrent().close();
-	    }
+        window.parent.jModalClose();
+
 		return true;
 	};
 
@@ -117,9 +116,7 @@ if (!empty($editor))
 					window.parent[functionName](target.getAttribute('data-id'), target.getAttribute('data-title'), target.getAttribute('data-cat-id'), null, target.getAttribute('data-uri'), target.getAttribute('data-language'));
 				}
 
-                if (window.parent.Joomla.Modal) {
-                    window.parent.Joomla.Modal.getCurrent().close();
-                }
+                window.parent.jModalClose();
 
 			})
 		}

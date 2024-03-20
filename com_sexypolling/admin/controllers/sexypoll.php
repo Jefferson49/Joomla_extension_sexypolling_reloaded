@@ -11,6 +11,8 @@
  */
 
 use Joomla\CMS\Factory;
+use Joomla\CMS\Date\Date;
+use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\MVC\Controller\FormController;
 use Joomla\CMS\Session\Session;
 use Joomla\CMS\Language\Text;
@@ -20,6 +22,39 @@ defined('_JEXEC') or die('Restircted access');
 
 class SexyPollingControllerSexyPoll extends FormController
 {
+	/**
+	 * Method to save a record.
+	 *
+	 * @param   string  $key     The name of the primary key of the URL variable.
+	 * @param   string  $urlVar  The name of the URL variable if different from the primary key (sometimes required to avoid router collisions).
+	 *
+	 * @return  boolean  True if successful, false otherwise.
+	 *
+	 * @since   1.6
+	 */
+	public function save($key = null, $urlVar = null)
+	{
+		$post = Factory::getApplication()->input->post;
+		$data = $post->get('jform', array(), 'array');
+
+		$data_time_zone = 'UTC';
+		$current_date = new Date("now", $data_time_zone);
+		$datenow_sql = HTMLHelper::date($current_date, "Y-m-d", $data_time_zone);
+
+		//Modify start/end dates if they contain wrong default values
+		if($data['date_start'] === "0000-00-00 00:00:00" OR $data['date_start'] === ""){		
+			$data['date_start'] = $datenow_sql;
+			$post->set('jform', $data);
+		}
+
+		if($data['date_end'] === "0000-00-00 00:00:00"){
+			$data['date_end'] = "";
+			$post->set('jform', $data);
+		}		
+
+		return parent::save($key, $urlVar);
+	}
+		
     /**
 	 * Method to create a new poll based on the settings of an existing poll
 	 *

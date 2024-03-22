@@ -22,8 +22,11 @@
 
     <languages folder="language">
         <language tag="en-GB">en-GB/en-GB.plg_system_sexypolling.ini</language>
+        <language tag="en-GB">en-GB/en-GB.plg_system_sexypolling.sys.ini</language>
         <language tag="de-DE">de-DE/de-DE.plg_system_sexypolling.ini</language>
+        <language tag="de-DE">de-DE/de-DE.plg_system_sexypolling.sys.ini</language>
         <language tag="sl-SL">sl-SL/sl-SL.plg_system_sexypolling.ini</language>
+        <language tag="sl-SL">sl-SL/sl-SL.plg_system_sexypolling.sys.ini</language>
     </languages>
 
     <config>

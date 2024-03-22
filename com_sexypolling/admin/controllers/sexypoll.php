@@ -38,8 +38,9 @@ class SexyPollingControllerSexyPoll extends FormController
 		$data = $post->get('jform', array(), 'array');
 
 		$data_time_zone = 'UTC';
-		$current_date = new Date("now", $data_time_zone);
-		$datenow_sql = HTMLHelper::date($current_date, "Y-m-d", $data_time_zone);
+		$current_date   = new Date("now", $data_time_zone);
+        $datenow        = HTMLHelper::date("now", "Y-m-d H:i:s", $data_time_zone);
+		$datenow_sql    = HTMLHelper::date($current_date, "Y-m-d", $data_time_zone);
 
 		//Modify start/end dates if they contain wrong default values
 		if($data['date_start'] === "0000-00-00 00:00:00" OR $data['date_start'] === ""){		
@@ -51,6 +52,12 @@ class SexyPollingControllerSexyPoll extends FormController
 			$data['date_end'] = "";
 			$post->set('jform', $data);
 		}		
+
+		//Modify created date if it contains wrong default values
+		if($data['created'] === "0000-00-00 00:00:00" OR $data['created'] === ""){		
+			$data['created'] = $datenow;
+			$post->set('jform', $data);
+		}
 
 		return parent::save($key, $urlVar);
 	}

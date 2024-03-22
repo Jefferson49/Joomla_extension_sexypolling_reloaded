@@ -693,9 +693,14 @@ class SexypollingHelper
             }
 
             $jsInclude .= 'if (typeof autoAnimate === \'undefined\') { var autoAnimate = new Array();};';
-            foreach ($autoAnimate as $poll_id => $v) {
-                $jsInclude .= 'autoAnimate.push("'.$poll_id.'");';
-                $jsInclude .= 'autoAnimate["'.$poll_id.'"]="'.$v.'";';
+
+            //Autoanimation will show results; therefore, only apply if results are allowed to be shown
+            if(!($polling_array[0]->showresultsduringpoll == 0 && $date_now < strtotime($polling_array[0]->date_end ?? ''))) {
+
+                foreach ($autoAnimate as $poll_id => $v) {
+                    $jsInclude .= 'autoAnimate.push("'.$poll_id.'");';
+                    $jsInclude .= 'autoAnimate["'.$poll_id.'"]="'.$v.'";';
+                }
             }
 
             $jsInclude .= 'if (typeof sexyAutoPublish === \'undefined\') { var sexyAutoPublish = new Array();};';

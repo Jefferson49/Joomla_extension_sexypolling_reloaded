@@ -90,7 +90,13 @@ if (!empty($editor))
 			window.parent.jInsertEditorText(tag, editor);
 		}
 
+<?php if(version_compare(JVERSION, '4', '>=')): ?>
+        if (window.parent.Joomla.Modal) {
+	      window.parent.Joomla.Modal.getCurrent().close();
+	    }
+<?php else : ?>
         window.parent.jModalClose();
+<?php endif;?>
 
 		return true;
 	};
@@ -116,7 +122,13 @@ if (!empty($editor))
 					window.parent[functionName](target.getAttribute('data-id'), target.getAttribute('data-title'), target.getAttribute('data-cat-id'), null, target.getAttribute('data-uri'), target.getAttribute('data-language'));
 				}
 
+<?php if(version_compare(JVERSION, '4', '>=')): ?>
+                if (window.parent.Joomla.Modal) {
+                window.parent.Joomla.Modal.getCurrent().close();
+                }
+<?php else : ?>
                 window.parent.jModalClose();
+<?php endif;?>
 
 			})
 		}

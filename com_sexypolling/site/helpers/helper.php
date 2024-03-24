@@ -320,16 +320,16 @@ class SexypollingHelper
                 if($date_start != '0000-00-00' &&  $date_now < strtotime($time_start) - $timezone_offset) {
                     $datevoted = strtotime($time_start) - $timezone_offset;
                     $hours_diff = ($datevoted - $date_now) / 3600;
-                    $start_disabled_ids[] = array($poll_index, $polling_words[17] . HTMLHelper::date($date_start, $stringdateformat, $start_end_date_time_zone), $hours_diff);
+                    $start_disabled_ids[] = array($poll_index, $polling_words[17] . ' ' . HTMLHelper::date($date_start, $stringdateformat, $start_end_date_time_zone), $hours_diff);
                 }
                 
                 if($date_end != '0000-00-00' &&  $date_now > strtotime($time_end) - $timezone_offset) {
-                    $end_disabled_ids[] = array($poll_index, $polling_words[18] . HTMLHelper::date($date_end, $stringdateformat, $start_end_date_time_zone));
+                    $end_disabled_ids[] = array($poll_index, $polling_words[18] . ' ' . HTMLHelper::date($date_end, $stringdateformat, $start_end_date_time_zone));
                 }
 
                 // disable results till poll is ended
                 if($polling_array[0]->showresultsduringpoll == 0 && $date_now < strtotime($time_end) - $timezone_offset) {
-                    $hide_results_ids[$poll_index] = $polling_words[25] . HTMLHelper::date($date_end, $stringdateformat, $start_end_date_time_zone);
+                    $hide_results_ids[$poll_index] = $polling_words[25] . ' ' . HTMLHelper::date($date_end, $stringdateformat, $start_end_date_time_zone);
                 }
 
                 //if is logged in user, query votes per user

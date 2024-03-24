@@ -127,5 +127,53 @@
             <item>Component name not shown correctly in extensions update</item>
             <item>End date of poll is not correctly handled if option "Show Results During Poll" is set to "no"</item>
         </fix>
-    </changelog>         
+    </changelog>        
+    <changelog>
+		<element>com_sexypolling</element>
+		<type>component</type>
+		<version>5.0.5.0</version>
+        <security>
+            <item>Added CRSF token check to Ajax method for IP resolution</item>
+            <item>Due to improvements in the component architecture, it is highly recommended to upgrade from earlier 4.x.x versions to version 5.0.5.0 or later</item>
+        </security>
+        <addition>
+            <item>Simplifed permission control for answers and votes</item>
+            <item>Creation of a new poll by copying an existing poll</item>
+            <item>Added a button in the articles editor for inserting a Sexypolling plugin into an article</item>
+            <item>New setting in global configuration of Sexypolling : Configure time zone for poll start/end dates</item>           
+        </addition>
+        <fix>
+            <item>CSS not loaded if plugin is used</item>
+            <item>Setting for poll width 100% is not used; instead fixed value for poll width is used</item>
+            <item>Results are shown during poll although configuration is set to no</item>
+            <item>Start/End date defaults to 2024-01-11 if an empty start date or end date is saved in poll settings</item>
+            <item>Poll animation is shown although setting "Show Results During Poll" is set to "No"</item>
+            <item>Plugin name not translated if plugin is deactivated or after new installation</item>
+            <item>Error if "Date Start" of poll is empty: "Save failed with the following error: Incorrect date value: 'NOW' for column joomla.jos_sexy_polls.date_start at row 1</item>
+        </fix>
+    </changelog>    
+    <changelog>
+		<element>com_sexypolling</element>
+		<type>component</type>
+		<version>5.5.0</version>
+        <security>
+            <item>Added CRSF token check to Ajax method for IP resolution</item>
+            <item>Due to improvements in the component architecture, it is highly recommended to upgrade from earlier versions to version 5.5.0 or later</item>
+        </security>
+        <addition>
+            <item>Simplifed permission control for answers and votes</item>
+            <item>Creation of a new poll by copying an existing poll</item>
+            <item>Added a button in the articles editor for inserting a Sexypolling plugin into an article</item>
+            <item>New setting in global configuration of Sexypolling : Configure time zone for poll start/end dates</item>           
+        </addition>
+        <fix>
+            <item>CSS not loaded if plugin is used</item>
+            <item>Setting for poll width 100% is not used; instead fixed value for poll width is used</item>
+            <item>Results are shown during poll although configuration is set to no</item>
+            <item>Start/End date defaults to 2024-01-11 if an empty start date or end date is saved in poll settings</item>
+            <item>Poll animation is shown although setting "Show Results During Poll" is set to "No"</item>
+            <item>Plugin name not translated if plugin is deactivated or after new installation</item>
+            <item>Error if "Date Start" of poll is empty: "Save failed with the following error: Incorrect date value: 'NOW' for column joomla.jos_sexy_polls.date_start at row 1</item>
+        </fix>
+    </changelog>        
 </changelogs>

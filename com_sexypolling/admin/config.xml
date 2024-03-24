@@ -17,6 +17,16 @@
             default=";"    
             maxlength="1" 
 		/>
+		<field
+			name="start_end_date_timezone"
+			type="timezone"
+			label="COM_SEXYPOLLING_CONFIG_START_END_DATE_TIMEZONE_LABEL"
+			description="COM_SEXYPOLLING_CONFIG_START_END_DATE_TIMEZONE_DESC"
+			default="UTC"
+			>
+			<option value="UTC">JLIB_FORM_VALUE_TIMEZONE_UTC</option>
+		</field>
+
 	</fieldset>
 
 	<fieldset

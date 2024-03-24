@@ -16,6 +16,7 @@
  */
 
 use Joomla\CMS\Access\Access;
+use Joomla\CMS\Component\ComponentHelper;
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
@@ -306,18 +307,27 @@ class SexypollingHelper
                     $voting_permissions[$poll_index] = false;
 
                 //check start,end dates
-                if($polling_array[0]->date_start != '0000-00-00' &&  $date_now < strtotime($polling_array[0]->date_start  ?? '')) {
-                    $datevoted = strtotime($polling_array[0]->date_start ?? '');
+                $params = ComponentHelper::getParams('com_sexypolling');
+                $start_end_date_time_zone = $params->get('start_end_date_timezone', 'UTC');
+                $timezone_offset = (new DateTimeZone($start_end_date_time_zone))->getOffset(new DateTime("now", new DateTimeZone('UTC')));
+                $date_start = $polling_array[0]->date_start ?? '2020-01-01';
+                $date_end   = $polling_array[0]->date_end   ?? '2040-12-31';
+                $time_start = HTMLHelper::date($date_start .' 00:00:00' , "Y-m-d H:i:s", $data_time_zone);
+                $time_end   = HTMLHelper::date($date_end.' 23:59:59', "Y-m-d H:i:s", $data_time_zone);
+
+                if($date_start != '0000-00-00' &&  $date_now < strtotime($time_start) - $timezone_offset) {
+                    $datevoted = strtotime($time_start) - $timezone_offset;
                     $hours_diff = ($datevoted - $date_now) / 3600;
-                    $start_disabled_ids[] = array($poll_index,$polling_words[17] . HTMLHelper::date(($polling_array[0]->date_start ?? ''), $stringdateformat, $data_time_zone),$hours_diff);
+                    $start_disabled_ids[] = array($poll_index, $polling_words[17] . HTMLHelper::date($date_start, $stringdateformat, $start_end_date_time_zone), $hours_diff);
                 }
-                if($polling_array[0]->date_end != '0000-00-00' &&  $date_now > strtotime($polling_array[0]->date_end ?? '')) {
-                    $end_disabled_ids[] = array($poll_index,$polling_words[18] . HTMLHelper::date(($polling_array[0]->date_end ?? ''), $stringdateformat, $data_time_zone));
+                
+                if($date_end != '0000-00-00' &&  $date_now > strtotime($time_end) - $timezone_offset) {
+                    $end_disabled_ids[] = array($poll_index, $polling_words[18] . HTMLHelper::date($date_end, $stringdateformat, $start_end_date_time_zone));
                 }
 
                 // disable results till poll is ended
-                if($polling_array[0]->showresultsduringpoll == 0 && $date_now < strtotime($polling_array[0]->date_end ?? '')) {
-                    $hide_results_ids[$poll_index] = $polling_words[25] . HTMLHelper::date(($polling_array[0]->date_end ?? ''), $stringdateformat, $data_time_zone);
+                if($polling_array[0]->showresultsduringpoll == 0 && $date_now < strtotime($time_end) - $timezone_offset) {
+                    $hide_results_ids[$poll_index] = $polling_words[25] . HTMLHelper::date($date_end, $stringdateformat, $start_end_date_time_zone);
                 }
 
                 //if is logged in user, query votes per user

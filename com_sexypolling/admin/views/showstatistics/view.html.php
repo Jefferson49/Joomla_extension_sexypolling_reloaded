@@ -10,6 +10,7 @@
  *
  */
 
+use Joomla\CMS\HTML\Helpers\Sidebar;
 use Joomla\CMS\MVC\View\HtmlView;
 use Joomla\CMS\Toolbar\ToolbarHelper;
 
@@ -21,7 +22,7 @@ class SexypollingViewShowstatistics extends HtmlView {
     function display($tpl = null) {
         ToolbarHelper::cancel( 'showstatistics.cancel', 'JTOOLBAR_CLOSE' );
         $this->addToolbar();
-		$this->sidebar = JHtmlSidebar::render();
+		$this->sidebar = Sidebar::render();
         parent::display($tpl);
     }
 

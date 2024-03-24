@@ -135,7 +135,7 @@ if (!empty($editor))
 	});
 </script>
     
-<form action="<?php echo Route::_('index.php?option=com_sexypolling&amp;view=sexypolls&amp;layout=modal&amp;tmpl=component&amp;' . Session::getFormToken() . '=1'); ?>" method="post">
+<form action="<?php echo Route::_('index.php?option=com_sexypolling&amp;view=sexypolls&amp;layout=modal&amp;tmpl=component&amp;' . Session::getFormToken() . '=1'); ?>" method="post" name="adminForm" id="adminForm">
 <?php if(!empty( $this->sidebar)): ?>
     <div id="j-sidebar-container" class="span2">
         <?php echo $this->sidebar; ?>

@@ -43,14 +43,14 @@ class com_sexypollingInstallerScript {
         // installing plugin
         $plugin_installer = new Installer;
         if($plugin_installer->install(dirname(__FILE__).DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.'plugin')) {
-            //echo '<p>'.Text::_('MOD_SEXYPOLLING_PLUGIN_INSTALL_SUCCESS').'</p>';
+            //echo '<p>'.Text::_('PLG_SEXYPOLLING_PLUGIN_INSTALL_SUCCESS').'</p>';
         } else
             echo '<p>'.Text::_('PLG_SEXYPOLLING_PLUGIN_INSTALL_FAILED').'</p>';
 
         // installing editor button plugin
         $plugin_installer = new Installer;
         if($plugin_installer->install(dirname(__FILE__).DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.'editor_button')) {
-            //echo '<p>'.Text::_('MOD_SEXYPOLLING_PLUGIN_INSTALL_SUCCESS').'</p>';
+            //echo '<p>'.Text::_('PLG_SEXYPOLLING_PLUGIN_INSTALL_SUCCESS').'</p>';
         } else
             echo '<p>'.Text::_('PLG_SEXYPOLLING_PLUGIN_INSTALL_FAILED').'</p>';
 
@@ -93,7 +93,7 @@ class com_sexypollingInstallerScript {
         // installing editor button plugin
         $plugin_installer = new Installer;
         if($plugin_installer->install(dirname(__FILE__).DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.'editor_button')) {
-            //echo '<p>'.Text::_('MOD_SEXYPOLLING_PLUGIN_INSTALL_SUCCESS').'</p>';
+            //echo '<p>'.Text::_('PLG_SEXYPOLLING_PLUGIN_INSTALL_SUCCESS').'</p>';
         } else
             echo '<p>'.Text::_('PLG_SEXYPOLLING_PLUGIN_INSTALL_FAILED').'</p>';
 

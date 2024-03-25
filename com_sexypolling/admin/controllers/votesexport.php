@@ -25,7 +25,6 @@ use Joomla\CMS\Router\Route;
 use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Controller\AdminController;
 use Joomla\CMS\Session\Session;
-use Joomla\CMS\Filesystem\File;
 use Joomla\CMS\Component\ComponentHelper;
 use Joomla\CMS\HTML\HTMLHelper;
 
@@ -101,7 +100,7 @@ use Joomla\CMS\HTML\HTMLHelper;
                 }
 
                 //Export
-                if ($result !== false && File::exists($path)){
+                if ($result !== false && is_file($path)){
                
                     $len = filesize($path);
                     $ctype = 'text/csv';

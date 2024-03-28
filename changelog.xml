@@ -176,4 +176,24 @@
             <item>Error if "Date Start" of poll is empty: "Save failed with the following error: Incorrect date value: 'NOW' for column joomla.jos_sexy_polls.date_start at row 1</item>
         </fix>
     </changelog>        
+    <changelog>
+		<element>com_sexypolling</element>
+		<type>component</type>
+		<version>5.0.5.1</version>
+        <fix>
+            <item>PHP error if opening the statistics for a poll: An error has occurred. 0 Class JHtmlSidebar not found</item>
+            <item>SQL error when adding votes to an answer in the backend</item>
+            <item>Fixed deprecation warning by JED regarding Joomla 5 compatibility</item>          
+        </fix>
+    </changelog>    
+    <changelog>
+		<element>com_sexypolling</element>
+		<type>component</type>
+		<version>5.5.1</version>
+        <fix>
+            <item>PHP error if opening the statistics for a poll: An error has occurred. 0 Class JHtmlSidebar not found</item>
+            <item>SQL error when adding votes to an answer in the backend</item>
+            <item>Fixed deprecation warning by JED regarding Joomla 5 compatibility</item>          
+        </fix>
+    </changelog>            
 </changelogs>

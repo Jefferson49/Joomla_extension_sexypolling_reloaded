@@ -180,6 +180,9 @@
 		<element>com_sexypolling</element>
 		<type>component</type>
 		<version>5.0.5.1</version>
+        <security>
+            <item>Due to improvements in the component architecture, it is highly recommended to upgrade from earlier versions to version 5.5.0 or later</item>
+        </security>        
         <fix>
             <item>PHP error if opening the statistics for a poll: An error has occurred. 0 Class JHtmlSidebar not found</item>
             <item>SQL error when adding votes to an answer in the backend</item>
@@ -190,6 +193,9 @@
 		<element>com_sexypolling</element>
 		<type>component</type>
 		<version>5.5.1</version>
+        <security>
+            <item>Due to improvements in the component architecture, it is highly recommended to upgrade from earlier versions to version 5.5.0 or later</item>
+        </security>        
         <fix>
             <item>PHP error if opening the statistics for a poll: An error has occurred. 0 Class JHtmlSidebar not found</item>
             <item>SQL error when adding votes to an answer in the backend</item>

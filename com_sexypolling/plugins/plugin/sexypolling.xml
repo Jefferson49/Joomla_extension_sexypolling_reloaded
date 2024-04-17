@@ -11,6 +11,7 @@
     <description>PLG_SEXYPOLLING_DESCRIPTION</description>
 
     <changelogurl>https://raw.githubusercontent.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/updates/changelog.xml</changelogurl>
+
     <updateservers>
         <server type="extension" name="Github Jefferson49/Joomla_plugin_sexypolling_reloaded" priority="1">https://raw.githubusercontent.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/updates/updates.xml</server>
     </updateservers>

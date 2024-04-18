@@ -3372,4 +3372,4 @@ function seperate_tr($txt,$title='') {
 	
 </style>
 
-<?php include (JPATH_BASE.'/administrator/components/com_sexypolling/helpers/footer.php'); ?>
+<?php include (JPATH_BASE.'/components/com_sexypolling/helpers/footer.php'); ?>

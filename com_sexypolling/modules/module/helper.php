@@ -456,12 +456,6 @@ use Joomla\CMS\Session\Session;
 		$ipcount = $poll_options["ipcount"];
 		$voting_period = (float) $poll_options["voting_period"];
 		
-		//check token
-		if (!Factory::getApplication()->input && $poll_options["checktoken"] == 1) {
-			echo '[{"invalid":"invalid_token"}]';
-			exit();
-		}
-		
 		$countryname = $post->getString('country_name', 'Unknown');
 		$countryname = in_array($countryname, ["", "-"]) ? 'Unknown' : $countryname;
 		$cityname = $post->getString('city_name', 'Unknown');
@@ -587,7 +581,7 @@ use Joomla\CMS\Session\Session;
 	{
 		//Check CSRF token
 		if (!Session::checkToken()) {
-			echo '{"invalid":"invalid_token"}';
+			echo '[{"invalid":"invalid_token"}]';
 			exit();
 		}
 

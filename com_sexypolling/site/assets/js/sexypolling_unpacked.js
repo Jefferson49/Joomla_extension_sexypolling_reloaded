@@ -50,7 +50,7 @@ $(document).ready(function() {
 				data: sexypolling_token+'=1',
                 dataType: "json",
                 success: function(data) {
-					if((data.invalid) == 'invalid_token') {
+					if((data[0].invalid) == 'invalid_token') {
                         make_alert('Invalid Token','sexy_error');
                     } 
                     else {

@@ -51,7 +51,7 @@ $(document).ready(function() {
                 dataType: "json",
                 success: function(data) {
 					if((data[0].invalid) == 'invalid_token') {
-                        make_alert('Invalid Token','sexy_error');
+                        make_alert(sexyPolling_words[26],'sexy_error');
                     } 
                     else {
                         if(data != null) {
@@ -385,7 +385,7 @@ $(document).ready(function() {
                         dataType: "json",
                         success: function(data) {
                             if((data[0].invalid) == 'invalid_token') {
-                                make_alert('Invalid Token','sexy_error');
+                                make_alert(sexyPolling_words[26],'sexy_error');
                             } else {
                                 make_alert(hideResultsIds[polling_id], 'sexy_success');
                                 $container.find('.polling_submit').addClass('voted_button');
@@ -1073,7 +1073,7 @@ $(document).ready(function() {
                         success: function(data)
                         {
                             if((data[0].invalid) == 'invalid_token')
-                                make_alert('Invalid Token','sexy_error');
+                                make_alert(sexyPolling_words[26],'sexy_error');
 
                             $container.find('.doNotUncheck').each(function(i) {
                                 if(typeof data[0].addedanswers !== 'undefined') {
@@ -1638,7 +1638,7 @@ $(document).ready(function() {
                     success: function(data)
                     {
                         if((data[0].invalid) == 'invalid_token')
-                            make_alert('Invalid Token','sexy_error');
+                            make_alert(sexyPolling_words[26],'sexy_error');
 
                         if(buttonType == 'radio' || (buttonType == 'checkbox' && cOpened)) {
                             $this.parents('.polling_container').find('.add_answer_icon').addClass('voted_button');

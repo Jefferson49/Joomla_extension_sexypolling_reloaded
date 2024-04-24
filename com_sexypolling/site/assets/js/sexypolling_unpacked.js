@@ -51,7 +51,7 @@ $(document).ready(function() {
                 dataType: "json",
                 success: function(data) {
 					if((data[0].invalid) == 'invalid_token') {
-                        make_alert(sexyPolling_words[26],'sexy_error');
+                        //Don't show error message, because it might be an expired session
                     } 
                     else {
                         if(data != null) {

@@ -202,4 +202,30 @@
             <item>Fixed deprecation warning by JED regarding Joomla 5 compatibility</item>          
         </fix>
     </changelog>            
+    <changelog>
+		<element>com_sexypolling</element>
+		<type>component</type>
+		<version>5.0.5.2</version>
+        <security>
+            <item>Due to improvements in the component architecture, it is highly recommended to upgrade from earlier versions to version 5.0.5.0 or later</item>
+        </security>        
+        <fix>
+            <item>No changelog link shown for plugin Button - Sexypolling Polls</item>
+            <item>PHP error in template view: com_sexypolling/helpers/footer.php: No such file</item>
+            <item>Invalid token error message is shown if session is expired and site is reloaded</item>
+        </fix>
+    </changelog>    
+    <changelog>
+		<element>com_sexypolling</element>
+		<type>component</type>
+		<version>5.5.2</version>
+        <security>
+            <item>Due to improvements in the component architecture, it is highly recommended to upgrade from earlier versions to version 5.5.0 or later</item>
+        </security>        
+        <fix>
+            <item>No changelog link shown for plugin Button - Sexypolling Polls</item>
+            <item>PHP error in template view: com_sexypolling/helpers/footer.php: No such file</item>
+            <item>Invalid token error message is shown if session is expired and site is reloaded</item>
+        </fix>
+    </changelog>          
 </changelogs>

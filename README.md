@@ -1,16 +1,15 @@
 [![Latest Release](https://img.shields.io/github/v/release/Jefferson49/Joomla_plugin_sexypolling_reloaded?display_name=tag)](https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/latest)
 [![Joomla major version](https://img.shields.io/badge/joomla-v5.x-green)](https://downloads.joomla.org/cms/joomla4)
 [![Joomla major version](https://img.shields.io/badge/joomla-v4.x-green)](https://downloads.joomla.org/cms/joomla4)
-[![Joomla major version](https://img.shields.io/badge/joomla-v3.10-green)](https://downloads.joomla.org/cms/joomla3)
-## Sexy Polling Reloaded: A Joomla 4.x migration (and Joomla 3.x update) for the [Joomla](https://www.joomla.org/) extension "Sexy Polling" 
+## Sexy Polling Reloaded
++ A Joomla 4.x/5.x migration (and Joomla 3.x update) for the [Joomla](https://www.joomla.org/) extension "Sexy Polling" 
 + "Sexy Polling Reloaded" is a fork of the "Sexy Polling" extension (version 2.1.7), which was developed by 2GLux.com and provided on the former website [2GLux.com](https://web.archive.org/web/20211215150923/https://2glux.com/projects/sexypolling)
 + The fork intends to make the functionality of the former "Sexy Polling" extension available for Joomla 4 and 5, because the original extension is not provided and supported any more
 + A patch was added to fix a reported [security issue](https://www.exploit-db.com/exploits/50927)
 + Some limitations of the former FREE version were removed
 + Support for the Joomla update system was added to check and install new releases of the extension
 + **The code was migrated to the Joomla 4.x and 5.x CMS and module API, while still keeping it usable for Joomla 3.10**
-+ The latest 5.1.x release can be used for **Joomla 5.x** and **Joomla 4.x**
-+ The latest 5.0.x release can be used for **Joomla 4.x**, and **Joomla 3.10**. It also runs with **Joomla 5.x** if using the Backward Compatibility plugin.
++ The latest release can be used with Joomla 4.x, 5.x and Joomla 3.10
 
 ##  Installation
 + Manual installation
@@ -41,23 +40,15 @@ Examples for the date format:
 
 For more details about the format options, [see PHP documentation about date time format](https://www.php.net/manual/en/datetime.format.php).
 
-## Development and Contributions
-+ The extension was developed by [2GLux.com](2GLux.com) for Joomla 2.5 and 3 with the original extension name "Sexy Polling".
-+ After the "Sexy Polling" extension was removed from the web and the support was not continued, a fork of the extension was migrated to Joomla 4 with the new extension name "Sexy Polling Reloaded" by [Jefferson49](https://github.com/Jefferson49)
-+ Further contributions on [Github](https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded) are welcome!
-
 ##  Versions 
-+ The latest version v5.1.0 was developed and tested with: 
-    + [Joomla 5.0.0](https://downloads.joomla.org/cms/joomla5) and [Joomla 4.4.0](https://downloads.joomla.org/cms/joomla4); but should also run with other Joomla 5.x, 4.x versions.
-    + PHP 8.2.5; but should also run with other PHP 8.2 versions.
-+ The version v5.0.1 was developed and tested with: 
-    + [Joomla 5.0.0 with Backward Compatibility plugin](https://downloads.joomla.org/cms/joomla5), [Joomla 4.4.0](https://downloads.joomla.org/cms/joomla4), and [Joomla 3.10.12](https://downloads.joomla.org/cms/joomla3) ; but should also run with other Joomla 5.x, 4.x or 3.10.x versions.
-    + PHP 8.2.5 as well as PHP 8.0.28; but should also run with other PHP 8 versions.
++ The latest extension version was developed and tested with: 
+    + [Joomla 3.10.11](https://downloads.joomla.org/cms/joomla3), [Joomla 4.2.6](https://downloads.joomla.org/cms/joomla4), and [Joomla 5.1.4](https://downloads.joomla.org/cms/joomla5); but should also run with other Joomla 3.10, 4.x, or 5.x versions. Other 3.x versions have not been tested, but might also be feasible.
+    + PHP 8.0.23 as well as PHP 8.1.13; but should also run with other PHP 8 versions. 7.x versions have not been testetd, but might also be feasible.
 
 ## Translation
 You can help to translate this module:
-+ User frontend translations: [/com_sexypolling/site/language](https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/tree/joomla_4.x/com_sexypolling/site/language)
-+ Administrator backtend translations: [/com_sexypolling/admin/language](https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/tree/joomla_4.x/com_sexypolling/admin/language)  
++ User frontend translations: [/com_sexypolling/site/language](com_sexypolling/site/language/)
++ Administrator backtend translations: [/com_sexypolling/admin/language](com_sexypolling/admin/language/)
 
 You can use a text editor like notepad++ to work on translations.
 
@@ -78,5 +69,26 @@ Currently, the following frontend languages are available:
 
 ## Issue reporting
 If you experience any bugs [create a new issue](https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/issues) in the Github repository
+
+## License
++ [GNU General Public License, Version 3](LICENSE.md)
++ Joomla
+    + Copyright (c) 2005-2024 [Open Source Matters, Inc.](https://www.opensourcematters.org/)
++ Sexy Polling (Joomla extension)
+    + Copyright (c) 2010 - 2021 [2GLux.com](2GLux.com). All rights reserved.
++ Sexy Polling Reloaded (Joomla extension)
+    + Copyright (c) 2024 [Jefferson49](https://github.com/Jefferson49)
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program. If not, see https://www.gnu.org/licenses/.
+
+## Development and Contributions
++ The extension was developed by [2GLux.com](2GLux.com) for Joomla 2.5 and 3 with the original extension name "Sexy Polling".
++ After the "Sexy Polling" extension was removed from the web and the support was not continued, a fork of the extension was migrated to Joomla 4 with the new extension name "Sexy Polling Reloaded" by [Jefferson49](https://github.com/Jefferson49)
++ Further contributions on [Github](https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded) are welcome!
+
 ##  Github repository  
 https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded

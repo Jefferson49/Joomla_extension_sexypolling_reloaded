@@ -405,8 +405,8 @@ class SexypollingHelper
                         //check to see if cached file exists
                         $img_parts = explode('/',$poll_data->img_name);
                         $filename = $img_parts[sizeof($img_parts) - 1];
-                        preg_match('/^(.*)\.([a-z]{3,4}$)/i',$filename,$matches);
-                        $img_path_cache = $matches[1] . '-tmb-w' . $poll_data->img_width . '.' . $matches[2];
+                        preg_match('/^(.*)\.([a-z]{3,4})/i',$filename,$matches);
+                        $img_path_cache = ($matches[1] ?? '') . '-tmb-w' . $poll_data->img_width . '.' . ($matches[2] ?? '');
                         $img_fullpath_cache = $cache_dir . $img_path_cache;
                         if(file_exists($img_fullpath_cache)) {
                             $img_path = $cached_img_dir . $img_path_cache;

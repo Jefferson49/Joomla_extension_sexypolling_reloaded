@@ -581,7 +581,7 @@ use Joomla\CMS\Session\Session;
 	{
 		//Check CSRF token
 		if (!Session::checkToken()) {
-			echo '{"invalid":"invalid_token"}';
+			echo '[{"invalid":"invalid_token"}]';
 			exit();
 		}
 

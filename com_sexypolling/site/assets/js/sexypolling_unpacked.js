@@ -50,9 +50,9 @@ $(document).ready(function() {
 				data: sexypolling_token+'=1',
                 dataType: "json",
                 success: function(data) {
-					if((data != null && data.invalid) == 'invalid_token') {
+					if((data[0].invalid) == 'invalid_token') {
                         //Don't show error message, because it might be an expired session
-                    }
+                    } 
                     else {
                         if(data != null) {
                             sexyCountry = data.countryName;

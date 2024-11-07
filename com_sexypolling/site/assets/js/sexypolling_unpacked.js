@@ -50,7 +50,7 @@ $(document).ready(function() {
 				data: sexypolling_token+'=1',
                 dataType: "json",
                 success: function(data) {
-					if((data[0].invalid) == 'invalid_token') {
+					if((("0" in data) && data[0].invalid) == 'invalid_token') {
                         //Don't show error message, because it might be an expired session
                     } 
                     else {
@@ -384,7 +384,7 @@ $(document).ready(function() {
                         data: 'polling_id=' + polling_id +ch_data + '&dateformat=' + sexy_dateFormat[polling_id] + additionalAnswers  + '&min_date=' + min_date + '&max_date=' + max_date + '&country_name=' + sexyCountry + '&country_code=' + sexyCountryCode + '&city_name=' + sexyCity + '&region_name=' + sexyRegion + '&voting_period='+voting_period+'&'+sexypolling_token+'=1',
                         dataType: "json",
                         success: function(data) {
-                            if((data[0].invalid) == 'invalid_token') {
+                            if((("0" in data) && data[0].invalid) == 'invalid_token') {
                                 make_alert(sexyPolling_words[26],'sexy_error');
                             } else {
                                 make_alert(hideResultsIds[polling_id], 'sexy_success');
@@ -1072,7 +1072,7 @@ $(document).ready(function() {
                         dataType: "json",
                         success: function(data)
                         {
-                            if((data[0].invalid) == 'invalid_token')
+                            if((("0" in data) && data[0].invalid) == 'invalid_token')
                                 make_alert(sexyPolling_words[26],'sexy_error');
 
                             $container.find('.doNotUncheck').each(function(i) {
@@ -1637,7 +1637,7 @@ $(document).ready(function() {
                     dataType: "json",
                     success: function(data)
                     {
-                        if((data[0].invalid) == 'invalid_token')
+                        if((("0" in data) && data[0].invalid) == 'invalid_token')
                             make_alert(sexyPolling_words[26],'sexy_error');
 
                         if(buttonType == 'radio' || (buttonType == 'checkbox' && cOpened)) {

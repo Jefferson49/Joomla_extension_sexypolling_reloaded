@@ -11,14 +11,17 @@
  * 
  */
 
+// no direct access
+defined('_JEXEC') or die('Restricted access');
+
 use Joomla\CMS\Access\Access;
 use Joomla\CMS\Date\Date;
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Session\Session;
- 
- // no direct access
- defined('_JEXEC') or die('Restricted access');
+
+//include helper class
+require_once JPATH_SITE.'/components/com_sexypolling/helpers/helper.php';
  
  /**
   * Ajax class for SexyPolling module
@@ -38,7 +41,6 @@ use Joomla\CMS\Session\Session;
 			exit();
 		}
 
-		$app = Factory::getApplication();
 		$post = Factory::getApplication()->input;
 		$server = Factory::getApplication()->input->server;
 
@@ -62,13 +64,8 @@ use Joomla\CMS\Session\Session;
 		$datenow = HTMLHelper::date($current_date, "Y-m-d H:i:s", $data_time_zone);
 		$datenow_sql = HTMLHelper::date($current_date, "Y-m-d", $data_time_zone);
 		
-		//get ip address
-		$REMOTE_ADDR = 'Unknown';
-		if($server->get('HTTP_X_FORWARDED_FOR') !== null) { list($REMOTE_ADDR) = explode(',', $server->getString('HTTP_X_FORWARDED_FOR', 'Unknown')); }
-		elseif($server->get('HTTP_X_REAL_IP') !== null) { $REMOTE_ADDR = $server->getString('HTTP_X_REAL_IP', 'Unknown'); }
-		elseif($server->get('REMOTE_ADDR') !== null) { $REMOTE_ADDR = $server->getString('REMOTE_ADDR', 'Unknown'); }
-		else { $REMOTE_ADDR = 'Unknown'; }
-		$ip = $REMOTE_ADDR;
+		//get ip address		
+		$ip = SexypollingHelper::getIp();
 		
 		$countryname = $post->getString('country_name', 'Unknown');
 		$countryname = in_array($countryname, ["", "-"]) ? 'Unknown' : $countryname;
@@ -409,8 +406,6 @@ use Joomla\CMS\Session\Session;
 			exit();
 		}
 
-		$app = Factory::getApplication();
-
 		$post = Factory::getApplication()->input;
 		$server = Factory::getApplication()->input->server;
 
@@ -435,13 +430,8 @@ use Joomla\CMS\Session\Session;
 		$datenow_sql = HTMLHelper::date($current_date, "Y-m-d", $data_time_zone);
 		
 		//get ip address
-		$REMOTE_ADDR = 'Unknown';
-		if($server->get('HTTP_X_FORWARDED_FOR') !== null) { list($REMOTE_ADDR) = explode(',', $server->getString('HTTP_X_FORWARDED_FOR', 'Unknown')); }
-		elseif($server->get('HTTP_X_REAL_IP') !== null) { $REMOTE_ADDR = $server->getString('HTTP_X_REAL_IP', 'Unknown'); }
-		elseif($server->get('REMOTE_ADDR') !== null) { $REMOTE_ADDR = $server->getString('REMOTE_ADDR', 'Unknown'); }
-		else { $REMOTE_ADDR = 'Unknown'; }
-		$ip = $REMOTE_ADDR;
-		
+		$ip = SexypollingHelper::getIp();
+
 		//get post data
 		$polling_id = $post->getInt('polling_id');
 		$autopublish = $post->getInt('autopublish');
@@ -585,15 +575,8 @@ use Joomla\CMS\Session\Session;
 			exit();
 		}
 
-		$server = Factory::getApplication()->input->server;
-
-		//get ip address
-		$REMOTE_ADDR = 'Unknown';
-		if($server->get('HTTP_X_FORWARDED_FOR') !== null) { list($REMOTE_ADDR) = explode(',', $server->getString('HTTP_X_FORWARDED_FOR', 'Unknown')); }
-		elseif($server->get('HTTP_X_REAL_IP') !== null) { $REMOTE_ADDR = $server->getString('HTTP_X_REAL_IP', 'Unknown'); }
-		elseif($server->get('REMOTE_ADDR') !== null) { $REMOTE_ADDR = $server->getString('REMOTE_ADDR', 'Unknown'); }
-		else { $REMOTE_ADDR = 'Unknown'; }
-		$ip = $REMOTE_ADDR;
+		//get ip address		
+		$ip = SexypollingHelper::getIp();
 		
 		$url = 'http://api.ipinfodb.com/v3/ip-city/?key=4f01028c9fcae27423d5d0cc4489b5679f26febf98d28b90a29c2f3f7531aafd&format=json&ip=' . $ip;
 		$ch = curl_init ($url) ;

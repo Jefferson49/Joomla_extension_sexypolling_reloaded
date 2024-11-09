@@ -164,15 +164,8 @@ class SexypollingHelper
         if($this->type != 'plugin')
             $this->add_scripts();
 
-        //get ip address
-		$server = Factory::getApplication()->input->server;
-		
-        $REMOTE_ADDR = null;
-        if($server->get('HTTP_X_FORWARDED_FOR') !== null) { list($REMOTE_ADDR) = explode(',', $server->get('HTTP_X_FORWARDED_FOR')); }
-        elseif($server->get('HTTP_X_REAL_IP') !== null) { $REMOTE_ADDR = $server->get('HTTP_X_REAL_IP'); }
-        elseif($server->get('REMOTE_ADDR') !== null) { $REMOTE_ADDR = $server->get('REMOTE_ADDR'); }
-        else { $REMOTE_ADDR = 'Unknown'; }
-        $sexyip = $REMOTE_ADDR;
+        //get ip address            
+        $sexyip = self::getIp();
 
         //get user groups
         $levels = array();
@@ -760,5 +753,16 @@ class SexypollingHelper
         return $render_html = ob_get_clean();
     }
 
+    public static function getIp() : string {
 
+		$server = Factory::getApplication()->input->server;        
+
+		$REMOTE_ADDR = 'Unknown';
+		if($server->get('HTTP_X_FORWARDED_FOR') !== null) { list($REMOTE_ADDR) = explode(',', $server->getString('HTTP_X_FORWARDED_FOR', 'Unknown')); }
+		elseif($server->get('HTTP_X_REAL_IP') !== null) { $REMOTE_ADDR = $server->getString('HTTP_X_REAL_IP', 'Unknown'); }
+		elseif($server->get('REMOTE_ADDR') !== null) { $REMOTE_ADDR = $server->getString('REMOTE_ADDR', 'Unknown'); }
+		else { $REMOTE_ADDR = 'Unknown'; }
+
+		return $REMOTE_ADDR;        
+    }
 }

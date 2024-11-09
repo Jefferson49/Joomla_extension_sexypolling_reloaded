@@ -60,7 +60,7 @@ require_once JPATH_SITE.'/components/com_sexypolling/helpers/helper.php';
 		$data_time_zone = 'UTC';
 
 		$current_date = new Date("now", $data_time_zone);
-		$date_now = strtotime($current_date);
+		$date_now = strtotime($current_date->__toString());
 		$datenow = HTMLHelper::date($current_date, "Y-m-d H:i:s", $data_time_zone);
 		$datenow_sql = HTMLHelper::date($current_date, "Y-m-d", $data_time_zone);
 		
@@ -425,7 +425,7 @@ require_once JPATH_SITE.'/components/com_sexypolling/helpers/helper.php';
 		$data_time_zone = 'UTC';
 
 		$current_date = new Date("now", $data_time_zone);
-		$date_now = strtotime($current_date);
+		$date_now = strtotime($current_date->__toString());
 		$datenow = HTMLHelper::date($current_date, "Y-m-d H:i:s", $data_time_zone);
 		$datenow_sql = HTMLHelper::date($current_date, "Y-m-d", $data_time_zone);
 		

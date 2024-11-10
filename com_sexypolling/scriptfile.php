@@ -238,5 +238,35 @@ class com_sexypollingInstallerScript {
             }
         }
 
+        //Update example poll images
+        $query_update = "
+            UPDATE `#__sexy_answers` SET `img_name`='components/com_sexypolling/assets/images/poll_example/nokia.jpg?raw=true',`img_url`='' WHERE `name` = 'Nokia LUMIA 520!\r\n<br /><a href=\"https://en.wikipedia.org/wiki/Nokia_Lumia_520\" target=\"_blank\">Read more.</a>'
+        ";
+        $db->setQuery($query_update);
+        $db->execute();
+
+        $query_update = "
+            UPDATE `#__sexy_answers` SET `img_name`='components/com_sexypolling/assets/images/poll_example/samsung.jpg?raw=true',`img_url`='' WHERE `name` = 'Samsung Galaxy S5!\r\n<br /><a href=\"https://en.wikipedia.org/wiki/Samsung_Galaxy_S5\" target=\"_blank\">Read more.</a>';
+        ";
+        $db->setQuery($query_update);
+        $db->execute();
+
+        $query_update = "
+            UPDATE `#__sexy_answers` SET `img_name`='components/com_sexypolling/assets/images/poll_example/iphone.jpg?raw=true',`img_url`='' WHERE `name` = 'Apple iPhone 5S!\r\n<br /><a href=\"https://en.wikipedia.org/wiki/IPhone_5s\" target=\"_blank\">Read more.</a>';
+        ";
+        $db->setQuery($query_update);
+        $db->execute();
+
+        $query_update = "
+            UPDATE `#__sexy_answers` SET `img_name`='components/com_sexypolling/assets/images/poll_example/lg.jpg?raw=true',`img_url`='' WHERE `name` = 'LG Optimus G Pro!\r\n<br /><a href=\"https://en.wikipedia.org/wiki/LG_Optimus_G_Pro\" target=\"_blank\">Read more.</a>';
+        ";
+        $db->setQuery($query_update);
+        $db->execute();
+
+        $query_update = "
+            UPDATE `#__sexy_answers` SET `img_name`='components/com_sexypolling/assets/images/poll_example/htc.jpg?raw=true',`img_url`='' WHERE `name` = 'HTC One max!\r\n<br /><a href=\"https://en.wikipedia.org/wiki/HTC_One_Max\" target=\"_blank\">Read more.</a>';
+        ";
+        $db->setQuery($query_update);
+        $db->execute();
     }
 }

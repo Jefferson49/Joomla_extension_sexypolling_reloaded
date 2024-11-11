@@ -449,7 +449,7 @@ class SexypollingHelper
                 }
                 echo '</ul>';
 
-                //check perrmision, to show add answer option
+                //check permission, to show add answer option
                 if($permission_to_show_add_answer_block) {
                     echo '<div class="answer_wrapper opened" ><div style="padding:6px">';
 
@@ -460,6 +460,11 @@ class SexypollingHelper
                     echo '<div class="add_answer"><input name="answer_name" class="add_ans_name" value="'.$polling_words[11].'" aria-label="Answer name" />
                     <input type="button" value="'.$polling_words[12].'" class="add_ans_submit'.$add_answers_voted_button_class.'" /><input type="hidden" value="'.$poll_index.'" class="poll_id" /><img alt="Loading icon small" class="loading_small" src="'.Uri::base(true).'/components/com_sexypolling/assets/images/loading_small.gif" /></div>';
                     echo '</div></div>';
+                }
+
+                //If back icon is not visible, show back button
+                if (!$showbackicon) {
+                    echo '<input type="button" value="'.$polling_words[19].'" class="back_button hide_back_button" />';    
                 }
 
                 $new_answer_bar_index = ($k + 1) % 20 + 1;

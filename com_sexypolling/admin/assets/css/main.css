@@ -83,6 +83,13 @@ input.poll_answer {
 	float: right;
 }
 
+.back_button {
+	display: block;
+	margin: 0 6px 3px 0;
+	cursor: pointer;
+	float: right;
+}
+
 .answer_navigation {
 	width: 1px;
 	margin: 5px 0 5px 0; 

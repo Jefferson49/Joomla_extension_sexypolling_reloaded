@@ -650,13 +650,16 @@ $(document).ready(function() {
                     //show timeline
                     $container.find('.timeline_icon').animate({height:32},1000);
 
-                    //show add answer
+                    //show add answer icon
                     $container.find('.add_answer_icon').animate({height:32},1000);
 
-                    //show add answer
+                    //show add back icon
                     $container.find('.sexyback_icon').animate({height:32},1000);
 
-                    //show add answer
+                    //show back button
+					$container.find('.back_button').removeClass('hide_back_button');
+
+                    //show scale icon
                     $container.find('.scale_icon').animate({height:32},1000);
                 },1700);
 
@@ -1249,13 +1252,13 @@ $(document).ready(function() {
                                         //show timeline
                                         $container.find('.timeline_icon').animate({height:32},1000);
 
-                                        //show add answer
+                                        //show add answer icon
                                         $container.find('.add_answer_icon').animate({height:32},1000);
 
-                                        //show add answer
+                                        //show back icon
                                         $container.find('.sexyback_icon').animate({height:32},1000);
 
-                                        //show add answer
+                                        //show scale icon
                                         $container.find('.scale_icon').animate({height:32},1000);
                                     },1700);
 
@@ -1393,13 +1396,16 @@ $(document).ready(function() {
                 //hide timeline
                 $container.find('.timeline_icon').stop(true,true).animate({height:0},1000);
 
-                //hide add answer
+                //hide add answer icon
                 $container.find('.add_answer_icon').stop(true,true).animate({height:0},1000);
 
-                //hide add answer
+                //hide back icon
                 $container.find('.sexyback_icon').stop(true,true).animate({height:0},1000);
 
-                //hide add answer
+                //hide back button
+				$container.find('.back_button').addClass('hide_back_button');
+
+                //hide scale icon
                 $container.find('.scale_icon').stop(true,true).animate({height:0},1000);
 
                 $container.find('.answer_votes_data').stop(true,true).animate({height:0},1000,function(){$(this).removeAttr("style");});
@@ -1442,6 +1448,9 @@ $(document).ready(function() {
                 animate_back($(this));
             });
 
+            $('.back_button').click(function() {
+                animate_back($(this));
+            });
 
             $('.add_answer_icon').click(function() {
                 if($(this).hasClass('voted_button')) {

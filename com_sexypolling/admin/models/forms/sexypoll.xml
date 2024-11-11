@@ -56,6 +56,10 @@
           <option value="1">JYes</option>
           <option value="0">JNo</option>
         </field>
+        <field name="showbackbutton" type="radio" default="1" label="COM_SEXYPOLLING_SHOW_BACK_BUTTON_LABEL" description="COM_SEXYPOLLING_SHOW_BACK_BUTTON_DESCRIPTION" class="btn-group">
+          <option value="1">JYes</option>
+          <option value="0">JNo</option>
+        </field>
         <field name="showaddanswericon" type="radio" default="1" label="COM_SEXYPOLLING_SHOW_ADD_ANSWER_ICON_LABEL" description="COM_SEXYPOLLING_SHOW_ADD_ANSWER_ICON_DESCRIPTION" class="btn-group">
           <option value="1">JYes</option>
           <option value="0">JNo</option>

@@ -128,7 +128,7 @@ input.poll_answer {
     -o-transition: background linear 0.1s, background-color linear 0.1s, box-shadow linear 0.1s, border linear 0.1s;
     transition: background linear 0.1s, background-color linear 0.1s, box-shadow linear 0.1s, border linear 0.1s;
 }
-.polling_result {
+.polling_result, .back_button {
     display: block !important;
     margin: 0 6px 3px 0 !important;
     cursor: pointer !important;
@@ -946,6 +946,9 @@ select.polling_select2 {
 }
 
 .hide_sexy_button {
+    display: none !important;
+}
+.hide_back_button {
     display: none !important;
 }
 .sexy_hidden {

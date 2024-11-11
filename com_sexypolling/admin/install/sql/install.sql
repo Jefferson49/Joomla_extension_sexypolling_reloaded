@@ -32,6 +32,7 @@ CREATE TABLE IF NOT EXISTS `#__sexy_polls` (
   `autoopentimeline` enum('0','1') NOT NULL DEFAULT '1',
   `autoanimate` enum('0','1') NOT NULL DEFAULT '0',
   `showresultbutton` enum('0','1') NOT NULL DEFAULT '1',
+  `showbackbutton` enum('0','1') NOT NULL DEFAULT '1',
   `showvotesperiod` tinyint(3) unsigned NOT NULL DEFAULT '1',
   `stringdateformat` text NOT NULL,
   `votescountformat` tinyint(3) unsigned NOT NULL DEFAULT '2',
@@ -60,8 +61,8 @@ CREATE TABLE IF NOT EXISTS `#__sexy_polls` (
   KEY `id_template` (`id_template`)
 ) ENGINE=MyISAM CHARACTER SET = `utf8`;
 
-INSERT IGNORE INTO `#__sexy_polls` (`id`, `id_user`, `id_category`, `id_template`, `name`, `alias`, `question`, `created`, `date_start`, `date_end`, `publish_up`, `publish_down`, `published`, `access`, `featured`, `ordering`, `language`, `multiple_answers`, `voting_permission`, `number_answers`, `voting_period`, `answerpermission`, `autopublish`, `baranimationtype`, `coloranimationtype`, `reorderinganimationtype`, `dateformat`, `autoopentimeline`, `autoanimate`, `showresultbutton`, `showvotesperiod`, `stringdateformat`, `votescountformat`, `scaledefault`, `showaddanswericon`, `showscaleicon`, `showbackicon`, `showtimelineicon`, `showtimeline`, `showvotescountinfo`, `poll_width`, `pollalign`, `addclearboth`, `poll_margintop`, `poll_marginbottom`, `poll_marginleft`, `poll_marginright`, `classsuffix`, `checktoken`, `ipcount`, `checkacl`, `votechecks`) VALUES
-(1, 0, 1, 1, 'Poll Example', '', 'Which is your favorite phone?', '2012-04-19 19:13:34', '2020-01-01', '2040-12-31', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 1, 0, 0, '', '1', 1, 3, 24, 1, '1', 'linear', 'linear', 'linear', '', '1', '0', '1', 1, 'F j, Y', 2, 1, 1, 1, 1, 1, 1, 1, '100%', 2, 1, 5, 5, 5, 5, '', 1, 0, 1, 1);
+INSERT IGNORE INTO `#__sexy_polls` (`id`, `id_user`, `id_category`, `id_template`, `name`, `alias`, `question`, `created`, `date_start`, `date_end`, `publish_up`, `publish_down`, `published`, `access`, `featured`, `ordering`, `language`, `multiple_answers`, `voting_permission`, `number_answers`, `voting_period`, `answerpermission`, `autopublish`, `baranimationtype`, `coloranimationtype`, `reorderinganimationtype`, `dateformat`, `autoopentimeline`, `autoanimate`, `showresultbutton`, `showbackbutton`, `showvotesperiod`, `stringdateformat`, `votescountformat`, `scaledefault`, `showaddanswericon`, `showscaleicon`, `showbackicon`, `showtimelineicon`, `showtimeline`, `showvotescountinfo`, `poll_width`, `pollalign`, `addclearboth`, `poll_margintop`, `poll_marginbottom`, `poll_marginleft`, `poll_marginright`, `classsuffix`, `checktoken`, `ipcount`, `checkacl`, `votechecks`) VALUES
+(1, 0, 1, 1, 'Poll Example', '', 'Which is your favorite phone?', '2012-04-19 19:13:34', '2020-01-01', '2040-12-31', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 1, 0, 0, '', '1', 1, 3, 24, 1, '1', 'linear', 'linear', 'linear', '', '1', '0', '1', 1, 'F j, Y', 2, 1, 1, 1, 1, 1, 1, 1, 1, '100%', 2, 1, 5, 5, 5, 5, '', 1, 0, 1, 1);
 
 CREATE TABLE IF NOT EXISTS `#__sexy_answers` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,

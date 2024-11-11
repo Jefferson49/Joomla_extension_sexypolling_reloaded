@@ -133,9 +133,9 @@ class com_sexypollingInstallerScript {
         $columns_data = $db->LoadAssoc();
         $columns_titles = array_keys($columns_data);
 
+        //add additional columns
         if(is_array($columns_titles)) {
             if(!in_array('showvotesperiod',$columns_titles)) {
-                //add required columns
                 $query_update = "
                     ALTER TABLE  `#__sexy_polls`
                         ADD `showvotesperiod` tinyint unsigned NOT NULL DEFAULT  '1',
@@ -185,8 +185,16 @@ class com_sexypollingInstallerScript {
                 $db->execute();
             }
 
+            //add column for "showresultsduringpoll"
             if(!in_array('showresultsduringpoll',$columns_titles)) {
                 $query_update = "ALTER TABLE `#__sexy_polls` ADD `showresultsduringpoll` tinyint(3) unsigned NOT NULL DEFAULT '1' AFTER `date_end`";
+                $db->setQuery($query_update);
+                $db->execute();
+            }
+
+            //add column for "showbackbutton" option
+            if(!in_array('showbackbutton',$columns_titles)) {
+                $query_update = "ALTER TABLE  `#__sexy_polls` ADD   `showbackbutton` enum('0','1') NOT NULL DEFAULT '1' AFTER `showresultbutton`";
                 $db->setQuery($query_update);
                 $db->execute();
             }

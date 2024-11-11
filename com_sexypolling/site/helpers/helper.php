@@ -108,6 +108,7 @@ class SexypollingHelper
                         'sp.autoopentimeline autoopentimeline, '.
                         'sp.autoanimate autoanimate, '.
                         'sp.showresultbutton showresultbutton, '.
+                        'sp.showbackbutton showbackbutton, '.
                         'sp.showvotesperiod showvotesperiod, '.
                         'sp.stringdateformat stringdateformat, '.
                         'sp.votescountformat votescountformat, '.
@@ -245,6 +246,7 @@ class SexypollingHelper
                 $sexyAnimationTypeContainer[$poll_index] = $polling_array[0]->coloranimationtype;
                 $sexyAnimationTypeContainerMove[$poll_index] = $polling_array[0]->reorderinganimationtype;
                 $showresultbutton = $polling_array[0]->showresultbutton;
+                $showbackbutton = $polling_array[0]->showbackbutton;
 
                 $showvotesperiod = $polling_array[0]->showvotesperiod;
                 $stringdateformat = $polling_array[0]->stringdateformat;
@@ -462,8 +464,8 @@ class SexypollingHelper
                     echo '</div></div>';
                 }
 
-                //If back icon is not visible, show back button
-                if (!$showbackicon) {
+                //If option to show back button is activated, add back button
+                if ($showbackbutton) {
                     echo '<input type="button" value="'.$polling_words[19].'" class="back_button hide_back_button" />';    
                 }
 

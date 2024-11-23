@@ -464,7 +464,9 @@ class SexypollingHelper
 
                 //If option to show back button is activated, add back button
                 if ($showbackbutton) {
-                    echo '<input type="button" value="'.$polling_words[19].'" class="back_button hide_back_button" />';    
+                    echo '<span class="back_bottom_wrapper1">';
+                    echo '<input type="button" value="'.$polling_words[19].'" class="back_button hide_back_button" />';
+                    echo '</span>';
                 }
 
                 $new_answer_bar_index = ($k + 1) % 20 + 1;

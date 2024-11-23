@@ -167,6 +167,12 @@ input.poll_answer {
     margin-top: 3px !important;
     float: none !important;
 }
+.back_bottom_wrapper1 {
+    overflow: hidden !important;
+    display: block !important;
+    margin-top: 3px !important;
+    float: none !important;
+}
 .polling_info
 {
     overflow: hidden !important;

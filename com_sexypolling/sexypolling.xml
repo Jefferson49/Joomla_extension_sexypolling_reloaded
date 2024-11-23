@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" method="upgrade">
     <name>COM_SEXYPOLLING</name>
-    <creationDate>2024-04-25</creationDate>
+    <creationDate>2024-11-23</creationDate>
     <author>Jefferson49</author>
     <copyright>Copyright (c) 2010 - 2021 2GLux. All rights reserved. Copyright (c) 2022 - 2024 Jefferson49</copyright>
  	<authorEmail>sexypolling.reloaded@gmail.com</authorEmail>

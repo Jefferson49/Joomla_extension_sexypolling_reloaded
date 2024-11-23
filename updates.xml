@@ -463,7 +463,7 @@
 		<maintainer>Jefferson49</maintainer>
 		<maintainerurl>https://github.com/Jefferson49</maintainerurl>
 		<targetplatform name="joomla" version="((4.*)|(3.10))" />
-		<sha256>2a5dc2c525e871db5dbf0be689d0ab9339633b0e3deb1cbf049f7966b215a1e2</sha256>
+		<sha256>ebb4c3b52e6ad71ff272142c82263edcd6102f37f188ba5cde8715bea1f68e67</sha256>
     </update>
 	<update>
 		<name>Sexy Polling Reloaded</name>
@@ -482,6 +482,6 @@
 		<maintainer>Jefferson49</maintainer>
 		<maintainerurl>https://github.com/Jefferson49</maintainerurl>
 		<targetplatform name="joomla" version="((4.*)|(5.*))" />
-		<sha256>79a1b9abb7b6aaea68c4ef0dd47746aeb11ba16a22a54dbf0aadadf7375a3997</sha256>
+		<sha256>c5ceb5cb1cfa41aa37ef9f7a7ad5bb8ebb3340ab1cb55b53919056bdfca36054</sha256>
     </update>
 </updates>

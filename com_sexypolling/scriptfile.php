@@ -194,7 +194,7 @@ class com_sexypollingInstallerScript {
 
             //add column for "showbackbutton" option
             if(!in_array('showbackbutton',$columns_titles)) {
-                $query_update = "ALTER TABLE  `#__sexy_polls` ADD   `showbackbutton` enum('0','1') NOT NULL DEFAULT '1' AFTER `showresultbutton`";
+                $query_update = "ALTER TABLE  `#__sexy_polls` ADD   `showbackbutton` enum('0','1') NOT NULL DEFAULT '0' AFTER `showresultbutton`";
                 $db->setQuery($query_update);
                 $db->execute();
             }

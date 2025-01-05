@@ -10,6 +10,8 @@
  *
  */
 
+
+
 // no direct access
 defined('_JEXEC') or die('Restircted access');
 
@@ -24,6 +26,10 @@ $class_suffix = $params->get('class_suffix','');
 require_once JPATH_SITE.'/components/com_sexypolling/helpers/helper.php';
 
 $sp_class = new SexypollingHelper;
+
+//Activate log file
+SexypollingHelper::activateExtensionLogFile('Module');
+
 $sp_class->id_poll = $id_poll;
 //ToDo: Check if id_category is the correct variable name
 $sp_class->id_category = $poll_type == 0 ? 0 : $category_id;

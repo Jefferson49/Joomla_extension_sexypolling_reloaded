@@ -26,6 +26,16 @@
 			>
 			<option value="UTC">JLIB_FORM_VALUE_TIMEZONE_UTC</option>
 		</field>
+		<field
+			name="enable_logging"
+            type="radio"
+			layout="joomla.form.field.radio.switcher"
+			label="COM_SEXYPOLLING_ENABLE_LOGGING"
+			description="COM_SEXYPOLLING_ENABLE_LOGGING_DESC"
+			>
+            <option value="0">COM_SEXYPOLLING_NO</option>
+			<option value="1">COM_SEXYPOLLING_YES</option>
+		</field>
 
 	</fieldset>
 

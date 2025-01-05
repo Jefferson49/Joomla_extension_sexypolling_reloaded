@@ -41,6 +41,8 @@ require_once JPATH_SITE.'/components/com_sexypolling/helpers/helper.php';
 			exit();
 		}
 
+		SexypollingHelper::activateExtensionLogFile('voteAjax');
+
 		$post = Factory::getApplication()->input;
 		$db = Factory::getDBO();
 		
@@ -62,8 +64,9 @@ require_once JPATH_SITE.'/components/com_sexypolling/helpers/helper.php';
 		$datenow = HTMLHelper::date($current_date, "Y-m-d H:i:s", $data_time_zone);
 		$datenow_sql = HTMLHelper::date($current_date, "Y-m-d", $data_time_zone);
 		
-		//get ip address		
+		//get ip address
 		$ip = SexypollingHelper::getIp();
+		SexypollingHelper::Log('Retreived ip address: ' . $ip);
 		
 		$countryname = $post->getString('country_name', 'Unknown');
 		$countryname = in_array($countryname, ["", "-"]) ? 'Unknown' : $countryname;
@@ -96,6 +99,7 @@ require_once JPATH_SITE.'/components/com_sexypolling/helpers/helper.php';
 		$query = "SELECT * FROM `#__sexy_polls` WHERE `id` = '$polling_id'";
 		$db->setQuery( $query );
 		$poll_options = $db->loadAssoc();
+		SexypollingHelper::Log('Retreived poll options');
 		$stringdateformat = $poll_options["stringdateformat"];
 		$ipcount = $poll_options["ipcount"];
 		$voting_period = (float) $poll_options["voting_period"];
@@ -103,7 +107,7 @@ require_once JPATH_SITE.'/components/com_sexypolling/helpers/helper.php';
 		//as a default, voting is enabled
 		$voting_enabled = true;
 
-		//if is logged in user, query otes per user
+		//if is logged in user, query votes per user
 		if($is_logged_in_user) {
 			$query = "SELECT COUNT( sv.ip )
 				FROM  `#__sexy_answers` sa
@@ -122,6 +126,7 @@ require_once JPATH_SITE.'/components/com_sexypolling/helpers/helper.php';
 			";
 		}
 
+		SexypollingHelper::Log('Check votes in database');		
 		$db->setQuery($query);
 		$count_votes = $db->loadResult();
 
@@ -169,7 +174,9 @@ require_once JPATH_SITE.'/components/com_sexypolling/helpers/helper.php';
 					$voting_enabled = false;
 				}
 			}
-		}	
+		}
+
+		SexypollingHelper::Log('$voting_enabled = ' . ($voting_enabled ? 'true' : 'false'));
 
 		$use_current = $post->get('curr_date', '');
 		if($use_current == 'yes') {
@@ -193,9 +200,9 @@ require_once JPATH_SITE.'/components/com_sexypolling/helpers/helper.php';
 				$query = "INSERT INTO `#__sexy_votes` (`id_answer`,`id_user`,`ip`,`date`,`country`,`city`,`region`,`countrycode`) VALUES ('$insert_id','$user_id','$ip','$datenow','$countryname','$cityname','$regionname','$countrycode')";
 				$db->setQuery($query);
 				$db->execute();
+				SexypollingHelper::Log('Inserted new answer into database: ' . $answer);
 			}
-		}
-		
+		}		
 		
 		//check if not voted, save the voting
 		
@@ -207,14 +214,17 @@ require_once JPATH_SITE.'/components/com_sexypolling/helpers/helper.php';
 					if ($answer_id != 0) {
 						$query = "INSERT INTO `#__sexy_votes` (`id_answer`,`id_user`,`ip`,`date`,`country`,`city`,`region`,`countrycode`) VALUES ('$answer_id','$user_id','$ip','$datenow','$countryname','$cityname','$regionname','$countrycode')";
 						$db->setQuery($query);
-						$db->execute();    
+						$db->execute();
+						SexypollingHelper::Log('Inserted vote into database for answer id: ' . $answer_id);
 					}
 				}
 		
 				//update max date sended
 				$max_date_sended = $datenow_sql.' 23:59:59';
 		}
-		
+
+		SexypollingHelper::Log('Start to collect vote data');
+
 		//get count of total votes, min and max dates of voting
 		$query_toal = "SELECT
 						COUNT(sv.`id_answer`) total_count,
@@ -308,7 +318,7 @@ require_once JPATH_SITE.'/components/com_sexypolling/helpers/helper.php';
 			$voted_ids[] = $row_poll['id_answer'];
 		}
 		
-		//chech if there are answers with no votes
+		//Check if there are answers with no votes
 		foreach ($answer_ids as $ans_id) {
 			if(!in_array($ans_id,$voted_ids)) {
 				$poll_array["$ans_id"]['percent'] = '0';
@@ -322,7 +332,7 @@ require_once JPATH_SITE.'/components/com_sexypolling/helpers/helper.php';
 			}
 		}
 		
-		//genertes order list
+		//generates order list
 		$order_list = array();
 		foreach ($poll_array as $data) {
 			$order_list[$data['answer_id']] = array($data['votes'],$data['name'],$data['answer_id']);
@@ -349,6 +359,7 @@ require_once JPATH_SITE.'/components/com_sexypolling/helpers/helper.php';
 		//print_r($ord_final_list);
 		
 		//generates json output
+		SexypollingHelper::Log('Start to generate json output');
 		usort($poll_array, array("modSexypollingHelper", "cmp1"));
 		//print_r($poll_array);
 		$a = 0;
@@ -388,6 +399,8 @@ require_once JPATH_SITE.'/components/com_sexypolling/helpers/helper.php';
 		}
 		echo ']';
 		
+		SexypollingHelper::Log('Finished Ajax vote method');
+
 		jexit();
 	}
 
@@ -403,6 +416,8 @@ require_once JPATH_SITE.'/components/com_sexypolling/helpers/helper.php';
 			echo '[{"invalid":"invalid_token"}]';
 			exit();
 		}
+
+		SexypollingHelper::activateExtensionLogFile('addanswerAjax');
 
 		$post = Factory::getApplication()->input;
 		$db = Factory::getDBO();
@@ -427,6 +442,7 @@ require_once JPATH_SITE.'/components/com_sexypolling/helpers/helper.php';
 		
 		//get ip address
 		$ip = SexypollingHelper::getIp();
+		SexypollingHelper::Log('Retreived ip address: ' . $ip);
 
 		//get post data
 		$polling_id = $post->getInt('polling_id');
@@ -538,6 +554,8 @@ require_once JPATH_SITE.'/components/com_sexypolling/helpers/helper.php';
 				}
 			}
 		}
+
+		SexypollingHelper::Log('$voting_enabled = ' . ($voting_enabled ? 'true' : 'false'));
 		
 		if(($writeinto == 1 || $autopublish == 0) && $voting_enabled) {
 			$published = $autopublish == 1 ? 1 : 0;
@@ -549,12 +567,14 @@ require_once JPATH_SITE.'/components/com_sexypolling/helpers/helper.php';
 			$query = "INSERT INTO `#__sexy_votes` (`id_answer`,`id_user`,`ip`,`date`,`country`,`city`,`region`,`countrycode`) VALUES ('$insert_id','$user_id','$ip','$datenow','$countryname','$cityname','$regionname','$countrycode')";
 			$db->setQuery($query);
 			$db->execute();
+			SexypollingHelper::Log('Inserted new answer into database: ' . $answer);
 		}
 		else {
 			$insert_id = 0;
 		}
 		
 		echo json_encode(array(array('answer' => $answer, 'id' => $insert_id)));
+		SexypollingHelper::Log('Returned json for voting and finished Ajax addanswer method.');
 		jexit();		
 	}	
 
@@ -571,6 +591,8 @@ require_once JPATH_SITE.'/components/com_sexypolling/helpers/helper.php';
 			exit();
 		}
 
+		SexypollingHelper::activateExtensionLogFile('geoipAjax');
+
 		//get ip address		
 		$ip = SexypollingHelper::getIp();
 		
@@ -582,7 +604,8 @@ require_once JPATH_SITE.'/components/com_sexypolling/helpers/helper.php';
 		$output = curl_exec($ch) ;
 		curl_close($ch) ;
 		
-		echo $output;		
+		echo $output;
+		SexypollingHelper::Log('Returned output for geoip');
 	}
 
 	/**

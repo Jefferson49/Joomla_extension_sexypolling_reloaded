@@ -46,6 +46,10 @@ class plgSystemSexypolling extends CMSPlugin {
         require_once JPATH_SITE.'/components/com_sexypolling/helpers/helper.php';
 
         $sp_class = new SexypollingHelper;
+
+        //Activate log file
+        SexypollingHelper::activateExtensionLogFile('Plugin for single poll');
+
         $sp_class->id_poll = $id_poll;
         $sp_class->id_category = 0;
         $sp_class->module_id = $this->plg_order;
@@ -63,6 +67,10 @@ class plgSystemSexypolling extends CMSPlugin {
         require_once JPATH_SITE.'/components/com_sexypolling/helpers/helper.php';
 
         $sp_class = new SexypollingHelper;
+
+        //create log file
+        SexypollingHelper::activateExtensionLogFile('Plugin for poll category');
+
         $sp_class->id_poll = 0;
         $sp_class->id_category = $id_category;
         $sp_class->module_id = $this->plg_order_cat;

@@ -24,6 +24,7 @@ use Joomla\CMS\Component\ComponentHelper;
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\Log\Log;
 use Joomla\CMS\Session\Session;
 use Joomla\CMS\Uri\Uri;
 
@@ -773,5 +774,54 @@ class SexypollingHelper
 		else { $REMOTE_ADDR = 'Unknown'; }
 
 		return $REMOTE_ADDR;        
+    }
+
+    //Create log file for extension
+    public static function activateExtensionLogFile(string $context = '') : void {
+
+        $params = ComponentHelper::getParams('com_sexypolling');
+        $logging_activated = boolval($params->get('enable_logging', '0'));
+
+        if ($logging_activated) {
+            try {
+                Log::addLogger(
+                    array(
+                        // Sets file name
+                        'text_file' => 'com_sexypolling.log.php',
+                        'text_entry_format' => '{DATETIME} {PRIORITY} {MESSAGE}',
+                    ),
+                    // Sets messages of all log levels to be sent to the file.
+                    Log::ALL,
+
+                    // The log category/categories which should be recorded in this file.
+                    // In this case, it's just the one category from our extension.
+                    // We still need to put it inside an array.
+                    array('com_sexypolling')
+                );
+
+                Log::add('Extension logging activated from: ' . $context, Log::INFO, 'com_sexypolling');
+            }
+            catch (\Exception $e) {
+                Log::add('Log error in com_sexypolling: ' . $e->getMessage(), Log::ERROR);
+            }
+        }
+        
+        return;
+    }
+
+    //Add log to the extension log file
+    public static function Log($entry) : void {
+    
+        $params = ComponentHelper::getParams('com_sexypolling');
+        $logging_activated = boolval($params->get('enable_logging', '0'));
+
+        if ($logging_activated) {
+            try {
+                Log::add($entry, Log::DEBUG, 'com_sexypolling');
+            }
+            catch (\Exception $e) {
+                Log::add('Log error in com_sexypolling: ' . $e->getMessage(), Log::ERROR);
+            }
+        }        
     }
 }

@@ -227,23 +227,7 @@
             <item>PHP error in template view: com_sexypolling/helpers/footer.php: No such file</item>
             <item>Invalid token error message is shown if session is expired and site is reloaded</item>
         </fix>
-    </changelog>          
-    <changelog>
-		<element>com_sexypolling</element>
-		<type>component</type>
-		<version>5.0.5.3</version>
-        <security>
-            <item>Due to improvements in the component architecture, it is highly recommended to upgrade from earlier versions to version 5.0.5.0 or later</item>
-        </security>
-        <addition>
-            <item>Added additional back button in polling results and added option to activate additional back button</item>
-        </addition>
-        <fix>
-            <item>Answer image subfolder issue: Parsing of answer image file names not robust</item>
-            <item>JavaScript error and cookie errors for example poll images in browser development tools</item>
-            <item>Multiple votes cast even if disabled; string for ip address does not contain semi colon</item>
-        </fix>
-    </changelog>    
+    </changelog>           
     <changelog>
 		<element>com_sexypolling</element>
 		<type>component</type>
@@ -259,5 +243,33 @@
             <item>JavaScript error and cookie errors for example poll images in browser development tools</item>
             <item>Multiple votes cast even if disabled; string for ip address does not contain semi colon</item>
         </fix>
-    </changelog>          
+    </changelog>
+    <changelog>
+		<element>com_sexypolling</element>
+		<type>component</type>
+		<version>5.0.5.4</version>
+        <security>
+            <item>Due to improvements in the component architecture, it is highly recommended to upgrade from earlier versions to version 5.0.5.0 or later</item>
+        </security>
+        <addition>
+            <item>Added additional back button in polling results and added option to activate additional back button</item>
+        </addition>
+        <fix>
+            <item>Answer image subfolder issue: Parsing of answer image file names not robust</item>
+            <item>JavaScript error and cookie errors for example poll images in browser development tools</item>
+            <item>Multiple votes cast even if disabled; string for ip address does not contain semi colon</item>
+            <item>Wrong date format and value "Show votes for" is "Last day" after fresh install</item>
+        </fix>
+    </changelog>
+    <changelog>
+		<element>com_sexypolling</element>
+		<type>component</type>
+		<version>5.5.4</version>
+        <security>
+            <item>Due to improvements in the component architecture, it is highly recommended to upgrade from earlier versions to version 5.5.0 or later</item>
+        </security>        
+        <fix>
+            <item>Wrong date format and value "Show votes for" is "Last day" after fresh install</item>
+        </fix>
+    </changelog>
 </changelogs>

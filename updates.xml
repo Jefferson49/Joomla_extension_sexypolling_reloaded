@@ -484,4 +484,42 @@
 		<targetplatform name="joomla" version="((4.*)|(5.*))" />
 		<sha256>c5ceb5cb1cfa41aa37ef9f7a7ad5bb8ebb3340ab1cb55b53919056bdfca36054</sha256>
     </update>
+	<update>
+		<name>Sexy Polling Reloaded</name>
+		<description>Sexy Polling Reloaded - An extension for polling with single/multiple voting, adding answers by users, start/end dates, voting periods, and extensive template customizing.</description>
+		<element>com_sexypolling</element>
+		<type>component</type>
+		<version>5.0.5.4</version>
+		<infourl title="Sexy Polling Reloaded">https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/tag/v5.0.5.4</infourl>
+		<changelogurl>https://raw.githubusercontent.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/updates/changelog.xml</changelogurl>
+		<downloads>
+			<downloadurl type="full" format="zip">https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/download/v5.0.5.4/joomla_extension_sexypolling_reloaded_v5.0.5.4.zip</downloadurl>
+		</downloads>
+		<tags>
+			<tag>stable</tag>
+		</tags>
+		<maintainer>Jefferson49</maintainer>
+		<maintainerurl>https://github.com/Jefferson49</maintainerurl>
+		<targetplatform name="joomla" version="((4.*)|(3.10))" />
+		<sha256>8c93763c8c38547e1e3358bc1b10690b24b3abeb117ec8cfe7ae006f29831c2b</sha256>
+    </update>
+	<update>
+		<name>Sexy Polling Reloaded</name>
+		<description>Sexy Polling Reloaded - An extension for polling with single/multiple voting, adding answers by users, start/end dates, voting periods, and extensive template customizing.</description>
+		<element>com_sexypolling</element>
+		<type>component</type>
+		<version>5.5.4</version>
+		<infourl title="Sexy Polling Reloaded">https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/tag/v5.5.4</infourl>
+		<changelogurl>https://raw.githubusercontent.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/updates/changelog.xml</changelogurl>
+		<downloads>
+			<downloadurl type="full" format="zip">https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases/download/v5.5.4/joomla_extension_sexypolling_reloaded_v5.5.4.zip</downloadurl>
+		</downloads>
+		<tags>
+			<tag>stable</tag>
+		</tags>
+		<maintainer>Jefferson49</maintainer>
+		<maintainerurl>https://github.com/Jefferson49</maintainerurl>
+		<targetplatform name="joomla" version="((4.*)|(5.*))" />
+		<sha256>a09f75fc8d864fd8d46bc59f9de3d3d78901db1fea657fc0df9c6e540a01214c</sha256>
+    </update>
 </updates>

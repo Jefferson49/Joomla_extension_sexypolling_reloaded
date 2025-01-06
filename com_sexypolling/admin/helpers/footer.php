@@ -12,7 +12,7 @@
  * @version v3.0.0
  * @author Jefferson49
  * @link https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded
- * @copyright Copyright (c) 2022 - 2024 Jefferson49
+ * @copyright Copyright (c) 2022 - 2025 Jefferson49
  * @license GNU/GPL v3.0
  * 
  */
@@ -29,7 +29,7 @@ defined('_JEXEC') or die('Restircted access');
 		<span>
 			<b><a href="https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded" target="_blank">
 				<?php echo Text::_( 'COM_SEXYPOLLING' ); ?>
-			</a></b> - Copyright © 2010 - 2021 <a href="http://2glux.com" target="_blank"><b>2GLux</b></a>. All rights reserved. Copyright © 2022 - 2024 <a href="https://github.com/Jefferson49" target="_blank"><b>Jefferson49</b></a>
+			</a></b> - Copyright © 2010 - 2021 <a href="http://2glux.com" target="_blank"><b>2GLux</b></a>. All rights reserved. Copyright © 2022 - 2025 <a href="https://github.com/Jefferson49" target="_blank"><b>Jefferson49</b></a>
 			<br>
 			<a href="https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded/releases" target="_blank">
 				<?php echo Text::_( 'COM_SEXYPOLLING_DOWNLOAD' ); ?>

@@ -11,7 +11,7 @@
  * Extended by:  
  * @author Jefferson49
  * @link https://github.com/Jefferson49/Joomla_plugin_sexypolling_reloaded
- * @copyright Copyright (c) 2022 - 2024 Jefferson49
+ * @copyright Copyright (c) 2022 - 2025 Jefferson49
  * @license GNU/GPL v3.0
  * 
  * JavaScript window.jSelectSexypoll, document.addEventListener from JDownloads:

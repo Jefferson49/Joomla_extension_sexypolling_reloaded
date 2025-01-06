@@ -80,11 +80,11 @@ If you experience any bugs [create a new issue](https://github.com/Jefferson49/J
 ## License
 + [GNU General Public License, Version 3](LICENSE.md)
 + Joomla
-    + Copyright (c) 2005-2024 [Open Source Matters, Inc.](https://www.opensourcematters.org/)
+    + Copyright (c) 2005-2025 [Open Source Matters, Inc.](https://www.opensourcematters.org/)
 + Sexy Polling (Joomla extension)
     + Copyright (c) 2010 - 2021 [2GLux.com](2GLux.com). All rights reserved.
 + Sexy Polling Reloaded (Joomla extension)
-    + Copyright (c) 2024 [Jefferson49](https://github.com/Jefferson49)
+    + Copyright (c) 2025 [Jefferson49](https://github.com/Jefferson49)
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 

@@ -19,8 +19,19 @@
         <filename module="mod_sexypolling">mod_sexypolling.php</filename>
 		<filename>helper.php</filename>
         <filename>generate.css.php</filename>
-        <folder>language</folder>
     </files>
+
+    <languages folder="language">
+            <language tag="de-DE">de-DE/de-DE.mod_sexypolling.ini</language>
+            <language tag="en-GB">en-GB/en-GB.mod_sexypolling.ini</language>
+            <language tag="es-ES">es-ES/es-ES.mod_sexypolling.ini</language>
+            <language tag="fa-IR">fa-IR/fa-IR.mod_sexypolling.ini</language>
+            <language tag="fr-FR">fr-FR/fr-FR.mod_sexypolling.ini</language>
+            <language tag="it-IT">it-IT/it-IT.mod_sexypolling.ini</language>
+            <language tag="ru-RU">ru-RU/ru-RU.mod_sexypolling.ini</language>
+            <language tag="sl-SL">sl-SL/sl-SL.mod_sexypolling.ini</language>
+    </languages>
+
     <config>
         <fields name="params">
             <fieldset name="basic">
@@ -30,6 +41,10 @@
                 </field>
                 <field type="sql" name="poll_id" label="MOD_SEXYPOLLING_SELECT_SEXY_POLL_LABEL" default="" description="MOD_SEXYPOLLING_SELECT_SEXY_POLL_DESCRIPTION" query="SELECT id AS value, name AS poll_id FROM #__sexy_polls WHERE `published` = '1'" />
                 <field type="sql" name="category_id" label="MOD_SEXYPOLLING_SELECT_CATEGORY_LABEL" default="" description="MOD_SEXYPOLLING_SELECT_CATEGORY_DESCRIPTION" query="SELECT id AS value, name AS category_id FROM #__sexy_categories WHERE `published` = '1'" />
+                <field type="radio" name="show_results_at_module_start" label="MOD_SEXYPOLLING_SHOW_RESULTS_AT_MODULE_START_LABEL" default="0" description="MOD_SEXYPOLLING_SHOW_RESULTS_AT_MODULE_START_DESCRIPTION" class="btn-group">
+                  <option value="0">MOD_SEXYPOLLING_SHOW_RESULTS_AT_MODULE_START_NO</option>
+                  <option value="1">MOD_SEXYPOLLING_SHOW_RESULTS_AT_MODULE_START_YES</option>
+                </field>
             </fieldset>
         </fields>
     </config>

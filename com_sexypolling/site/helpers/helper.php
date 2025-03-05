@@ -37,6 +37,7 @@ class SexypollingHelper
 	public $id_category;
 	public $module_id;
 	public $type;
+	public $show_results_at_module_start;
 	public $class_suffix;
 	public $_data;
 
@@ -718,6 +719,18 @@ class SexypollingHelper
                 $jsInclude .= 'autoAnimate["'.$poll_id.'"]="'.$v.'";';
             }
 
+            $jsInclude .= 'if (typeof showResultsAtModuleStart === \'undefined\') { var showResultsAtModuleStart = new Array();};';
+            foreach ($pollings as $poll_id => $polling_array) {
+
+                //Only apply if results are allowed to be shown
+                $allowed_to_be_shown = !($polling_array[0]->showresultsduringpoll == 0 && $date_now < strtotime($polling_array[0]->date_end ?? ''));
+
+                if($this->show_results_at_module_start && $allowed_to_be_shown) 
+                {
+                    $jsInclude .= 'showResultsAtModuleStart.push(Array("'.$module_id.'","'.$poll_id.'"));';
+                }
+            }
+            
             $jsInclude .= 'if (typeof sexyAutoPublish === \'undefined\') { var sexyAutoPublish = new Array();};';
             foreach ($autoPublish as $poll_id => $v) {
                 $jsInclude .= 'sexyAutoPublish.push("'.$poll_id.'");';

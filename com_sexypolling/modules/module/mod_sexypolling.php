@@ -20,6 +20,7 @@ $module_id = $module->id;
 $id_poll = $params->get('poll_id',1);
 $poll_type = $params->get('poll_type',0);
 $category_id = $params->get('category_id');
+$show_results_at_module_start = $params->get('show_results_at_module_start', 0);
 $class_suffix = $params->get('class_suffix','');
 
 //include helper class
@@ -34,6 +35,7 @@ $sp_class->id_poll = $id_poll;
 //ToDo: Check if id_category is the correct variable name
 $sp_class->id_category = $poll_type == 0 ? 0 : $category_id;
 $sp_class->module_id = $module_id;
+$sp_class->show_results_at_module_start = $show_results_at_module_start;
 $sp_class->type = 'module';
 $sp_class->class_suffix = $class_suffix;
 echo $sp_class->render_html();

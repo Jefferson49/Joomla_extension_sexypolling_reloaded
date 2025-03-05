@@ -1881,6 +1881,16 @@ $(document).ready(function() {
 
             };
 
+            // autoanimate results at module start
+            s_length = showResultsAtModuleStart.length;
+            for(var i = 0;i <= s_length; i++) {
+                if(typeof showResultsAtModuleStart[i] !== 'undefined') {
+                    var time = (i * 1 + 1) * 10;
+                    var t = $("#res_" + showResultsAtModuleStart[i][0] + "_" + showResultsAtModuleStart[i][1]);
+                    animate_poll(t,time);
+                }
+            };
+
             // autoanimate voted polls
             v_length = votedIds.length;
             for(var i = 0;i <= v_length; i++) {

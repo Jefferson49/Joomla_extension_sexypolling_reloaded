@@ -272,4 +272,38 @@
             <item>Wrong date format and value "Show votes for" is "Last day" after fresh install</item>
         </fix>
     </changelog>
+    <changelog>
+		<element>com_sexypolling</element>
+		<type>component</type>
+		<version>5.0.5.5</version>
+        <security>
+            <item>Due to improvements in the component architecture, it is highly recommended to upgrade from earlier versions to version 5.0.5.0 or later</item>
+        </security>
+        <addition>
+            <item>Enabled Joomla custom fields for answers</item>
+            <item>Site module: Added an option to the module configuration to show poll results only</item>
+            <item>Introduced editor for name and embedded code for answers in the backend</item>
+            <item>Improved German backend translation</item>
+        </addition>
+        <fix>
+            <item>Updating the extension throws an error, if the database tables for polls or votes do not contain data</item>
+        </fix>
+    </changelog>
+    <changelog>
+		<element>com_sexypolling</element>
+		<type>component</type>
+		<version>5.5.5</version>
+        <security>
+            <item>Due to improvements in the component architecture, it is highly recommended to upgrade from earlier versions to version 5.5.0 or later</item>
+        </security>    
+        <addition>
+            <item>Enabled Joomla custom fields for answers</item>
+            <item>Site module: Added an option to the module configuration to show poll results only</item>
+            <item>Introduced editor for name and embedded code for answers in the backend</item>
+            <item>Improved German backend translation</item>
+        </addition>
+        <fix>
+            <item>Updating the extension throws an error, if the database tables for polls or votes do not contain data</item>
+        </fix>
+    </changelog>    
 </changelogs>

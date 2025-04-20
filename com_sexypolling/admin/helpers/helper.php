@@ -17,10 +17,12 @@
  * 
  */
 
+use Joomla\CMS\Access\Access;
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\Helpers\Sidebar;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Toolbar\ToolbarHelper;
+use Joomla\Registry\Registry;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -47,5 +49,55 @@ class SexypollingHelper {
 		if($controller != null) $link .= '&controller='.$controller;
 		
 		Sidebar::addEntry( Text::_($title), $link, $enabled);
+	}
+	
+	/**
+	 * Get the actions
+	*/
+	public static function getActions($component = '', $section = '', $messageId = 0)
+	{	
+		$result = new Registry;
+
+		if (empty($messageId)) {
+			$assetName = 'com_sexypolling';
+		}
+		else {
+			$assetName = 'com_sexypolling.message.'.(int) $messageId;
+		}
+
+		$actions = Access::getActionsFromData('com_sexypolling', 'component');
+
+		foreach ($actions as $action) {
+			$value = Factory::getApplication()->getIdentity()->authorise($action->name, $assetName);
+			$result->set($action->name, $value);
+		}
+
+		return $result;
+	}
+
+	public static function getContexts()
+	{
+	Factory::getApplication()->getLanguage()->load('com_sexypolling', JPATH_ADMINISTRATOR);
+
+		$contexts = array(
+			'com_sexypolling.sexyanswer' => Text::_('COM_SEXYPOLLING_ANSWER'),
+			'com_sexypolling.categories' => Text::_('JCATEGORY')
+		);
+
+		return $contexts;
+	}
+	
+	public static function validateSection($section, $item)
+	{
+		if (Factory::getApplication()->isClient('site') && $section == 'form')
+		{
+			return 'sexyanswer';
+		}
+		if ($section != 'sexyanswer' && $section != 'form')
+		{
+			return null;
+		}
+
+		return $section;
 	}
 }

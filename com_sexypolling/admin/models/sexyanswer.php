@@ -151,6 +151,8 @@ class SexypollingModelSexyAnswer extends AdminModel
 		$date = new Date();
 		$id = Factory::getApplication()->input->request->getInt('id',0);
 		$jform = Factory::getApplication()->input->request->get('jform', [], 'ARRAY');
+		$table = $this->getTable();
+		$table->load($id);				
 
 		$req = new Req();
 		$req->name =  $jform['name'];
@@ -214,6 +216,9 @@ class SexypollingModelSexyAnswer extends AdminModel
 			if (!$this->_db->updateObject( '#__sexy_answers', $req, 'id' )) {
 				return false;
 			}
+
+			// Trigger the onContentAfterSave event - in order to save custom fields
+			Factory::getApplication()->triggerEvent('onContentAfterSave', array('com_sexypolling.sexyanswer', $table, false, $jform));			
 		}
 	
 		return true;

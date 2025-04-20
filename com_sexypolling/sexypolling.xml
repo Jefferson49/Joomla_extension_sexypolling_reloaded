@@ -67,6 +67,8 @@
             <menu img="components/com_sexypolling/assets/images/category_16.png" link="option=com_sexypolling&amp;view=sexycategories">COM_SEXYPOLLING_SUBMENU_CATEGORIES</menu>
             <menu img="components/com_sexypolling/assets/images/template_16.png" link="option=com_sexypolling&amp;view=sexytemplates">COM_SEXYPOLLING_SUBMENU_TEMPLATES</menu>
             <menu img="components/com_sexypolling/assets/images/statistics_16.png" link="option=com_sexypolling&amp;view=sexystatistics">COM_SEXYPOLLING_SUBMENU_STATISTICS</menu>
+            <menu img="" link="option=com_fields&amp;context=com_sexypolling.sexyanswer">MOD_MENU_FIELDS</menu>
+            <menu img="" link="option=com_fields&amp;view=groups&amp;context=com_sexypolling.sexyanswer">MOD_MENU_FIELDS_GROUP</menu>
         </submenu>
         <files folder="admin">
             <filename>controller.php</filename>

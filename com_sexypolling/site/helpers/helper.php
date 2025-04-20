@@ -438,7 +438,7 @@ class SexypollingHelper
                             $fields = FieldsHelper::getFields('com_sexypolling.sexyanswer',$answer, true);
 
                             foreach($fields as $field) {
-                                echo '<div class="answer_custom_field">';
+                                echo '<div class="answer_custom_field ' . $field->name . '">';
                                 echo FieldsHelper::render($field->context, 'field.render', array('field' => $field));
                                 echo '<br>';
                                 echo '</div>';            

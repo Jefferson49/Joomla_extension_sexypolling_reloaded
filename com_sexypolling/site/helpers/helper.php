@@ -19,6 +19,7 @@
  * @todo deprecated 4.3, removed 6.0: Factory::getApplication()->getDocument()->addStyleDeclaration
  */
 
+use Joomla\Component\Fields\Administrator\Helper\FieldsHelper;
 use Joomla\CMS\Access\Access;
 use Joomla\CMS\Component\ComponentHelper;
 use Joomla\CMS\Factory;
@@ -195,11 +196,15 @@ class SexypollingHelper
 		$data_time_zone = 'UTC';
         $debug_date_UTC =  HTMLHelper::date('now', 'F d, Y', $data_time_zone);
         $debug_date_user = HTMLHelper::date('now', 'F d, Y', $user_time_zone);
+        $debug_date = HTMLHelper::date('2022-03-15', 'F d, Y', $data_time_zone);
 
         //get data
         $this->get_data();
 
-        $debug_date = HTMLHelper::date('2022-03-15', 'F d, Y', $data_time_zone);
+        //Get all answers from the SexyAnswers model; needed to show custom fields for answers
+        JModelLegacy::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_sexypolling/models', 'SexypollingModel');
+        $answerModel = JModelLegacy::getInstance('SexyAnswers', 'SexypollingModel', array('ignore_request' => true));
+        $all_answers = $answerModel->getItems();        
 
         //create polls array
         $pollings = array();
@@ -425,6 +430,22 @@ class SexypollingHelper
                     if($poll_data->embed != '') {
                         echo '<div class="poll_answer_embed_code">'.$poll_data->embed.'</div>';
                     }
+
+                    //Include custom fields of answers
+                    foreach ($all_answers as $answer)
+                    {
+                        if ($answer->id === $poll_data->answer_id) {
+                            $fields = FieldsHelper::getFields('com_sexypolling.sexyanswer',$answer, true);
+
+                            foreach($fields as $field) {
+                                echo '<div class="answer_custom_field">';
+                                echo FieldsHelper::render($field->context, 'field.render', array('field' => $field));
+                                echo '<br>';
+                                echo '</div>';            
+                            }
+                        }
+                    }
+
                     echo '<div class="sexy_clear"></div>';
                     echo '</label></div>';
                     echo '<div class="answer_input">';

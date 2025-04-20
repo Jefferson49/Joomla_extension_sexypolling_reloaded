@@ -25,6 +25,7 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Log\Log;
+use Joomla\CMS\MVC\Model\BaseDatabaseModel;
 use Joomla\CMS\Session\Session;
 use Joomla\CMS\Uri\Uri;
 
@@ -201,8 +202,8 @@ class SexypollingHelper
         $this->get_data();
 
         //Get all answers from the SexyAnswers model; needed to show custom fields for answers
-        JModelLegacy::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_sexypolling/models', 'SexypollingModel');
-        $answerModel = JModelLegacy::getInstance('SexyAnswers', 'SexypollingModel', array('ignore_request' => true));
+        BaseDatabaseModel::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_sexypolling/models', 'SexypollingModel');
+        $answerModel = BaseDatabaseModel::getInstance('SexyAnswers', 'SexypollingModel', array('ignore_request' => true));
         $all_answers = $answerModel->getItems();
 
         //Load fields helper class to view custom fields

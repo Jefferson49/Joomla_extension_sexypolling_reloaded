@@ -19,7 +19,6 @@
  * @todo deprecated 4.3, removed 6.0: Factory::getApplication()->getDocument()->addStyleDeclaration
  */
 
-use Joomla\Component\Fields\Administrator\Helper\FieldsHelper;
 use Joomla\CMS\Access\Access;
 use Joomla\CMS\Component\ComponentHelper;
 use Joomla\CMS\Factory;
@@ -204,7 +203,10 @@ class SexypollingHelper
         //Get all answers from the SexyAnswers model; needed to show custom fields for answers
         JModelLegacy::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_sexypolling/models', 'SexypollingModel');
         $answerModel = JModelLegacy::getInstance('SexyAnswers', 'SexypollingModel', array('ignore_request' => true));
-        $all_answers = $answerModel->getItems();        
+        $all_answers = $answerModel->getItems();
+
+        //Load fields helper class to view custom fields
+        JLoader::register('FieldsHelper', JPATH_ADMINISTRATOR . '/components/com_fields/helpers/fields.php');
 
         //create polls array
         $pollings = array();

@@ -3,7 +3,7 @@
 	<fieldset>
 		<field name="id" type="hidden"/>
 		<field name="id_user" type="hidden" default="0"/>
-		<field name="name" type="editor" label="COM_SEXYPOLLING_NAME_LABEL" description="COM_SEXYPOLLING_NAME_DESCRIPTION" height="200" class="inputbox" default=""  rows="5" cols="10" required="required"/>
+		<field name="name" type="textarea" label="COM_SEXYPOLLING_NAME_LABEL" description="COM_SEXYPOLLING_NAME_DESCRIPTION" size="40" class="inputbox" default=""  rows="5" cols="10" required="required"/>
 		<field id="" name="show_name" type="radio" label="COM_SEXYPOLLING_SHOW_NAME_LABEL" description="COM_SEXYPOLLING_SHOW_NAME_DESCRIPTION" class="inputbox btn-group" size="1" default="1">
 			<option value="0">JNo</option>
 			<option value="1">JYes</option>

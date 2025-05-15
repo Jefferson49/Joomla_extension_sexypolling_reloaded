@@ -86,7 +86,7 @@ require_once JPATH_SITE.'/components/com_sexypolling/helpers/helper.php';
 		$countrycode = $db->escape($countrycode);
 		
 		$answer_id_array = $post->get('answer_id', 0);
-		$adittional_answers = $post->get('answers', 0);
+		$additional_answers = $post->get('answers', [], 'string');
 		$polling_id = $post->getInt('polling_id', 0,);
 		$module_id = $post->getInt('module_id', 0);
 		$mode = $post->get('mode', '');
@@ -186,8 +186,8 @@ require_once JPATH_SITE.'/components/com_sexypolling/helpers/helper.php';
 		}
 		
 		$add_answers = array();
-		if(is_array($adittional_answers) && $voting_enabled) {
-			foreach ($adittional_answers as $answer) {
+		if(is_array($additional_answers) && $voting_enabled) {
+			foreach ($additional_answers as $answer) {
 				$answer = $db->escape(strip_tags($answer ?? ''));
 				$answer = preg_replace('/sexydoublequestionmark/','??',$answer);
 		

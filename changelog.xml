@@ -306,4 +306,30 @@
             <item>Updating the extension throws an error, if the database tables for polls or votes do not contain data</item>
         </fix>
     </changelog>    
+    <changelog>
+		<element>com_sexypolling</element>
+		<type>component</type>
+		<version>5.0.5.6</version>
+        <security>
+            <item>Due to improvements in the component architecture, it is highly recommended to upgrade from earlier versions to version 5.0.5.0 or later</item>
+        </security>
+        <fix>
+            <item>Removed editor for answer name in the backend, since it caused issues with certain editors</item>
+            <item>Added CSS to use same font for answer names, which were added with an editor</item>
+            <item>Do not remove spaces from answer names, which were added in the front end</item>
+        </fix>
+    </changelog>
+    <changelog>
+		<element>com_sexypolling</element>
+		<type>component</type>
+		<version>5.5.6</version>
+        <security>
+            <item>Due to improvements in the component architecture, it is highly recommended to upgrade from earlier versions to version 5.5.0 or later</item>
+        </security> 
+        <fix>
+            <item>Removed editor for answer name in the backend, since it caused issues with certain editors</item>
+            <item>Added CSS to use same font for answer names, which were added with an editor</item>
+            <item>Do not remove spaces from answer names, which were added in the front end</item>
+        </fix>
+    </changelog>
 </changelogs>

@@ -732,7 +732,7 @@ class SexypollingHelper
             foreach ($autoAnimate as $poll_id => $v) {
 
                 //Autoanimation will show results; therefore, only apply if results are allowed to be shown
-                if(($polling_array[0]->showresultsduringpoll == 0 && $date_now < strtotime($polling_array[0]->date_end ?? ''))) 
+                if($polling_array[0]->showresultsduringpoll == 0 && $date_now < strtotime($time_end) - $timezone_offset)
                 {
                     $v = "0";
                 }
@@ -745,7 +745,7 @@ class SexypollingHelper
             foreach ($pollings as $poll_id => $polling_array) {
 
                 //Only apply if results are allowed to be shown
-                $allowed_to_be_shown = !($polling_array[0]->showresultsduringpoll == 0 && $date_now < strtotime($polling_array[0]->date_end ?? ''));
+                $allowed_to_be_shown = !($polling_array[0]->showresultsduringpoll == 0 && $date_now < strtotime($time_end) - $timezone_offset);
 
                 if($this->show_results_at_module_start && $allowed_to_be_shown) 
                 {

@@ -332,4 +332,26 @@
             <item>Do not remove spaces from answer names, which were added in the front end</item>
         </fix>
     </changelog>
+    <changelog>
+		<element>com_sexypolling</element>
+		<type>component</type>
+		<version>5.0.5.7</version>
+        <security>
+            <item>Due to improvements in the component architecture, it is highly recommended to upgrade from earlier versions to version 5.0.5.0 or later</item>
+        </security>
+        <fix>
+            <item>Autoanimation is shown on the last day of a vote, although vote still ongoing and hidden results</item>
+        </fix>
+    </changelog>
+    <changelog>
+		<element>com_sexypolling</element>
+		<type>component</type>
+		<version>5.5.7</version>
+        <security>
+            <item>Due to improvements in the component architecture, it is highly recommended to upgrade from earlier versions to version 5.5.0 or later</item>
+        </security> 
+        <fix>
+            <item>Autoanimation is shown on the last day of a vote, although vote still ongoing and hidden results</item>
+        </fix>
+    </changelog>
 </changelogs>

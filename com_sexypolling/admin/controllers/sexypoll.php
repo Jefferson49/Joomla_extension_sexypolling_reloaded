@@ -16,6 +16,7 @@ use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\MVC\Controller\FormController;
 use Joomla\CMS\Session\Session;
 use Joomla\CMS\Language\Text;
+use Joomla\Database\DatabaseInterface;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -135,7 +136,7 @@ class SexyPollingControllerSexyPoll extends FormController
 	 */
 	function getPollNames(): array
 	{
-		$db = Factory::getDBO();
+		$db = Factory::getContainer()->get(DatabaseInterface::class);
 		$query = "SELECT * FROM `#__sexy_polls`";
 		$db->setQuery( $query );
 		$polls = $db->loadAssocList();

@@ -20,7 +20,7 @@
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Toolbar\ToolbarHelper;
-use Joomla\CMS\Uri\Uri;
+use Joomla\Database\DatabaseInterface;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -54,7 +54,7 @@ function get_dates_array($date1,$date2) {
 }
 
 
-$db = Factory::getContainer()->get('DatabaseDriver');
+$db = Factory::getContainer()->get(DatabaseInterface::class);
 
 $poll_id = Factory::getApplication()->input->get('id');
 

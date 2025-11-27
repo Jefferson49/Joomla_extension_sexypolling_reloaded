@@ -19,6 +19,7 @@ use Joomla\CMS\Date\Date;
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Session\Session;
+use Joomla\Database\DatabaseInterface;
 
 //include helper class
 require_once JPATH_SITE.'/components/com_sexypolling/helpers/helper.php';
@@ -46,7 +47,7 @@ require_once JPATH_SITE.'/components/com_sexypolling/helpers/helper.php';
 		$post = Factory::getApplication()->input;
 		$server = Factory::getApplication()->input->server;
 
-		$db = Factory::getContainer()->get('DatabaseDriver');
+		$db = Factory::getContainer()->get(DatabaseInterface::class);
 		
 		//get user groups
 		$levels = array();
@@ -424,7 +425,7 @@ require_once JPATH_SITE.'/components/com_sexypolling/helpers/helper.php';
 		$post = Factory::getApplication()->input;
 		$server = Factory::getApplication()->input->server;
 
-		$db = Factory::getContainer()->get('DatabaseDriver');
+		$db = Factory::getContainer()->get(DatabaseInterface::class);
 		
 		//get user groups
 		$levels = array();

@@ -20,6 +20,7 @@
 use Joomla\CMS\Factory;
 use Joomla\CMS\Installer\Installer;
 use Joomla\CMS\Language\Text;
+use Joomla\Database\DatabaseInterface;
 
 
 // no direct access
@@ -28,13 +29,17 @@ defined('_JEXEC') or die('Restircted access');
 class com_sexypollingInstallerScript {
 
     /**
-     * method to install the component
+     * method to install the extension
      *
      * @return void
      */
     function install($parent) {
+
+        $db = Factory::getContainer()->get(DatabaseInterface::class);
+
         // installing module
-        $module_installer = new Installer;
+        $module_installer = new Installer();
+        $module_installer->setDatabase($db);
         if(@$module_installer->install(dirname(__FILE__).DIRECTORY_SEPARATOR.'modules'.DIRECTORY_SEPARATOR.'module')) {
             //echo '<p>'.Text::_('MOD_SEXYPOLLING_MODULE_INSTALL_SUCCESS').'</p>';
         } else
@@ -42,6 +47,7 @@ class com_sexypollingInstallerScript {
 
         // installing plugin
         $plugin_installer = new Installer;
+        $plugin_installer->setDatabase($db);
         if($plugin_installer->install(dirname(__FILE__).DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.'plugin')) {
             //echo '<p>'.Text::_('PLG_SEXYPOLLING_PLUGIN_INSTALL_SUCCESS').'</p>';
         } else
@@ -49,13 +55,13 @@ class com_sexypollingInstallerScript {
 
         // installing editor button plugin
         $plugin_installer = new Installer;
+        $plugin_installer->setDatabase($db);
         if($plugin_installer->install(dirname(__FILE__).DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.'editor_button')) {
             //echo '<p>'.Text::_('PLG_SEXYPOLLING_PLUGIN_INSTALL_SUCCESS').'</p>';
         } else
             echo '<p>'.Text::_('PLG_SEXYPOLLING_PLUGIN_INSTALL_FAILED').'</p>';
 
         // enabling plugin
-        $db = Factory::getContainer()->get('DatabaseDriver');
         $db->setQuery('UPDATE #__extensions SET enabled = 1 WHERE element = "sexypolling" AND folder = "system"');
         $db->setQuery('UPDATE #__extensions SET enabled = 1 WHERE element = "sexypolling" AND folder = "editors-xtd"');
         $db->execute();
@@ -98,7 +104,7 @@ class com_sexypollingInstallerScript {
             echo '<p>'.Text::_('PLG_SEXYPOLLING_PLUGIN_INSTALL_FAILED').'</p>';
 
         // enabling plugins
-        $db = Factory::getContainer()->get('DatabaseDriver');
+        $db = Factory::getContainer()->get(DatabaseInterface::class);
         $db->setQuery('UPDATE #__extensions SET enabled = 1 WHERE element = "sexypolling" AND folder = "system"');
         $db->setQuery('UPDATE #__extensions SET enabled = 1 WHERE element = "sexypolling" AND folder = "editors-xtd"');
         $db->execute();
@@ -127,7 +133,7 @@ class com_sexypollingInstallerScript {
             return; 
         }
 
-        $db = Factory::getContainer()->get('DatabaseDriver');
+        $db = Factory::getContainer()->get(DatabaseInterface::class);
         $query = "SELECT * FROM `#__sexy_polls` LIMIT 1";
         $db->setQuery($query);
         $columns_data = $db->LoadAssoc();

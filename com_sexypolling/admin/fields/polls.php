@@ -19,6 +19,7 @@
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Form\FormField;
+use Joomla\Database\DatabaseInterface;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -33,7 +34,7 @@ class FormFieldPolls extends FormField
 		$doc 		= Factory::getApplication()->getDocument();
 		$fieldName	= $this->name;
 
-		$db = Factory::getContainer()->get('DatabaseDriver');
+		$db = Factory::getContainer()->get(DatabaseInterface::class);
 
 		$query = "SELECT name text,id value FROM #__sexy_categories WHERE published = '1'";
 		$db->setQuery($query);

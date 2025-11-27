@@ -27,6 +27,7 @@ use Joomla\CMS\MVC\Controller\AdminController;
 use Joomla\CMS\Session\Session;
 use Joomla\CMS\Component\ComponentHelper;
 use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\Database\DatabaseInterface;
 
 /**
  * Sexypolling votes export controller
@@ -55,7 +56,7 @@ use Joomla\CMS\HTML\HTMLHelper;
         // Check for request forgeries
         Session::checkToken() or jexit(Text::_('JINVALID_TOKEN'));
 
-        $db = Factory::getContainer()->get('DatabaseDriver');
+        $db = Factory::getContainer()->get(DatabaseInterface::class);
         $params = ComponentHelper::getParams('com_sexypolling');
 
         $tempdir    = JPATH_ADMINISTRATOR.'/components/com_sexypolling/export';

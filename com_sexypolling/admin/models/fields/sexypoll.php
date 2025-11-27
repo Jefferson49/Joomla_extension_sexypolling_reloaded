@@ -21,6 +21,7 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\Form\FormHelper;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Form\Field\ListField;
+use Joomla\Database\DatabaseInterface;
 
 // no direct access
 defined('_JEXEC') or die('Restircted access');
@@ -44,7 +45,7 @@ class FormFieldSexyPoll extends ListField
 	 */
 	protected function getOptions() 
 	{
-		$db = Factory::getContainer()->get('DatabaseDriver');
+		$db = Factory::getContainer()->get(DatabaseInterface::class);
 		$query = $db->getQuery(true);
 		$query->select('id,name');
 		$query->from('#__sexy_polls');

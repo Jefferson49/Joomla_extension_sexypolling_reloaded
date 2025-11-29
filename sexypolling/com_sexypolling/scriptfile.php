@@ -18,8 +18,6 @@
  */
 
 use Joomla\CMS\Factory;
-use Joomla\CMS\Installer\Installer;
-use Joomla\CMS\Language\Text;
 use Joomla\Database\DatabaseInterface;
 
 
@@ -34,37 +32,7 @@ class com_sexypollingInstallerScript {
      * @return void
      */
     function install($parent) {
-
-        $db = Factory::getContainer()->get(DatabaseInterface::class);
-
-        // installing module
-        $module_installer = new Installer();
-        $module_installer->setDatabase($db);
-        if(@$module_installer->install(dirname(__FILE__).DIRECTORY_SEPARATOR.'modules'.DIRECTORY_SEPARATOR.'module')) {
-            //echo '<p>'.Text::_('MOD_SEXYPOLLING_MODULE_INSTALL_SUCCESS').'</p>';
-        } else
-           echo '<p>'.Text::_('MOD_SEXYPOLLING_MODULE_INSTALL_FAILED').'</p>';
-
-        // installing plugin
-        $plugin_installer = new Installer;
-        $plugin_installer->setDatabase($db);
-        if($plugin_installer->install(dirname(__FILE__).DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.'plugin')) {
-            //echo '<p>'.Text::_('PLG_SEXYPOLLING_PLUGIN_INSTALL_SUCCESS').'</p>';
-        } else
-            echo '<p>'.Text::_('PLG_SEXYPOLLING_PLUGIN_INSTALL_FAILED').'</p>';
-
-        // installing editor button plugin
-        $plugin_installer = new Installer;
-        $plugin_installer->setDatabase($db);
-        if($plugin_installer->install(dirname(__FILE__).DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.'editor_button')) {
-            //echo '<p>'.Text::_('PLG_SEXYPOLLING_PLUGIN_INSTALL_SUCCESS').'</p>';
-        } else
-            echo '<p>'.Text::_('PLG_SEXYPOLLING_PLUGIN_INSTALL_FAILED').'</p>';
-
-        // enabling plugin
-        $db->setQuery('UPDATE #__extensions SET enabled = 1 WHERE element = "sexypolling" AND folder = "system"');
-        $db->setQuery('UPDATE #__extensions SET enabled = 1 WHERE element = "sexypolling" AND folder = "editors-xtd"');
-        $db->execute();
+        return;
     }
 
     /**
@@ -84,30 +52,7 @@ class com_sexypollingInstallerScript {
      * @return void
      */
     function update($parent) {
-        $module_installer = new Installer;
-        if(@$module_installer->install(dirname(__FILE__).DIRECTORY_SEPARATOR.'modules'.DIRECTORY_SEPARATOR.'module')) {
-            //echo '<p>'.Text::_('MOD_SEXYPOLLING_MODULE_INSTALL_SUCCESS').'</p>';
-        } else
-           echo '<p>'.Text::_('MOD_SEXYPOLLING_MODULE_INSTALL_FAILED').'</p>';
-
-        $plugin_installer = new Installer;
-        if(@$plugin_installer->install(dirname(__FILE__).DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.'plugin')) {
-            //echo '<p>'.Text::_('PLG_SEXYPOLLING_PLUGIN_INSTALL_SUCCESS').'</p>';
-        } else
-            echo '<p>'.Text::_('PLG_SEXYPOLLING_PLUGIN_INSTALL_FAILED').'</p>';
-
-        // installing editor button plugin
-        $plugin_installer = new Installer;
-        if($plugin_installer->install(dirname(__FILE__).DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.'editor_button')) {
-            //echo '<p>'.Text::_('PLG_SEXYPOLLING_PLUGIN_INSTALL_SUCCESS').'</p>';
-        } else
-            echo '<p>'.Text::_('PLG_SEXYPOLLING_PLUGIN_INSTALL_FAILED').'</p>';
-
-        // enabling plugins
-        $db = Factory::getContainer()->get(DatabaseInterface::class);
-        $db->setQuery('UPDATE #__extensions SET enabled = 1 WHERE element = "sexypolling" AND folder = "system"');
-        $db->setQuery('UPDATE #__extensions SET enabled = 1 WHERE element = "sexypolling" AND folder = "editors-xtd"');
-        $db->execute();
+        return;
     }
 
     /**
@@ -134,6 +79,8 @@ class com_sexypollingInstallerScript {
         }
 
         $db = Factory::getContainer()->get(DatabaseInterface::class);
+
+        // update database table "sexy_polls" if required
         $query = "SELECT * FROM `#__sexy_polls` LIMIT 1";
         $db->setQuery($query);
         $columns_data = $db->LoadAssoc();
@@ -208,6 +155,8 @@ class com_sexypollingInstallerScript {
                 }
             }
         }
+
+        // update database table "sexy_votes" if required
 
         $query = "SELECT * FROM `#__sexy_votes` LIMIT 1";
         $db->setQuery($query);

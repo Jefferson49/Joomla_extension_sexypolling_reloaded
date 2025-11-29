@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="package" method="upgrade">
+	<name>PKG_SEXYPOLLING</name>
+	<packagename>sexypolling</packagename>
+	<license>GNU/GPLv3</license>
+	<version>5.6.0</version>
+	<creationDate>2025-11-29</creationDate>
+	<author>Jefferson49</author>
+    <copyright>Copyright (c) 2016 miniOrange. All Rights Reserved. Copyright (c) 2024 Jefferson49</copyright>
+ 	<authorEmail>sexypolling.reloaded@gmail.com</authorEmail>
+    <authorUrl>https://github.com/Jefferson49</authorUrl>
+	<description>PKG_SEXYPOLLING_XML_DESCRIPTION</description>
+    <scriptfile>scriptfile.php</scriptfile>
+	<files>
+		<file type="component" id="com_sexypolling"                                  >com_sexypolling.zip</file>
+		<file type="module"    id="mod_sexypolling"                     client="site">mod_sexypolling.zip</file>
+		<file type="plugin"    id="sexypolling"     group="system"      client="site">plg_sexypolling.zip</file>
+		<file type="plugin"    id="sexypolling"     group="editors-xtd" client="site">plg_editorbutton.zip</file>
+	</files>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.pkg_sexypolling.ini</language>
+		<language tag="en-GB">en-GB/en-GB.pkg_sexypolling.sys.ini</language>
+		<language tag="de-DE">de-DE/de-DE.pkg_sexypolling.ini</language>
+		<language tag="de-DE">de-DE/de-DE.pkg_sexypolling.sys.ini</language>
+	</languages>
+    <changelogurl>https://raw.githubusercontent.com/Jefferson49/Joomla_extension_sexypolling_reloaded/updates/changelog.xml</changelogurl>
+    <updateservers>
+        <server type="extension" name="Github Joomla_extension_sexypolling_reloaded" priority="1">https://raw.githubusercontent.com/Jefferson49/Joomla_extension_sexypolling_reloaded/updates/updates.xml</server>
+    </updateservers>
+</extension>

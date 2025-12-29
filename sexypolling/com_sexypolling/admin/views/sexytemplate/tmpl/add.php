@@ -53,7 +53,12 @@ Joomla.submitbutton = function(task) {
 <?php 
 HTMLHelper::_('bootstrap.tooltip');
 HTMLHelper::_('behavior.formvalidator');
-HTMLHelper::_('formbehavior.chosen', 'select');
+try {
+    HTMLHelper::_('formbehavior.chosen', 'select');
+} catch (\Exception $e) {
+    // The 'chosen' preset may not be registered (Joomla 6+ or missing template assets).
+    // Fail gracefully instead of throwing an exception.
+}
 ?>
 <form action="<?php echo Route::_('index.php?option=com_sexypolling&layout=add&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="adminForm" class="form-validate form-horizontal">
 	<div class="row-fluid">

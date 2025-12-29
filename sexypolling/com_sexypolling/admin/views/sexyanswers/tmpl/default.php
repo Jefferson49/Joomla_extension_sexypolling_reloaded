@@ -31,7 +31,12 @@ HTMLHelper::addIncludePath(JPATH_COMPONENT.'/helpers/html');
 HTMLHelper::_('bootstrap.tooltip');
 HTMLHelper::_('behavior.multiselect');
 HTMLHelper::_('dropdown.init');
-HTMLHelper::_('formbehavior.chosen', 'select');
+try {
+    HTMLHelper::_('formbehavior.chosen', 'select');
+} catch (\Exception $e) {
+    // The 'chosen' preset may not be registered (Joomla 6+ or missing template assets).
+    // Fail gracefully instead of throwing an exception.
+}
 
 $listOrder  = $this->escape($this->state->get('list.ordering'));
 $listDirn   = $this->escape($this->state->get('list.direction'));

@@ -354,4 +354,22 @@
             <item>Autoanimation is shown on the last day of a vote, although vote still ongoing and hidden results</item>
         </fix>
     </changelog>
+    <changelog>
+		<element>com_sexypolling</element>
+		<type>component</type>
+		<version>5.6.0</version>
+        <addition>
+            <item>Enabled usage for Joomla 6</item>
+            <item>Bundled Sexy Polling extensions into a package</item>
+        </addition>
+    </changelog>
+    <changelog>
+		<element>pkg_sexypolling</element>
+		<type>component</type>
+		<version>5.6.0</version>
+        <addition>
+            <item>Enabled usage for Joomla 6</item>
+            <item>Bundled Sexy Polling extensions into a package</item>
+        </addition>
+    </changelog>
 </changelogs>

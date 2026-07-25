@@ -372,4 +372,20 @@
             <item>Bundled Sexy Polling extensions into a package</item>
         </addition>
     </changelog>
+    <changelog>
+		<element>com_sexypolling</element>
+		<type>component</type>
+		<version>5.0.6.1</version>
+        <security>
+            <item>Fixed a security vulnerability where the application’s response time changes in a way that could be exploited to guess sensitive information.</item>
+        </security>
+    </changelog>
+    <changelog>
+		<element>pkg_sexypolling</element>
+		<type>component</type>
+		<version>5.6.1</version>
+        <security>
+            <item>Fixed a security vulnerability where the application’s response time changes in a way that could be exploited to guess sensitive information.</item>
+        </security> 
+    </changelog>
 </changelogs>
